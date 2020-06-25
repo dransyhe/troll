@@ -1133,7 +1133,6 @@ void Tree::CalcLAI() {
                 }
             }
         }
-
         /* NEW CHANGE (for future): LAI3D[][] can times t_dens in the final stage */
 
     }
