@@ -1077,46 +1077,65 @@ void Tree::BirthFromData(Species *S, int nume, int site0, float dbh_measured) {
  ####          called by UpdateField          ####
  #################################################*/
 
-/* modified in v.2.3: additional contribution to voxels that are not fully occupied by the tree crown. !!!: this does not calculate LAI3D directly, this only calculates the density in each voxel belonging to a tree. The final LAI field is calculated outside of the class Tree */
+/* modified in v.2.3: additional contribution to voxels that are not fully occupied by the tree crown.
+ * !!!: this does not calculate LAI3D directly, this only calculates the density in each voxel belonging to a tree.
+ * The final LAI field is calculated outside of the class Tree */
 
 void Tree::CalcLAI() {
-    if(t_age>0) {
+    if(t_age > 0) {
         int crown_base,
         crown_top,
         crown_r,
         row_trunc,
         col_trunc,
-        xx,yy,
-        col,row,
+        xx, yy,
+        col, row,
         site;
         
-        crown_r=int(t_Crown_Radius);
-        row_trunc=t_site/cols;
-        col_trunc=t_site%cols;
-        crown_base = int(t_Tree_Height-t_Crown_Depth);
+        crown_r = int(t_Crown_Radius);
+        row_trunc = t_site / cols;
+        col_trunc = t_site % cols;
+        crown_base = int(t_Tree_Height - t_Crown_Depth);
         crown_top = int(t_Tree_Height);
         // loop over the tree crown
-        for(col=max(0,col_trunc-crown_r);col<=min(cols-1,col_trunc+crown_r);col++) {
-            for(row=max(0,row_trunc-crown_r);row<=min(rows-1,row_trunc+crown_r);row++) {
-                xx=col_trunc-col;
-                yy=row_trunc-row;
-                if(xx*xx+yy*yy<=crown_r*crown_r){  // check whether voxel is within crown
-                    site=col+cols*row+SBORD;
-                    if(crown_top-crown_base == 0) {
-                        LAI3D[crown_top][site] += t_dens*t_Crown_Depth;
-                    }
-                    else{
-                        LAI3D[crown_top][site] += t_dens*(t_Tree_Height-crown_top);
-                        LAI3D[crown_base][site] += t_dens*(crown_base+1-(t_Tree_Height-t_Crown_Depth));
-                        if(crown_top-crown_base>=2){
-                            for(int h=crown_base+1;h <= crown_top-1;h++)
-                                LAI3D[h][site] += t_dens;    // loop over the crown depth
-                        }
-                        
+
+        /* NEW CHANGE: take "if (crown_top - crown_base == 0)" out to avoid repeated logic evaluation inside the loop */
+        if (crown_top - crown_base == 0){
+            for(col = max(0, col_trunc - crown_r); col <= min(cols - 1, col_trunc + crown_r); col++) {
+                for(row = max(0, row_trunc - crown_r); row <= min(rows - 1, row_trunc + crown_r); row++) {
+                    xx = col_trunc - col;
+                    yy = row_trunc - row;
+                    if(xx*xx + yy*yy <= crown_r*crown_r){      // check whether voxel is within crown
+                        site = col + cols * row + SBORD;
+                        LAI3D[crown_top][site] += t_dens * t_Crown_Depth;
                     }
                 }
             }
         }
+        else{
+            /* NEW CHANGE: take minus1, minus2 out to avoid repeated calculations inside the loop */
+            float minus1 = t_Tree_Height - crown_top;
+            float minus2 = crown_base + 1 - (t_Tree_Height - t_Crown_Depth);
+
+            for(col = max(0, col_trunc - crown_r); col <= min(cols - 1, col_trunc + crown_r); col++) {
+                for(row = max(0, row_trunc - crown_r); row <= min(rows - 1, row_trunc + crown_r); row++) {
+                    xx = col_trunc - col;
+                    yy = row_trunc - row;
+                    if(xx*xx + yy*yy <= crown_r*crown_r){  // check whether voxel is within crown
+                        site = col + cols * row + SBORD;
+                        LAI3D[crown_top][site] += t_dens * minus1;
+                        LAI3D[crown_base][site] += t_dens * minus2;
+                        if(crown_top - crown_base >= 2){
+                            for(int h = crown_base + 1; h <= crown_top - 1; h++)
+                                LAI3D[h][site] += t_dens;    // loop over the crown depth
+                        }
+                    }
+                }
+            }
+        }
+
+        /* NEW CHANGE (for future): LAI3D[][] can times t_dens in the final stage */
+
     }
 }
 
@@ -2285,12 +2304,13 @@ void InitialiseFromData(){
             
             // immediate tree birth
 
+            /* NEW CHANGE: lift (col_int + row_int * cols) out to reduce repeated calculation of index */
             int index = col_int + row_int * cols;
-            if(T[index].t_age==0){
-                T[index].BirthFromData(S,sp_lab_data,index,dbh_measured);
+            if(T[index].t_age == 0){
+                T[index].BirthFromData(S, sp_lab_data, index, dbh_measured);
             }
             
-            if(height_max<T[index].t_Tree_Height) height_max = T[index].t_Tree_Height;
+            if(height_max < T[index].t_Tree_Height) height_max = T[index].t_Tree_Height;
             
             // first attempt: simple, only trees with coordinates, only known species
             // other possibilities: not spatially explicit and/or assign species randomnly to trees whose species are not known
@@ -2469,25 +2489,28 @@ void Evolution() {
 
 void UpdateField() {
     
-    int site,haut;
-    int spp=0;
+    int site, haut;
+    int spp = 0;
     
     
     /* set the iteration environment -- nb: the current structure of code suppose that environment is periodic (a period = a year), if one wants to input a variable climate, with interannual variation and climate change along the simulation, a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
     //CURRENTLY NOT USED: precip, WS, Wmean, e_s, e_a,VPDbasic,VPDday
+
+    /* NEW CHANGE: lift (liter % iterperyear) out to reduce repeated calculation of index */
     int index = iter % iterperyear;
-    temp=Temperature[index];
-    tmax=DailyMaxTemperature[index];
-    tnight=NightTemperature[index];
-    precip=Rainfall[index];
-    WS=WindSpeed[index];
-    Wmax=MaxIrradiance[index]*1.678;       // 1.678 is to convert irradiance from W/m2 to micromol of PAR /s /m2, the unit used in the FvCB model of photosynthesis
-    Wmean=MeanIrradiance[index];            // still in W/m2
-    e_s=SaturatedVapourPressure[index];
-    e_a=VapourPressure[index];
-    VPDbasic=VapourPressureDeficit[index];
-    VPDday=DailyVapourPressureDeficit[index];
-    VPDmax=DailyMaxVapourPressureDeficit[index];
+
+    temp = Temperature[index];
+    tmax = DailyMaxTemperature[index];
+    tnight = NightTemperature[index];
+    precip = Rainfall[index];
+    WS = WindSpeed[index];
+    Wmax = MaxIrradiance[index] * 1.678;       // 1.678 is to convert irradiance from W/m2 to micromol of PAR /s /m2, the unit used in the FvCB model of photosynthesis
+    Wmean = MeanIrradiance[index];            // still in W/m2
+    e_s = SaturatedVapourPressure[index];
+    e_a = VapourPressure[index];
+    VPDbasic = VapourPressureDeficit[index];
+    VPDday = DailyVapourPressureDeficit[index];
+    VPDmax = DailyMaxVapourPressureDeficit[index];
     
     /***  Compute Field LAI3D  ***/
     /*****************************/
@@ -2503,16 +2526,16 @@ void UpdateField() {
     
     int sbsite;
     
-    for(haut=0;haut<(HEIGHT+1);haut++)
-        for(sbsite=0;sbsite<sites+2*SBORD;sbsite++)
+    for(haut = 0; haut < (HEIGHT+1); haut++)
+        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)
             LAI3D[haut][sbsite] = 0.0;
     
-    for(site=0;site<sites;site++)                                    /* Each tree contribues to LAI3D */
+    for(site = 0; site < sites; site++)                                    /* Each tree contributes to LAI3D */
         T[site].CalcLAI();
     
-    for(haut=HEIGHT;haut>0;haut--){                                 /* LAI is computed by summing LAI from the canopy top to the ground */
-        for(site=0;site<sites;site++){
-            sbsite=site+SBORD;
+    for(haut = HEIGHT; haut > 0; haut--){                                 /* LAI is computed by summing LAI from the canopy top to the ground */
+        for(site = 0; site < sites; site++){
+            sbsite = site + SBORD;
             LAI3D[haut-1][sbsite] += LAI3D[haut][sbsite];
             if (LAI3D[haut-1][sbsite] < 0) T[site].OutputTreeStandard();
         }
@@ -2559,7 +2582,7 @@ void UpdateField() {
             if(T[site].t_age)
                 T[site].DisperseSeed();
 #else
-        for(site=0;site<sites;site++)                                       /* disperse seeds produced by mature trees */
+        for(site = 0; site < sites; site++)                                       /* disperse seeds produced by mature trees */
             if(T[site].t_age)
                 T[site].DisperseSeed();
 #endif
@@ -2587,11 +2610,11 @@ void UpdateField() {
         }
     }
     else {
-        if(!mpi_rank || S[spp].s_nbind*sites > 50000){
-            for(spp=1;spp<=numesp;spp++) {                              /* External seed rain: constant flux from the metacommunity */
-                for(int ii=0;ii<S[spp].s_nbext;ii++){
-                    site = genrand2i()%sites;
-                    if(S[spp].s_Seed[site]!=1) {
+        if(!mpi_rank || S[spp].s_nbind * sites > 50000){
+            for(spp = 1; spp <= numesp; spp++) {                              /* External seed rain: constant flux from the metacommunity */
+                for(int ii = 0; ii < S[spp].s_nbext; ii++){
+                    site = genrand2i() % sites;
+                    if(S[spp].s_Seed[site] != 1) {
                         S[spp].s_Seed[site] = 1; /* check for optimization */
                     }
                 }
