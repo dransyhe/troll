@@ -772,6 +772,8 @@ inline float Species::GPPleaf(float PPFD, float VPD, float T) {
     float I=alpha*PPFD;
     float J = (I+JmaxT-sqrt((JmaxT+I)*(JmaxT+I)-4.0*theta*JmaxT*I))*0.5/theta;
     float A = minf(VcmaxT/(s_fci+KmT),0.25*J/(s_fci+2.0*GammaT))*(s_fci-GammaT);
+
+    //cout << PPFD << " " << VPD << " " << T << " " << KmT << " " << GammaT << " " << VcmaxT << " " << JmaxT << " " << I << " " << J << " " << A << endl;
     
     return A;
 }
@@ -1551,7 +1553,8 @@ Tree *T=NULL;
  ############################################
  ############################################*/
 
-int main(int argc,char *argv[]) {
+//int main(int argc,char *argv[]) {
+int main(){
     
     /***********************/
     /*** Initializations ***/
@@ -1584,7 +1587,7 @@ int main(int argc,char *argv[]) {
     Trandgsl = gsl_rng_default;
     gslrand = gsl_rng_alloc (Trandgsl);
 #endif
-    
+    /*
     for(int argn=1;argn<argc;argn++){ // Arguments of the input and output files 
         if(*argv[argn] == '-'){
             switch(*(argv[argn]+1)){
@@ -1601,7 +1604,7 @@ int main(int argc,char *argv[]) {
                     easympi_rank=atoi(argv[argn]+2); // new v.2.2 
             }
         } 
-    }
+    }*/
   
     cout<< easympi_rank;
     int t=(int) time(NULL);
@@ -1614,8 +1617,11 @@ int main(int argc,char *argv[]) {
     
     // input files
 
-    sprintf(inputfile,"%s",bufi);
-    sprintf(buf, "%s", "output"); 
+    //sprintf(inputfile,"%s",bufi);
+    sprintf(inputfile,"%s","input_file_v231.txt");
+    //sprintf(buf, "%s", "output"); 
+
+    
     
 
     if(_FromData){
@@ -2594,11 +2600,11 @@ void UpdateTree() {
             prior_GERM[0]=0.0;post_GERM[0]=0;
             for(spp=1;spp<=numesp;spp++){
                 prior_GERM[spp]=double(S[spp].s_Seed[site]*S[spp].s_seedmass);
-                post_GERM[spp]=0;           //whether this needs to be done inside the loop?
+                post_GERM[spp]=0;
             }
             //for(spp=1;spp<=numesp;spp++) cerr << prior_GERM[spp] << " ";
             
-            gsl_ran_multinomial(gslrand,numesp+1,1,prior_GERM,post_GERM);   
+            gsl_ran_multinomial(gslrand,numesp+1,1,prior_GERM,post_GERM);
             float sumprior=0.0,sumpost=0;
             for(int i=1;i<=numesp;i++){
                 sumprior+=prior_GERM[i];sumpost+=post_GERM[i];
@@ -2649,7 +2655,7 @@ void UpdateTree() {
                     int s=0;
                     while (p>PROB_S[s]*itot) {s++;}
                     spp=SPECIES_GERM[s];
-                    flux = Wmax*exp(-flor(LAI3D[0][site+SBORD])*klight); //REPLACE WITH TABLE LOOKUP
+                    flux = Wmax*exp(-flor(LAI3D[0][site+SBORD])*klight);
                     if(flux>(S[spp].s_LCP)){
                         /* If enough light, germination, initialization of NPP (LCP is the species light compensation point*/
                         /* here, light is the sole environmental resources tested as a limiting factor for germination, but we should think about adding nutrients (N,P) and water conditions... */
