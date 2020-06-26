@@ -620,7 +620,9 @@ Nearest neighboring stripes are shared. Rque, this version is not valid ifdef SE
 
 /*### Species::UpdateSeed ###*/
 /* updates s_Seed field */
-/* new in v.2.3: not called within loop over sites, instead includes loop --> less function calling, BUT: no check of site occupation anymore, cf. below */
+/* new in v.2.3: not called within loop over sites,
+ * instead includes loop --> less function calling,
+ * BUT: no check of site occupation anymore, cf. below */
 
 #ifdef DCELL
 /* in the new approach with a mean field seed flux (DCELL), the function UpdateSeed
@@ -658,7 +660,8 @@ void Species::UpdateSeed() {
 #else
 void Species::UpdateSeed() {
     
-    /* should probably be modified, since as implemented now seeds are erased every timestep (i.e. month in default mode)--> to be discussed */
+    /* should probably be modified, since as implemented now seeds are erased every timestep
+     * (i.e. month in default mode)--> to be discussed */
     
     if(_SEEDTRADEOFF){
         for(int site=0;site<sites;site++){
@@ -672,7 +675,8 @@ void Species::UpdateSeed() {
     
     else{
         /* new in v.2.3: version 2.2 checked whether site was occupied by tree: T[site].t_age>0) s_Seed[site]=0;     */
-        /* v.2.3 does not do this within UpdateSeed() anymore. Instead, it sets all occupied sites to zero directly within UpdateTree() */
+        /* v.2.3 does not do this within UpdateSeed() anymore.
+         * Instead, it sets all occupied sites to zero directly within UpdateTree() */
         for(int site=0;site<sites;site++){
             
 # ifdef MPI
@@ -682,7 +686,8 @@ void Species::UpdateSeed() {
             if(s_Seed[site]==s_dormDuration) {
                 s_Seed[site]=0;
             }
-            else if(s_Seed[site]!=0) s_Seed[site]++;            // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
+            else if(s_Seed[site]!=0) s_Seed[site]++;
+            // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
         }
     }
 }
@@ -1148,46 +1153,52 @@ void Tree::CalcLAI() {
 /* v.2.3.: Tree::Fluxh() computes the average light flux received by a tree crown layer at height h , and also the average VPD and T it is thriving in (modified 1/02/2016)*/
 
 void Tree::Fluxh(int h) {
-    int count=0,
-    xx,yy,radius_int;
-    float absorb=0.0;
+    int count = 0,
+    xx, yy, radius_int;
+    float absorb = 0.0;
     t_PPFD = 0.0;
     t_VPD  = 0.0;
     t_T    = 0.0;
     radius_int = int(t_Crown_Radius);
+
     if(radius_int == 0) {
-        count=1;
-        if (h < HEIGHT) absorb = minf(LAI3D[h][t_site+SBORD],19.5);
+        count = 1;
+        if (h < HEIGHT) absorb = minf(LAI3D[h][t_site+SBORD], 19.5);
         // absorb = 0.0 by default
-        int intabsorb=int(absorb*20.0);
-        t_PPFD = Wmax*LookUp_flux[intabsorb];
-        t_VPD  = VPDmax*LookUp_VPD[intabsorb];
+        int intabsorb = int(absorb * 20.0);
+        t_PPFD = LookUp_flux[intabsorb];
+        t_VPD  = LookUp_VPD[intabsorb];
         t_T    = tmax - LookUp_T[intabsorb];
     }
     else {
-        int row0,col0;
-        row0=t_site/cols;
-        col0=t_site%cols;
-        for(int col=max(0,col0-radius_int);col<min(cols,col0+radius_int+1);col++) {
-            for(int row=max(0,row0-radius_int);row<min(rows,row0+radius_int+1);row++) {
+        int row0, col0;
+        row0 = t_site / cols;
+        col0 = t_site % cols;
+        for(int col = max(0, col0-radius_int); col < min(cols, col0+radius_int+1); col ++) {
+            for(int row = max(0, row0-radius_int); row < min(rows, row0+radius_int+1); row ++) {
                 //loop over the tree crown
-                xx=col0-col;
-                yy=row0-row;
-                if(xx*xx+yy*yy <= radius_int*radius_int) {
+                xx = col0 - col;
+                yy = row0 - row;
+                if(xx*xx + yy*yy <= radius_int*radius_int) {
                     //is the voxel within crown?
-                    count++;
-                    if (h < HEIGHT) absorb = minf(LAI3D[h][col+cols*row+SBORD],19.5);
-                    int intabsorb=int(absorb*20.0);
-                    t_PPFD += Wmax*LookUp_flux[intabsorb];
-                    t_VPD  += VPDmax*LookUp_VPD[intabsorb];
+                    count ++;
+                    if (h < HEIGHT) absorb = minf(LAI3D[h][col+cols*row+SBORD], 19.5);
+                    int intabsorb = int(absorb*20.0);
+                    t_PPFD += LookUp_flux[intabsorb];
+                    t_VPD  += LookUp_VPD[intabsorb];
                     t_T    += tmax - LookUp_T[intabsorb];
                 }
             }
         }
     }
-    t_PPFD *= 1.0/float(count);
-    t_VPD  *= 1.0/float(count);
-    t_T    *= 1.0/float(count);
+
+    /* NEW CHANGE: take Wmax and VPDmax out to avoid repeated multiplication within the loop */
+    /* NEW CHANGE: deleted "* 1.0" ? */
+    t_PPFD *= Wmax / float(count);
+    t_VPD  *= VPDmax / float(count);
+    t_T    /= float(count);
+
+    /* NEW CHANGE (for future): Wmax, VPDmax changes per iteration, can cache Wmax/float(count) */
 }
 
 
@@ -2070,19 +2081,22 @@ void Initialise() {
     
     //for (int i=0; i<iterperyear; i++) cout<< "DailyMaxVapourPressureDeficit" << i << "\t"  << DailyMaxVapourPressureDeficit[i] << "\t";
     //cout<<endl;
-    
-    temp = Temperature[iter%iterperyear];
-    tmax=DailyMaxTemperature[iter%iterperyear];
-    tnight=NightTemperature[iter%iterperyear];
-    precip=Rainfall[iter%iterperyear];
-    WS=WindSpeed[iter%iterperyear];
-    Wmax=MaxIrradiance[iter%iterperyear]*1.678;       // 1.678 is to convert irradiance from W/m2 to micromol of PAR /s /m2, the unit used in the FvCB model of photosynthesis
-    Wmean=MeanIrradiance[iter%iterperyear];            // still in W/m2
-    e_s=SaturatedVapourPressure[iter%iterperyear];
-    e_a=VapourPressure[iter%iterperyear];
-    VPDbasic=VapourPressureDeficit[iter%iterperyear];
-    VPDday=DailyVapourPressureDeficit[iter%iterperyear];
-    VPDmax=DailyMaxVapourPressureDeficit[iter%iterperyear];
+
+    /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
+    int index = iter % iterperyear;
+
+    temp = Temperature[index];
+    tmax = DailyMaxTemperature[index];
+    tnight = NightTemperature[index];
+    precip = Rainfall[index];
+    WS = WindSpeed[index];
+    Wmax = MaxIrradiance[index] * 1.678;       // 1.678 is to convert irradiance from W/m2 to micromol of PAR /s /m2, the unit used in the FvCB model of photosynthesis
+    Wmean = MeanIrradiance[index];            // still in W/m2
+    e_s = SaturatedVapourPressure[index];
+    e_a = VapourPressure[index];
+    VPDbasic = VapourPressureDeficit[index];
+    VPDday = DailyVapourPressureDeficit[index];
+    VPDmax = DailyMaxVapourPressureDeficit[index];
     
     In.close();
     /* Close ifstream In */
@@ -2495,7 +2509,7 @@ void UpdateField() {
     /* set the iteration environment -- nb: the current structure of code suppose that environment is periodic (a period = a year), if one wants to input a variable climate, with interannual variation and climate change along the simulation, a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
     //CURRENTLY NOT USED: precip, WS, Wmean, e_s, e_a,VPDbasic,VPDday
 
-    /* NEW CHANGE: lift (liter % iterperyear) out to reduce repeated calculation of index */
+    /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
     int index = iter % iterperyear;
 
     temp = Temperature[index];
@@ -3417,68 +3431,69 @@ unsigned long genrand2i()
  ***********************************/
 
 /* This is an an alternative version of the flux calculations */
-/* main idea: remove extremely productive top layers of trees that block entire photosynthesis in lower layers and smear out the effect in a number of finer layers (nb_layers, here chosen to be five) */
+/* main idea: remove extremely productive top layers of trees that block entire photosynthesis in lower layers
+ * and smear out the effect in a number of finer layers (nb_layers, here chosen to be five) */
 /* be aware: performance cost */
 
 float Tree::Fluxh(int h) {
-    int count=0,
-    xx,yy,radius_int,
-    nb_layers=5;                                                   // number of layers for fine resolution of flux
-    t_VPD=0;
-    t_T=0;
-    float absorb=0.0,flux = 0.0;
-    float absorb_highres=0.0, flux_highres =0.0, VPD_highres=0.0 , T_highres=0.0,
-    inb_layers=1.0/nb_layers;
+    int count = 0,
+    xx, yy, radius_int,
+    nb_layers = 5;                                                   // number of layers for fine resolution of flux
+    t_VPD = 0;
+    t_T = 0;
+    float absorb = 0.0, flux = 0.0;
+    float absorb_highres = 0.0, flux_highres = 0.0, VPD_highres = 0.0, T_highres = 0.0,
+    inb_layers = 1.0 / nb_layers;
     radius_int = int(t_Crown_Radius);
+
     if(radius_int == 0) {
-        count=1;
+        count = 1;
         if (h >= HEIGHT) {
-            absorb=0;
-            flux = exp(-absorb*klight);
+            absorb = 0;
+            flux = exp(- absorb * klight);
         }
         else {
             absorb = LAI3D[h][t_site+SBORD];                              //calculate the absorption to which fine layers will be added
             
-            if(h==0) flux = exp(-absorb*klight);
+            if (h == 0) flux = exp(- absorb * klight);
             else{
                 // spread out LAI over x differentlayers within voxel (assumption: leaf layer every 1/x m, uniform distribution)
-                absorb_highres = (LAI3D[h-1][t_site+SBORD]-LAI3D[h][t_site+SBORD])*inb_layers;
+                absorb_highres = (LAI3D[h-1][t_site+SBORD] - LAI3D[h][t_site+SBORD]) * inb_layers;
                 
                 // PROCESS: calculate highly resolved fluxed for every layer within voxel
                 // important: multiplication of absorb with factor i corresponds to gradually increasing optical thickness (LAD)
                 // important: layers have to be added to LAI3D above
-                for(int i=0;i<nb_layers;i++){
-                    flux_highres += exp(-(absorb+i*absorb_highres)*klight);
-                    VPD_highres += 0.25+sqrt(maxf(0.0 , 0.08035714*(7-(absorb+i*absorb_highres))));
+                for(int i = 0; i < nb_layers; i ++){
+                    flux_highres += exp(-(absorb + i * absorb_highres) * klight);
+                    VPD_highres += 0.25 + sqrt(maxf(0.0 , 0.08035714 * (7 - (absorb + i * absorb_highres))));
                     // this expressions results from fit of observations of relationships between VPD and height within dense canopy (HOBO data on COPAS tower, Shuttleworth et al 1985; Camargo & Kapos 1995 journal of Tropical Ecology)
-                    T_highres += tmax-0.4285714*(minf(7,(absorb+i*absorb_highres)));
+                    T_highres += tmax - 0.4285714 * (minf(7,(absorb + i * absorb_highres)));
                     // 0.4285714=3/7, assuming deltaT between the top canopy and dense understorey is constant = 3°C, could be refined.
                 }
-                flux = flux_highres*inb_layers;
-                t_VPD=VPD_highres*inb_layers;
-                t_T=T_highres*inb_layers;
+                flux = flux_highres * inb_layers;
+                t_VPD = VPD_highres * inb_layers;
+                t_T = T_highres * inb_layers;
             }
-            
         }
     }
     else {
-        int row0,col0;
-        row0=t_site/cols;
-        col0=t_site%cols;
-        for(int col=max(0,col0-radius_int);col<min(cols,col0+radius_int+1);col++) {
-            for(int row=max(0,row0-radius_int);row<min(rows,row0+radius_int+1);row++) {                     //loop over the tree crown
-                xx=col0-col;
-                yy=row0-row;
-                if(xx*xx+yy*yy <= radius_int*radius_int) {                                                  //is the voxel within crown?
+        int row0, col0;
+        row0 = t_site / cols;
+        col0 = t_site % cols;
+        for(int col = max(0, col0-radius_int); col < min(cols, col0+radius_int+1); col ++) {
+            for(int row = max(0, row0-radius_int); row < min(rows, row0+radius_int+1); row ++) {                     //loop over the tree crown
+                xx = col0 - col;
+                yy = row0 - row;
+                if(xx*xx + yy*yy <= radius_int*radius_int) {                                                  //is the voxel within crown?
                     flux_highres = 0.0;
                     VPD_highres = 0.0;
                     T_highres = 0.0;
-                    count++;
+                    count ++;
                     if (h >= HEIGHT) {
-                        absorb=0;
+                        absorb = 0;
                         flux += exp(-absorb*klight);
-                        t_VPD+=0.25+sqrt(maxf(0.0 , 0.08035714*(7-absorb)));
-                        t_T+=tmax-0.4285714*(minf(7,absorb));
+                        t_VPD += 0.25 + sqrt(maxf(0.0 , 0.08035714*(7-absorb)));
+                        t_T += tmax - 0.4285714*(minf(7,absorb));
                     }
                     else {
                         absorb = LAI3D[h][col+cols*row+SBORD];                              //calculate the absorption that will need to be added to fine layers
@@ -3491,27 +3506,26 @@ float Tree::Fluxh(int h) {
                             // PROCESS: calculate highly resolved flux for every layer within voxel
                             // important: multiplication of absorb with factor i corresponds to gradually increasing optical thickness (LAD)
                             // important: layers have to be added to LAI3D above (absorb)
-                            for(int i=0;i<nb_layers;i++){
+                            for(int i = 0; i < nb_layers; i ++){
                                 flux_highres += exp(-(absorb+i*absorb_highres)*klight);
                                 VPD_highres += 0.25+sqrt(maxf(0.0 , 0.08035714*(7-(absorb+i*absorb_highres))));
                                 T_highres += tmax-0.4285714*(minf(7,(absorb+i*absorb_highres)));
                             }
-                            flux_highres = flux_highres*inb_layers;
-                            VPD_highres = VPD_highres*inb_layers;
-                            T_highres = T_highres*inb_layers;
-                            t_VPD+=VPD_highres;
-                            t_T+=T_highres;
+                            flux_highres = flux_highres * inb_layers;
+                            VPD_highres = VPD_highres * inb_layers;
+                            T_highres = T_highres * inb_layers;
+                            t_VPD += VPD_highres;
+                            t_T += T_highres;
                             flux += flux_highres;
                         }
-                        
                     }
                 }
             }
         }
     }
-    flux*=Wmax/float(count);
-    t_VPD*=VPDmax/float(count);
-    t_T*=1/float(count);
+    flux *= Wmax / float(count);
+    t_VPD *= VPDmax / float(count);
+    t_T *= 1 / float(count);
     
     return flux;
 }
