@@ -1,0 +1,914 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 22.78   1603.09  1603.09                             UpdateTree() (main_v2.3.2.cpp:2713 @ 40adab)
+  6.39   2052.51   449.42                             Species::UpdateSeed() (main_v2.3.2.cpp:657 @ 40208f)
+  6.02   2475.97   423.47                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:773 @ 40e63d)
+  6.00   2898.42   422.45                             UpdateTree() (main_v2.3.2.cpp:2676 @ 40ab1a)
+  5.95   3317.12   418.71                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:774 @ 40e6e6)
+  5.27   3687.64   370.51                             Species::UpdateSeed() (main_v2.3.2.cpp:658 @ 4020d4)
+  5.03   4041.58   353.94                             UpdateField() (main_v2.3.2.cpp:2523 @ 40a1cf)
+  3.04   4255.54   213.96                             Tree::Fluxh(int) (main_v2.3.2.cpp:1098 @ 402ecd)
+  3.00   4466.69   211.15                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:768 @ 40e5ea)
+  2.58   4648.48   181.80                             UpdateField() (main_v2.3.2.cpp:2445 @ 409ee6)
+  2.22   4804.69   156.21 1576443686     0.10     0.10  std::sqrt(float) (cmath:483 @ 40e04c)
+  1.61   4917.91   113.21                             UpdateField() (main_v2.3.2.cpp:2446 @ 409f6a)
+  1.57   5028.25   110.35                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:792 @ 40e7df)
+  1.54   5136.89   108.64                             UpdateField() (main_v2.3.2.cpp:2437 @ 409e28)
+  1.19   5220.61    83.71                             UpdateTree() (main_v2.3.2.cpp:2670 @ 40aac3)
+  0.99   5290.25    69.65                             UpdateField() (main_v2.3.2.cpp:2436 @ 409e54)
+  0.84   5349.70    59.45                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:762 @ 40e522)
+  0.81   5406.36    56.66                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:764 @ 40e554)
+  0.79   5461.77    55.41                             Tree::Fluxh(int) (main_v2.3.2.cpp:1100 @ 402f4e)
+  0.68   5509.92    48.15                             UpdateTree() (main_v2.3.2.cpp:2677 @ 40ab58)
+  0.64   5555.13    45.21                             Species::UpdateSeed() (main_v2.3.2.cpp:651 @ 402111)
+  0.59   5596.39    41.26                             Tree::CalcLAI() (main_v2.3.2.cpp:1050 @ 402bf1)
+  0.58   5637.26    40.87                             UpdateTree() (main_v2.3.2.cpp:2675 @ 40ac23)
+  0.56   5676.64    39.38 5907644284     0.01     0.01  minf(float, float) (main_v2.3.2.cpp:334 @ 40e0f7)
+  0.55   5715.69    39.05                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:766 @ 40e5bd)
+  0.54   5753.98    38.29                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:777 @ 40e76b)
+  0.53   5791.07    37.09                             Tree::CalcLAI() (main_v2.3.2.cpp:1046 @ 402adc)
+  0.51   5827.15    36.09                             Tree::Fluxh(int) (main_v2.3.2.cpp:1099 @ 402f33)
+  0.49   5861.82    34.67 1576443286     0.02     0.02  Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:753 @ 40e4ee)
+  0.48   5895.43    33.61                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:789 @ 40e7cd)
+  0.48   5929.04    33.60                             Species::UpdateSeed() (main_v2.3.2.cpp:651 @ 402083)
+  0.46   5961.18    32.14                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:763 @ 40e53b)
+  0.44   5992.43    31.25 11775954108     0.00     0.00  min(int, int) (main_v2.3.2.cpp:338 @ 40e12b)
+  0.44   6023.30    30.86                             UpdateField() (main_v2.3.2.cpp:2522 @ 40a1b3)
+  0.43   6053.81    30.51                             minf(float, float) (main_v2.3.2.cpp:335 @ 40e10e)
+  0.43   6083.81    30.00                             UpdateTree() (main_v2.3.2.cpp:2685 @ 40ac1f)
+  0.41   6112.96    29.15                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:761 @ 40e50e)
+  0.39   6140.43    27.46                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:765 @ 40e590)
+  0.39   6167.82    27.39                             Tree::Update() (main_v2.3.2.cpp:1361 @ 403fe6)
+  0.38   6194.79    26.96                             Tree::CalcLAI() (main_v2.3.2.cpp:1047 @ 402b52)
+  0.38   6221.37    26.58                             minf(float, float) (main_v2.3.2.cpp:337 @ 40e121)
+  0.36   6246.91    25.54                             UpdateField() (main_v2.3.2.cpp:2444 @ 409ed8)
+  0.34   6270.97    24.06                             Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402ffc)
+  0.32   6293.15    22.18                             Tree::Fluxh(int) (main_v2.3.2.cpp:1095 @ 402ea8)
+  0.31   6314.91    21.76                             UpdateTree() (main_v2.3.2.cpp:2675 @ 40ab0e)
+  0.25   6332.66    17.74                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:788 @ 40e7b5)
+  0.24   6349.81    17.16                             Tree::Fluxh(int) (main_v2.3.2.cpp:1079 @ 402d29)
+  0.24   6366.51    16.70                             genrand2() (main_v2.3.2.cpp:3266 @ 40daf9)
+  0.23   6382.65    16.14                             Tree::Fluxh(int) (main_v2.3.2.cpp:1107 @ 403054)
+  0.21   6397.58    14.93                             Tree::Update() (main_v2.3.2.cpp:1366 @ 404088)
+  0.19   6411.00    13.42                             UpdateTreefall() (main_v2.3.2.cpp:2765 @ 40afdb)
+  0.19   6424.26    13.26 147933113     0.09     0.09  std::sin(float) (cmath:445 @ 40e018)
+  0.17   6436.24    11.97                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:787 @ 40e7a9)
+  0.17   6448.20    11.97                             UpdateTree() (main_v2.3.2.cpp:2679 @ 40ab71)
+  0.16   6459.52    11.32                             Tree::Fluxh(int) (main_v2.3.2.cpp:1102 @ 402fc2)
+  0.15   6470.42    10.89                             UpdateField() (main_v2.3.2.cpp:2492 @ 409fee)
+  0.15   6481.27    10.86                             Species::FillSeed(int, int) (main_v2.3.2.cpp:577 @ 401fed)
+  0.15   6491.78    10.51                             genrand2i() (main_v2.3.2.cpp:3312 @ 40dd73)
+  0.15   6502.27    10.48                             Tree::CalcLAI() (main_v2.3.2.cpp:1020 @ 40295a)
+  0.14   6512.39    10.13                             UpdateField() (main_v2.3.2.cpp:2443 @ 409fc4)
+  0.14   6522.44    10.05                             Tree::Fluxh(int) (main_v2.3.2.cpp:1101 @ 402f88)
+  0.14   6532.05     9.62                             UpdateTree() (main_v2.3.2.cpp:2705 @ 40ad40)
+  0.14   6541.56     9.51                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:787 @ 40e833)
+  0.12   6550.30     8.74                             Tree::Fluxh(int) (main_v2.3.2.cpp:1094 @ 402e9b)
+  0.12   6558.92     8.62                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:725 @ 40e3a7)
+  0.12   6567.24     8.33                             min(int, int) (main_v2.3.2.cpp:340 @ 40e14b)
+  0.12   6575.47     8.22                             genrand2i() (main_v2.3.2.cpp:3301 @ 40dc9d)
+  0.11   6583.37     7.90                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:813 @ 40e9f8)
+  0.11   6590.97     7.60                             UpdateTreefall() (main_v2.3.2.cpp:2753 @ 40af6a)
+  0.11   6598.56     7.59                             Tree::Growth() (main_v2.3.2.cpp:1157 @ 4032d3)
+  0.11   6606.02     7.46                             UpdateField() (main_v2.3.2.cpp:2443 @ 409ecc)
+  0.11   6613.46     7.44                             maxf(float, float) (main_v2.3.2.cpp:333 @ 40e0ed)
+  0.10   6620.53     7.08                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:772 @ 40e62b)
+  0.10   6627.46     6.93                             min(int, int) (main_v2.3.2.cpp:339 @ 40e13e)
+  0.09   6634.13     6.68                             UpdateTree() (main_v2.3.2.cpp:2669 @ 40adfd)
+  0.09   6640.60     6.46                             Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 402c5d)
+  0.09   6646.93     6.34                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:735 @ 40e4e4)
+  0.09   6653.20     6.27                             Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402e70)
+  0.09   6659.34     6.15                             Tree::DisperseSeed() (main_v2.3.2.cpp:1328 @ 403da4)
+  0.09   6665.44     6.10                             Tree::Fluxh(int) (main_v2.3.2.cpp:1093 @ 402e8e)
+  0.09   6671.52     6.08                             UpdateField() (main_v2.3.2.cpp:2521 @ 40a244)
+  0.08   6677.49     5.96                             min(int, int) (main_v2.3.2.cpp:341 @ 40e14e)
+  0.08   6683.43     5.94                             Tree::Fluxh(int) (main_v2.3.2.cpp:1082 @ 402da0)
+  0.08   6689.23     5.80                             Tree::Growth() (main_v2.3.2.cpp:1185 @ 40357e)
+  0.08   6694.80     5.58                             Tree::Fluxh(int) (main_v2.3.2.cpp:1088 @ 402e2c)
+  0.08   6700.38     5.58                             UpdateTree() (main_v2.3.2.cpp:2704 @ 40ace5)
+  0.08   6705.87     5.49                             genrand2i() (main_v2.3.2.cpp:3311 @ 40dd62)
+  0.08   6711.30     5.43                             UpdateField() (main_v2.3.2.cpp:2524 @ 40a20a)
+  0.08   6716.64     5.34                             genrand2i() (main_v2.3.2.cpp:3313 @ 40dd84)
+  0.07   6721.91     5.27                             genrand2() (main_v2.3.2.cpp:3268 @ 40db33)
+  0.07   6726.99     5.09                             Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 403028)
+  0.07   6732.00     5.01                             Tree::Update() (main_v2.3.2.cpp:1382 @ 404383)
+  0.07   6736.98     4.98                             Tree::CalcLAI() (main_v2.3.2.cpp:1031 @ 40297f)
+  0.07   6741.95     4.96                             Tree::Average() (main_v2.3.2.cpp:1502 @ 405011)
+  0.07   6746.91     4.96                             Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:776 @ 40e768)
+  0.07   6751.84     4.94                             Tree::Average() (main_v2.3.2.cpp:1511 @ 405214)
+  0.07   6756.74     4.90                             Tree::CalcLAI() (main_v2.3.2.cpp:1040 @ 402a28)
+  0.07   6761.51     4.77                             genrand2i() (main_v2.3.2.cpp:3297 @ 40dc22)
+  0.07   6766.25     4.74 504078704     0.01     0.01  genrand2i() (main_v2.3.2.cpp:3284 @ 40dbb3)
+  0.07   6770.93     4.69                             Tree::Fluxh(int) (main_v2.3.2.cpp:1081 @ 402d85)
+  0.06   6775.20     4.27                             genrand2() (main_v2.3.2.cpp:3252 @ 40da06)
+  0.06   6779.39     4.19                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1234 @ 403783)
+  0.06   6783.28     3.89                             genrand2i() (main_v2.3.2.cpp:3309 @ 40dd39)
+  0.05   6787.07     3.79                             genrand2() (main_v2.3.2.cpp:3264 @ 40daed)
+  0.05   6790.80     3.73 4724642744     0.00     0.00  max(int, int) (main_v2.3.2.cpp:342 @ 40e150)
+  0.05   6794.45     3.65                             genrand2() (main_v2.3.2.cpp:3263 @ 40dadc)
+  0.05   6798.02     3.57                             Tree::Average() (main_v2.3.2.cpp:1515 @ 4053d3)
+  0.05   6801.57     3.55                             Tree::FallTree() (main_v2.3.2.cpp:1412 @ 4046b8)
+  0.05   6805.10     3.53                             genrand2i() (main_v2.3.2.cpp:3310 @ 40dd56)
+  0.05   6808.62     3.52                             UpdateTree() (main_v2.3.2.cpp:2682 @ 40ac10)
+  0.05   6812.14     3.52                             genrand2i() (main_v2.3.2.cpp:3300 @ 40dc6c)
+  0.05   6815.47     3.33                             genrand2() (main_v2.3.2.cpp:3262 @ 40dacb)
+  0.04   6818.60     3.13                             Tree::Fluxh(int) (main_v2.3.2.cpp:1109 @ 4030d2)
+  0.04   6821.70     3.10                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1255 @ 403996)
+  0.04   6824.74     3.04                             genrand2i() (main_v2.3.2.cpp:3315 @ 40dd90)
+  0.04   6827.74     3.00                             Average() (main_v2.3.2.cpp:2808 @ 40b31d)
+  0.04   6830.74     3.00                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:816 @ 40ea46)
+  0.04   6833.59     2.86                             Tree::CalcLAI() (main_v2.3.2.cpp:1043 @ 402a6d)
+  0.04   6836.41     2.82                             Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 402c89)
+  0.04   6839.21     2.81                             Tree::Fluxh(int) (main_v2.3.2.cpp:1097 @ 402ec9)
+  0.04   6842.01     2.80                             Tree::Fluxh(int) (main_v2.3.2.cpp:1108 @ 403093)
+  0.04   6844.80     2.79                             UpdateTree() (main_v2.3.2.cpp:2699 @ 40acc5)
+  0.04   6847.60     2.79                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1254 @ 403912)
+  0.04   6850.37     2.77                             max(int, int) (main_v2.3.2.cpp:343 @ 40e163)
+  0.04   6853.12     2.75                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1271 @ 403a95)
+  0.04   6855.81     2.69                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1264 @ 4039ce)
+  0.04   6858.44     2.64                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:729 @ 40e3d9)
+  0.04   6861.06     2.62                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1282 @ 403b7e)
+  0.04   6863.57     2.51                             genrand2() (main_v2.3.2.cpp:3260 @ 40daa2)
+  0.04   6866.06     2.49                             Tree::CalcLAI() (main_v2.3.2.cpp:1030 @ 40296f)
+  0.04   6868.52     2.47                             Tree::Average() (main_v2.3.2.cpp:1508 @ 405116)
+  0.03   6870.97     2.45                             Tree::Growth() (main_v2.3.2.cpp:1170 @ 4033d4)
+  0.03   6873.39     2.42                             UpdateTreefall() (main_v2.3.2.cpp:2746 @ 40aee2)
+  0.03   6875.78     2.39                             UpdateTreefall() (main_v2.3.2.cpp:2766 @ 40b00e)
+  0.03   6878.15     2.37                             Tree::CalcLAI() (main_v2.3.2.cpp:1041 @ 402a49)
+  0.03   6880.50     2.35                             Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 402e52)
+  0.03   6882.81     2.31                             Tree::Average() (main_v2.3.2.cpp:1509 @ 40516e)
+  0.03   6885.09     2.28                             Tree::CalcLAI() (main_v2.3.2.cpp:1058 @ 402cb5)
+  0.03   6887.34     2.25                             genrand2() (main_v2.3.2.cpp:3248 @ 40d98b)
+  0.03   6889.55     2.21                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:943 @ 40236f)
+  0.03   6891.74     2.20                             Tree::Fluxh(int) (main_v2.3.2.cpp:1077 @ 402d18)
+  0.03   6893.92     2.18                             minf(float, float) (main_v2.3.2.cpp:336 @ 40e11e)
+  0.03   6896.03     2.11                             Tree::CalcLAI() (main_v2.3.2.cpp:1049 @ 402c4e)
+  0.03   6898.12     2.10                             Tree::Growth() (main_v2.3.2.cpp:1188 @ 4035e3)
+  0.03   6900.22     2.10                             Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 4029f0)
+  0.03   6902.30     2.09                             Tree::Growth() (main_v2.3.2.cpp:1161 @ 403381)
+  0.03   6904.34     2.04 1500709556     0.00     0.00  Tree::Fluxh(int) (main_v2.3.2.cpp:1069 @ 402cbc)
+  0.03   6906.36     2.02                             Tree::Average() (main_v2.3.2.cpp:1503 @ 405026)
+  0.03   6908.34     1.98                             genrand2i() (main_v2.3.2.cpp:3296 @ 40dbf1)
+  0.03   6910.30     1.96                             Tree::Growth() (main_v2.3.2.cpp:1172 @ 403427)
+  0.03   6912.23     1.93                             UpdateField() (main_v2.3.2.cpp:2440 @ 409e89)
+  0.03   6914.14     1.91                             UpdateTree() (main_v2.3.2.cpp:2673 @ 40ab05)
+  0.03   6916.04     1.90                             Tree::CalcLAI() (main_v2.3.2.cpp:1039 @ 402a1b)
+  0.03   6917.92     1.89                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1248 @ 4038bd)
+  0.03   6919.75     1.83                             genrand2i() (main_v2.3.2.cpp:3306 @ 40dd2f)
+  0.03   6921.52     1.78                             Tree::Death() (main_v2.3.2.cpp:1311 @ 403d4b)
+  0.02   6923.24     1.72                             UpdateTree() (main_v2.3.2.cpp:2725 @ 40ae50)
+  0.02   6924.94     1.70                             genrand2() (main_v2.3.2.cpp:3261 @ 40dabf)
+  0.02   6926.63     1.70                             Tree::Update() (main_v2.3.2.cpp:1398 @ 404693)
+  0.02   6928.32     1.69                             Tree::Fluxh(int) (main_v2.3.2.cpp:1084 @ 402dfa)
+  0.02   6929.97     1.65                             Tree::Growth() (main_v2.3.2.cpp:1181 @ 4034b4)
+  0.02   6931.59     1.62                             UpdateTreefall() (main_v2.3.2.cpp:2754 @ 40af9d)
+  0.02   6933.18     1.59                             UpdateTree() (main_v2.3.2.cpp:2669 @ 40aab7)
+  0.02   6934.76     1.58                             Tree::Average() (main_v2.3.2.cpp:1513 @ 40532d)
+  0.02   6936.31     1.55                             UpdateField() (main_v2.3.2.cpp:2493 @ 40a021)
+  0.02   6937.84     1.53                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:734 @ 40e4cf)
+  0.02   6939.35     1.51                             Tree::Growth() (main_v2.3.2.cpp:1162 @ 4033a6)
+  0.02   6940.84     1.50                             Tree::Average() (main_v2.3.2.cpp:1514 @ 405380)
+  0.02   6942.33     1.49                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:814 @ 40ea19)
+  0.02   6943.80     1.48 1500709556     0.00     0.00  Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:784 @ 40e776)
+  0.02   6945.27     1.47                             Tree::Growth() (main_v2.3.2.cpp:1183 @ 403541)
+  0.02   6946.73     1.46                             Tree::Update() (main_v2.3.2.cpp:1395 @ 404687)
+  0.02   6948.17     1.44                             Tree::CalcLAI() (main_v2.3.2.cpp:1038 @ 402a0e)
+  0.02   6949.59     1.41                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1285 @ 403bc1)
+  0.02   6951.00     1.41                             Tree::Growth() (main_v2.3.2.cpp:1156 @ 4032c2)
+  0.02   6952.39     1.40                             genrand2() (main_v2.3.2.cpp:3251 @ 40d9d5)
+  0.02   6953.77     1.38                             Tree::DisperseSeed() (main_v2.3.2.cpp:1340 @ 403e95)
+  0.02   6955.14     1.37                             Tree::Average() (main_v2.3.2.cpp:1510 @ 4051c1)
+  0.02   6956.48     1.34                             UpdateField() (main_v2.3.2.cpp:2521 @ 40a1a7)
+  0.02   6957.82     1.34                             UpdateTreefall() (main_v2.3.2.cpp:2763 @ 40b052)
+  0.02   6959.14     1.32 2340583938     0.00     0.00  genrand2() (main_v2.3.2.cpp:3235 @ 40d91c)
+  0.02   6960.45     1.31                             Tree::Fluxh(int) (main_v2.3.2.cpp:1089 @ 402e3f)
+  0.02   6961.75     1.30                             UpdateField() (main_v2.3.2.cpp:2491 @ 40a047)
+  0.02   6963.04     1.29                             UpdateField() (main_v2.3.2.cpp:2436 @ 409e1f)
+  0.02   6964.31     1.27                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:803 @ 40e841)
+  0.02   6965.57     1.27                             Tree::Growth() (main_v2.3.2.cpp:1155 @ 403371)
+  0.02   6966.82     1.25                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1245 @ 403855)
+  0.02   6968.00     1.18 305412876     0.00     0.00  std::exp(float) (cmath:242 @ 40df7c)
+  0.02   6969.17     1.17                             genrand2() (main_v2.3.2.cpp:3247 @ 40d95a)
+  0.02   6970.31     1.14 960000000     0.00     0.00  Tree::Update() (main_v2.3.2.cpp:1357 @ 403fce)
+  0.02   6971.44     1.14                             Tree::Fluxh(int) (main_v2.3.2.cpp:1083 @ 402dcd)
+  0.02   6972.56     1.12                             Tree::Update() (main_v2.3.2.cpp:1368 @ 4040dc)
+  0.02   6973.67     1.11                             Tree::Growth() (main_v2.3.2.cpp:1195 @ 403614)
+  0.02   6974.75     1.08                             Tree::Growth() (main_v2.3.2.cpp:1155 @ 4032b7)
+  0.02   6975.82     1.07                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:927 @ 4021ae)
+  0.02   6976.89     1.07                             Tree::Fluxh(int) (main_v2.3.2.cpp:1073 @ 402ce1)
+  0.01   6977.94     1.05                             __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:437 @ 40ec93)
+  0.01   6978.99     1.05                             sgenrand2i(unsigned long) (main_v2.3.2.cpp:3281 @ 40dbb1)
+  0.01   6980.03     1.05 654536679     0.00     0.00  Tree::FallTree() (main_v2.3.2.cpp:1407 @ 4046a0)
+  0.01   6981.07     1.04                             Tree::Growth() (main_v2.3.2.cpp:1182 @ 403509)
+  0.01   6982.08     1.02                             Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f2d)
+  0.01   6983.07     0.99                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:727 @ 40e3d3)
+  0.01   6984.04     0.97                             Tree::Fluxh(int) (main_v2.3.2.cpp:1076 @ 402d08)
+  0.01   6985.00     0.97                             Tree::Average() (main_v2.3.2.cpp:1512 @ 4052da)
+  0.01   6985.92     0.92                             max(int, int) (main_v2.3.2.cpp:344 @ 40e170)
+  0.01   6986.84     0.92                             max(int, int) (main_v2.3.2.cpp:345 @ 40e173)
+  0.01   6987.74     0.90                             Tree::CalcLAI() (main_v2.3.2.cpp:1032 @ 402992)
+  0.01   6988.62     0.88                             Tree::Growth() (main_v2.3.2.cpp:1152 @ 403284)
+  0.01   6989.49     0.87                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1286 @ 403c11)
+  0.01   6990.33     0.85                             UpdateTree() (main_v2.3.2.cpp:2708 @ 40ad74)
+  0.01   6991.16     0.83                             UpdateField() (main_v2.3.2.cpp:2439 @ 409eaf)
+  0.01   6991.98     0.82                             Tree::Growth() (main_v2.3.2.cpp:1176 @ 403447)
+  0.01   6992.80     0.82 871335198     0.00     0.00  flor(float) (main_v2.3.2.cpp:322 @ 40e08f)
+  0.01   6993.62     0.82                             Tree::Fluxh(int) (main_v2.3.2.cpp:1110 @ 403111)
+  0.01   6994.41     0.79                             genrand2i() (main_v2.3.2.cpp:3295 @ 40dc5d)
+  0.01   6995.20     0.79                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1252 @ 4038e9)
+  0.01   6995.97     0.77 960000000     0.00     0.00  Tree::CalcLAI() (main_v2.3.2.cpp:1019 @ 402948)
+  0.01   6996.73     0.76                             Tree::Growth() (main_v2.3.2.cpp:1158 @ 403347)
+  0.01   6997.46     0.73                             Tree::Average() (main_v2.3.2.cpp:1507 @ 4050ca)
+  0.01   6998.19     0.73                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:815 @ 40ea43)
+  0.01   6998.90     0.71                             Tree::DisperseSeed() (main_v2.3.2.cpp:1342 @ 403f65)
+  0.01   6999.60     0.70                             Tree::CalcLAI() (main_v2.3.2.cpp:1048 @ 402bd7)
+  0.01   7000.29     0.69                             Tree::Fluxh(int) (main_v2.3.2.cpp:1075 @ 402cfb)
+  0.01   7000.97     0.68                             UpdateField() (main_v2.3.2.cpp:2491 @ 409fe5)
+  0.01   7001.63     0.67                             Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 4029d2)
+  0.01   7002.29     0.66                             UpdateTreefall() (main_v2.3.2.cpp:2747 @ 40af1e)
+  0.01   7002.95     0.66                             Tree::Growth() (main_v2.3.2.cpp:1139 @ 40319d)
+  0.01   7003.61     0.66                             Tree::CalcLAI() (main_v2.3.2.cpp:1049 @ 402be6)
+  0.01   7004.26     0.66                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1290 @ 403c49)
+  0.01   7004.91     0.65                             Tree::Growth() (main_v2.3.2.cpp:1179 @ 40347e)
+  0.01   7005.54     0.63 147934924     0.00     0.00  std::cos(float) (cmath:204 @ 40df48)
+  0.01   7006.15     0.61                             UpdateTreefall() (main_v2.3.2.cpp:2752 @ 40afc3)
+  0.01   7006.75     0.60                             UpdateField() (main_v2.3.2.cpp:2439 @ 409e80)
+  0.01   7007.33     0.58                             flor(float) (main_v2.3.2.cpp:323 @ 40e0a1)
+  0.01   7007.91     0.58                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1239 @ 4037e2)
+  0.01   7008.49     0.58                             genrand2i() (main_v2.3.2.cpp:3299 @ 40dc6a)
+  0.01   7009.06     0.57                             Tree::DisperseSeed() (main_v2.3.2.cpp:1348 @ 403fc6)
+  0.01   7009.62     0.56                             Tree::DisperseSeed() (main_v2.3.2.cpp:1341 @ 403f0f)
+  0.01   7010.17     0.55                             genrand2() (main_v2.3.2.cpp:3246 @ 40d9c6)
+  0.01   7010.72     0.55                             genrand2i() (main_v2.3.2.cpp:3295 @ 40dbe8)
+  0.01   7011.27     0.55                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1247 @ 403895)
+  0.01   7011.81     0.54 960000000     0.00     0.00  Tree::Average() (main_v2.3.2.cpp:1501 @ 405000)
+  0.01   7012.35     0.54                             UpdateTree() (main_v2.3.2.cpp:2723 @ 40ae76)
+  0.01   7012.88     0.54                             Tree::CalcLAI() (main_v2.3.2.cpp:1033 @ 4029a5)
+  0.01   7013.40     0.52                             Tree::CalcLAI() (main_v2.3.2.cpp:1042 @ 402a65)
+  0.01   7013.92     0.52                             UpdateTree() (main_v2.3.2.cpp:2671 @ 40aafe)
+  0.01   7014.43     0.52                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1246 @ 403875)
+  0.01   7014.94     0.51                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:785 @ 40e7a0)
+  0.01   7015.44     0.50                             UpdateTreefall() (main_v2.3.2.cpp:2752 @ 40af61)
+  0.01   7015.91     0.47 681532889     0.00     0.00  Species::DeathRate(float, float, int) (main_v2.3.2.cpp:722 @ 40e380)
+  0.01   7016.37     0.46                             flor(float) (main_v2.3.2.cpp:325 @ 40e0b9)
+  0.01   7016.82     0.46                             Tree::Fluxh(int) (main_v2.3.2.cpp:1072 @ 402cd8)
+  0.01   7017.28     0.46                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1244 @ 403830)
+  0.01   7017.73     0.45                             Tree::Growth() (main_v2.3.2.cpp:1190 @ 403605)
+  0.01   7018.15     0.43 654421349     0.00     0.00  Tree::DisperseSeed() (main_v2.3.2.cpp:1323 @ 403d92)
+  0.01   7018.56     0.41                             UpdateTreefall() (main_v2.3.2.cpp:2763 @ 40afd2)
+  0.01   7018.97     0.41                             Tree::Fluxh(int) (main_v2.3.2.cpp:1074 @ 402cee)
+  0.01   7019.38     0.41                             Tree::Growth() (main_v2.3.2.cpp:1189 @ 4035f4)
+  0.01   7019.79     0.41                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1243 @ 40380b)
+  0.01   7020.17     0.39                             UpdateTree() (main_v2.3.2.cpp:2688 @ 40ac36)
+  0.01   7020.55     0.38                             UpdateTree() (main_v2.3.2.cpp:2723 @ 40ae47)
+  0.01   7020.93     0.38                             Tree::Growth() (main_v2.3.2.cpp:1153 @ 4032a4)
+  0.01   7021.31     0.38                             sgenrand2(unsigned long) (main_v2.3.2.cpp:3228 @ 40d8fe)
+  0.01   7021.68     0.38                             sgenrand2(unsigned long) (main_v2.3.2.cpp:3230 @ 40d91a)
+  0.01   7022.06     0.38                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:929 @ 4021d3)
+  0.01   7022.43     0.38 654530083     0.00     0.00  __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40ec7c)
+  0.01   7022.81     0.38                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:924 @ 402166)
+  0.01   7023.16     0.36                             Tree::Death() (main_v2.3.2.cpp:1305 @ 403cd4)
+  0.00   7023.51     0.35                             Tree::Death() (main_v2.3.2.cpp:1315 @ 403d8f)
+  0.00   7023.86     0.35 654536679     0.00     0.00  Tree::Growth() (main_v2.3.2.cpp:1118 @ 403118)
+  0.00   7024.20     0.35                             Tree::Average() (main_v2.3.2.cpp:1505 @ 405072)
+  0.00   7024.53     0.33                             Tree::Growth() (main_v2.3.2.cpp:1125 @ 40315d)
+  0.00   7024.86     0.33                             Tree::Growth() (main_v2.3.2.cpp:1163 @ 4033bd)
+  0.00   7025.19     0.33                             Tree::Average() (main_v2.3.2.cpp:1504 @ 40504b)
+  0.00   7025.52     0.33                             Tree::Growth() (main_v2.3.2.cpp:1159 @ 403365)
+  0.00   7025.84     0.33                             Tree::Growth() (main_v2.3.2.cpp:1180 @ 403499)
+  0.00   7026.16     0.32 654536679     0.00     0.00  Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1228 @ 403772)
+  0.00   7026.48     0.32                             UpdateTreefall() (main_v2.3.2.cpp:2745 @ 40aed9)
+  0.00   7026.80     0.32                             Tree::CalcLAI() (main_v2.3.2.cpp:1034 @ 4029c2)
+  0.00   7027.11     0.31                             Tree::Growth() (main_v2.3.2.cpp:1201 @ 40362b)
+  0.00   7027.42     0.31                             Tree::Growth() (main_v2.3.2.cpp:1121 @ 403129)
+  0.00   7027.72     0.30                             Tree::Growth() (main_v2.3.2.cpp:1219 @ 403750)
+  0.00   7028.01     0.29                             Tree::Growth() (main_v2.3.2.cpp:1221 @ 40376f)
+  0.00   7028.29     0.29                             Tree::FallTree() (main_v2.3.2.cpp:1449 @ 404c8b)
+  0.00   7028.58     0.29                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:936 @ 4022a0)
+  0.00   7028.85     0.27                             genrand2i() (main_v2.3.2.cpp:3299 @ 40dcd8)
+  0.00   7029.11     0.26                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1263 @ 4039c1)
+  0.00   7029.36     0.25                             Tree::Growth() (main_v2.3.2.cpp:1123 @ 403143)
+  0.00   7029.60     0.25                             genrand2() (main_v2.3.2.cpp:3257 @ 40da98)
+  0.00   7029.85     0.25                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:731 @ 40e426)
+  0.00   7030.09     0.24                             Tree::DisperseSeed() (main_v2.3.2.cpp:1338 @ 403fb6)
+  0.00   7030.33     0.24                             Tree::Growth() (main_v2.3.2.cpp:1129 @ 403176)
+  0.00   7030.56     0.24 213842063     0.00     0.00  Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1259 @ 4039b0)
+  0.00   7030.80     0.24                             Tree::FallTree() (main_v2.3.2.cpp:1452 @ 404c97)
+  0.00   7031.03     0.23                             genrand2() (main_v2.3.2.cpp:3240 @ 40d929)
+  0.00   7031.25     0.22                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1276 @ 403b5f)
+  0.00   7031.47     0.22                             Tree::Update() (main_v2.3.2.cpp:1380 @ 404372)
+  0.00   7031.69     0.22                             Species::DeathRateNDD(float, float, int, float) (main_v2.3.2.cpp:718 @ 40e376)
+  0.00   7031.91     0.22                             __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:438 @ 40ec71)
+  0.00   7032.12     0.22                             Tree::Fluxh(int) (main_v2.3.2.cpp:1078 @ 402d22)
+  0.00   7032.33     0.21                             Tree::Couple() (main_v2.3.2.cpp:1493 @ 404ff9)
+  0.00   7032.54     0.21                             Tree::Growth() (main_v2.3.2.cpp:1124 @ 403150)
+  0.00   7032.75     0.21                             Tree::Update() (main_v2.3.2.cpp:1363 @ 404003)
+  0.00   7032.96     0.21                             genrand2() (main_v2.3.2.cpp:3250 @ 40d9d3)
+  0.00   7033.16     0.21                             Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1257 @ 4039ad)
+  0.00   7033.36     0.20                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1265 @ 403a2d)
+  0.00   7033.56     0.20                             genrand2() (main_v2.3.2.cpp:3250 @ 40da41)
+  0.00   7033.74     0.18                             Tree::Update() (main_v2.3.2.cpp:1391 @ 40466c)
+  0.00   7033.90     0.17                             __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:438 @ 40ecb6)
+  0.00   7034.06     0.16                             Tree::Growth() (main_v2.3.2.cpp:1131 @ 403190)
+  0.00   7034.22     0.16 147772310     0.00     0.00  Species::FillSeed(int, int) (main_v2.3.2.cpp:568 @ 401f72)
+  0.00   7034.38     0.16                             genrand2() (main_v2.3.2.cpp:3246 @ 40d951)
+  0.00   7034.53     0.15                             Tree::Growth() (main_v2.3.2.cpp:1130 @ 403183)
+  0.00   7034.67     0.14                             Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:811 @ 40e971)
+  0.00   7034.81     0.14                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:724 @ 40e39e)
+  0.00   7034.95     0.14      726   185.98   185.98  maxf(float, float) (main_v2.3.2.cpp:330 @ 40e0c3)
+  0.00   7035.08     0.14                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:949 @ 4023f5)
+  0.00   7035.21     0.13                             genrand2i() (main_v2.3.2.cpp:3289 @ 40dbc0)
+  0.00   7035.33     0.12                             OutputField() (main_v2.3.2.cpp:2984 @ 40c7ca)
+  0.00   7035.45     0.12                             Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f9b)
+  0.00   7035.57     0.12                             Tree::BirthFromData(Species*, int, int, float) (main_v2.3.2.cpp:1008 @ 402946)
+  0.00   7035.69     0.12                             Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:535 @ 401f2c)
+  0.00   7035.80     0.11                             UpdateTree() (main_v2.3.2.cpp:2731 @ 40ae85)
+  0.00   7035.91     0.11                             Species::UpdateSeed() (main_v2.3.2.cpp:661 @ 402124)
+  0.00   7035.99     0.08                             flor(float) (main_v2.3.2.cpp:324 @ 40e0b3)
+  0.00   7036.06     0.07                             UpdateTreefall() (main_v2.3.2.cpp:2745 @ 40af3e)
+  0.00   7036.13     0.07                             Species::FillSeed(int, int) (main_v2.3.2.cpp:571 @ 401f98)
+  0.00   7036.19     0.06                             Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1294 @ 403cb3)
+  0.00   7036.25     0.06                             Average() (main_v2.3.2.cpp:2794 @ 40b101)
+  0.00   7036.30     0.06                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:950 @ 402470)
+  0.00   7036.35     0.05                             Average() (main_v2.3.2.cpp:2801 @ 40b1d1)
+  0.00   7036.40     0.05                             Tree::Growth() (main_v2.3.2.cpp:1126 @ 40316a)
+  0.00   7036.45     0.05                             Tree::Growth() (main_v2.3.2.cpp:1209 @ 403637)
+  0.00   7036.50     0.05                             genrand2() (main_v2.3.2.cpp:3254 @ 40da4e)
+  0.00   7036.54     0.04                             Average() (main_v2.3.2.cpp:2793 @ 40b134)
+  0.00   7036.58     0.04                             Average() (main_v2.3.2.cpp:2883 @ 40bf16)
+  0.00   7036.62     0.04                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:931 @ 40226c)
+  0.00   7036.66     0.04                             Tree::Growth() (main_v2.3.2.cpp:1197 @ 40361f)
+  0.00   7036.69     0.04                             AllocMem() (main_v2.3.2.cpp:2313 @ 409a6d)
+  0.00   7036.73     0.04                             Tree::Fluxh(int) (main_v2.3.2.cpp:1070 @ 402cd1)
+  0.00   7036.76     0.04                             Tree::Update() (main_v2.3.2.cpp:1364 @ 40400e)
+  0.00   7036.80     0.04                             Tree::Update() (main_v2.3.2.cpp:1372 @ 4040f5)
+  0.00   7036.83     0.04                             Species::FillSeed(int, int) (main_v2.3.2.cpp:570 @ 401f89)
+  0.00   7036.87     0.04                             UpdateTree() (main_v2.3.2.cpp:2690 @ 40ac40)
+  0.00   7036.90     0.03                             Average() (main_v2.3.2.cpp:2835 @ 40b78c)
+  0.00   7036.93     0.03                             genrand2() (main_v2.3.2.cpp:3243 @ 40d93a)
+  0.00   7036.96     0.03                             genrand2i() (main_v2.3.2.cpp:3303 @ 40dce5)
+  0.00   7036.99     0.03                             Tree::DisperseSeed() (main_v2.3.2.cpp:1335 @ 403e7a)
+  0.00   7037.02     0.03                             Tree::Growth() (main_v2.3.2.cpp:1122 @ 403136)
+  0.00   7037.05     0.03                             Tree::Growth() (main_v2.3.2.cpp:1149 @ 403273)
+  0.00   7037.08     0.03                             Species::FillSeed(int, int) (main_v2.3.2.cpp:572 @ 401fad)
+  0.00   7037.11     0.03                             Species::FillSeed(int, int) (main_v2.3.2.cpp:573 @ 401fc1)
+  0.00   7037.14     0.03                             Species::DeathRate(float, float, int) (main_v2.3.2.cpp:732 @ 40e43d)
+  0.00   7037.17     0.03                             std::atan2(float, float) (cmath:164 @ 40df04)
+  0.00   7037.20     0.03                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:930 @ 402254)
+  0.00   7037.22     0.02 27111540     0.00     0.00  Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:919 @ 402126)
+  0.00   7037.24     0.02                             Average() (main_v2.3.2.cpp:2868 @ 40bc9b)
+  0.00   7037.26     0.02                             genrand2() (main_v2.3.2.cpp:3255 @ 40da6e)
+  0.00   7037.28     0.02                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:939 @ 402348)
+  0.00   7037.30     0.02                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:940 @ 402355)
+  0.00   7037.32     0.02                             Tree::Death() (main_v2.3.2.cpp:1309 @ 403d30)
+  0.00   7037.34     0.02                             Tree::Growth() (main_v2.3.2.cpp:1145 @ 4031bb)
+  0.00   7037.36     0.02                             Tree::Update() (main_v2.3.2.cpp:1394 @ 40467a)
+  0.00   7037.37     0.02                             UpdateTree() (main_v2.3.2.cpp:2695 @ 40acaa)
+  0.00   7037.39     0.02                             Tree::DisperseSeed() (main_v2.3.2.cpp:1338 @ 403e89)
+  0.00   7037.40     0.02                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:932 @ 402279)
+  0.00   7037.42     0.02                             Tree::Update() (main_v2.3.2.cpp:1375 @ 404129)
+  0.00   7037.43     0.01 27002806     0.00     0.00  Tree::Death() (main_v2.3.2.cpp:1302 @ 403cb6)
+  0.00   7037.44     0.01                             UpdateField() (main_v2.3.2.cpp:2435 @ 409e6e)
+  0.00   7037.45     0.01                             UpdateField() (main_v2.3.2.cpp:2520 @ 40a274)
+  0.00   7037.46     0.01                             Average() (main_v2.3.2.cpp:2793 @ 40b0f8)
+  0.00   7037.47     0.01                             Average() (main_v2.3.2.cpp:2810 @ 40b35b)
+  0.00   7037.48     0.01                             Average() (main_v2.3.2.cpp:2813 @ 40b3a3)
+  0.00   7037.49     0.01                             Average() (main_v2.3.2.cpp:2819 @ 40b4c3)
+  0.00   7037.50     0.01                             Average() (main_v2.3.2.cpp:2821 @ 40b518)
+  0.00   7037.51     0.01                             Average() (main_v2.3.2.cpp:2831 @ 40b6e2)
+  0.00   7037.52     0.01                             Average() (main_v2.3.2.cpp:2833 @ 40b737)
+  0.00   7037.53     0.01                             Average() (main_v2.3.2.cpp:2841 @ 40b8d4)
+  0.00   7037.54     0.01                             Average() (main_v2.3.2.cpp:2845 @ 40b9ac)
+  0.00   7037.55     0.01                             Average() (main_v2.3.2.cpp:2858 @ 40bbfe)
+  0.00   7037.56     0.01                             Average() (main_v2.3.2.cpp:2874 @ 40bd99)
+  0.00   7037.57     0.01                             Average() (main_v2.3.2.cpp:2877 @ 40be18)
+  0.00   7037.58     0.01                             Evolution() (main_v2.3.2.cpp:2389 @ 409bdb)
+  0.00   7037.59     0.01                             Tree::DisperseSeed() (main_v2.3.2.cpp:1330 @ 403df5)
+  0.00   7037.60     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:921 @ 402141)
+  0.00   7037.61     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:922 @ 40214b)
+  0.00   7037.62     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:925 @ 402194)
+  0.00   7037.63     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:928 @ 4021c6)
+  0.00   7037.64     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:941 @ 402363)
+  0.00   7037.65     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:951 @ 402484)
+  0.00   7037.66     0.01                             Tree::Death() (main_v2.3.2.cpp:1312 @ 403d71)
+  0.00   7037.67     0.01                             Tree::Growth() (main_v2.3.2.cpp:1175 @ 40343e)
+  0.00   7037.68     0.01                             Tree::Update() (main_v2.3.2.cpp:1378 @ 4042b5)
+  0.00   7037.69     0.01                             Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:544 @ 401f62)
+  0.00   7037.69     0.01                             AllocMem() (main_v2.3.2.cpp:2312 @ 409a99)
+  0.00   7037.70     0.01                             genrand2i() (main_v2.3.2.cpp:3304 @ 40dd05)
+  0.00   7037.70     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:926 @ 4021a1)
+  0.00   7037.71     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:934 @ 402293)
+  0.00   7037.71     0.01                             Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:945 @ 4023cd)
+  0.00   7037.72     0.01                             Tree::Death() (main_v2.3.2.cpp:1304 @ 403cc7)
+  0.00   7037.72     0.01                             Tree::Death() (main_v2.3.2.cpp:1313 @ 403d80)
+  0.00   7037.73     0.01                             Species::FillSeed(int, int) (main_v2.3.2.cpp:574 @ 401fcc)
+  0.00   7037.73     0.00   978000     0.00     0.00  Species::UpdateSeed() (main_v2.3.2.cpp:635 @ 40202c)
+  0.00   7037.73     0.00   640000     0.00     0.00  Tree::histdbh() (main_v2.3.2.cpp:1520 @ 405428)
+  0.00   7037.73     0.00   160000     0.00     0.00  Tree::Tree() (main_v2.3.2.cpp:867 @ 40ea50)
+  0.00   7037.73     0.00   160000     0.00     0.00  Tree::~Tree() (main_v2.3.2.cpp:884 @ 40eb78)
+  0.00   7037.73     0.00     6000     0.00     0.00  UpdateTree() (main_v2.3.2.cpp:2579 @ 40a675)
+  0.00   7037.73     0.00     6000     0.00     0.00  OutputField() (main_v2.3.2.cpp:2969 @ 40c6f4)
+  0.00   7037.73     0.00     6000     0.00     0.00  UpdateField() (main_v2.3.2.cpp:2400 @ 409bf7)
+  0.00   7037.73     0.00     6000     0.00     0.00  UpdateTreefall() (main_v2.3.2.cpp:2742 @ 40aecc)
+  0.00   7037.73     0.00     6000     0.00     0.00  Average() (main_v2.3.2.cpp:2786 @ 40b067)
+  0.00   7037.73     0.00     6000     0.00     0.00  Evolution() (main_v2.3.2.cpp:2385 @ 409bc8)
+  0.00   7037.73     0.00      815     0.00     0.00  std::log10(float) (cmath:377 @ 40dfe4)
+  0.00   7037.73     0.00      326     0.00     0.00  __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40ec33)
+  0.00   7037.73     0.00      164     0.00     0.00  Species::Species() (main_v2.3.2.cpp:408 @ 40e1a2)
+  0.00   7037.73     0.00      164     0.00     0.00  Species::~Species() (main_v2.3.2.cpp:416 @ 40e1da)
+  0.00   7037.73     0.00      163     0.00     0.00  Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:446 @ 4016de)
+  0.00   7037.73     0.00      163     0.00     0.00  __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40ebf3)
+  0.00   7037.73     0.00        1     0.00     0.00  _GLOBAL__sub_I_buffer (main_v2.3.2.cpp:3316 @ 40deea)
+  0.00   7037.73     0.00        1     0.00     0.00  Initialise() (main_v2.3.2.cpp:1726 @ 406336)
+  0.00   7037.73     0.00        1     0.00     0.00  sgenrand2i(unsigned long) (main_v2.3.2.cpp:3273 @ 40db3e)
+  0.00   7037.73     0.00        1     0.00     0.00  OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:3016 @ 40c9b3)
+  0.00   7037.73     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) (main_v2.3.2.cpp:3316 @ 40ddd1)
+  0.00   7037.73     0.00        1     0.00     0.00  FreeMem() (main_v2.3.2.cpp:3162 @ 40d67b)
+  0.00   7037.73     0.00        1     0.00     0.00  AllocMem() (main_v2.3.2.cpp:2244 @ 409499)
+  0.00   7037.73     0.00        1     0.00     0.00  BirthInit() (main_v2.3.2.cpp:2367 @ 409b96)
+  0.00   7037.73     0.00        1     0.00     0.00  sgenrand2(unsigned long) (main_v2.3.2.cpp:3222 @ 40d8a7)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 7037.73 seconds
+
+index % time    self  children    called     name
+                0.00    0.00     400/1576443686     Initialise() (main_v2.3.2.cpp:2040 @ 4084fa) [328]
+              156.21    0.00 1576443286/1576443686     Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:768 @ 40e5ea) [7]
+[11]     2.2  156.21    0.00 1576443686         std::sqrt(float) (cmath:483 @ 40e04c) [11]
+-----------------------------------------------
+                0.00    0.00     163/5907644284     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:502 @ 401ae5) [416]
+                0.00    0.00     163/5907644284     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:504 @ 401c0e) [417]
+                0.00    0.00     400/5907644284     Initialise() (main_v2.3.2.cpp:2042 @ 408577) [414]
+                6.40    0.00 959602938/5907644284     Tree::Fluxh(int) (main_v2.3.2.cpp:1079 @ 402d29) [44]
+               10.51    0.00 1576443286/5907644284     Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:774 @ 40e6e6) [3]
+               22.47    0.00 3371597334/5907644284     Tree::Fluxh(int) (main_v2.3.2.cpp:1098 @ 402ecd) [9]
+[24]     0.6   39.38    0.00 5907644284         minf(float, float) (main_v2.3.2.cpp:334 @ 40e0f7) [24]
+-----------------------------------------------
+               34.67    0.00 1576443286/1576443286     Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:792 @ 40e7df) [12]
+[29]     0.5   34.67    0.00 1576443286         Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:753 @ 40e4ee) [29]
+-----------------------------------------------
+                0.00    0.00   59429/11775954108     Tree::FallTree() (main_v2.3.2.cpp:1440 @ 404a28) [409]
+                4.66    0.00 1754849697/11775954108     Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 402c89) [75]
+                7.33    0.00 2760838907/11775954108     Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402ffc) [33]
+                7.88    0.00 2969786288/11775954108     Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 403028) [55]
+               11.39    0.00 4290419787/11775954108     Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 402c5d) [47]
+[34]     0.4   31.25    0.00 11775954108         min(int, int) (main_v2.3.2.cpp:338 @ 40e12b) [34]
+-----------------------------------------------
+                0.00    0.00    6596/147933113     Tree::FallTree() (main_v2.3.2.cpp:1438 @ 4048e0) [408]
+                0.01    0.00  154207/147933113     Tree::FallTree() (main_v2.3.2.cpp:1430 @ 404822) [372]
+               13.25    0.00 147772310/147933113     Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f2d) [52]
+[54]     0.2   13.26    0.00 147933113         std::sin(float) (cmath:445 @ 40e018) [54]
+-----------------------------------------------
+                4.74    0.00 504078704/504078704     UpdateField() (main_v2.3.2.cpp:2521 @ 40a1a7) [86]
+[102]    0.1    4.74    0.00 504078704         genrand2i() (main_v2.3.2.cpp:3284 @ 40dbb3) [102]
+-----------------------------------------------
+                0.00    0.00     163/4724642744     AllocMem() (main_v2.3.2.cpp:2254 @ 4094bd) [418]
+                0.00    0.00    6596/4724642744     Tree::FallTree() (main_v2.3.2.cpp:1440 @ 404930) [412]
+                0.43    0.00 541106618/4724642744     Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 402e52) [131]
+                0.52    0.00 654421349/4724642744     Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 4029d2) [191]
+                0.87    0.00 1100428348/4724642744     Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 4029f0) [123]
+                1.92    0.00 2428679670/4724642744     Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402e70) [72]
+[108]    0.1    3.73    0.00 4724642744         max(int, int) (main_v2.3.2.cpp:342 @ 40e150) [108]
+-----------------------------------------------
+                2.04    0.00 1500709556/1500709556     Tree::Growth() (main_v2.3.2.cpp:1156 @ 4032c2) [116]
+[153]    0.0    2.04    0.00 1500709556         Tree::Fluxh(int) (main_v2.3.2.cpp:1069 @ 402cbc) [153]
+-----------------------------------------------
+                1.48    0.00 1500709556/1500709556     Tree::Growth() (main_v2.3.2.cpp:1157 @ 4032d3) [67]
+[175]    0.0    1.48    0.00 1500709556         Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:784 @ 40e776) [175]
+-----------------------------------------------
+                1.05    0.37 654536679/654536679     UpdateTreefall() (main_v2.3.2.cpp:2754 @ 40af9d) [121]
+[179]    0.0    1.05    0.37 654536679         Tree::FallTree() (main_v2.3.2.cpp:1407 @ 4046a0) [179]
+                0.37    0.00 654536679/2340583938     genrand2() (main_v2.3.2.cpp:3235 @ 40d91c) [184]
+-----------------------------------------------
+                0.00    0.00       1/2340583938     main (main_v2.3.2.cpp:1611 @ 405df6) [419]
+                0.00    0.00       1/2340583938     main (main_v2.3.2.cpp:1612 @ 405e03) [420]
+                0.00    0.00       1/2340583938     main (main_v2.3.2.cpp:1613 @ 405e77) [421]
+                0.00    0.00    6596/2340583938     Tree::FallTree() (main_v2.3.2.cpp:1414 @ 4046ee) [413]
+                0.02    0.00 27111540/2340583938     Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:929 @ 4021d3) [258]
+                0.02    0.00 27111540/2340583938     Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:949 @ 4023f5) [312]
+                0.08    0.00 147772310/2340583938     Tree::DisperseSeed() (main_v2.3.2.cpp:1340 @ 403e95) [177]
+                0.08    0.00 147772310/2340583938     Tree::DisperseSeed() (main_v2.3.2.cpp:1341 @ 403f0f) [231]
+                0.37    0.00 654536679/2340583938     Tree::FallTree() (main_v2.3.2.cpp:1407 @ 4046a0) [179]
+                0.37    0.00 654740071/2340583938     Tree::Update() (main_v2.3.2.cpp:1382 @ 404383) [93]
+                0.38    0.00 681532889/2340583938     Tree::Update() (main_v2.3.2.cpp:1364 @ 40400e) [257]
+[184]    0.0    1.32    0.00 2340583938         genrand2() (main_v2.3.2.cpp:3235 @ 40d91c) [184]
+-----------------------------------------------
+                0.00    0.00     400/305412876     Initialise() (main_v2.3.2.cpp:2039 @ 4084b8) [415]
+                1.18    0.00 305412476/305412876     UpdateTree() (main_v2.3.2.cpp:2704 @ 40ace5) [79]
+[192]    0.0    1.18    0.00 305412876         std::exp(float) (cmath:242 @ 40df7c) [192]
+-----------------------------------------------
+                1.14    0.00 960000000/960000000     UpdateTree() (main_v2.3.2.cpp:2725 @ 40ae50) [125]
+[194]    0.0    1.14    0.00 960000000         Tree::Update() (main_v2.3.2.cpp:1357 @ 403fce) [194]
+-----------------------------------------------
+                0.00    0.00    6000/871335198     main (main_v2.3.2.cpp:1666 @ 40613c) [411]
+                0.00    0.00  156018/871335198     Tree::FallTree() (main_v2.3.2.cpp:1427 @ 4047dd) [407]
+                0.00    0.00 2150941/871335198     Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1265 @ 403a2d) [309]
+                0.03    0.00 27111540/871335198     Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:929 @ 4021d3) [258]
+                0.03    0.00 27111540/871335198     Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:949 @ 4023f5) [312]
+                0.14    0.00 147772310/871335198     Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f2d) [52]
+                0.14    0.00 147772310/871335198     Tree::DisperseSeed() (main_v2.3.2.cpp:1342 @ 403f65) [174]
+                0.20    0.00 213842063/871335198     Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1271 @ 403a95) [124]
+                0.29    0.00 305412476/871335198     UpdateTree() (main_v2.3.2.cpp:2704 @ 40ace5) [79]
+[216]    0.0    0.82    0.00 871335198         flor(float) (main_v2.3.2.cpp:322 @ 40e08f) [216]
+-----------------------------------------------
+                0.77    0.00 960000000/960000000     UpdateField() (main_v2.3.2.cpp:2440 @ 409e89) [133]
+[219]    0.0    0.77    0.00 960000000         Tree::CalcLAI() (main_v2.3.2.cpp:1019 @ 402948) [219]
+-----------------------------------------------
+                0.00    0.00    6596/147934924     Tree::FallTree() (main_v2.3.2.cpp:1435 @ 4048a0) [410]
+                0.00    0.00  156018/147934924     Tree::FallTree() (main_v2.3.2.cpp:1427 @ 4047dd) [407]
+                0.63    0.00 147772310/147934924     Tree::DisperseSeed() (main_v2.3.2.cpp:1342 @ 403f65) [174]
+[232]    0.0    0.63    0.00 147934924         std::cos(float) (cmath:204 @ 40df48) [232]
+-----------------------------------------------
+                0.54    0.00 960000000/960000000     Average() (main_v2.3.2.cpp:2808 @ 40b31d) [112]
+[243]    0.0    0.54    0.00 960000000         Tree::Average() (main_v2.3.2.cpp:1501 @ 405000) [243]
+-----------------------------------------------
+                0.47    0.00 681532889/681532889     Tree::Update() (main_v2.3.2.cpp:1366 @ 404088) [51]
+[251]    0.0    0.47    0.00 681532889         Species::DeathRate(float, float, int) (main_v2.3.2.cpp:722 @ 40e380) [251]
+-----------------------------------------------
+                0.43    0.00 654421349/654421349     UpdateField() (main_v2.3.2.cpp:2493 @ 40a021) [156]
+[256]    0.0    0.43    0.00 654421349         Tree::DisperseSeed() (main_v2.3.2.cpp:1323 @ 403d92) [256]
+-----------------------------------------------
+                0.38    0.00 654530083/654530083     Tree::Average() (main_v2.3.2.cpp:1511 @ 405214) [95]
+[268]    0.0    0.38    0.00 654530083         __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40ec7c) [268]
+-----------------------------------------------
+                0.35    0.00 654536679/654536679     Tree::Update() (main_v2.3.2.cpp:1395 @ 404687) [162]
+[272]    0.0    0.35    0.00 654536679         Tree::Growth() (main_v2.3.2.cpp:1118 @ 403118) [272]
+-----------------------------------------------
+                0.32    0.00 654536679/654536679     Tree::Growth() (main_v2.3.2.cpp:1201 @ 40362b) [233]
+[279]    0.0    0.32    0.00 654536679         Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1228 @ 403772) [279]
+-----------------------------------------------
+                0.24    0.00 213842063/213842063     Tree::Growth() (main_v2.3.2.cpp:1197 @ 40361f) [288]
+[296]    0.0    0.24    0.00 213842063         Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1259 @ 4039b0) [296]
+-----------------------------------------------
+                0.16    0.00 147772310/147772310     Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f9b) [287]
+[315]    0.0    0.16    0.00 147772310         Species::FillSeed(int, int) (main_v2.3.2.cpp:568 @ 401f72) [315]
+-----------------------------------------------
+                0.03    0.00     163/726         AllocMem() (main_v2.3.2.cpp:2263 @ 409609) [346]
+                0.03    0.00     163/726         AllocMem() (main_v2.3.2.cpp:2265 @ 40965b) [347]
+                0.07    0.00     400/726         Initialise() (main_v2.3.2.cpp:2040 @ 4084fa) [328]
+[320]    0.0    0.14    0.00     726         maxf(float, float) (main_v2.3.2.cpp:330 @ 40e0c3) [320]
+-----------------------------------------------
+                                                 <spontaneous>
+[357]    0.0    0.03    0.00                 std::atan2(float, float) (cmath:164 @ 40df04) [357]
+-----------------------------------------------
+                0.02    0.00 27111540/27111540     UpdateTree() (main_v2.3.2.cpp:2708 @ 40ad74) [212]
+[359]    0.0    0.02    0.00 27111540         Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:919 @ 402126) [359]
+-----------------------------------------------
+                0.00    0.00    6596/27002806     Tree::FallTree() (main_v2.3.2.cpp:1449 @ 404c8b) [285]
+                0.00    0.00  203392/27002806     Tree::Update() (main_v2.3.2.cpp:1391 @ 40466c) [311]
+                0.01    0.00 26792818/27002806     Tree::Update() (main_v2.3.2.cpp:1378 @ 4042b5) [367]
+[373]    0.0    0.01    0.00 27002806         Tree::Death() (main_v2.3.2.cpp:1302 @ 403cb6) [373]
+-----------------------------------------------
+                0.00    0.00  978000/978000      UpdateTree() (main_v2.3.2.cpp:2731 @ 40ae85) [325]
+[482]    0.0    0.00    0.00  978000         Species::UpdateSeed() (main_v2.3.2.cpp:635 @ 40202c) [482]
+-----------------------------------------------
+                0.00    0.00  640000/640000      OutputField() (main_v2.3.2.cpp:2980 @ 40c764) [826]
+[483]    0.0    0.00    0.00  640000         Tree::histdbh() (main_v2.3.2.cpp:1520 @ 405428) [483]
+-----------------------------------------------
+                0.00    0.00  160000/160000      Initialise() (main_v2.3.2.cpp:1834 @ 406dd6) [574]
+[484]    0.0    0.00    0.00  160000         Tree::Tree() (main_v2.3.2.cpp:867 @ 40ea50) [484]
+-----------------------------------------------
+                0.00    0.00  160000/160000      FreeMem() (main_v2.3.2.cpp:3164 @ 40d689) [1043]
+[485]    0.0    0.00    0.00  160000         Tree::~Tree() (main_v2.3.2.cpp:884 @ 40eb78) [485]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (main_v2.3.2.cpp:2385 @ 409bc8) [491]
+[486]    0.0    0.00    0.00    6000         UpdateTree() (main_v2.3.2.cpp:2579 @ 40a675) [486]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (main_v2.3.2.cpp:2391 @ 409bf0) [1109]
+[487]    0.0    0.00    0.00    6000         OutputField() (main_v2.3.2.cpp:2969 @ 40c6f4) [487]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (main_v2.3.2.cpp:2385 @ 409bc8) [491]
+[488]    0.0    0.00    0.00    6000         UpdateField() (main_v2.3.2.cpp:2400 @ 409bf7) [488]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (main_v2.3.2.cpp:2389 @ 409bdb) [388]
+[489]    0.0    0.00    0.00    6000         UpdateTreefall() (main_v2.3.2.cpp:2742 @ 40aecc) [489]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (main_v2.3.2.cpp:2391 @ 409bf0) [1109]
+[490]    0.0    0.00    0.00    6000         Average() (main_v2.3.2.cpp:2786 @ 40b067) [490]
+-----------------------------------------------
+                0.00    0.00    6000/6000        main (main_v2.3.2.cpp:1662 @ 406120) [458]
+[491]    0.0    0.00    0.00    6000         Evolution() (main_v2.3.2.cpp:2385 @ 409bc8) [491]
+                0.00    0.00    6000/6000        UpdateTree() (main_v2.3.2.cpp:2579 @ 40a675) [486]
+                0.00    0.00    6000/6000        UpdateField() (main_v2.3.2.cpp:2400 @ 409bf7) [488]
+-----------------------------------------------
+                0.00    0.00     163/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:484 @ 40194e) [1278]
+                0.00    0.00     326/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:502 @ 401ae5) [416]
+                0.00    0.00     326/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:504 @ 401c0e) [417]
+[492]    0.0    0.00    0.00     815         std::log10(float) (cmath:377 @ 40dfe4) [492]
+-----------------------------------------------
+                0.00    0.00     163/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:502 @ 401ae5) [416]
+                0.00    0.00     163/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:504 @ 401c0e) [417]
+[493]    0.0    0.00    0.00     326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40ec33) [493]
+-----------------------------------------------
+                0.00    0.00     164/164         Initialise() (main_v2.3.2.cpp:1851 @ 406f79) [582]
+[494]    0.0    0.00    0.00     164         Species::Species() (main_v2.3.2.cpp:408 @ 40e1a2) [494]
+-----------------------------------------------
+                0.00    0.00     164/164         FreeMem() (main_v2.3.2.cpp:3165 @ 40d6ef) [1044]
+[495]    0.0    0.00    0.00     164         Species::~Species() (main_v2.3.2.cpp:416 @ 40e1da) [495]
+-----------------------------------------------
+                0.00    0.00     163/163         Initialise() (main_v2.3.2.cpp:1858 @ 407070) [587]
+[496]    0.0    0.00    0.00     163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:446 @ 4016de) [496]
+-----------------------------------------------
+                0.00    0.00     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:484 @ 40194e) [1278]
+[497]    0.0    0.00    0.00     163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40ebf3) [497]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [1314]
+[498]    0.0    0.00    0.00       1         _GLOBAL__sub_I_buffer (main_v2.3.2.cpp:3316 @ 40deea) [498]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) (main_v2.3.2.cpp:3316 @ 40ddd1) [502]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1641 @ 40606c) [447]
+[499]    0.0    0.00    0.00       1         Initialise() (main_v2.3.2.cpp:1726 @ 406336) [499]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1610 @ 405de9) [434]
+[500]    0.0    0.00    0.00       1         sgenrand2i(unsigned long) (main_v2.3.2.cpp:3273 @ 40db3e) [500]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1675 @ 4061ad) [463]
+[501]    0.0    0.00    0.00       1         OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:3016 @ 40c9b3) [501]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_buffer (main_v2.3.2.cpp:3316 @ 40deea) [498]
+[502]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) (main_v2.3.2.cpp:3316 @ 40ddd1) [502]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1707 @ 40631d) [478]
+[503]    0.0    0.00    0.00       1         FreeMem() (main_v2.3.2.cpp:3162 @ 40d67b) [503]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1641 @ 40606c) [447]
+[504]    0.0    0.00    0.00       1         AllocMem() (main_v2.3.2.cpp:2244 @ 409499) [504]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1645 @ 406076) [449]
+[505]    0.0    0.00    0.00       1         BirthInit() (main_v2.3.2.cpp:2367 @ 409b96) [505]
+-----------------------------------------------
+                0.00    0.00       1/1           main (main_v2.3.2.cpp:1611 @ 405df6) [419]
+[506]    0.0    0.00    0.00       1         sgenrand2(unsigned long) (main_v2.3.2.cpp:3222 @ 40d8a7) [506]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+ [498] _GLOBAL__sub_I_buffer (main_v2.3.2.cpp:3316 @ 40deea) [71] genrand2i() (main_v2.3.2.cpp:3301 @ 40dc9d) [230] Tree::Growth() (main_v2.3.2.cpp:1179 @ 40347e)
+ [499] Initialise() (main_v2.3.2.cpp:1726 @ 406336) [289] genrand2i() (main_v2.3.2.cpp:3299 @ 40dcd8) [278] Tree::Growth() (main_v2.3.2.cpp:1180 @ 403499)
+ [486] UpdateTree() (main_v2.3.2.cpp:2579 @ 40a675) [350] genrand2i() (main_v2.3.2.cpp:3303 @ 40dce5) [167] Tree::Growth() (main_v2.3.2.cpp:1181 @ 4034b4)
+ [168] UpdateTree() (main_v2.3.2.cpp:2669 @ 40aab7) [400] genrand2i() (main_v2.3.2.cpp:3304 @ 40dd05) [203] Tree::Growth() (main_v2.3.2.cpp:1182 @ 403509)
+  [15] UpdateTree() (main_v2.3.2.cpp:2670 @ 40aac3) [161] genrand2i() (main_v2.3.2.cpp:3306 @ 40dd2f) [176] Tree::Growth() (main_v2.3.2.cpp:1183 @ 403541)
+ [247] UpdateTree() (main_v2.3.2.cpp:2671 @ 40aafe) [106] genrand2i() (main_v2.3.2.cpp:3309 @ 40dd39) [89] Tree::Growth() (main_v2.3.2.cpp:1185 @ 40357e)
+ [158] UpdateTree() (main_v2.3.2.cpp:2673 @ 40ab05) [113] genrand2i() (main_v2.3.2.cpp:3310 @ 40dd56) [151] Tree::Growth() (main_v2.3.2.cpp:1188 @ 4035e3)
+  [46] UpdateTree() (main_v2.3.2.cpp:2675 @ 40ab0e) [91] genrand2i() (main_v2.3.2.cpp:3311 @ 40dd62) [261] Tree::Growth() (main_v2.3.2.cpp:1189 @ 4035f4)
+   [5] UpdateTree() (main_v2.3.2.cpp:2676 @ 40ab1a) [61] genrand2i() (main_v2.3.2.cpp:3312 @ 40dd73) [255] Tree::Growth() (main_v2.3.2.cpp:1190 @ 403605)
+  [20] UpdateTree() (main_v2.3.2.cpp:2677 @ 40ab58) [94] genrand2i() (main_v2.3.2.cpp:3313 @ 40dd84) [197] Tree::Growth() (main_v2.3.2.cpp:1195 @ 403614)
+  [57] UpdateTree() (main_v2.3.2.cpp:2679 @ 40ab71) [120] genrand2i() (main_v2.3.2.cpp:3315 @ 40dd90) [288] Tree::Growth() (main_v2.3.2.cpp:1197 @ 40361f)
+ [114] UpdateTree() (main_v2.3.2.cpp:2682 @ 40ac10) [506] sgenrand2(unsigned long) (main_v2.3.2.cpp:3222 @ 40d8a7) [233] Tree::Growth() (main_v2.3.2.cpp:1201 @ 40362b)
+  [37] UpdateTree() (main_v2.3.2.cpp:2685 @ 40ac1f) [266] sgenrand2(unsigned long) (main_v2.3.2.cpp:3228 @ 40d8fe) [336] Tree::Growth() (main_v2.3.2.cpp:1209 @ 403637)
+  [23] UpdateTree() (main_v2.3.2.cpp:2675 @ 40ac23) [267] sgenrand2(unsigned long) (main_v2.3.2.cpp:3230 @ 40d91a) [283] Tree::Growth() (main_v2.3.2.cpp:1219 @ 403750)
+ [263] UpdateTree() (main_v2.3.2.cpp:2688 @ 40ac36) [256] Tree::DisperseSeed() (main_v2.3.2.cpp:1323 @ 403d92) [284] Tree::Growth() (main_v2.3.2.cpp:1221 @ 40376f)
+ [345] UpdateTree() (main_v2.3.2.cpp:2690 @ 40ac40) [83] Tree::DisperseSeed() (main_v2.3.2.cpp:1328 @ 403da4) [194] Tree::Update() (main_v2.3.2.cpp:1357 @ 403fce)
+ [368] UpdateTree() (main_v2.3.2.cpp:2695 @ 40acaa) [389] Tree::DisperseSeed() (main_v2.3.2.cpp:1330 @ 403df5) [40] Tree::Update() (main_v2.3.2.cpp:1361 @ 403fe6)
+ [129] UpdateTree() (main_v2.3.2.cpp:2699 @ 40acc5) [351] Tree::DisperseSeed() (main_v2.3.2.cpp:1335 @ 403e7a) [306] Tree::Update() (main_v2.3.2.cpp:1363 @ 404003)
+  [79] UpdateTree() (main_v2.3.2.cpp:2704 @ 40ace5) [369] Tree::DisperseSeed() (main_v2.3.2.cpp:1338 @ 403e89) [257] Tree::Update() (main_v2.3.2.cpp:1364 @ 40400e)
+  [65] UpdateTree() (main_v2.3.2.cpp:2705 @ 40ad40) [177] Tree::DisperseSeed() (main_v2.3.2.cpp:1340 @ 403e95) [51] Tree::Update() (main_v2.3.2.cpp:1366 @ 404088)
+ [212] UpdateTree() (main_v2.3.2.cpp:2708 @ 40ad74) [231] Tree::DisperseSeed() (main_v2.3.2.cpp:1341 @ 403f0f) [196] Tree::Update() (main_v2.3.2.cpp:1368 @ 4040dc)
+   [1] UpdateTree() (main_v2.3.2.cpp:2713 @ 40adab) [52] Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f2d) [343] Tree::Update() (main_v2.3.2.cpp:1372 @ 4040f5)
+  [81] UpdateTree() (main_v2.3.2.cpp:2669 @ 40adfd) [174] Tree::DisperseSeed() (main_v2.3.2.cpp:1342 @ 403f65) [371] Tree::Update() (main_v2.3.2.cpp:1375 @ 404129)
+ [264] UpdateTree() (main_v2.3.2.cpp:2723 @ 40ae47) [287] Tree::DisperseSeed() (main_v2.3.2.cpp:1343 @ 403f9b) [367] Tree::Update() (main_v2.3.2.cpp:1378 @ 4042b5)
+ [125] UpdateTree() (main_v2.3.2.cpp:2725 @ 40ae50) [294] Tree::DisperseSeed() (main_v2.3.2.cpp:1338 @ 403fb6) [300] Tree::Update() (main_v2.3.2.cpp:1380 @ 404372)
+ [244] UpdateTree() (main_v2.3.2.cpp:2723 @ 40ae76) [239] Tree::DisperseSeed() (main_v2.3.2.cpp:1348 @ 403fc6) [93] Tree::Update() (main_v2.3.2.cpp:1382 @ 404383)
+ [325] UpdateTree() (main_v2.3.2.cpp:2731 @ 40ae85) [323] Tree::BirthFromData(Species*, int, int, float) (main_v2.3.2.cpp:1008 @ 402946) [311] Tree::Update() (main_v2.3.2.cpp:1391 @ 40466c)
+ [500] sgenrand2i(unsigned long) (main_v2.3.2.cpp:3273 @ 40db3e) [279] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1228 @ 403772) [366] Tree::Update() (main_v2.3.2.cpp:1394 @ 40467a)
+ [202] sgenrand2i(unsigned long) (main_v2.3.2.cpp:3281 @ 40dbb1) [105] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1234 @ 403783) [162] Tree::Update() (main_v2.3.2.cpp:1395 @ 404687)
+ [487] OutputField() (main_v2.3.2.cpp:2969 @ 40c6f4) [237] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1239 @ 4037e2) [165] Tree::Update() (main_v2.3.2.cpp:1398 @ 404693)
+ [322] OutputField() (main_v2.3.2.cpp:2984 @ 40c7ca) [262] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1243 @ 40380b) [243] Tree::Average() (main_v2.3.2.cpp:1501 @ 405000)
+ [488] UpdateField() (main_v2.3.2.cpp:2400 @ 409bf7) [254] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1244 @ 403830) [98] Tree::Average() (main_v2.3.2.cpp:1502 @ 405011)
+ [187] UpdateField() (main_v2.3.2.cpp:2436 @ 409e1f) [190] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1245 @ 403855) [154] Tree::Average() (main_v2.3.2.cpp:1503 @ 405026)
+  [14] UpdateField() (main_v2.3.2.cpp:2437 @ 409e28) [248] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1246 @ 403875) [276] Tree::Average() (main_v2.3.2.cpp:1504 @ 40504b)
+  [16] UpdateField() (main_v2.3.2.cpp:2436 @ 409e54) [242] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1247 @ 403895) [273] Tree::Average() (main_v2.3.2.cpp:1505 @ 405072)
+ [374] UpdateField() (main_v2.3.2.cpp:2435 @ 409e6e) [160] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1248 @ 4038bd) [221] Tree::Average() (main_v2.3.2.cpp:1507 @ 4050ca)
+ [235] UpdateField() (main_v2.3.2.cpp:2439 @ 409e80) [218] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1252 @ 4038e9) [139] Tree::Average() (main_v2.3.2.cpp:1508 @ 405116)
+ [133] UpdateField() (main_v2.3.2.cpp:2440 @ 409e89) [130] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1254 @ 403912) [144] Tree::Average() (main_v2.3.2.cpp:1509 @ 40516e)
+ [213] UpdateField() (main_v2.3.2.cpp:2439 @ 409eaf) [119] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1255 @ 403996) [182] Tree::Average() (main_v2.3.2.cpp:1510 @ 4051c1)
+  [76] UpdateField() (main_v2.3.2.cpp:2443 @ 409ecc) [308] Tree::UpdateLeafDynamics() (main_v2.3.2.cpp:1257 @ 4039ad) [95] Tree::Average() (main_v2.3.2.cpp:1511 @ 405214)
+  [43] UpdateField() (main_v2.3.2.cpp:2444 @ 409ed8) [296] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1259 @ 4039b0) [206] Tree::Average() (main_v2.3.2.cpp:1512 @ 4052da)
+  [10] UpdateField() (main_v2.3.2.cpp:2445 @ 409ee6) [290] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1263 @ 4039c1) [169] Tree::Average() (main_v2.3.2.cpp:1513 @ 40532d)
+  [13] UpdateField() (main_v2.3.2.cpp:2446 @ 409f6a) [134] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1264 @ 4039ce) [172] Tree::Average() (main_v2.3.2.cpp:1514 @ 405380)
+  [63] UpdateField() (main_v2.3.2.cpp:2443 @ 409fc4) [309] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1265 @ 403a2d) [110] Tree::Average() (main_v2.3.2.cpp:1515 @ 4053d3)
+ [225] UpdateField() (main_v2.3.2.cpp:2491 @ 409fe5) [124] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1271 @ 403a95) [219] Tree::CalcLAI() (main_v2.3.2.cpp:1019 @ 402948)
+  [59] UpdateField() (main_v2.3.2.cpp:2492 @ 409fee) [299] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1276 @ 403b5f) [62] Tree::CalcLAI() (main_v2.3.2.cpp:1020 @ 40295a)
+ [156] UpdateField() (main_v2.3.2.cpp:2493 @ 40a021) [136] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1282 @ 403b7e) [138] Tree::CalcLAI() (main_v2.3.2.cpp:1030 @ 40296f)
+ [186] UpdateField() (main_v2.3.2.cpp:2491 @ 40a047) [180] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1285 @ 403bc1) [97] Tree::CalcLAI() (main_v2.3.2.cpp:1031 @ 40297f)
+  [86] UpdateField() (main_v2.3.2.cpp:2521 @ 40a1a7) [211] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1286 @ 403c11) [209] Tree::CalcLAI() (main_v2.3.2.cpp:1032 @ 402992)
+  [35] UpdateField() (main_v2.3.2.cpp:2522 @ 40a1b3) [229] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1290 @ 403c49) [245] Tree::CalcLAI() (main_v2.3.2.cpp:1033 @ 4029a5)
+   [8] UpdateField() (main_v2.3.2.cpp:2523 @ 40a1cf) [331] Tree::UpdateTreeBiometry() (main_v2.3.2.cpp:1294 @ 403cb3) [281] Tree::CalcLAI() (main_v2.3.2.cpp:1034 @ 4029c2)
+  [92] UpdateField() (main_v2.3.2.cpp:2524 @ 40a20a) [359] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:919 @ 402126) [191] Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 4029d2)
+  [85] UpdateField() (main_v2.3.2.cpp:2521 @ 40a244) [390] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:921 @ 402141) [123] Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 4029f0)
+ [375] UpdateField() (main_v2.3.2.cpp:2520 @ 40a274) [391] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:922 @ 40214b) [178] Tree::CalcLAI() (main_v2.3.2.cpp:1038 @ 402a0e)
+ [501] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:3016 @ 40c9b3) [269] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:924 @ 402166) [159] Tree::CalcLAI() (main_v2.3.2.cpp:1039 @ 402a1b)
+ [489] UpdateTreefall() (main_v2.3.2.cpp:2742 @ 40aecc) [392] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:925 @ 402194) [100] Tree::CalcLAI() (main_v2.3.2.cpp:1040 @ 402a28)
+ [280] UpdateTreefall() (main_v2.3.2.cpp:2745 @ 40aed9) [401] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:926 @ 4021a1) [143] Tree::CalcLAI() (main_v2.3.2.cpp:1041 @ 402a49)
+ [141] UpdateTreefall() (main_v2.3.2.cpp:2746 @ 40aee2) [199] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:927 @ 4021ae) [246] Tree::CalcLAI() (main_v2.3.2.cpp:1042 @ 402a65)
+ [226] UpdateTreefall() (main_v2.3.2.cpp:2747 @ 40af1e) [393] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:928 @ 4021c6) [126] Tree::CalcLAI() (main_v2.3.2.cpp:1043 @ 402a6d)
+ [329] UpdateTreefall() (main_v2.3.2.cpp:2745 @ 40af3e) [258] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:929 @ 4021d3) [27] Tree::CalcLAI() (main_v2.3.2.cpp:1046 @ 402adc)
+ [250] UpdateTreefall() (main_v2.3.2.cpp:2752 @ 40af61) [358] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:930 @ 402254) [41] Tree::CalcLAI() (main_v2.3.2.cpp:1047 @ 402b52)
+  [74] UpdateTreefall() (main_v2.3.2.cpp:2753 @ 40af6a) [340] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:931 @ 40226c) [223] Tree::CalcLAI() (main_v2.3.2.cpp:1048 @ 402bd7)
+ [121] UpdateTreefall() (main_v2.3.2.cpp:2754 @ 40af9d) [370] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:932 @ 402279) [228] Tree::CalcLAI() (main_v2.3.2.cpp:1049 @ 402be6)
+ [234] UpdateTreefall() (main_v2.3.2.cpp:2752 @ 40afc3) [402] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:934 @ 402293) [22] Tree::CalcLAI() (main_v2.3.2.cpp:1050 @ 402bf1)
+ [259] UpdateTreefall() (main_v2.3.2.cpp:2763 @ 40afd2) [286] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:936 @ 4022a0) [150] Tree::CalcLAI() (main_v2.3.2.cpp:1049 @ 402c4e)
+  [53] UpdateTreefall() (main_v2.3.2.cpp:2765 @ 40afdb) [362] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:939 @ 402348) [47] Tree::CalcLAI() (main_v2.3.2.cpp:1037 @ 402c5d)
+ [142] UpdateTreefall() (main_v2.3.2.cpp:2766 @ 40b00e) [363] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:940 @ 402355) [75] Tree::CalcLAI() (main_v2.3.2.cpp:1036 @ 402c89)
+ [183] UpdateTreefall() (main_v2.3.2.cpp:2763 @ 40b052) [394] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:941 @ 402363) [145] Tree::CalcLAI() (main_v2.3.2.cpp:1058 @ 402cb5)
+ [108] max(int, int) (main_v2.3.2.cpp:342 @ 40e150) [147] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:943 @ 40236f) [483] Tree::histdbh() (main_v2.3.2.cpp:1520 @ 405428)
+ [132] max(int, int) (main_v2.3.2.cpp:343 @ 40e163) [403] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:945 @ 4023cd) [179] Tree::FallTree() (main_v2.3.2.cpp:1407 @ 4046a0)
+ [207] max(int, int) (main_v2.3.2.cpp:344 @ 40e170) [312] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:949 @ 4023f5) [111] Tree::FallTree() (main_v2.3.2.cpp:1412 @ 4046b8)
+ [208] max(int, int) (main_v2.3.2.cpp:345 @ 40e173) [333] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:950 @ 402470) [285] Tree::FallTree() (main_v2.3.2.cpp:1449 @ 404c8b)
+  [34] min(int, int) (main_v2.3.2.cpp:338 @ 40e12b) [395] Tree::Birth(Species*, int, int) (main_v2.3.2.cpp:951 @ 402484) [297] Tree::FallTree() (main_v2.3.2.cpp:1452 @ 404c97)
+  [80] min(int, int) (main_v2.3.2.cpp:339 @ 40e13e) [373] Tree::Death() (main_v2.3.2.cpp:1302 @ 403cb6) [484] Tree::Tree() (main_v2.3.2.cpp:867 @ 40ea50)
+  [70] min(int, int) (main_v2.3.2.cpp:340 @ 40e14b) [404] Tree::Death() (main_v2.3.2.cpp:1304 @ 403cc7) [485] Tree::~Tree() (main_v2.3.2.cpp:884 @ 40eb78)
+  [87] min(int, int) (main_v2.3.2.cpp:341 @ 40e14e) [270] Tree::Death() (main_v2.3.2.cpp:1305 @ 403cd4) [482] Species::UpdateSeed() (main_v2.3.2.cpp:635 @ 40202c)
+ [502] __static_initialization_and_destruction_0(int, int) (main_v2.3.2.cpp:3316 @ 40ddd1) [364] Tree::Death() (main_v2.3.2.cpp:1309 @ 403d30) [31] Species::UpdateSeed() (main_v2.3.2.cpp:651 @ 402083)
+ [216] flor(float) (main_v2.3.2.cpp:322 @ 40e08f) [163] Tree::Death() (main_v2.3.2.cpp:1311 @ 403d4b) [2] Species::UpdateSeed() (main_v2.3.2.cpp:657 @ 40208f)
+ [236] flor(float) (main_v2.3.2.cpp:323 @ 40e0a1) [396] Tree::Death() (main_v2.3.2.cpp:1312 @ 403d71) [6] Species::UpdateSeed() (main_v2.3.2.cpp:658 @ 4020d4)
+ [327] flor(float) (main_v2.3.2.cpp:324 @ 40e0b3) [405] Tree::Death() (main_v2.3.2.cpp:1313 @ 403d80) [21] Species::UpdateSeed() (main_v2.3.2.cpp:651 @ 402111)
+ [252] flor(float) (main_v2.3.2.cpp:325 @ 40e0b9) [271] Tree::Death() (main_v2.3.2.cpp:1315 @ 403d8f) [326] Species::UpdateSeed() (main_v2.3.2.cpp:661 @ 402124)
+ [320] maxf(float, float) (main_v2.3.2.cpp:330 @ 40e0c3) [153] Tree::Fluxh(int) (main_v2.3.2.cpp:1069 @ 402cbc) [301] Species::DeathRateNDD(float, float, int, float) (main_v2.3.2.cpp:718 @ 40e376)
+  [77] maxf(float, float) (main_v2.3.2.cpp:333 @ 40e0ed) [342] Tree::Fluxh(int) (main_v2.3.2.cpp:1070 @ 402cd1) [175] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:784 @ 40e776)
+  [24] minf(float, float) (main_v2.3.2.cpp:334 @ 40e0f7) [253] Tree::Fluxh(int) (main_v2.3.2.cpp:1072 @ 402cd8) [249] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:785 @ 40e7a0)
+  [36] minf(float, float) (main_v2.3.2.cpp:335 @ 40e10e) [200] Tree::Fluxh(int) (main_v2.3.2.cpp:1073 @ 402ce1) [56] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:787 @ 40e7a9)
+ [149] minf(float, float) (main_v2.3.2.cpp:336 @ 40e11e) [260] Tree::Fluxh(int) (main_v2.3.2.cpp:1074 @ 402cee) [48] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:788 @ 40e7b5)
+  [42] minf(float, float) (main_v2.3.2.cpp:337 @ 40e121) [224] Tree::Fluxh(int) (main_v2.3.2.cpp:1075 @ 402cfb) [30] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:789 @ 40e7cd)
+ [490] Average() (main_v2.3.2.cpp:2786 @ 40b067) [205] Tree::Fluxh(int) (main_v2.3.2.cpp:1076 @ 402d08) [12] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:792 @ 40e7df)
+ [376] Average() (main_v2.3.2.cpp:2793 @ 40b0f8) [148] Tree::Fluxh(int) (main_v2.3.2.cpp:1077 @ 402d18) [66] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:787 @ 40e833)
+ [332] Average() (main_v2.3.2.cpp:2794 @ 40b101) [303] Tree::Fluxh(int) (main_v2.3.2.cpp:1078 @ 402d22) [188] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:803 @ 40e841)
+ [338] Average() (main_v2.3.2.cpp:2793 @ 40b134) [44] Tree::Fluxh(int) (main_v2.3.2.cpp:1079 @ 402d29) [318] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:811 @ 40e971)
+ [334] Average() (main_v2.3.2.cpp:2801 @ 40b1d1) [103] Tree::Fluxh(int) (main_v2.3.2.cpp:1081 @ 402d85) [73] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:813 @ 40e9f8)
+ [112] Average() (main_v2.3.2.cpp:2808 @ 40b31d) [88] Tree::Fluxh(int) (main_v2.3.2.cpp:1082 @ 402da0) [173] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:814 @ 40ea19)
+ [377] Average() (main_v2.3.2.cpp:2810 @ 40b35b) [195] Tree::Fluxh(int) (main_v2.3.2.cpp:1083 @ 402dcd) [222] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:815 @ 40ea43)
+ [378] Average() (main_v2.3.2.cpp:2813 @ 40b3a3) [166] Tree::Fluxh(int) (main_v2.3.2.cpp:1084 @ 402dfa) [122] Species::dailyGPPleaf(float, float, float, float, float) (main_v2.3.2.cpp:816 @ 40ea46)
+ [379] Average() (main_v2.3.2.cpp:2819 @ 40b4c3) [90] Tree::Fluxh(int) (main_v2.3.2.cpp:1088 @ 402e2c) [496] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:446 @ 4016de)
+ [380] Average() (main_v2.3.2.cpp:2821 @ 40b518) [185] Tree::Fluxh(int) (main_v2.3.2.cpp:1089 @ 402e3f) [324] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:535 @ 401f2c)
+ [381] Average() (main_v2.3.2.cpp:2831 @ 40b6e2) [131] Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 402e52) [398] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (main_v2.3.2.cpp:544 @ 401f62)
+ [382] Average() (main_v2.3.2.cpp:2833 @ 40b737) [72] Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402e70) [29] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:753 @ 40e4ee)
+ [348] Average() (main_v2.3.2.cpp:2835 @ 40b78c) [84] Tree::Fluxh(int) (main_v2.3.2.cpp:1093 @ 402e8e) [38] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:761 @ 40e50e)
+ [383] Average() (main_v2.3.2.cpp:2841 @ 40b8d4) [68] Tree::Fluxh(int) (main_v2.3.2.cpp:1094 @ 402e9b) [17] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:762 @ 40e522)
+ [384] Average() (main_v2.3.2.cpp:2845 @ 40b9ac) [45] Tree::Fluxh(int) (main_v2.3.2.cpp:1095 @ 402ea8) [32] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:763 @ 40e53b)
+ [385] Average() (main_v2.3.2.cpp:2858 @ 40bbfe) [127] Tree::Fluxh(int) (main_v2.3.2.cpp:1097 @ 402ec9) [18] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:764 @ 40e554)
+ [360] Average() (main_v2.3.2.cpp:2868 @ 40bc9b) [9] Tree::Fluxh(int) (main_v2.3.2.cpp:1098 @ 402ecd) [39] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:765 @ 40e590)
+ [386] Average() (main_v2.3.2.cpp:2874 @ 40bd99) [28] Tree::Fluxh(int) (main_v2.3.2.cpp:1099 @ 402f33) [25] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:766 @ 40e5bd)
+ [387] Average() (main_v2.3.2.cpp:2877 @ 40be18) [19] Tree::Fluxh(int) (main_v2.3.2.cpp:1100 @ 402f4e) [7] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:768 @ 40e5ea)
+ [339] Average() (main_v2.3.2.cpp:2883 @ 40bf16) [64] Tree::Fluxh(int) (main_v2.3.2.cpp:1101 @ 402f88) [78] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:772 @ 40e62b)
+ [503] FreeMem() (main_v2.3.2.cpp:3162 @ 40d67b) [58] Tree::Fluxh(int) (main_v2.3.2.cpp:1102 @ 402fc2) [4] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:773 @ 40e63d)
+ [504] AllocMem() (main_v2.3.2.cpp:2244 @ 409499) [33] Tree::Fluxh(int) (main_v2.3.2.cpp:1091 @ 402ffc) [3] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:774 @ 40e6e6)
+ [341] AllocMem() (main_v2.3.2.cpp:2313 @ 409a6d) [55] Tree::Fluxh(int) (main_v2.3.2.cpp:1090 @ 403028) [99] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:776 @ 40e768)
+ [399] AllocMem() (main_v2.3.2.cpp:2312 @ 409a99) [50] Tree::Fluxh(int) (main_v2.3.2.cpp:1107 @ 403054) [26] Species::GPPleaf(float, float, float) (main_v2.3.2.cpp:777 @ 40e76b)
+ [184] genrand2() (main_v2.3.2.cpp:3235 @ 40d91c) [128] Tree::Fluxh(int) (main_v2.3.2.cpp:1108 @ 403093) [315] Species::FillSeed(int, int) (main_v2.3.2.cpp:568 @ 401f72)
+ [298] genrand2() (main_v2.3.2.cpp:3240 @ 40d929) [118] Tree::Fluxh(int) (main_v2.3.2.cpp:1109 @ 4030d2) [344] Species::FillSeed(int, int) (main_v2.3.2.cpp:570 @ 401f89)
+ [349] genrand2() (main_v2.3.2.cpp:3243 @ 40d93a) [215] Tree::Fluxh(int) (main_v2.3.2.cpp:1110 @ 403111) [330] Species::FillSeed(int, int) (main_v2.3.2.cpp:571 @ 401f98)
+ [316] genrand2() (main_v2.3.2.cpp:3246 @ 40d951) [304] Tree::Couple() (main_v2.3.2.cpp:1493 @ 404ff9) [354] Species::FillSeed(int, int) (main_v2.3.2.cpp:572 @ 401fad)
+ [193] genrand2() (main_v2.3.2.cpp:3247 @ 40d95a) [272] Tree::Growth() (main_v2.3.2.cpp:1118 @ 403118) [355] Species::FillSeed(int, int) (main_v2.3.2.cpp:573 @ 401fc1)
+ [146] genrand2() (main_v2.3.2.cpp:3248 @ 40d98b) [282] Tree::Growth() (main_v2.3.2.cpp:1121 @ 403129) [406] Species::FillSeed(int, int) (main_v2.3.2.cpp:574 @ 401fcc)
+ [240] genrand2() (main_v2.3.2.cpp:3246 @ 40d9c6) [352] Tree::Growth() (main_v2.3.2.cpp:1122 @ 403136) [60] Species::FillSeed(int, int) (main_v2.3.2.cpp:577 @ 401fed)
+ [307] genrand2() (main_v2.3.2.cpp:3250 @ 40d9d3) [291] Tree::Growth() (main_v2.3.2.cpp:1123 @ 403143) [251] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:722 @ 40e380)
+ [181] genrand2() (main_v2.3.2.cpp:3251 @ 40d9d5) [305] Tree::Growth() (main_v2.3.2.cpp:1124 @ 403150) [319] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:724 @ 40e39e)
+ [104] genrand2() (main_v2.3.2.cpp:3252 @ 40da06) [274] Tree::Growth() (main_v2.3.2.cpp:1125 @ 40315d) [69] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:725 @ 40e3a7)
+ [310] genrand2() (main_v2.3.2.cpp:3250 @ 40da41) [335] Tree::Growth() (main_v2.3.2.cpp:1126 @ 40316a) [204] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:727 @ 40e3d3)
+ [337] genrand2() (main_v2.3.2.cpp:3254 @ 40da4e) [295] Tree::Growth() (main_v2.3.2.cpp:1129 @ 403176) [135] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:729 @ 40e3d9)
+ [361] genrand2() (main_v2.3.2.cpp:3255 @ 40da6e) [317] Tree::Growth() (main_v2.3.2.cpp:1130 @ 403183) [293] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:731 @ 40e426)
+ [292] genrand2() (main_v2.3.2.cpp:3257 @ 40da98) [314] Tree::Growth() (main_v2.3.2.cpp:1131 @ 403190) [356] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:732 @ 40e43d)
+ [137] genrand2() (main_v2.3.2.cpp:3260 @ 40daa2) [227] Tree::Growth() (main_v2.3.2.cpp:1139 @ 40319d) [170] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:734 @ 40e4cf)
+ [164] genrand2() (main_v2.3.2.cpp:3261 @ 40dabf) [365] Tree::Growth() (main_v2.3.2.cpp:1145 @ 4031bb) [82] Species::DeathRate(float, float, int) (main_v2.3.2.cpp:735 @ 40e4e4)
+ [117] genrand2() (main_v2.3.2.cpp:3262 @ 40dacb) [353] Tree::Growth() (main_v2.3.2.cpp:1149 @ 403273) [494] Species::Species() (main_v2.3.2.cpp:408 @ 40e1a2)
+ [109] genrand2() (main_v2.3.2.cpp:3263 @ 40dadc) [210] Tree::Growth() (main_v2.3.2.cpp:1152 @ 403284) [495] Species::~Species() (main_v2.3.2.cpp:416 @ 40e1da)
+ [107] genrand2() (main_v2.3.2.cpp:3264 @ 40daed) [265] Tree::Growth() (main_v2.3.2.cpp:1153 @ 4032a4) [232] std::cos(float) (cmath:204 @ 40df48)
+  [49] genrand2() (main_v2.3.2.cpp:3266 @ 40daf9) [198] Tree::Growth() (main_v2.3.2.cpp:1155 @ 4032b7) [192] std::exp(float) (cmath:242 @ 40df7c)
+  [96] genrand2() (main_v2.3.2.cpp:3268 @ 40db33) [116] Tree::Growth() (main_v2.3.2.cpp:1156 @ 4032c2) [493] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40ec33)
+ [505] BirthInit() (main_v2.3.2.cpp:2367 @ 409b96) [67] Tree::Growth() (main_v2.3.2.cpp:1157 @ 4032d3) [302] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:438 @ 40ec71)
+ [491] Evolution() (main_v2.3.2.cpp:2385 @ 409bc8) [220] Tree::Growth() (main_v2.3.2.cpp:1158 @ 403347) [268] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40ec7c)
+ [388] Evolution() (main_v2.3.2.cpp:2389 @ 409bdb) [277] Tree::Growth() (main_v2.3.2.cpp:1159 @ 403365) [201] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:437 @ 40ec93)
+ [102] genrand2i() (main_v2.3.2.cpp:3284 @ 40dbb3) [189] Tree::Growth() (main_v2.3.2.cpp:1155 @ 403371) [313] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:438 @ 40ecb6)
+ [321] genrand2i() (main_v2.3.2.cpp:3289 @ 40dbc0) [152] Tree::Growth() (main_v2.3.2.cpp:1161 @ 403381) [497] __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40ebf3)
+ [241] genrand2i() (main_v2.3.2.cpp:3295 @ 40dbe8) [171] Tree::Growth() (main_v2.3.2.cpp:1162 @ 4033a6) [54] std::sin(float) (cmath:445 @ 40e018)
+ [155] genrand2i() (main_v2.3.2.cpp:3296 @ 40dbf1) [275] Tree::Growth() (main_v2.3.2.cpp:1163 @ 4033bd) [11] std::sqrt(float) (cmath:483 @ 40e04c)
+ [101] genrand2i() (main_v2.3.2.cpp:3297 @ 40dc22) [140] Tree::Growth() (main_v2.3.2.cpp:1170 @ 4033d4) [357] std::atan2(float, float) (cmath:164 @ 40df04)
+ [217] genrand2i() (main_v2.3.2.cpp:3295 @ 40dc5d) [157] Tree::Growth() (main_v2.3.2.cpp:1172 @ 403427) [492] std::log10(float) (cmath:377 @ 40dfe4)
+ [238] genrand2i() (main_v2.3.2.cpp:3299 @ 40dc6a) [397] Tree::Growth() (main_v2.3.2.cpp:1175 @ 40343e)
+ [115] genrand2i() (main_v2.3.2.cpp:3300 @ 40dc6c) [214] Tree::Growth() (main_v2.3.2.cpp:1176 @ 403447)
