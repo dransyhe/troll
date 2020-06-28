@@ -841,14 +841,65 @@ inline float Species::GPPleaf(float PPFD, float VPD, float T) {
 
 
 inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, float CD) {
-    float ppfde,dailyA=0.0;
-    
-    for(int i=0; i<24; i++) {
-        ppfde=PPFD*daily_light[i];
-        if(ppfde > 0.1)
+    float ppfde, dailyA=0.0;
+
+    /* NEW CHANGE: loop unrolling; calculate ppfde directly because daily_light[] are all non-zero */
+    ppfde = PPFD * daily_light[0];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[0], T*daily_T[0]);
+    ppfde = PPFD * daily_light[1];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[1], T*daily_T[1]);
+    ppfde = PPFD * daily_light[2];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[2], T*daily_T[2]);
+    ppfde = PPFD * daily_light[3];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[3], T*daily_T[3]);
+    ppfde = PPFD * daily_light[4];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[4], T*daily_T[4]);
+    ppfde = PPFD * daily_light[5];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[5], T*daily_T[5]);
+    ppfde = PPFD * daily_light[6];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[6], T*daily_T[6]);
+    ppfde = PPFD * daily_light[7];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[7], T*daily_T[7]);
+    ppfde = PPFD * daily_light[8];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[8], T*daily_T[8]);
+    ppfde = PPFD * daily_light[9];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[9], T*daily_T[9]);
+    ppfde = PPFD * daily_light[10];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[10], T*daily_T[10]);
+    ppfde = PPFD * daily_light[11];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[11], T*daily_T[11]);
+    ppfde = PPFD * daily_light[12];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[12], T*daily_T[12]);
+    ppfde = PPFD * daily_light[13];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[13], T*daily_T[13]);
+    ppfde = PPFD * daily_light[14];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[14], T*daily_T[14]);
+    ppfde = PPFD * daily_light[15];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[15], T*daily_T[15]);
+    ppfde = PPFD * daily_light[16];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[16], T*daily_T[16]);
+    ppfde = PPFD * daily_light[17];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[17], T*daily_T[17]);
+    ppfde = PPFD * daily_light[18];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[18], T*daily_T[18]);
+    ppfde = PPFD * daily_light[19];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[19], T*daily_T[19]);
+    ppfde = PPFD * daily_light[20];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[20], T*daily_T[20]);
+    ppfde = PPFD * daily_light[21];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[21], T*daily_T[21]);
+    ppfde = PPFD * daily_light[22];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[22], T*daily_T[22]);
+    ppfde = PPFD * daily_light[23];
+    if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[23], T*daily_T[23]);
+
+    /* Original Code:
+    for(int i = 0; i < 24; i++) {
+        ppfde = PPFD * daily_light[i];
+        if (ppfde > 0.1)
             // new v.2.3.0: compute GPP only if enough light is available threshold is arbitrary, but set to be low: in full sunlight ppfd is aroung 700 W/m2, and even at dawn, it is ca 3% of the max value, or 20 W/m2. The minimum threshold is set to 0.1 W/m2
             // Future update: compute slightly more efficiently, using 3-hourly values? This will have to be aligned with climate forcing layers (e.g. NCAR)
-            dailyA+=GPPleaf(ppfde, VPD*daily_vpd[i], T*daily_T[i]);         /*!!!*/
+            dailyA += GPPleaf(ppfde, VPD*daily_vpd[i], T*daily_T[i]);         !!!
         //the 6 lines in comment below corresponds to a finer version in which the multiplier is computed and used every 48 half hour, ie. with the corresponding environment instead of assuming a constant multiplier correponding the one at maximum incoming irradiance
         //float hhA=0;
         //hhA=GPPleaf(PPFD*daily_light[i], VPD*daily_vpd[i], T*daily_T[i]);
@@ -856,7 +907,7 @@ inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, f
         //float D=klight*dens*CD;
         //hhA*=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));
         //dailyA+=hhA;
-    }
+    }*/
     //daily_light is the averaged (across one year, meteo station Nouragues DZ) and normalized (from 0 to 1) daily fluctuation of light, with half-hour time step, during the day time (from 7am to 7pm, ie 12 hours in total), same for daily_vpd and daily_T. Taking into account these daily variation is necessary considering the non-linearity of FvCB model
     
     if(_FASTGPP){
@@ -869,8 +920,8 @@ inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, f
         }
         dailyA*=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));  // the FvCB assimilation rate computed at the top of the tree crown is multiplied by a multiplier<1, to account for the lower rate at lower light level within the crown depth. This multiplier is computed assuming that change in photosynthetic assimilation rate within a tree crown is mainly due to light decrease due to self-shading following a Michealis-menten relationship (ie. we assume that 1/ the change is not due to changes in VPD or temperature, which are supposed homogeneous at the intra-crown scale, and 2/ that other tree contributions to light decrease is neglected).
     }
-    dailyA*=0.0417;                                 // 0.0417=1/24 (24=12*2 = number of half hours in the 12 hours of daily light)
-    tempRday*=0.0417;
+    dailyA *= 0.0417;                                 // 0.0417=1/24 (24=12*2 = number of half hours in the 12 hours of daily light)
+    tempRday *= 0.0417;
     return dailyA;
 }
 
@@ -2543,20 +2594,26 @@ void UpdateField() {
                 LAIc[i][haut][site] = 0;
 #endif
     
-    int sbsite;
-    
-    for(haut = 0; haut < (HEIGHT+1); haut++)
-        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       /*!!!*/
-            LAI3D[haut][sbsite] = 0.0;      /*!!!*/
+    int sbsite, index;
+
+    /* NEW CHANGE: not sure? */
+    /*for(haut = 0; haut < (HEIGHT+1); haut++)
+        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       !!!
+            LAI3D[haut][sbsite] = 0.0;      !!!
+    */
+    fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
     
     for(site = 0; site < sites; site++)                                    /* Each tree contributes to LAI3D */
         T[site].CalcLAI();
-    
+
+    /* NEW CHANGE: take out the computation of index from loops */
     for(haut = HEIGHT; haut > 0; haut--){                                 /* LAI is computed by summing LAI from the canopy top to the ground */
+        sbsite = SBORD;
+        index = haut - 1;
         for(site = 0; site < sites; site++){
-            sbsite = site + SBORD;
-            LAI3D[haut-1][sbsite] += LAI3D[haut][sbsite];         /*!!!*/
-            if (LAI3D[haut-1][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!*/
+            LAI3D[index][sbsite] += LAI3D[haut][sbsite];         /*!!!*/
+            if (LAI3D[index][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!*/
+            ++ subsite;
         }
     }
     
@@ -2604,6 +2661,7 @@ void UpdateField() {
         for(site = 0; site < sites; site++)                                       /* disperse seeds produced by mature trees */
             if(T[site].t_age)
                 T[site].DisperseSeed();
+        /* FUTURE: can change to the list storing empty tree sites */
 #endif
 #ifdef DCELL
     }
