@@ -683,10 +683,9 @@ void Species::UpdateSeed() {
             s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
             /* seed bank ages or disappears */
-            if(s_Seed[site]==s_dormDuration) {
-                s_Seed[site]=0;
-            }
-            else if(s_Seed[site]!=0) s_Seed[site]++;
+            if(s_Seed[site]==s_dormDuration) s_Seed[site]=0;   /*!!!*/
+
+            else if(s_Seed[site]!=0) s_Seed[site]++;      /*!!!*/
             // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
         }
     }
@@ -824,7 +823,7 @@ inline float Species::GPPleaf(float PPFD, float VPD, float T) {
 
     }
 
-    s_fci = g1 / (g1 + sqrt(VPD));
+    s_fci = g1 / (g1 + sqrt(VPD));       /*!!!*/
 
     /* FvCB model */
 
@@ -849,7 +848,7 @@ inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, f
         if(ppfde > 0.1)
             // new v.2.3.0: compute GPP only if enough light is available threshold is arbitrary, but set to be low: in full sunlight ppfd is aroung 700 W/m2, and even at dawn, it is ca 3% of the max value, or 20 W/m2. The minimum threshold is set to 0.1 W/m2
             // Future update: compute slightly more efficiently, using 3-hourly values? This will have to be aligned with climate forcing layers (e.g. NCAR)
-            dailyA+=GPPleaf(ppfde, VPD*daily_vpd[i], T*daily_T[i]);
+            dailyA+=GPPleaf(ppfde, VPD*daily_vpd[i], T*daily_T[i]);         /*!!!*/
         //the 6 lines in comment below corresponds to a finer version in which the multiplier is computed and used every 48 half hour, ie. with the corresponding environment instead of assuming a constant multiplier correponding the one at maximum incoming irradiance
         //float hhA=0;
         //hhA=GPPleaf(PPFD*daily_light[i], VPD*daily_vpd[i], T*daily_T[i]);
@@ -1171,23 +1170,28 @@ void Tree::Fluxh(int h) {
         t_T    = tmax - LookUp_T[intabsorb];
     }
     else {
-        int row0, col0;
+        int row0, col0, row, index;
         row0 = t_site / cols;
         col0 = t_site % cols;
+
+        /* NEW CHANGE: use index to avoid repeated calculation of "col+cols*row+SBORD" inside the loop */
         for(int col = max(0, col0-radius_int); col < min(cols, col0+radius_int+1); col ++) {
-            for(int row = max(0, row0-radius_int); row < min(rows, row0+radius_int+1); row ++) {
+            row = max(0, row0-radius_int);
+            index = col + cols * row + SBORD;
+            for(row; row < min(rows, row0+radius_int+1); row ++) {
                 //loop over the tree crown
                 xx = col0 - col;
                 yy = row0 - row;
                 if(xx*xx + yy*yy <= radius_int*radius_int) {
                     //is the voxel within crown?
                     count ++;
-                    if (h < HEIGHT) absorb = minf(LAI3D[h][col+cols*row+SBORD], 19.5);
+                    if (h < HEIGHT) absorb = minf(LAI3D[h][index], 19.5);         /* NEW CHANGE (for future): replace index with index+col*row */
                     int intabsorb = int(absorb*20.0);
                     t_PPFD += LookUp_flux[intabsorb];
                     t_VPD  += LookUp_VPD[intabsorb];
                     t_T    += tmax - LookUp_T[intabsorb];
                 }
+                index += col;
             }
         }
     }
@@ -2506,7 +2510,9 @@ void UpdateField() {
     int spp = 0;
     
     
-    /* set the iteration environment -- nb: the current structure of code suppose that environment is periodic (a period = a year), if one wants to input a variable climate, with interannual variation and climate change along the simulation, a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
+    /* set the iteration environment -- nb: the current structure of code suppose that environment is periodic (a period = a year),
+     * if one wants to input a variable climate, with interannual variation and climate change along the simulation,
+     * a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
     //CURRENTLY NOT USED: precip, WS, Wmean, e_s, e_a,VPDbasic,VPDday
 
     /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
@@ -2540,8 +2546,8 @@ void UpdateField() {
     int sbsite;
     
     for(haut = 0; haut < (HEIGHT+1); haut++)
-        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)
-            LAI3D[haut][sbsite] = 0.0;
+        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       /*!!!*/
+            LAI3D[haut][sbsite] = 0.0;      /*!!!*/
     
     for(site = 0; site < sites; site++)                                    /* Each tree contributes to LAI3D */
         T[site].CalcLAI();
@@ -2549,8 +2555,8 @@ void UpdateField() {
     for(haut = HEIGHT; haut > 0; haut--){                                 /* LAI is computed by summing LAI from the canopy top to the ground */
         for(site = 0; site < sites; site++){
             sbsite = site + SBORD;
-            LAI3D[haut-1][sbsite] += LAI3D[haut][sbsite];
-            if (LAI3D[haut-1][sbsite] < 0) T[site].OutputTreeStandard();
+            LAI3D[haut-1][sbsite] += LAI3D[haut][sbsite];         /*!!!*/
+            if (LAI3D[haut-1][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!*/
         }
     }
     
@@ -2627,7 +2633,7 @@ void UpdateField() {
             for(spp = 1; spp <= numesp; spp++) {                              /* External seed rain: constant flux from the metacommunity */
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
-                    if(S[spp].s_Seed[site] != 1) {
+                    if(S[spp].s_Seed[site] != 1) {             /*!!!*/
                         S[spp].s_Seed[site] = 1; /* check for optimization */
                     }
                 }
@@ -2783,12 +2789,12 @@ void UpdateTree() {
 
 
         for(site=0;site<sites;site++) {                                     /***** Local germination *****/
-            if(T[site].t_age == 0) {
+            if(T[site].t_age == 0) {         /*!!!*/
                 iii=0;
                 
-                for(spp=1;spp<=numesp;spp++){                               /* lists all the species with a seed present at given site... */
-                    if(S[spp].s_Seed[site]) {
-                        SPECIES_GERM[iii]=spp;
+                for(spp=1;spp<=numesp;spp++){    /*!!!*/                           /* lists all the species with a seed present at given site... */
+                    if(S[spp].s_Seed[site]) {          /*!!!*/
+                        SPECIES_GERM[iii]=spp        /*!!!*/
                         iii++;
                     }
                 }
@@ -2807,7 +2813,7 @@ void UpdateTree() {
                 }
             }
             else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;
+                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         /*!!!*/
             }
         }
     }
