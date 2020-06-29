@@ -1261,7 +1261,7 @@ void Tree::Fluxh(int h) {
                     t_VPD  += LookUp_VPD[intabsorb];
                     t_T    += tmax - LookUp_T[intabsorb];
                 }
-                index += col;
+                index += cols;
             }
         }
     }
@@ -2587,7 +2587,7 @@ void UpdateField() {
      * a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
     //CURRENTLY NOT USED: precip, WS, Wmean, e_s, e_a,VPDbasic,VPDday
 
-    /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
+    /* NEW CHANGE:  */
     int index = iter % iterperyear;
 
     temp = Temperature[index];
@@ -2618,11 +2618,15 @@ void UpdateField() {
     int sbsite;
 
     /* NEW CHANGE: not sure? */
-    /*for(haut = 0; haut < (HEIGHT+1); haut++)
-        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       !!!
-            LAI3D[haut][sbsite] = 0.0;      !!!
-    */
-    fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
+    for(haut = 0; haut < (HEIGHT+1); haut++)
+        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       //!!!
+            LAI3D[haut][sbsite] = 0.0;      //!!!
+
+    //fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
+    /*
+    for (haut = 0; haut < (HEIGHT + 1); ++ haut){
+        fill(&LAI3D[haut][0], &LAI3D[haut][0] + sizeof(LAI3D[haut]), 0.0);
+    }*/
     
     for(site = 0; site < sites; site++)                                    /* Each tree contributes to LAI3D */
         T[site].CalcLAI();
