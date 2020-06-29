@@ -124,10 +124,9 @@ iter,               /* current timestep */
 nbout,              /* nb of outputs */
 freqout;            /* frequency HDF outputs */
 
-// initialise a list storing the site_id that T[site_id].t_age > 0 (trees alive)
-list <int> T_alive;
-// initialise a list storing the species_id that S[species_id].s_seed[site_id] > 0
-//list<int> S_has_seed_on_site[];
+/* initialise an array storing the species_id that S[species_id].s_seed[site_id] > 0
+typedef list<int> L;
+L *site_has_S(0);*/
 
 #ifdef DCELL
 gsl_rng *gslrand;
@@ -551,11 +550,17 @@ void Species::Init(int nesp,fstream& is) {
     for(int dcell=0;dcell<nbdcells;dcell++) s_DCELL[dcell]=0;
     /***  field initialization ***/
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
-    for(site=0;site<sites;site++) s_Seed[site]=0;
+    for(site=0;site<sites;site++) {
+        s_Seed[site]=0;
+        //site_has_S[site].remove(s_id);
+    }
 #else
     /***  field initialization ***/
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
-    for(site=0;site<sites;site++) s_Seed[site]=0;
+    for(site=0;site<sites;site++) {
+        s_Seed[site]=0;
+        //site_has_S[site].remove(s_id);
+    }
 #endif
     
 #ifdef MPI
@@ -594,10 +599,15 @@ void Species::FillSeed(int col, int row) {
         if((row >= 0) && (row < rows)) {
             site=col+cols*row;
             if(_SEEDTRADEOFF){
+                //if (s_Seed[site] == 0) site_has_S[site].push_back(s_id);
                 s_Seed[site]++;                         /* ifdef SEEDTRADEOFF, s_Seed[site] is the number of seeds of this species at that site */
             }
             else{
-                if(s_Seed[site]!=1) s_Seed[site]=1;     /* If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed  */
+                if (s_Seed[site] == 0){
+                    //site_has_S[site].push_back(s_id);
+                    s_Seed[site] = 1;
+                }
+                else if(s_Seed[site]!=1) s_Seed[site]=1;     /* If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed  */
             }
         }
         
@@ -630,7 +640,10 @@ Nearest neighboring stripes are shared. Rque, this version is not valid ifdef SE
 
 void Species::UpdateSeed() {
     int site;
-    for(site=0;site<sites;site++) s_Seed[site]=0;
+    for(site=0;site<sites;site++) {
+        s_Seed[site]=0;
+        //site_has_S[site].remove(s_id);
+    }
 
     for(int dcell=0;dcell<nbdcells;dcell++){ // loop over dcells
         int localseeds=min(s_DCELL[dcell],sites_per_dcell);
@@ -647,6 +660,7 @@ void Species::UpdateSeed() {
         // sample equiprobably all the sites in the dcell
         for(int i=0;i<sites_per_dcell;i++){ // update the s_Seed site
             site=MAP_DCELL[dcell][i];
+            //if (s_Seed[site] == 0 && post_DCELL[i] != 0) site_has_Seed[site].push_back(s_id);
             s_Seed[site] = post_DCELL[i];
             //cerr << "site\t" << site << "\tdcell\t" << dcell << "\tlocal_site\t" << i << "\tpost_DCELL[i]\t" << post_DCELL[i] << "\ts_Seed[site]\t" << s_Seed[site] << endl;
         }
@@ -669,7 +683,7 @@ void Species::UpdateSeed() {
             s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
             s_Seed[site]=0;
-            //s_site_has_seed.remove(site);
+            //site_has_S[site].remove(s_id);
         }
     }
     
@@ -683,7 +697,10 @@ void Species::UpdateSeed() {
             s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
             /* seed bank ages or disappears */
-            if(s_Seed[site]==s_dormDuration) s_Seed[site]=0;   /*!!!*/
+            if(s_Seed[site]==s_dormDuration) {
+                s_Seed[site]=0;   /*!!!*/
+                //site_has_S[site].remove(s_id);
+            }
 
             else if(s_Seed[site]!=0) s_Seed[site]++;      /*!!!*/
             // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
@@ -703,6 +720,7 @@ void Species::AddSeed() {
         if(p_rank){
             if(!s_Seed[site]) {
                 s_Seed[site] = s_Gc[2][site];
+                //site_has_S[site].push_back(s_id);
             }
             if(s_Seed[site]>1)
                 if(s_Gc[2][site]) s_Seed[site] = min(s_Seed[site],s_Gc[2][site]);
@@ -710,6 +728,7 @@ void Species::AddSeed() {
         if(p_rank<size-1){
             if(!s_Seed[site]) {
                 s_Seed[site] = s_Gc[3][site];
+                //_S[site].push_back(s_id);
             }
             if(s_Seed[site]>1)
                 if(s_Gc[3][site]) s_Seed[site] = min(s_Seed[site],s_Gc[3][site]);
@@ -802,7 +821,7 @@ inline float Species::GPPleaf(float PPFD, float VPD, float T) {
 
     /* NEW CHANGE: use s_calculated to check if convT has been calculated before, if so, use previously calculated results */
     /* NEW CHANGE: the new look-up tables are defined within species class */
-    /* NEW CHANGE (for future): KmT, VcmaxT are not required to be defined, insert into eqn directly */
+    /* (FOR FUTURE): KmT, VcmaxT are not required to be defined, insert into eqn directly */
 
     if (s_calculated[convT]){
 
@@ -1035,7 +1054,7 @@ void Tree::Birth(Species *S, int nume, int site0) {
 
     t_age = 1;
     // put this site index into T_alive
-    T_alive.push_back(site0);
+    //T_alive.push_back(site0);
 
     t_hurt = 0;
     t_dbh=(t_s->s_dbh0);
@@ -1086,7 +1105,7 @@ void Tree::BirthFromData(Species *S, int nume, int site0, float dbh_measured) {
 
     t_age = 1;          //value not correct, but generally not problematic, used mainly as diagnostic variable and as indicator of whether tree is alive or not (death itself is independent of age), BUT: use as diagnostic variable cannot be ensured anymore and be careful if conditioning on t_age (e.g. for maturation)
     // put this site index into T_alive
-    T_alive.push_back(site0);
+    //T_alive.push_back(site0);
 
     t_from_Data = 1;    //indicates that tree stems from data (and therefore t_age could not be used, etc.)
     t_hurt = 0;
@@ -1188,7 +1207,7 @@ void Tree::CalcLAI() {
                 }
             }
         }
-        /* NEW CHANGE (for future): LAI3D[][] can times t_dens in the final stage */
+        /* (FOR FUTURE): LAI3D[][] can times t_dens in the final stage */
 
     }
 }
@@ -1236,7 +1255,7 @@ void Tree::Fluxh(int h) {
                 if(xx*xx + yy*yy <= radius_int*radius_int) {
                     //is the voxel within crown?
                     count ++;
-                    if (h < HEIGHT) absorb = minf(LAI3D[h][index], 19.5);         /* NEW CHANGE (for future): replace index with index+col*row */
+                    if (h < HEIGHT) absorb = minf(LAI3D[h][index], 19.5);         /* FOR FUTURE: replace index with index+col*row */
                     int intabsorb = int(absorb*20.0);
                     t_PPFD += LookUp_flux[intabsorb];
                     t_VPD  += LookUp_VPD[intabsorb];
@@ -1253,7 +1272,7 @@ void Tree::Fluxh(int h) {
     t_VPD  *= VPDmax / float(count);
     t_T    /= float(count);
 
-    /* NEW CHANGE (for future): Wmax, VPDmax changes per iteration, can cache Wmax/float(count) */
+    /* (FOR FUTURE): Wmax, VPDmax changes per iteration, can cache Wmax/float(count) */
 }
 
 
@@ -1450,7 +1469,7 @@ void Tree::Death() {
     
     t_age=0;
     // remove this tree index from T_alive
-    T_alive.remove(t_site);
+    //T_alive.remove(t_site);
 
     t_dbh = t_Tree_Height = t_Crown_Radius = t_Crown_Depth= 0.0;
     t_hurt = 0;
@@ -2003,6 +2022,8 @@ void Initialise() {
         cerr<<"!!! Mem_Alloc\n";
         cout<<"!!! Mem_Alloc Species" << endl;
     }
+
+    //site_has_S = new L[sites];
     
     for(ligne=0;ligne<3;ligne++) In.getline(buffer,128,'\n');                           /* Read species parameters (ifstream In) */
     for(sp=1;sp<=numesp;sp++) {
@@ -2594,7 +2615,7 @@ void UpdateField() {
                 LAIc[i][haut][site] = 0;
 #endif
     
-    int sbsite, index;
+    int sbsite;
 
     /* NEW CHANGE: not sure? */
     /*for(haut = 0; haut < (HEIGHT+1); haut++)
@@ -2613,7 +2634,7 @@ void UpdateField() {
         for(site = 0; site < sites; site++){
             LAI3D[index][sbsite] += LAI3D[haut][sbsite];         /*!!!*/
             if (LAI3D[index][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!*/
-            ++ subsite;
+            ++ sbsite;
         }
     }
     
@@ -2681,6 +2702,7 @@ void UpdateField() {
             for(spp=1;spp<=numesp;spp++) {                              /* External seed rain: constant flux from the metacommunity */
                 for(int ii=0;ii<S[spp].s_nbext;ii++){
                     site = genrand2i()%sites;
+                    //if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
                     S[spp].s_Seed[site]++;
                 }
             }
@@ -2692,6 +2714,7 @@ void UpdateField() {
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
                     if(S[spp].s_Seed[site] != 1) {             /*!!!*/
+                        //if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
                         S[spp].s_Seed[site] = 1; /* check for optimization */
                     }
                 }
@@ -2792,8 +2815,8 @@ void UpdateTree() {
             if(flux>(S[selected_species].s_LCP))
                 T[site].Birth(S,selected_species,site);
             /* If enough light, germination, initialization of NPP (LCP is the species light compensation point -- here, light is the sole environmental resources tested as a limiting factor for germination, but we should think about adding nutrients (N,P) and water conditions... */
-            for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;
-            //S[spp].s_site_has_seed.clear();
+            for(spp=1;spp<=numesp;spp++) {S[spp].s_Seed[site]=0;
+            //site_has_S[site].clear();
             
             //}
         }
@@ -2839,39 +2862,46 @@ void UpdateTree() {
     
     else {
 
-        /*for (list<int>::iterator it = T_alive.begin(); it != T_alive.end(); it++){
-            int site = *(it);
-
-
+        /* NEW CHANGE: introduce site_has_S[site] to store all available seeds on this site
+        for (site = 0; site < sites; ++site){
+            if (T[site].t_age == 0){
+                list<int>::iterator it = std::next(site_has_S[site].begin(), rand() % site_has_S[site].size());
+                spp = *it;
+                flux = Wmax*exp(-flor(LAI3D[0][site+SBORD])*klight);
+                if (flux > S[spp].s_LCP) T[site].Birth(S, spp, site);
+            }
+            else{
+                site_has_S[site].clear();
+            }
         }*/
 
 
-        for(site=0;site<sites;site++) {                                     /***** Local germination *****/
-            if(T[site].t_age == 0) {         /*!!!*/
+        for(site=0;site<sites;site++) {                                     // Local germination
+            if(T[site].t_age == 0) {         //!!!
                 iii=0;
                 
-                for(spp=1;spp<=numesp;spp++){    /*!!!*/                           /* lists all the species with a seed present at given site... */
-                    if(S[spp].s_Seed[site]) {          /*!!!*/
-                        SPECIES_GERM[iii]=spp        /*!!!*/
+                for(spp=1;spp<=numesp;spp++){    //!!!                         // lists all the species with a seed present at given site...
+                    if(S[spp].s_Seed[site]) {          //!!!
+                        SPECIES_GERM[iii]=spp;        //!!!
                         iii++;
                     }
                 }
 
-                if(iii) {                                                   /* ... and then randomly select one of these species */
+                if(iii) {                                                   // ... and then randomly select one of these species
 
                     spp = SPECIES_GERM[rand()%iii];
                     
-                    /* otherwise all species with seeds present are equiprobable */
+                    // otherwise all species with seeds present are equiprobable
                     flux = Wmax*exp(-flor(LAI3D[0][site+SBORD])*klight);
                     if(flux>(S[spp].s_LCP)){
-                        /* If enough light, germination, initialization of NPP (LCP is the species light compensation point*/
-                        /* here, light is the sole environmental resources tested as a limiting factor for germination, but we should think about adding nutrients (N,P) and water conditions... */
+                        // If enough light, germination, initialization of NPP (LCP is the species light compensation point
+                        // here, light is the sole environmental resources tested as a limiting factor for germination, but we should think about adding nutrients (N,P) and water conditions...
                         T[site].Birth(S,spp,site);
                     }
                 }
             }
             else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         /*!!!*/
+                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!
             }
         }
     }
