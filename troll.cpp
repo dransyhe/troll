@@ -698,11 +698,11 @@ void Species::UpdateSeed() {
 #endif
             /* seed bank ages or disappears */
             if(s_Seed[site]==s_dormDuration) {
-                s_Seed[site]=0;   /*!!!*/
+                s_Seed[site]=0;   /*!!!!*/
                 //site_has_S[site].remove(s_id);
             }
 
-            else if(s_Seed[site]!=0) s_Seed[site]++;      /*!!!*/
+            else if(s_Seed[site]!=0) s_Seed[site]++;      /*!!!!*/
             // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
         }
     }
@@ -842,7 +842,7 @@ inline float Species::GPPleaf(float PPFD, float VPD, float T) {
 
     }
 
-    s_fci = g1 / (g1 + sqrt(VPD));       /*!!!*/
+    s_fci = g1 / (g1 + sqrt(VPD));       /*!!!!*/
 
     /* FvCB model */
 
@@ -2619,8 +2619,8 @@ void UpdateField() {
 
     /* NEW CHANGE: not sure? */
     for(haut = 0; haut < (HEIGHT+1); haut++)
-        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       //!!!
-            LAI3D[haut][sbsite] = 0.0;      //!!!
+        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       //!!!!
+            LAI3D[haut][sbsite] = 0.0;      //!!!!
 
     //fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
     /*
@@ -2636,8 +2636,8 @@ void UpdateField() {
         sbsite = SBORD;
         index = haut - 1;
         for(site = 0; site < sites; site++){
-            LAI3D[index][sbsite] += LAI3D[haut][sbsite];         /*!!!*/
-            if (LAI3D[index][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!*/
+            LAI3D[index][sbsite] += LAI3D[haut][sbsite];         /*!!!!*/
+            if (LAI3D[index][sbsite] < 0) T[site].OutputTreeStandard();   /*!!!!*/
             ++ sbsite;
         }
     }
@@ -2717,7 +2717,7 @@ void UpdateField() {
             for(spp = 1; spp <= numesp; spp++) {                              /* External seed rain: constant flux from the metacommunity */
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
-                    if(S[spp].s_Seed[site] != 1) {             /*!!!*/
+                    if(S[spp].s_Seed[site] != 1) {             /*!!!!*/
                         //if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
                         S[spp].s_Seed[site] = 1; /* check for optimization */
                     }
@@ -2881,12 +2881,12 @@ void UpdateTree() {
 
 
         for(site=0;site<sites;site++) {                                     // Local germination
-            if(T[site].t_age == 0) {         //!!!
+            if(T[site].t_age == 0) {         //!!!!
                 iii=0;
                 
-                for(spp=1;spp<=numesp;spp++){    //!!!                         // lists all the species with a seed present at given site...
-                    if(S[spp].s_Seed[site]) {          //!!!
-                        SPECIES_GERM[iii]=spp;        //!!!
+                for(spp=1;spp<=numesp;spp++){    //!!!!                         // lists all the species with a seed present at given site...
+                    if(S[spp].s_Seed[site]) {          //!!!!
+                        SPECIES_GERM[iii]=spp;        //!!!!
                         iii++;
                     }
                 }
@@ -2905,7 +2905,7 @@ void UpdateTree() {
                 }
             }
             else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!
+                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!!
             }
         }
     }
