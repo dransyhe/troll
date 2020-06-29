@@ -1,0 +1,863 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 18.61    455.05   455.05                             UpdateField() (troll.cpp:2716 @ 40a0d3)
+ 18.30    902.59   447.54                             UpdateTree() (troll.cpp:2884 @ 40a9a4)
+ 16.03   1294.64   392.05                             Species::UpdateSeed() (troll.cpp:705 @ 40213c)
+  7.38   1475.09   180.45                             Species::UpdateSeed() (troll.cpp:700 @ 4020f7)
+  6.71   1639.14   164.05                             UpdateField() (troll.cpp:2635 @ 409e21)
+  4.58   1751.13   111.99                             UpdateField() (troll.cpp:2636 @ 409e9d)
+  3.77   1843.31    92.19                             UpdateTree() (troll.cpp:2885 @ 40a9d4)
+  3.62   1931.89    88.58                             UpdateTree() (troll.cpp:2880 @ 40a959)
+  2.76   1999.30    67.41                             UpdateTree() (troll.cpp:2883 @ 40a9f1)
+  1.87   2044.93    45.63                             Species::UpdateSeed() (troll.cpp:694 @ 4020eb)
+  1.51   2081.74    36.81                             Species::UpdateSeed() (troll.cpp:694 @ 402179)
+  1.49   2118.28    36.55                             UpdateTree() (troll.cpp:2904 @ 40aae4)
+  1.19   2147.49    29.20                             UpdateField() (troll.cpp:2715 @ 40a0b7)
+  0.99   2171.67    24.18                             Tree::Update() (troll.cpp:1530 @ 4040c6)
+  0.94   2194.54    22.87                             Tree::CalcLAI() (troll.cpp:1159 @ 4029b4)
+  0.85   2215.32    20.78                             Tree::Average() (troll.cpp:1671 @ 4050f1)
+  0.85   2236.05    20.73                             Species::UpdateSeed() (troll.cpp:701 @ 40211c)
+  0.78   2255.17    19.12                             UpdateTree() (troll.cpp:2886 @ 40a9ed)
+  0.56   2268.88    13.71                             UpdateField() (troll.cpp:2634 @ 409ef7)
+  0.50   2280.99    12.11                             UpdateField() (troll.cpp:2683 @ 409f21)
+  0.49   2292.99    12.00                             UpdateTreefall() (troll.cpp:2944 @ 40ac8f)
+  0.47   2304.37    11.38                             UpdateTreefall() (troll.cpp:2956 @ 40ad00)
+  0.32   2312.24     7.87                             genrand2i() (troll.cpp:3492 @ 40d77f)
+  0.28   2319.07     6.84                             genrand2i() (troll.cpp:3503 @ 40d855)
+  0.27   2325.75     6.68                             UpdateTree() (troll.cpp:2896 @ 40aa85)
+  0.26   2332.02     6.27                             UpdateTree() (troll.cpp:2892 @ 40aa0a)
+  0.22   2337.40     5.39                             UpdateTree() (troll.cpp:2895 @ 40aa2a)
+  0.21   2342.51     5.11                             genrand2i() (troll.cpp:3504 @ 40d866)
+  0.19   2347.24     4.72                             genrand2i() (troll.cpp:3502 @ 40d844)
+  0.19   2351.84     4.61                             genrand2i() (troll.cpp:3500 @ 40d81b)
+  0.18   2356.15     4.31                             genrand2i() (troll.cpp:3501 @ 40d838)
+  0.17   2360.30     4.15                             UpdateField() (troll.cpp:2718 @ 40a104)
+  0.16   2364.30     4.00                             genrand2i() (troll.cpp:3488 @ 40d704)
+  0.16   2368.15     3.85                             UpdateField() (troll.cpp:2714 @ 40a134)
+  0.15   2371.90     3.75                             genrand2i() (troll.cpp:3491 @ 40d74e)
+  0.14   2375.37     3.47                             UpdateField() (troll.cpp:2637 @ 409ef3)
+  0.14   2378.82     3.46                             Species::GPPleaf(float, float, float) (troll.cpp:853 @ 40e2be)
+  0.12   2381.73     2.91                             Tree::Fluxh(int) (troll.cpp:1258 @ 40301f)
+  0.12   2384.62     2.89 504078704     5.72     5.72  genrand2i() (troll.cpp:3475 @ 40d695)
+  0.11   2387.39     2.77                             genrand2i() (troll.cpp:3506 @ 40d872)
+  0.10   2389.92     2.54                             genrand2i() (troll.cpp:3487 @ 40d6d3)
+  0.10   2392.32     2.40                             UpdateTreefall() (troll.cpp:2937 @ 40ac07)
+  0.09   2394.58     2.26 951897823     2.37     2.37  std::exp(float) (cmath:242 @ 40da5e)
+  0.09   2396.78     2.20 551557108     3.99     3.99  std::sqrt(float) (cmath:483 @ 40db2e)
+  0.08   2398.74     1.96                             UpdateField() (troll.cpp:2634 @ 409e15)
+  0.08   2400.64     1.90                             UpdateTree() (troll.cpp:2883 @ 40a99b)
+  0.06   2402.16     1.53                             genrand2i() (troll.cpp:3507 @ 40d876)
+  0.06   2403.68     1.52                             Average() (troll.cpp:2999 @ 40b024)
+  0.06   2405.11     1.43                             Species::GPPleaf(float, float, float) (troll.cpp:845 @ 40e210)
+  0.05   2406.45     1.34                             UpdateField() (troll.cpp:2714 @ 40a0ab)
+  0.05   2407.68     1.23 960000000     1.28     1.28  Tree::Update() (troll.cpp:1526 @ 4040ae)
+  0.05   2408.85     1.17                             sgenrand2i(unsigned long) (troll.cpp:3470 @ 40d677)
+  0.05   2410.01     1.17                             sgenrand2i(unsigned long) (troll.cpp:3472 @ 40d693)
+  0.04   2411.04     1.03                             genrand2i() (troll.cpp:3480 @ 40d6a2)
+  0.04   2412.02     0.98                             Tree::Fluxh(int) (troll.cpp:1260 @ 40308b)
+  0.04   2412.99     0.97                             Tree::CalcLAI() (troll.cpp:1204 @ 402d46)
+  0.04   2413.94     0.95                             UpdateTree() (troll.cpp:2916 @ 40ab7f)
+  0.04   2414.85     0.92                             genrand2i() (troll.cpp:3497 @ 40d811)
+  0.04   2415.76     0.91                             Species::GPPleaf(float, float, float) (troll.cpp:851 @ 40e272)
+  0.04   2416.63     0.88 960000000     0.91     0.91  Tree::CalcLAI() (troll.cpp:1158 @ 4029a2)
+  0.03   2417.46     0.83                             Tree::Fluxh(int) (troll.cpp:1259 @ 403070)
+  0.03   2418.26     0.80                             UpdateField() (troll.cpp:2628 @ 409dc0)
+  0.03   2419.05     0.79                             genrand2i() (troll.cpp:3490 @ 40d7ba)
+  0.03   2419.83     0.78                             UpdateTreefall() (troll.cpp:2938 @ 40ac43)
+  0.03   2420.50     0.67                             Species::GPPleaf(float, float, float) (troll.cpp:817 @ 40e004)
+  0.02   2421.09     0.59                             minf(float, float) (troll.cpp:345 @ 40dbf0)
+  0.02   2421.67     0.59                             flor(float) (troll.cpp:333 @ 40db83)
+  0.02   2422.24     0.57                             Species::GPPleaf(float, float, float) (troll.cpp:828 @ 40e04b)
+  0.02   2422.79     0.55                             Tree::Update() (troll.cpp:1567 @ 404773)
+  0.02   2423.33     0.54                             Tree::Fluxh(int) (troll.cpp:1255 @ 402ffa)
+  0.02   2423.85     0.52 962079058     0.54     0.54  flor(float) (troll.cpp:332 @ 40db71)
+  0.02   2424.32     0.48                             genrand2i() (troll.cpp:3490 @ 40d74c)
+  0.02   2424.79     0.47                             Tree::Average() (troll.cpp:1684 @ 4054b3)
+  0.02   2425.25     0.46                             Tree::Fluxh(int) (troll.cpp:1251 @ 403127)
+  0.02   2425.71     0.46                             Tree::CalcLAI() (troll.cpp:1200 @ 402c68)
+  0.02   2426.14     0.43                             flor(float) (troll.cpp:335 @ 40db9b)
+  0.02   2426.57     0.43                             minf(float, float) (troll.cpp:347 @ 40dc03)
+  0.02   2426.99     0.42                             Species::GPPleaf(float, float, float) (troll.cpp:826 @ 40e036)
+  0.02   2427.39     0.40                             genrand2i() (troll.cpp:3486 @ 40d73f)
+  0.02   2427.77     0.39                             Tree::CalcLAI() (troll.cpp:1201 @ 402cca)
+  0.02   2428.15     0.38 522176960     0.73     0.73  min(int, int) (troll.cpp:348 @ 40dc0d)
+  0.02   2428.52     0.37                             UpdateTreefall() (troll.cpp:2936 @ 40abfe)
+  0.01   2428.87     0.35                             UpdateField() (troll.cpp:2627 @ 409de6)
+  0.01   2429.21     0.34                             Species::GPPleaf(float, float, float) (troll.cpp:829 @ 40e073)
+  0.01   2429.53     0.32 960000000     0.33     0.33  Tree::Average() (troll.cpp:1670 @ 4050e0)
+  0.01   2429.85     0.32                             UpdateTreefall() (troll.cpp:2943 @ 40ace8)
+  0.01   2430.17     0.32                             Tree::CalcLAI() (troll.cpp:1194 @ 402dde)
+  0.01   2430.49     0.32                             Tree::CalcLAI() (troll.cpp:1213 @ 402e0a)
+  0.01   2430.80     0.31                             UpdateTree() (troll.cpp:2914 @ 40ab76)
+  0.01   2431.10     0.30                             UpdateTree() (troll.cpp:2879 @ 40a94d)
+  0.01   2431.40     0.30                             Tree::Fluxh(int) (troll.cpp:1261 @ 4030b9)
+  0.01   2431.69     0.29                             Tree::DisperseSeed() (troll.cpp:1517 @ 4040a6)
+  0.01   2431.96     0.27 464020018     0.58     0.58  minf(float, float) (troll.cpp:344 @ 40dbd9)
+  0.01   2432.22     0.27                             Species::GPPleaf(float, float, float) (troll.cpp:855 @ 40e343)
+  0.01   2432.48     0.26                             Species::GPPleaf(float, float, float) (troll.cpp:830 @ 40e08b)
+  0.01   2432.74     0.26                             Tree::BirthFromData(Species*, int, int, float) (troll.cpp:1145 @ 40299f)
+  0.01   2433.00     0.26                             Tree::Couple() (troll.cpp:1662 @ 4050d9)
+  0.01   2433.25     0.25                             UpdateTreefall() (troll.cpp:2954 @ 40ad77)
+  0.01   2433.50     0.25                             genrand2i() (troll.cpp:3486 @ 40d6ca)
+  0.01   2433.74     0.24                             UpdateTree() (troll.cpp:2914 @ 40aba5)
+  0.01   2433.98     0.24 275778354     0.87     0.87  Species::GPPleaf(float, float, float) (troll.cpp:807 @ 40dfd0)
+  0.01   2434.22     0.24                             UpdateTree() (troll.cpp:2879 @ 40ab2c)
+  0.01   2434.46     0.24                             UpdateTreefall() (troll.cpp:2957 @ 40ad33)
+  0.01   2434.70     0.24                             min(int, int) (troll.cpp:349 @ 40dc20)
+  0.01   2434.94     0.24                             min(int, int) (troll.cpp:350 @ 40dc2d)
+  0.01   2435.18     0.24                             Tree::Fluxh(int) (troll.cpp:1262 @ 4030e7)
+  0.01   2435.41     0.24                             UpdateTree() (troll.cpp:2881 @ 40a994)
+  0.01   2435.64     0.23                             UpdateTree() (troll.cpp:2890 @ 40aa00)
+  0.01   2435.86     0.22                             Tree::Update() (troll.cpp:1564 @ 404767)
+  0.01   2436.08     0.22                             Tree::Fluxh(int) (troll.cpp:1253 @ 402fe0)
+  0.01   2436.28     0.20                             UpdateTreefall() (troll.cpp:2943 @ 40ac86)
+  0.01   2436.46     0.19                             Tree::Update() (troll.cpp:1535 @ 404168)
+  0.01   2436.64     0.18                             UpdateField() (troll.cpp:2682 @ 409f7a)
+  0.01   2436.82     0.18                             genrand2() (troll.cpp:3457 @ 40d5db)
+  0.01   2437.00     0.18                             Species::DeathRate(float, float, int) (troll.cpp:779 @ 40de89)
+  0.01   2437.18     0.18                             UpdateField() (troll.cpp:2684 @ 409f54)
+  0.01   2437.35     0.18                             Species::GPPleaf(float, float, float) (troll.cpp:818 @ 40e01d)
+  0.01   2437.52     0.17                             UpdateTree() (troll.cpp:2922 @ 40abb4)
+  0.01   2437.69     0.17                             Tree::Fluxh(int) (troll.cpp:1264 @ 403121)
+  0.01   2437.86     0.17                             Species::FillSeed(int, int) (troll.cpp:606 @ 402017)
+  0.01   2438.03     0.17                             Tree::Average() (troll.cpp:1677 @ 4051f6)
+  0.01   2438.19     0.16                             Species::GPPleaf(float, float, float) (troll.cpp:815 @ 40dff0)
+  0.01   2438.33     0.14                             Tree::Fluxh(int) (troll.cpp:1272 @ 4031a9)
+  0.01   2438.46     0.13  2605184    49.91    49.91  std::sin(float) (cmath:445 @ 40dafa)
+  0.01   2438.59     0.13                             Average() (troll.cpp:2992 @ 40aeec)
+  0.01   2438.72     0.13                             Tree::CalcLAI() (troll.cpp:1195 @ 402db2)
+  0.01   2438.84     0.13  2606346    47.97    47.97  std::cos(float) (cmath:204 @ 40da2a)
+  0.01   2438.97     0.13                             Tree::Fluxh(int) (troll.cpp:1271 @ 40317f)
+  0.00   2439.09     0.12                             OutputField() (troll.cpp:3175 @ 40c306)
+  0.00   2439.20     0.12                             max(int, int) (troll.cpp:353 @ 40dc45)
+  0.00   2439.32     0.12                             Tree::Fluxh(int) (troll.cpp:1273 @ 4031d3)
+  0.00   2439.43     0.12                             Tree::CalcLAI() (troll.cpp:1198 @ 402c2b)
+  0.00   2439.55     0.12                             Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:561 @ 401f5c)
+  0.00   2439.66     0.11                             Tree::Fluxh(int) (troll.cpp:1249 @ 402fa6)
+  0.00   2439.77     0.11                             Species::DeathRate(float, float, int) (troll.cpp:789 @ 40dfc6)
+  0.00   2439.87     0.10                             UpdateField() (troll.cpp:2682 @ 409f18)
+  0.00   2439.97     0.10                             UpdateTreefall() (troll.cpp:2945 @ 40acc2)
+  0.00   2440.07     0.10                             Average() (troll.cpp:2985 @ 40ae26)
+  0.00   2440.17     0.10                             Tree::Fluxh(int) (troll.cpp:1235 @ 402e7f)
+  0.00   2440.27     0.10                             Tree::Fluxh(int) (troll.cpp:1248 @ 403153)
+  0.00   2440.36     0.10                             UpdateTreefall() (troll.cpp:2954 @ 40acf7)
+  0.00   2440.46     0.10                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:881 @ 40e687)
+  0.00   2440.55     0.09                             Tree::Growth() (troll.cpp:1323 @ 4033b3)
+  0.00   2440.64     0.09                             Tree::Growth() (troll.cpp:1349 @ 403621)
+  0.00   2440.73     0.09                             Species::GPPleaf(float, float, float) (troll.cpp:850 @ 40e263)
+  0.00   2440.81     0.08                             maxf(float, float) (troll.cpp:343 @ 40dbcf)
+  0.00   2440.89     0.08                             Tree::Fluxh(int) (troll.cpp:1251 @ 402fdb)
+  0.00   2440.97     0.08                             Tree::CalcLAI() (troll.cpp:1203 @ 402da3)
+  0.00   2441.05     0.08                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:942 @ 40ef58)
+  0.00   2441.12     0.08                             Tree::Fluxh(int) (troll.cpp:1254 @ 402fed)
+  0.00   2441.19     0.07                             Tree::Fluxh(int) (troll.cpp:1250 @ 402fbf)
+  0.00   2441.26     0.07                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:869 @ 40e3ff)
+  0.00   2441.33     0.07                             Tree::Fluxh(int) (troll.cpp:1257 @ 40301b)
+  0.00   2441.40     0.07                             Tree::CalcLAI() (troll.cpp:1184 @ 402acb)
+  0.00   2441.47     0.07                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:895 @ 40e97b)
+  0.00   2441.54     0.07                             Tree::Growth() (troll.cpp:1351 @ 40365e)
+  0.00   2441.61     0.07                             Tree::FallTree() (troll.cpp:1581 @ 404798)
+  0.00   2441.67     0.06                             Tree::Fluxh(int) (troll.cpp:1244 @ 402f62)
+  0.00   2441.73     0.06                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:897 @ 40e9e7)
+  0.00   2441.79     0.06                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:913 @ 40ed47)
+  0.00   2441.85     0.06 87402234     0.69     0.69  max(int, int) (troll.cpp:352 @ 40dc32)
+  0.00   2441.91     0.06                             Average() (troll.cpp:3004 @ 40b0aa)
+  0.00   2441.97     0.06                             Average() (troll.cpp:3026 @ 40b3c2)
+  0.00   2442.03     0.06                             Tree::DisperseSeed() (troll.cpp:1497 @ 403e84)
+  0.00   2442.09     0.06                             Tree::Average() (troll.cpp:1680 @ 4052f4)
+  0.00   2442.15     0.06                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:883 @ 40e6f3)
+  0.00   2442.20     0.05                             minf(float, float) (troll.cpp:346 @ 40dc00)
+  0.00   2442.25     0.05                             Average() (troll.cpp:2984 @ 40ae4f)
+  0.00   2442.30     0.05                             genrand2() (troll.cpp:3459 @ 40d615)
+  0.00   2442.35     0.05                             Tree::Growth() (troll.cpp:1328 @ 403486)
+  0.00   2442.40     0.05                             Tree::CalcLAI() (troll.cpp:1199 @ 402c4c)
+  0.00   2442.45     0.05                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:867 @ 40e393)
+  0.00   2442.50     0.05                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:887 @ 40e7cb)
+  0.00   2442.55     0.05                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:907 @ 40ec03)
+  0.00   2442.60     0.05                             Tree::Growth() (troll.cpp:1321 @ 403451)
+  0.00   2442.64     0.05                             Tree::Growth() (troll.cpp:1347 @ 403594)
+  0.00   2442.68     0.04                             AllocMem() (troll.cpp:2492 @ 409a63)
+  0.00   2442.72     0.04                             genrand2() (troll.cpp:3452 @ 40d5a1)
+  0.00   2442.76     0.04                             genrand2() (troll.cpp:3453 @ 40d5ad)
+  0.00   2442.80     0.04                             genrand2() (troll.cpp:3455 @ 40d5cf)
+  0.00   2442.84     0.04                             Tree::UpdateTreeBiometry() (troll.cpp:1430 @ 403aae)
+  0.00   2442.88     0.04                             Tree::UpdateTreeBiometry() (troll.cpp:1437 @ 403b75)
+  0.00   2442.92     0.04                             Tree::UpdateTreeBiometry() (troll.cpp:1448 @ 403c5e)
+  0.00   2442.96     0.04                             Tree::Fluxh(int) (troll.cpp:1237 @ 402edb)
+  0.00   2443.00     0.04                             Tree::Fluxh(int) (troll.cpp:1248 @ 402f88)
+  0.00   2443.04     0.04                             Tree::CalcLAI() (troll.cpp:1170 @ 4029d9)
+  0.00   2443.08     0.04                             Tree::histdbh() (troll.cpp:1690 @ 405519)
+  0.00   2443.12     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:875 @ 40e543)
+  0.00   2443.16     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:889 @ 40e837)
+  0.00   2443.20     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:901 @ 40eabf)
+  0.00   2443.24     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:905 @ 40eb97)
+  0.00   2443.28     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:909 @ 40ec6f)
+  0.00   2443.32     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:911 @ 40ecdb)
+  0.00   2443.36     0.04                             max(int, int) (troll.cpp:354 @ 40dc52)
+  0.00   2443.39     0.04                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:893 @ 40e90f)
+  0.00   2443.42     0.03                             UpdateTreefall() (troll.cpp:2936 @ 40ac63)
+  0.00   2443.45     0.03                             genrand2() (troll.cpp:3439 @ 40d46d)
+  0.00   2443.48     0.03                             Tree::UpdateLeafDynamics() (troll.cpp:1400 @ 403863)
+  0.00   2443.51     0.03                             Tree::UpdateLeafDynamics() (troll.cpp:1420 @ 4039f2)
+  0.00   2443.54     0.03                             Tree::UpdateTreeBiometry() (troll.cpp:1456 @ 403d29)
+  0.00   2443.57     0.03                             Tree::Growth() (troll.cpp:1354 @ 4036c3)
+  0.00   2443.60     0.03                             Tree::Average() (troll.cpp:1676 @ 4051aa)
+  0.00   2443.63     0.03                             Tree::Average() (troll.cpp:1679 @ 4052a1)
+  0.00   2443.66     0.03                             Tree::Average() (troll.cpp:1681 @ 4053ba)
+  0.00   2443.69     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:877 @ 40e5af)
+  0.00   2443.72     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:879 @ 40e61b)
+  0.00   2443.75     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:885 @ 40e75f)
+  0.00   2443.78     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:903 @ 40eb2b)
+  0.00   2443.81     0.03                             Average() (troll.cpp:3074 @ 40ba5c)
+  0.00   2443.84     0.03                             Tree::Death() (troll.cpp:1480 @ 403e2b)
+  0.00   2443.87     0.03                             Tree::CalcLAI() (troll.cpp:1192 @ 402bac)
+  0.00   2443.90     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:945 @ 40efa6)
+  0.00   2443.93     0.03  8318077     3.01     3.01  Species::DeathRate(float, float, int) (troll.cpp:776 @ 40de62)
+  0.00   2443.95     0.03                             Average() (troll.cpp:3065 @ 40b8fd)
+  0.00   2443.98     0.03                             Tree::Fluxh(int) (troll.cpp:1233 @ 402e6e)
+  0.00   2444.00     0.03                             Tree::Growth() (troll.cpp:1348 @ 4035e9)
+  0.00   2444.03     0.03                             Tree::CalcLAI() (troll.cpp:1169 @ 4029c9)
+  0.00   2444.05     0.03                             Tree::FallTree() (troll.cpp:1621 @ 404d77)
+  0.00   2444.08     0.03                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:899 @ 40ea53)
+  0.00   2444.10     0.02                             min(int, int) (troll.cpp:351 @ 40dc30)
+  0.00   2444.12     0.02                             genrand2() (troll.cpp:3443 @ 40d4e8)
+  0.00   2444.14     0.02                             genrand2() (troll.cpp:3451 @ 40d584)
+  0.00   2444.16     0.02                             genrand2() (troll.cpp:3454 @ 40d5be)
+  0.00   2444.18     0.02                             Tree::UpdateLeafDynamics() (troll.cpp:1405 @ 4038c2)
+  0.00   2444.20     0.02                             Tree::UpdateLeafDynamics() (troll.cpp:1421 @ 403a76)
+  0.00   2444.22     0.02                             Tree::UpdateTreeBiometry() (troll.cpp:1451 @ 403ca1)
+  0.00   2444.24     0.02                             Tree::UpdateTreeBiometry() (troll.cpp:1452 @ 403cf1)
+  0.00   2444.26     0.02                             Tree::Birth(Species*, int, int) (troll.cpp:1062 @ 402234)
+  0.00   2444.28     0.02                             Tree::Fluxh(int) (troll.cpp:1231 @ 402e5e)
+  0.00   2444.30     0.02                             Tree::Fluxh(int) (troll.cpp:1238 @ 402ef6)
+  0.00   2444.32     0.02                             Tree::Growth() (troll.cpp:1318 @ 403364)
+  0.00   2444.34     0.02                             Tree::Growth() (troll.cpp:1322 @ 4033a2)
+  0.00   2444.36     0.02                             Tree::Growth() (troll.cpp:1324 @ 403427)
+  0.00   2444.38     0.02                             Tree::Growth() (troll.cpp:1342 @ 403527)
+  0.00   2444.40     0.02                             Tree::Average() (troll.cpp:1678 @ 40524e)
+  0.00   2444.42     0.02                             Tree::Average() (troll.cpp:1683 @ 405460)
+  0.00   2444.44     0.02                             Tree::CalcLAI() (troll.cpp:1179 @ 402a56)
+  0.00   2444.46     0.02                             Tree::CalcLAI() (troll.cpp:1178 @ 402b61)
+  0.00   2444.48     0.02                             Tree::CalcLAI() (troll.cpp:1197 @ 402c1e)
+  0.00   2444.50     0.02                             Tree::FallTree() (troll.cpp:1612 @ 404a40)
+  0.00   2444.52     0.02                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:873 @ 40e4d7)
+  0.00   2444.54     0.02                             Species::DeathRate(float, float, int) (troll.cpp:781 @ 40deb5)
+  0.00   2444.55     0.02 17584390     0.85     0.85  Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:862 @ 40e34e)
+  0.00   2444.57     0.02                             Tree::Fluxh(int) (troll.cpp:1229 @ 402e44)
+  0.00   2444.58     0.02                             Tree::Fluxh(int) (troll.cpp:1234 @ 402e78)
+  0.00   2444.60     0.02                             Tree::Fluxh(int) (troll.cpp:1239 @ 402f13)
+  0.00   2444.61     0.02                             Tree::Fluxh(int) (troll.cpp:1240 @ 402f30)
+  0.00   2444.63     0.02                             Tree::Growth() (troll.cpp:1327 @ 403461)
+  0.00   2444.64     0.02                             Tree::Average() (troll.cpp:1672 @ 405106)
+  0.00   2444.66     0.02                             Tree::CalcLAI() (troll.cpp:1195 @ 402bf3)
+  0.00   2444.67     0.02                             Species::UpdateSeed() (troll.cpp:709 @ 40218c)
+  0.00   2444.68     0.01 29989208     0.33     0.33  genrand2() (troll.cpp:3426 @ 40d3fe)
+  0.00   2444.69     0.01 17584390     0.57     0.57  Tree::Fluxh(int) (troll.cpp:1224 @ 402e12)
+  0.00   2444.70     0.01  8103360     1.23     1.23  Tree::UpdateLeafDynamics() (troll.cpp:1394 @ 403852)
+  0.00   2444.71     0.01  2504880     3.99     3.99  Species::FillSeed(int, int) (troll.cpp:596 @ 401f98)
+  0.00   2444.72     0.01                             OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:3210 @ 40c521)
+  0.00   2444.73     0.01                             Average() (troll.cpp:3010 @ 40b191)
+  0.00   2444.74     0.01                             Average() (troll.cpp:3018 @ 40b2ba)
+  0.00   2444.75     0.01                             Average() (troll.cpp:3031 @ 40b4a2)
+  0.00   2444.76     0.01                             Average() (troll.cpp:3049 @ 40b780)
+  0.00   2444.77     0.01                             Average() (troll.cpp:3059 @ 40b813)
+  0.00   2444.78     0.01                             Average() (troll.cpp:3068 @ 40b972)
+  0.00   2444.79     0.01                             AllocMem() (troll.cpp:2491 @ 409a8f)
+  0.00   2444.80     0.01                             genrand2() (troll.cpp:3438 @ 40d43c)
+  0.00   2444.81     0.01                             genrand2i() (troll.cpp:3484 @ 40d6c0)
+  0.00   2444.82     0.01                             genrand2i() (troll.cpp:3494 @ 40d7c7)
+  0.00   2444.83     0.01                             genrand2i() (troll.cpp:3495 @ 40d7e7)
+  0.00   2444.84     0.01                             sgenrand2(unsigned long) (troll.cpp:3419 @ 40d3e0)
+  0.00   2444.85     0.01                             Tree::DisperseSeed() (troll.cpp:1509 @ 403f75)
+  0.00   2444.86     0.01                             Tree::DisperseSeed() (troll.cpp:1512 @ 40407b)
+  0.00   2444.87     0.01                             Tree::DisperseSeed() (troll.cpp:1507 @ 404096)
+  0.00   2444.88     0.01                             Tree::UpdateLeafDynamics() (troll.cpp:1409 @ 4038eb)
+  0.00   2444.89     0.01                             Tree::UpdateLeafDynamics() (troll.cpp:1413 @ 403975)
+  0.00   2444.90     0.01                             Tree::UpdateLeafDynamics() (troll.cpp:1418 @ 4039c9)
+  0.00   2444.91     0.01                             Tree::UpdateTreeBiometry() (troll.cpp:1442 @ 403c3f)
+  0.00   2444.92     0.01                             Tree::Birth(Species*, int, int) (troll.cpp:1076 @ 4023d0)
+  0.00   2444.93     0.01                             Tree::Fluxh(int) (troll.cpp:1227 @ 402e2e)
+  0.00   2444.94     0.01                             Tree::Fluxh(int) (troll.cpp:1230 @ 402e51)
+  0.00   2444.95     0.01                             Tree::Fluxh(int) (troll.cpp:1245 @ 402f75)
+  0.00   2444.96     0.01                             Tree::Growth() (troll.cpp:1290 @ 403230)
+  0.00   2444.97     0.01                             Tree::Growth() (troll.cpp:1295 @ 403256)
+  0.00   2444.98     0.01                             Tree::Growth() (troll.cpp:1305 @ 40327d)
+  0.00   2444.99     0.01                             Tree::Growth() (troll.cpp:1319 @ 403384)
+  0.00   2445.00     0.01                             Tree::Growth() (troll.cpp:1321 @ 403397)
+  0.00   2445.01     0.01                             Tree::Growth() (troll.cpp:1329 @ 40349d)
+  0.00   2445.02     0.01                             Tree::Growth() (troll.cpp:1336 @ 4034b4)
+  0.00   2445.03     0.01                             Tree::Growth() (troll.cpp:1338 @ 403507)
+  0.00   2445.04     0.01                             Tree::Growth() (troll.cpp:1345 @ 40355e)
+  0.00   2445.05     0.01                             Tree::Growth() (troll.cpp:1346 @ 403579)
+  0.00   2445.06     0.01                             Tree::Growth() (troll.cpp:1385 @ 403830)
+  0.00   2445.07     0.01                             Tree::Update() (troll.cpp:1532 @ 4040e3)
+  0.00   2445.08     0.01                             Tree::Update() (troll.cpp:1537 @ 4041bc)
+  0.00   2445.09     0.01                             Tree::Update() (troll.cpp:1551 @ 404463)
+  0.00   2445.10     0.01                             Tree::Average() (troll.cpp:1682 @ 40540d)
+  0.00   2445.11     0.01                             Tree::CalcLAI() (troll.cpp:1172 @ 4029ff)
+  0.00   2445.12     0.01                             Tree::CalcLAI() (troll.cpp:1173 @ 402a1c)
+  0.00   2445.13     0.01                             Tree::CalcLAI() (troll.cpp:1180 @ 402a74)
+  0.00   2445.14     0.01                             Tree::CalcLAI() (troll.cpp:1181 @ 402a81)
+  0.00   2445.15     0.01                             Tree::CalcLAI() (troll.cpp:1179 @ 402b35)
+  0.00   2445.16     0.01                             Tree::CalcLAI() (troll.cpp:1194 @ 402bd5)
+  0.00   2445.17     0.01                             Tree::CalcLAI() (troll.cpp:1203 @ 402d3b)
+  0.00   2445.18     0.01                             Tree::Tree() (troll.cpp:997 @ 40efcc)
+  0.00   2445.19     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:866 @ 40e381)
+  0.00   2445.20     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:870 @ 40e459)
+  0.00   2445.21     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:871 @ 40e46b)
+  0.00   2445.22     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:891 @ 40e8a3)
+  0.00   2445.23     0.01                             Species::GPPleaf(float, float, float) (troll.cpp:849 @ 40e251)
+  0.00   2445.24     0.01                             Species::FillSeed(int, int) (troll.cpp:610 @ 402055)
+  0.00   2445.25     0.01  8100272     0.62     0.62  __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40f1dc)
+  0.00   2445.25     0.01                             UpdateField() (troll.cpp:2627 @ 409db7)
+  0.00   2445.26     0.01                             Average() (troll.cpp:3066 @ 40b950)
+  0.00   2445.26     0.01                             Tree::Fluxh(int) (troll.cpp:1228 @ 402e37)
+  0.00   2445.27     0.01                             Tree::Fluxh(int) (troll.cpp:1276 @ 4031f1)
+  0.00   2445.27     0.01                             Tree::Update() (troll.cpp:1533 @ 4040ee)
+  0.00   2445.28     0.01                             Tree::CalcLAI() (troll.cpp:1196 @ 402c11)
+  0.00   2445.28     0.01                             Tree::CalcLAI() (troll.cpp:1202 @ 402d2c)
+  0.00   2445.29     0.01                             Tree::FallTree() (troll.cpp:1618 @ 404d6b)
+  0.00   2445.29     0.01                             Species::DeathRateNDD(float, float, int, float) (troll.cpp:772 @ 40de58)
+  0.00   2445.30     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:880 @ 40e675)
+  0.00   2445.30     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:892 @ 40e8fd)
+  0.00   2445.31     0.01                             Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:898 @ 40ea41)
+  0.00   2445.31     0.01                             Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:560 @ 401f53)
+  0.00   2445.32     0.01                             __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:437 @ 40f1f3)
+  0.00   2445.32     0.01                             std::atan2(float, float) (cmath:164 @ 40d9e6)
+  0.00   2445.32     0.00  8103360     0.00     0.00  Tree::Growth() (troll.cpp:1284 @ 4031f8)
+  0.00   2445.32     0.00  8103360     0.00     0.33  Tree::FallTree() (troll.cpp:1576 @ 404780)
+  0.00   2445.32     0.00  8100085     0.00     0.00  Tree::DisperseSeed() (troll.cpp:1492 @ 403e72)
+  0.00   2445.32     0.00  4546182     0.00     0.00  Tree::UpdateTreeBiometry() (troll.cpp:1425 @ 403a90)
+  0.00   2445.32     0.00   978000     0.00     0.00  Species::UpdateSeed() (troll.cpp:675 @ 402094)
+  0.00   2445.32     0.00   640000     0.00     0.00  Tree::histdbh() (troll.cpp:1689 @ 405508)
+  0.00   2445.32     0.00   217992     0.00     0.00  Tree::Birth(Species*, int, int) (troll.cpp:1048 @ 40218e)
+  0.00   2445.32     0.00   217805     0.00     0.00  Tree::Death() (troll.cpp:1468 @ 403d96)
+  0.00   2445.32     0.00   160000     0.00     0.00  Tree::Tree() (troll.cpp:996 @ 40efb0)
+  0.00   2445.32     0.00   160000     0.00     0.00  Tree::~Tree() (troll.cpp:1013 @ 40f0d8)
+  0.00   2445.32     0.00    12000     0.00     0.00  std::_Iter_base<float*, false>::_S_base(float*) (stl_iterator_base_types.h:212 @ 40f315)
+  0.00   2445.32     0.00    12000     0.00     0.00  std::_Niter_base<float*>::iterator_type std::__niter_base<float*>(float*) (stl_algobase.h:277 @ 40f2ae)
+  0.00   2445.32     0.00     6000     0.00     0.00  UpdateTree() (troll.cpp:2774 @ 40a55b)
+  0.00   2445.32     0.00     6000     0.00     0.00  OutputField() (troll.cpp:3160 @ 40c230)
+  0.00   2445.32     0.00     6000     0.00     0.00  UpdateField() (troll.cpp:2579 @ 409bed)
+  0.00   2445.32     0.00     6000     0.00     0.00  UpdateTreefall() (troll.cpp:2933 @ 40abf1)
+  0.00   2445.32     0.00     6000     0.00     0.00  Average() (troll.cpp:2977 @ 40ad8c)
+  0.00   2445.32     0.00     6000     0.00     0.00  Evolution() (troll.cpp:2564 @ 409bbe)
+  0.00   2445.32     0.00     6000     0.00     0.00  void std::fill<float*, double>(float*, float*, double const&) (stl_algobase.h:721 @ 40f221)
+  0.00   2445.32     0.00     6000     0.00     0.00  __gnu_cxx::__enable_if<std::__is_scalar<double>::__value, void>::__type std::__fill_a<float*, double>(float*, float*, double const&) (stl_algobase.h:688 @ 40f2cd)
+  0.00   2445.32     0.00      815     0.00     0.00  std::log10(float) (cmath:377 @ 40dac6)
+  0.00   2445.32     0.00      726     0.00     0.00  maxf(float, float) (troll.cpp:340 @ 40dba5)
+  0.00   2445.32     0.00      326     0.00     0.00  __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40f193)
+  0.00   2445.32     0.00      164     0.00     0.00  Species::Species() (troll.cpp:428 @ 40dc84)
+  0.00   2445.32     0.00      164     0.00     0.00  Species::~Species() (troll.cpp:436 @ 40dcbc)
+  0.00   2445.32     0.00      163     0.00     0.00  Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:466 @ 4016de)
+  0.00   2445.32     0.00      163     0.00     0.00  __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40f153)
+  0.00   2445.32     0.00        1     0.00     0.00  _GLOBAL__sub_I_buffer (troll.cpp:3507 @ 40d9cc)
+  0.00   2445.32     0.00        1     0.00     0.00  Initialise() (troll.cpp:1894 @ 406416)
+  0.00   2445.32     0.00        1     0.00     0.00  sgenrand2i(unsigned long) (troll.cpp:3464 @ 40d620)
+  0.00   2445.32     0.00        1     0.00     0.00  OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:3207 @ 40c4ef)
+  0.00   2445.32     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) (troll.cpp:3507 @ 40d8b3)
+  0.00   2445.32     0.00        1     0.00     0.00  FreeMem() (troll.cpp:3353 @ 40d167)
+  0.00   2445.32     0.00        1     0.00     0.00  AllocMem() (troll.cpp:2423 @ 4094cb)
+  0.00   2445.32     0.00        1     0.00     0.00  BirthInit() (troll.cpp:2546 @ 409b8c)
+  0.00   2445.32     0.00        1     0.00     0.00  sgenrand2(unsigned long) (troll.cpp:3413 @ 40d389)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 2445.32 seconds
+
+index % time    self  children    called     name
+                2.89    0.00 504078704/504078704     UpdateField() (troll.cpp:2714 @ 40a0ab) [32]
+[40]     0.1    2.89    0.00 504078704         genrand2i() (troll.cpp:3475 @ 40d695) [40]
+-----------------------------------------------
+                0.00    0.00     400/951897823     Initialise() (troll.cpp:2214 @ 408516) [342]
+                2.26    0.00 951897423/951897823     UpdateTree() (troll.cpp:2895 @ 40aa2a) [23]
+[45]     0.1    2.26    0.00 951897823         std::exp(float) (cmath:242 @ 40da5e) [45]
+-----------------------------------------------
+                0.00    0.00     400/551557108     Initialise() (troll.cpp:2215 @ 40855b) [340]
+                1.10    0.00 275778354/551557108     Species::GPPleaf(float, float, float) (troll.cpp:845 @ 40e210) [43]
+                1.10    0.00 275778354/551557108     Species::GPPleaf(float, float, float) (troll.cpp:851 @ 40e272) [48]
+[46]     0.1    2.20    0.00 551557108         std::sqrt(float) (cmath:483 @ 40db2e) [46]
+-----------------------------------------------
+                1.23    0.00 960000000/960000000     UpdateTree() (troll.cpp:2916 @ 40ab7f) [47]
+[54]     0.1    1.23    0.00 960000000         Tree::Update() (troll.cpp:1526 @ 4040ae) [54]
+-----------------------------------------------
+                0.88    0.00 960000000/960000000     UpdateField() (troll.cpp:2628 @ 409dc0) [52]
+[61]     0.0    0.88    0.00 960000000         Tree::CalcLAI() (troll.cpp:1158 @ 4029a2) [61]
+-----------------------------------------------
+                0.00    0.00    6000/962079058     main (troll.cpp:1834 @ 40621c) [338]
+                0.00    0.00   85331/962079058     Tree::UpdateTreeBiometry() (troll.cpp:1431 @ 403b0d) [336]
+                0.00    0.00   98378/962079058     Tree::FallTree() (troll.cpp:1596 @ 4048bd) [329]
+                0.00    0.00  217992/962079058     Tree::Birth(Species*, int, int) (troll.cpp:1062 @ 402234) [227]
+                0.00    0.00  217992/962079058     Tree::Birth(Species*, int, int) (troll.cpp:1082 @ 402456) [333]
+                0.00    0.00 2504880/962079058     Tree::DisperseSeed() (troll.cpp:1512 @ 40400d) [129]
+                0.00    0.00 2504880/962079058     Tree::DisperseSeed() (troll.cpp:1511 @ 404045) [132]
+                0.00    0.00 4546182/962079058     Tree::UpdateTreeBiometry() (troll.cpp:1437 @ 403b75) [187]
+                0.51    0.00 951897423/962079058     UpdateTree() (troll.cpp:2895 @ 40aa2a) [23]
+[72]     0.0    0.52    0.00 962079058         flor(float) (troll.cpp:332 @ 40db71) [72]
+-----------------------------------------------
+                0.00    0.00   37255/522176960     Tree::FallTree() (troll.cpp:1609 @ 404b08) [337]
+                0.00    0.00 5784391/522176960     Tree::CalcLAI() (troll.cpp:1178 @ 402b61) [225]
+                0.01    0.00 11975792/522176960     Tree::CalcLAI() (troll.cpp:1179 @ 402b35) [249]
+                0.02    0.00 21267588/522176960     Tree::CalcLAI() (troll.cpp:1194 @ 402dde) [84]
+                0.04    0.00 60347004/522176960     Tree::Fluxh(int) (troll.cpp:1248 @ 403153) [124]
+                0.05    0.00 74989959/522176960     Tree::CalcLAI() (troll.cpp:1195 @ 402db2) [113]
+                0.25    0.00 347774971/522176960     Tree::Fluxh(int) (troll.cpp:1251 @ 403127) [65]
+[81]     0.0    0.38    0.00 522176960         min(int, int) (troll.cpp:348 @ 40dc0d) [81]
+-----------------------------------------------
+                0.32    0.00 960000000/960000000     Average() (troll.cpp:2999 @ 40b024) [51]
+[86]     0.0    0.32    0.00 960000000         Tree::Average() (troll.cpp:1670 @ 4050e0) [86]
+-----------------------------------------------
+                0.00    0.00     163/464020018     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:524 @ 401b0c) [345]
+                0.00    0.00     163/464020018     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:526 @ 401c35) [346]
+                0.00    0.00     400/464020018     Initialise() (troll.cpp:2217 @ 4085db) [343]
+                0.00    0.00 6358657/464020018     Tree::Fluxh(int) (troll.cpp:1235 @ 402e7f) [141]
+                0.11    0.00 181882281/464020018     Tree::Fluxh(int) (troll.cpp:1258 @ 40301f) [39]
+                0.16    0.00 275778354/464020018     Species::GPPleaf(float, float, float) (troll.cpp:853 @ 40e2be) [37]
+[93]     0.0    0.27    0.00 464020018         minf(float, float) (troll.cpp:344 @ 40dbd9) [93]
+-----------------------------------------------
+                0.01    0.00 11193401/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:913 @ 40ed47) [162]
+                0.01    0.00 11231641/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:867 @ 40e393) [171]
+                0.01    0.00 11309025/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:911 @ 40ecdb) [182]
+                0.01    0.00 11371419/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:909 @ 40ec6f) [181]
+                0.01    0.00 11377080/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:869 @ 40e3ff) [153]
+                0.01    0.00 11432932/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:907 @ 40ec03) [170]
+                0.01    0.00 11445892/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:871 @ 40e46b) [248]
+                0.01    0.00 11473338/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:905 @ 40eb97) [180]
+                0.01    0.00 11482323/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:873 @ 40e4d7) [217]
+                0.01    0.00 11498549/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:903 @ 40eb2b) [191]
+                0.01    0.00 11523760/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:875 @ 40e543) [174]
+                0.01    0.00 11527911/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:901 @ 40eabf) [173]
+                0.01    0.00 11548682/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:877 @ 40e5af) [190]
+                0.01    0.00 11552807/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:899 @ 40ea53) [201]
+                0.01    0.00 11562455/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:879 @ 40e61b) [189]
+                0.01    0.00 11567913/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:897 @ 40e9e7) [156]
+                0.01    0.00 11573716/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:881 @ 40e687) [139]
+                0.01    0.00 11576685/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:895 @ 40e97b) [148]
+                0.01    0.00 11584207/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:883 @ 40e6f3) [155]
+                0.01    0.00 11585494/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:893 @ 40e90f) [184]
+                0.01    0.00 11588067/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:885 @ 40e75f) [188]
+                0.01    0.00 11589739/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:889 @ 40e837) [172]
+                0.01    0.00 11590206/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:887 @ 40e7cb) [164]
+                0.01    0.00 11591112/275778354     Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:891 @ 40e8a3) [228]
+[101]    0.0    0.24    0.00 275778354         Species::GPPleaf(float, float, float) (troll.cpp:807 @ 40dfd0) [101]
+-----------------------------------------------
+                0.00    0.00    3088/2605184     Tree::FallTree() (troll.cpp:1607 @ 4049c0) [334]
+                0.00    0.00   97216/2605184     Tree::FallTree() (troll.cpp:1599 @ 404902) [328]
+                0.13    0.00 2504880/2605184     Tree::DisperseSeed() (troll.cpp:1512 @ 40400d) [129]
+[127]    0.0    0.13    0.00 2605184         std::sin(float) (cmath:445 @ 40dafa) [127]
+-----------------------------------------------
+                0.00    0.00    3088/2606346     Tree::FallTree() (troll.cpp:1604 @ 404980) [335]
+                0.00    0.00   98378/2606346     Tree::FallTree() (troll.cpp:1596 @ 4048bd) [329]
+                0.12    0.00 2504880/2606346     Tree::DisperseSeed() (troll.cpp:1511 @ 404045) [132]
+[130]    0.0    0.13    0.00 2606346         std::cos(float) (cmath:204 @ 40da2a) [130]
+-----------------------------------------------
+                0.00    0.00     163/87402234     AllocMem() (troll.cpp:2433 @ 4094ef) [344]
+                0.00    0.00    3088/87402234     Tree::FallTree() (troll.cpp:1609 @ 404a10) [339]
+                0.00    0.00 2117295/87402234     Tree::CalcLAI() (troll.cpp:1178 @ 402a38) [331]
+                0.00    0.00 3667096/87402234     Tree::CalcLAI() (troll.cpp:1179 @ 402a56) [226]
+                0.00    0.00 5982790/87402234     Tree::CalcLAI() (troll.cpp:1194 @ 402bd5) [258]
+                0.01    0.00 11225733/87402234     Tree::Fluxh(int) (troll.cpp:1248 @ 402f88) [183]
+                0.01    0.00 15284798/87402234     Tree::CalcLAI() (troll.cpp:1195 @ 402bf3) [218]
+                0.03    0.00 49121271/87402234     Tree::Fluxh(int) (troll.cpp:1249 @ 402fa6) [125]
+[166]    0.0    0.06    0.00 87402234         max(int, int) (troll.cpp:352 @ 40dc32) [166]
+-----------------------------------------------
+                0.03    0.00 8318077/8318077     Tree::Update() (troll.cpp:1535 @ 404168) [111]
+[219]    0.0    0.03    0.00 8318077         Species::DeathRate(float, float, int) (troll.cpp:776 @ 40de62) [219]
+-----------------------------------------------
+                0.02    0.00 17584390/17584390     Tree::Growth() (troll.cpp:1323 @ 4033b3) [140]
+[250]    0.0    0.02    0.00 17584390         Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:862 @ 40e34e) [250]
+-----------------------------------------------
+                0.00    0.00       1/29989208     main (troll.cpp:1781 @ 405ed6) [347]
+                0.00    0.00       1/29989208     main (troll.cpp:1782 @ 405ee3) [348]
+                0.00    0.00       1/29989208     main (troll.cpp:1783 @ 405f57) [349]
+                0.00    0.00    3088/29989208     Tree::FallTree() (troll.cpp:1583 @ 4047ce) [341]
+                0.00    0.00  217992/29989208     Tree::Birth(Species*, int, int) (troll.cpp:1062 @ 402234) [227]
+                0.00    0.00  217992/29989208     Tree::Birth(Species*, int, int) (troll.cpp:1082 @ 402456) [333]
+                0.00    0.00 2504880/29989208     Tree::DisperseSeed() (troll.cpp:1509 @ 403f75) [260]
+                0.00    0.00 2504880/29989208     Tree::DisperseSeed() (troll.cpp:1510 @ 403fef) [332]
+                0.00    0.00 8103360/29989208     Tree::FallTree() (troll.cpp:1576 @ 404780) [330]
+                0.00    0.00 8118936/29989208     Tree::Update() (troll.cpp:1551 @ 404463) [259]
+                0.00    0.00 8318077/29989208     Tree::Update() (troll.cpp:1533 @ 4040ee) [312]
+[261]    0.0    0.01    0.00 29989208         genrand2() (troll.cpp:3426 @ 40d3fe) [261]
+-----------------------------------------------
+                0.01    0.00 17584390/17584390     Tree::Growth() (troll.cpp:1322 @ 4033a2) [208]
+[262]    0.0    0.01    0.00 17584390         Tree::Fluxh(int) (troll.cpp:1224 @ 402e12) [262]
+-----------------------------------------------
+                0.01    0.00 8103360/8103360     Tree::Growth() (troll.cpp:1367 @ 40370b) [297]
+[263]    0.0    0.01    0.00 8103360         Tree::UpdateLeafDynamics() (troll.cpp:1394 @ 403852) [263]
+-----------------------------------------------
+                0.01    0.00 2504880/2504880     Tree::DisperseSeed() (troll.cpp:1512 @ 40407b) [233]
+[264]    0.0    0.01    0.00 2504880         Species::FillSeed(int, int) (troll.cpp:596 @ 401f98) [264]
+-----------------------------------------------
+                0.01    0.00 8100272/8100272     Tree::Average() (troll.cpp:1680 @ 4052f4) [163]
+[313]    0.0    0.01    0.00 8100272         __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40f1dc) [313]
+-----------------------------------------------
+                                                 <spontaneous>
+[327]    0.0    0.01    0.00                 std::atan2(float, float) (cmath:164 @ 40d9e6) [327]
+-----------------------------------------------
+                0.00    0.00 8103360/8103360     UpdateTreefall() (troll.cpp:2945 @ 40acc2) [142]
+[330]    0.0    0.00    0.00 8103360         Tree::FallTree() (troll.cpp:1576 @ 404780) [330]
+                0.00    0.00 8103360/29989208     genrand2() (troll.cpp:3426 @ 40d3fe) [261]
+-----------------------------------------------
+                0.00    0.00 8103360/8103360     Tree::Update() (troll.cpp:1564 @ 404767) [109]
+[410]    0.0    0.00    0.00 8103360         Tree::Growth() (troll.cpp:1284 @ 4031f8) [410]
+-----------------------------------------------
+                0.00    0.00 8100085/8100085     UpdateField() (troll.cpp:2684 @ 409f54) [117]
+[411]    0.0    0.00    0.00 8100085         Tree::DisperseSeed() (troll.cpp:1492 @ 403e72) [411]
+-----------------------------------------------
+                0.00    0.00 4546182/4546182     Tree::Growth() (troll.cpp:1363 @ 4036ff) [1202]
+[412]    0.0    0.00    0.00 4546182         Tree::UpdateTreeBiometry() (troll.cpp:1425 @ 403a90) [412]
+-----------------------------------------------
+                0.00    0.00  978000/978000      UpdateTree() (troll.cpp:2922 @ 40abb4) [119]
+[413]    0.0    0.00    0.00  978000         Species::UpdateSeed() (troll.cpp:675 @ 402094) [413]
+-----------------------------------------------
+                0.00    0.00  640000/640000      OutputField() (troll.cpp:3171 @ 40c2a0) [760]
+[414]    0.0    0.00    0.00  640000         Tree::histdbh() (troll.cpp:1689 @ 405508) [414]
+-----------------------------------------------
+                0.00    0.00  217992/217992      UpdateTree() (troll.cpp:2899 @ 40aaad) [750]
+[415]    0.0    0.00    0.00  217992         Tree::Birth(Species*, int, int) (troll.cpp:1048 @ 40218e) [415]
+-----------------------------------------------
+                0.00    0.00    3088/217805      Tree::FallTree() (troll.cpp:1618 @ 404d6b) [320]
+                0.00    0.00   15576/217805      Tree::Update() (troll.cpp:1560 @ 40474c) [1226]
+                0.00    0.00  199141/217805      Tree::Update() (troll.cpp:1547 @ 404395) [1218]
+[416]    0.0    0.00    0.00  217805         Tree::Death() (troll.cpp:1468 @ 403d96) [416]
+-----------------------------------------------
+                0.00    0.00  160000/160000      Initialise() (troll.cpp:2004 @ 406ed2) [513]
+[417]    0.0    0.00    0.00  160000         Tree::Tree() (troll.cpp:996 @ 40efb0) [417]
+-----------------------------------------------
+                0.00    0.00  160000/160000      FreeMem() (troll.cpp:3355 @ 40d175) [988]
+[418]    0.0    0.00    0.00  160000         Tree::~Tree() (troll.cpp:1013 @ 40f0d8) [418]
+-----------------------------------------------
+                0.00    0.00   12000/12000       std::_Niter_base<float*>::iterator_type std::__niter_base<float*>(float*) (stl_algobase.h:278 @ 40f2bf) [1367]
+[419]    0.0    0.00    0.00   12000         std::_Iter_base<float*, false>::_S_base(float*) (stl_iterator_base_types.h:212 @ 40f315) [419]
+-----------------------------------------------
+                0.00    0.00   12000/12000       void std::fill<float*, double>(float*, float*, double const&) (stl_algobase.h:729 @ 40f23b) [1374]
+[420]    0.0    0.00    0.00   12000         std::_Niter_base<float*>::iterator_type std::__niter_base<float*>(float*) (stl_algobase.h:277 @ 40f2ae) [420]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (troll.cpp:2567 @ 409bcc) [1064]
+[421]    0.0    0.00    0.00    6000         UpdateTree() (troll.cpp:2774 @ 40a55b) [421]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (troll.cpp:2568 @ 409bd1) [1065]
+[422]    0.0    0.00    0.00    6000         OutputField() (troll.cpp:3160 @ 40c230) [422]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (troll.cpp:2564 @ 409bbe) [426]
+[423]    0.0    0.00    0.00    6000         UpdateField() (troll.cpp:2579 @ 409bed) [423]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (troll.cpp:2568 @ 409bd1) [1065]
+[424]    0.0    0.00    0.00    6000         UpdateTreefall() (troll.cpp:2933 @ 40abf1) [424]
+-----------------------------------------------
+                0.00    0.00    6000/6000        Evolution() (troll.cpp:2568 @ 409bd1) [1065]
+[425]    0.0    0.00    0.00    6000         Average() (troll.cpp:2977 @ 40ad8c) [425]
+-----------------------------------------------
+                0.00    0.00    6000/6000        main (troll.cpp:1830 @ 406200) [386]
+[426]    0.0    0.00    0.00    6000         Evolution() (troll.cpp:2564 @ 409bbe) [426]
+                0.00    0.00    6000/6000        UpdateField() (troll.cpp:2579 @ 409bed) [423]
+-----------------------------------------------
+                0.00    0.00    6000/6000        UpdateField() (troll.cpp:2625 @ 409d82) [785]
+[427]    0.0    0.00    0.00    6000         void std::fill<float*, double>(float*, float*, double const&) (stl_algobase.h:721 @ 40f221) [427]
+-----------------------------------------------
+                0.00    0.00    6000/6000        void std::fill<float*, double>(float*, float*, double const&) (stl_algobase.h:728 @ 40f256) [1375]
+[428]    0.0    0.00    0.00    6000         __gnu_cxx::__enable_if<std::__is_scalar<double>::__value, void>::__type std::__fill_a<float*, double>(float*, float*, double const&) (stl_algobase.h:688 @ 40f2cd) [428]
+-----------------------------------------------
+                0.00    0.00     163/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:506 @ 401975) [1322]
+                0.00    0.00     326/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:524 @ 401b0c) [345]
+                0.00    0.00     326/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:526 @ 401c35) [346]
+[429]    0.0    0.00    0.00     815         std::log10(float) (cmath:377 @ 40dac6) [429]
+-----------------------------------------------
+                0.00    0.00     163/726         AllocMem() (troll.cpp:2442 @ 409613) [1012]
+                0.00    0.00     163/726         AllocMem() (troll.cpp:2444 @ 40965b) [1013]
+                0.00    0.00     400/726         Initialise() (troll.cpp:2215 @ 40855b) [340]
+[430]    0.0    0.00    0.00     726         maxf(float, float) (troll.cpp:340 @ 40dba5) [430]
+-----------------------------------------------
+                0.00    0.00     163/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:524 @ 401b0c) [345]
+                0.00    0.00     163/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:526 @ 401c35) [346]
+[431]    0.0    0.00    0.00     326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40f193) [431]
+-----------------------------------------------
+                0.00    0.00     164/164         Initialise() (troll.cpp:2021 @ 407075) [521]
+[432]    0.0    0.00    0.00     164         Species::Species() (troll.cpp:428 @ 40dc84) [432]
+-----------------------------------------------
+                0.00    0.00     164/164         FreeMem() (troll.cpp:3356 @ 40d1db) [989]
+[433]    0.0    0.00    0.00     164         Species::~Species() (troll.cpp:436 @ 40dcbc) [433]
+-----------------------------------------------
+                0.00    0.00     163/163         Initialise() (troll.cpp:2030 @ 40715f) [526]
+[434]    0.0    0.00    0.00     163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:466 @ 4016de) [434]
+-----------------------------------------------
+                0.00    0.00     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:506 @ 401975) [1322]
+[435]    0.0    0.00    0.00     163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40f153) [435]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [1389]
+[436]    0.0    0.00    0.00       1         _GLOBAL__sub_I_buffer (troll.cpp:3507 @ 40d9cc) [436]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) (troll.cpp:3507 @ 40d8b3) [440]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1809 @ 40614c) [375]
+[437]    0.0    0.00    0.00       1         Initialise() (troll.cpp:1894 @ 406416) [437]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1780 @ 405ec9) [362]
+[438]    0.0    0.00    0.00       1         sgenrand2i(unsigned long) (troll.cpp:3464 @ 40d620) [438]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1843 @ 40628d) [391]
+[439]    0.0    0.00    0.00       1         OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:3207 @ 40c4ef) [439]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_buffer (troll.cpp:3507 @ 40d9cc) [436]
+[440]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) (troll.cpp:3507 @ 40d8b3) [440]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1875 @ 4063fd) [406]
+[441]    0.0    0.00    0.00       1         FreeMem() (troll.cpp:3353 @ 40d167) [441]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1809 @ 40614c) [375]
+[442]    0.0    0.00    0.00       1         AllocMem() (troll.cpp:2423 @ 4094cb) [442]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1813 @ 406156) [377]
+[443]    0.0    0.00    0.00       1         BirthInit() (troll.cpp:2546 @ 409b8c) [443]
+-----------------------------------------------
+                0.00    0.00       1/1           main (troll.cpp:1781 @ 405ed6) [347]
+[444]    0.0    0.00    0.00       1         sgenrand2(unsigned long) (troll.cpp:3413 @ 40d389) [444]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+ [436] _GLOBAL__sub_I_buffer (troll.cpp:3507 @ 40d9cc) [275] genrand2i() (troll.cpp:3494 @ 40d7c7) [244] Tree::Average() (troll.cpp:1683 @ 405460)
+ [437] Initialise() (troll.cpp:1894 @ 406416) [276] genrand2i() (troll.cpp:3495 @ 40d7e7) [74] Tree::Average() (troll.cpp:1684 @ 4054b3)
+ [421] UpdateTree() (troll.cpp:2774 @ 40a55b) [60] genrand2i() (troll.cpp:3497 @ 40d811) [61] Tree::CalcLAI() (troll.cpp:1158 @ 4029a2)
+  [90] UpdateTree() (troll.cpp:2879 @ 40a94d) [30] genrand2i() (troll.cpp:3500 @ 40d81b) [15] Tree::CalcLAI() (troll.cpp:1159 @ 4029b4)
+   [8] UpdateTree() (troll.cpp:2880 @ 40a959) [31] genrand2i() (troll.cpp:3501 @ 40d838) [223] Tree::CalcLAI() (troll.cpp:1169 @ 4029c9)
+ [107] UpdateTree() (troll.cpp:2881 @ 40a994) [29] genrand2i() (troll.cpp:3502 @ 40d844) [199] Tree::CalcLAI() (troll.cpp:1170 @ 4029d9)
+  [50] UpdateTree() (troll.cpp:2883 @ 40a99b) [25] genrand2i() (troll.cpp:3503 @ 40d855) [302] Tree::CalcLAI() (troll.cpp:1172 @ 4029ff)
+   [2] UpdateTree() (troll.cpp:2884 @ 40a9a4) [28] genrand2i() (troll.cpp:3504 @ 40d866) [303] Tree::CalcLAI() (troll.cpp:1173 @ 402a1c)
+   [7] UpdateTree() (troll.cpp:2885 @ 40a9d4) [41] genrand2i() (troll.cpp:3506 @ 40d872) [226] Tree::CalcLAI() (troll.cpp:1179 @ 402a56)
+  [18] UpdateTree() (troll.cpp:2886 @ 40a9ed) [53] genrand2i() (troll.cpp:3507 @ 40d876) [304] Tree::CalcLAI() (troll.cpp:1180 @ 402a74)
+   [9] UpdateTree() (troll.cpp:2883 @ 40a9f1) [444] sgenrand2(unsigned long) (troll.cpp:3413 @ 40d389) [305] Tree::CalcLAI() (troll.cpp:1181 @ 402a81)
+ [108] UpdateTree() (troll.cpp:2890 @ 40aa00) [277] sgenrand2(unsigned long) (troll.cpp:3419 @ 40d3e0) [159] Tree::CalcLAI() (troll.cpp:1184 @ 402acb)
+  [27] UpdateTree() (troll.cpp:2892 @ 40aa0a) [411] Tree::DisperseSeed() (troll.cpp:1492 @ 403e72) [249] Tree::CalcLAI() (troll.cpp:1179 @ 402b35)
+  [23] UpdateTree() (troll.cpp:2895 @ 40aa2a) [169] Tree::DisperseSeed() (troll.cpp:1497 @ 403e84) [225] Tree::CalcLAI() (troll.cpp:1178 @ 402b61)
+  [26] UpdateTree() (troll.cpp:2896 @ 40aa85) [260] Tree::DisperseSeed() (troll.cpp:1509 @ 403f75) [215] Tree::CalcLAI() (troll.cpp:1192 @ 402bac)
+  [12] UpdateTree() (troll.cpp:2904 @ 40aae4) [233] Tree::DisperseSeed() (troll.cpp:1512 @ 40407b) [258] Tree::CalcLAI() (troll.cpp:1194 @ 402bd5)
+ [102] UpdateTree() (troll.cpp:2879 @ 40ab2c) [278] Tree::DisperseSeed() (troll.cpp:1507 @ 404096) [218] Tree::CalcLAI() (troll.cpp:1195 @ 402bf3)
+  [89] UpdateTree() (troll.cpp:2914 @ 40ab76) [92] Tree::DisperseSeed() (troll.cpp:1517 @ 4040a6) [318] Tree::CalcLAI() (troll.cpp:1196 @ 402c11)
+  [47] UpdateTree() (troll.cpp:2916 @ 40ab7f) [96] Tree::BirthFromData(Species*, int, int, float) (troll.cpp:1145 @ 40299f) [245] Tree::CalcLAI() (troll.cpp:1197 @ 402c1e)
+ [100] UpdateTree() (troll.cpp:2914 @ 40aba5) [263] Tree::UpdateLeafDynamics() (troll.cpp:1394 @ 403852) [136] Tree::CalcLAI() (troll.cpp:1198 @ 402c2b)
+ [119] UpdateTree() (troll.cpp:2922 @ 40abb4) [205] Tree::UpdateLeafDynamics() (troll.cpp:1400 @ 403863) [179] Tree::CalcLAI() (troll.cpp:1199 @ 402c4c)
+ [438] sgenrand2i(unsigned long) (troll.cpp:3464 @ 40d620) [234] Tree::UpdateLeafDynamics() (troll.cpp:1405 @ 4038c2) [75] Tree::CalcLAI() (troll.cpp:1200 @ 402c68)
+  [55] sgenrand2i(unsigned long) (troll.cpp:3470 @ 40d677) [279] Tree::UpdateLeafDynamics() (troll.cpp:1409 @ 4038eb) [80] Tree::CalcLAI() (troll.cpp:1201 @ 402cca)
+  [56] sgenrand2i(unsigned long) (troll.cpp:3472 @ 40d693) [280] Tree::UpdateLeafDynamics() (troll.cpp:1413 @ 403975) [319] Tree::CalcLAI() (troll.cpp:1202 @ 402d2c)
+ [422] OutputField() (troll.cpp:3160 @ 40c230) [281] Tree::UpdateLeafDynamics() (troll.cpp:1418 @ 4039c9) [306] Tree::CalcLAI() (troll.cpp:1203 @ 402d3b)
+ [133] OutputField() (troll.cpp:3175 @ 40c306) [206] Tree::UpdateLeafDynamics() (troll.cpp:1420 @ 4039f2) [59] Tree::CalcLAI() (troll.cpp:1204 @ 402d46)
+ [423] UpdateField() (troll.cpp:2579 @ 409bed) [235] Tree::UpdateLeafDynamics() (troll.cpp:1421 @ 403a76) [151] Tree::CalcLAI() (troll.cpp:1203 @ 402da3)
+ [314] UpdateField() (troll.cpp:2627 @ 409db7) [412] Tree::UpdateTreeBiometry() (troll.cpp:1425 @ 403a90) [113] Tree::CalcLAI() (troll.cpp:1195 @ 402db2)
+  [52] UpdateField() (troll.cpp:2628 @ 409dc0) [196] Tree::UpdateTreeBiometry() (troll.cpp:1430 @ 403aae) [84] Tree::CalcLAI() (troll.cpp:1194 @ 402dde)
+  [83] UpdateField() (troll.cpp:2627 @ 409de6) [187] Tree::UpdateTreeBiometry() (troll.cpp:1437 @ 403b75) [88] Tree::CalcLAI() (troll.cpp:1213 @ 402e0a)
+  [49] UpdateField() (troll.cpp:2634 @ 409e15) [282] Tree::UpdateTreeBiometry() (troll.cpp:1442 @ 403c3f) [414] Tree::histdbh() (troll.cpp:1689 @ 405508)
+   [5] UpdateField() (troll.cpp:2635 @ 409e21) [197] Tree::UpdateTreeBiometry() (troll.cpp:1448 @ 403c5e) [200] Tree::histdbh() (troll.cpp:1690 @ 405519)
+   [6] UpdateField() (troll.cpp:2636 @ 409e9d) [236] Tree::UpdateTreeBiometry() (troll.cpp:1451 @ 403ca1) [330] Tree::FallTree() (troll.cpp:1576 @ 404780)
+  [38] UpdateField() (troll.cpp:2637 @ 409ef3) [237] Tree::UpdateTreeBiometry() (troll.cpp:1452 @ 403cf1) [161] Tree::FallTree() (troll.cpp:1581 @ 404798)
+  [19] UpdateField() (troll.cpp:2634 @ 409ef7) [207] Tree::UpdateTreeBiometry() (troll.cpp:1456 @ 403d29) [246] Tree::FallTree() (troll.cpp:1612 @ 404a40)
+ [143] UpdateField() (troll.cpp:2682 @ 409f18) [415] Tree::Birth(Species*, int, int) (troll.cpp:1048 @ 40218e) [320] Tree::FallTree() (troll.cpp:1618 @ 404d6b)
+  [20] UpdateField() (troll.cpp:2683 @ 409f21) [227] Tree::Birth(Species*, int, int) (troll.cpp:1062 @ 402234) [224] Tree::FallTree() (troll.cpp:1621 @ 404d77)
+ [117] UpdateField() (troll.cpp:2684 @ 409f54) [283] Tree::Birth(Species*, int, int) (troll.cpp:1076 @ 4023d0) [417] Tree::Tree() (troll.cpp:996 @ 40efb0)
+ [114] UpdateField() (troll.cpp:2682 @ 409f7a) [416] Tree::Death() (troll.cpp:1468 @ 403d96) [307] Tree::Tree() (troll.cpp:997 @ 40efcc)
+  [32] UpdateField() (troll.cpp:2714 @ 40a0ab) [214] Tree::Death() (troll.cpp:1480 @ 403e2b) [418] Tree::~Tree() (troll.cpp:1013 @ 40f0d8)
+  [13] UpdateField() (troll.cpp:2715 @ 40a0b7) [262] Tree::Fluxh(int) (troll.cpp:1224 @ 402e12) [413] Species::UpdateSeed() (troll.cpp:675 @ 402094)
+   [1] UpdateField() (troll.cpp:2716 @ 40a0d3) [284] Tree::Fluxh(int) (troll.cpp:1227 @ 402e2e) [10] Species::UpdateSeed() (troll.cpp:694 @ 4020eb)
+  [33] UpdateField() (troll.cpp:2718 @ 40a104) [316] Tree::Fluxh(int) (troll.cpp:1228 @ 402e37) [4] Species::UpdateSeed() (troll.cpp:700 @ 4020f7)
+  [35] UpdateField() (troll.cpp:2714 @ 40a134) [251] Tree::Fluxh(int) (troll.cpp:1229 @ 402e44) [17] Species::UpdateSeed() (troll.cpp:701 @ 40211c)
+ [439] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:3207 @ 40c4ef) [285] Tree::Fluxh(int) (troll.cpp:1230 @ 402e51) [3] Species::UpdateSeed() (troll.cpp:705 @ 40213c)
+ [265] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:3210 @ 40c521) [238] Tree::Fluxh(int) (troll.cpp:1231 @ 402e5e) [11] Species::UpdateSeed() (troll.cpp:694 @ 402179)
+ [424] UpdateTreefall() (troll.cpp:2933 @ 40abf1) [221] Tree::Fluxh(int) (troll.cpp:1233 @ 402e6e) [257] Species::UpdateSeed() (troll.cpp:709 @ 40218c)
+  [82] UpdateTreefall() (troll.cpp:2936 @ 40abfe) [252] Tree::Fluxh(int) (troll.cpp:1234 @ 402e78) [321] Species::DeathRateNDD(float, float, int, float) (troll.cpp:772 @ 40de58)
+  [44] UpdateTreefall() (troll.cpp:2937 @ 40ac07) [141] Tree::Fluxh(int) (troll.cpp:1235 @ 402e7f) [250] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:862 @ 40e34e)
+  [64] UpdateTreefall() (troll.cpp:2938 @ 40ac43) [198] Tree::Fluxh(int) (troll.cpp:1237 @ 402edb) [308] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:866 @ 40e381)
+ [203] UpdateTreefall() (troll.cpp:2936 @ 40ac63) [239] Tree::Fluxh(int) (troll.cpp:1238 @ 402ef6) [171] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:867 @ 40e393)
+ [112] UpdateTreefall() (troll.cpp:2943 @ 40ac86) [253] Tree::Fluxh(int) (troll.cpp:1239 @ 402f13) [153] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:869 @ 40e3ff)
+  [21] UpdateTreefall() (troll.cpp:2944 @ 40ac8f) [254] Tree::Fluxh(int) (troll.cpp:1240 @ 402f30) [309] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:870 @ 40e459)
+ [142] UpdateTreefall() (troll.cpp:2945 @ 40acc2) [165] Tree::Fluxh(int) (troll.cpp:1244 @ 402f62) [248] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:871 @ 40e46b)
+  [87] UpdateTreefall() (troll.cpp:2943 @ 40ace8) [286] Tree::Fluxh(int) (troll.cpp:1245 @ 402f75) [217] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:873 @ 40e4d7)
+ [145] UpdateTreefall() (troll.cpp:2954 @ 40acf7) [183] Tree::Fluxh(int) (troll.cpp:1248 @ 402f88) [174] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:875 @ 40e543)
+  [22] UpdateTreefall() (troll.cpp:2956 @ 40ad00) [125] Tree::Fluxh(int) (troll.cpp:1249 @ 402fa6) [190] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:877 @ 40e5af)
+ [103] UpdateTreefall() (troll.cpp:2957 @ 40ad33) [157] Tree::Fluxh(int) (troll.cpp:1250 @ 402fbf) [189] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:879 @ 40e61b)
+  [98] UpdateTreefall() (troll.cpp:2954 @ 40ad77) [150] Tree::Fluxh(int) (troll.cpp:1251 @ 402fdb) [322] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:880 @ 40e675)
+ [166] max(int, int) (troll.cpp:352 @ 40dc32) [110] Tree::Fluxh(int) (troll.cpp:1253 @ 402fe0) [139] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:881 @ 40e687)
+ [134] max(int, int) (troll.cpp:353 @ 40dc45) [154] Tree::Fluxh(int) (troll.cpp:1254 @ 402fed) [155] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:883 @ 40e6f3)
+ [202] max(int, int) (troll.cpp:354 @ 40dc52) [71] Tree::Fluxh(int) (troll.cpp:1255 @ 402ffa) [188] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:885 @ 40e75f)
+  [81] min(int, int) (troll.cpp:348 @ 40dc0d) [158] Tree::Fluxh(int) (troll.cpp:1257 @ 40301b) [164] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:887 @ 40e7cb)
+ [104] min(int, int) (troll.cpp:349 @ 40dc20) [39] Tree::Fluxh(int) (troll.cpp:1258 @ 40301f) [172] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:889 @ 40e837)
+ [105] min(int, int) (troll.cpp:350 @ 40dc2d) [62] Tree::Fluxh(int) (troll.cpp:1259 @ 403070) [228] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:891 @ 40e8a3)
+ [229] min(int, int) (troll.cpp:351 @ 40dc30) [58] Tree::Fluxh(int) (troll.cpp:1260 @ 40308b) [323] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:892 @ 40e8fd)
+ [440] __static_initialization_and_destruction_0(int, int) (troll.cpp:3507 @ 40d8b3) [91] Tree::Fluxh(int) (troll.cpp:1261 @ 4030b9) [184] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:893 @ 40e90f)
+  [72] flor(float) (troll.cpp:332 @ 40db71) [106] Tree::Fluxh(int) (troll.cpp:1262 @ 4030e7) [148] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:895 @ 40e97b)
+  [68] flor(float) (troll.cpp:333 @ 40db83) [120] Tree::Fluxh(int) (troll.cpp:1264 @ 403121) [156] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:897 @ 40e9e7)
+  [76] flor(float) (troll.cpp:335 @ 40db9b) [65] Tree::Fluxh(int) (troll.cpp:1251 @ 403127) [324] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:898 @ 40ea41)
+ [430] maxf(float, float) (troll.cpp:340 @ 40dba5) [124] Tree::Fluxh(int) (troll.cpp:1248 @ 403153) [201] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:899 @ 40ea53)
+ [149] maxf(float, float) (troll.cpp:343 @ 40dbcf) [131] Tree::Fluxh(int) (troll.cpp:1271 @ 40317f) [173] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:901 @ 40eabf)
+  [93] minf(float, float) (troll.cpp:344 @ 40dbd9) [126] Tree::Fluxh(int) (troll.cpp:1272 @ 4031a9) [191] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:903 @ 40eb2b)
+  [67] minf(float, float) (troll.cpp:345 @ 40dbf0) [135] Tree::Fluxh(int) (troll.cpp:1273 @ 4031d3) [180] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:905 @ 40eb97)
+ [175] minf(float, float) (troll.cpp:346 @ 40dc00) [317] Tree::Fluxh(int) (troll.cpp:1276 @ 4031f1) [170] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:907 @ 40ec03)
+  [77] minf(float, float) (troll.cpp:347 @ 40dc03) [97] Tree::Couple() (troll.cpp:1662 @ 4050d9) [181] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:909 @ 40ec6f)
+ [425] Average() (troll.cpp:2977 @ 40ad8c) [410] Tree::Growth() (troll.cpp:1284 @ 4031f8) [182] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:911 @ 40ecdb)
+ [144] Average() (troll.cpp:2985 @ 40ae26) [287] Tree::Growth() (troll.cpp:1290 @ 403230) [162] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:913 @ 40ed47)
+ [176] Average() (troll.cpp:2984 @ 40ae4f) [288] Tree::Growth() (troll.cpp:1295 @ 403256) [152] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:942 @ 40ef58)
+ [128] Average() (troll.cpp:2992 @ 40aeec) [289] Tree::Growth() (troll.cpp:1305 @ 40327d) [216] Species::dailyGPPleaf(float, float, float, float, float) (troll.cpp:945 @ 40efa6)
+  [51] Average() (troll.cpp:2999 @ 40b024) [240] Tree::Growth() (troll.cpp:1318 @ 403364) [434] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:466 @ 4016de)
+ [167] Average() (troll.cpp:3004 @ 40b0aa) [290] Tree::Growth() (troll.cpp:1319 @ 403384) [325] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:560 @ 401f53)
+ [266] Average() (troll.cpp:3010 @ 40b191) [291] Tree::Growth() (troll.cpp:1321 @ 403397) [137] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) (troll.cpp:561 @ 401f5c)
+ [267] Average() (troll.cpp:3018 @ 40b2ba) [208] Tree::Growth() (troll.cpp:1322 @ 4033a2) [101] Species::GPPleaf(float, float, float) (troll.cpp:807 @ 40dfd0)
+ [168] Average() (troll.cpp:3026 @ 40b3c2) [140] Tree::Growth() (troll.cpp:1323 @ 4033b3) [123] Species::GPPleaf(float, float, float) (troll.cpp:815 @ 40dff0)
+ [268] Average() (troll.cpp:3031 @ 40b4a2) [241] Tree::Growth() (troll.cpp:1324 @ 403427) [66] Species::GPPleaf(float, float, float) (troll.cpp:817 @ 40e004)
+ [269] Average() (troll.cpp:3049 @ 40b780) [185] Tree::Growth() (troll.cpp:1321 @ 403451) [118] Species::GPPleaf(float, float, float) (troll.cpp:818 @ 40e01d)
+ [270] Average() (troll.cpp:3059 @ 40b813) [255] Tree::Growth() (troll.cpp:1327 @ 403461) [78] Species::GPPleaf(float, float, float) (troll.cpp:826 @ 40e036)
+ [220] Average() (troll.cpp:3065 @ 40b8fd) [178] Tree::Growth() (troll.cpp:1328 @ 403486) [69] Species::GPPleaf(float, float, float) (troll.cpp:828 @ 40e04b)
+ [315] Average() (troll.cpp:3066 @ 40b950) [292] Tree::Growth() (troll.cpp:1329 @ 40349d) [85] Species::GPPleaf(float, float, float) (troll.cpp:829 @ 40e073)
+ [271] Average() (troll.cpp:3068 @ 40b972) [293] Tree::Growth() (troll.cpp:1336 @ 4034b4) [95] Species::GPPleaf(float, float, float) (troll.cpp:830 @ 40e08b)
+ [213] Average() (troll.cpp:3074 @ 40ba5c) [294] Tree::Growth() (troll.cpp:1338 @ 403507) [43] Species::GPPleaf(float, float, float) (troll.cpp:845 @ 40e210)
+ [441] FreeMem() (troll.cpp:3353 @ 40d167) [242] Tree::Growth() (troll.cpp:1342 @ 403527) [310] Species::GPPleaf(float, float, float) (troll.cpp:849 @ 40e251)
+ [442] AllocMem() (troll.cpp:2423 @ 4094cb) [295] Tree::Growth() (troll.cpp:1345 @ 40355e) [147] Species::GPPleaf(float, float, float) (troll.cpp:850 @ 40e263)
+ [192] AllocMem() (troll.cpp:2492 @ 409a63) [296] Tree::Growth() (troll.cpp:1346 @ 403579) [48] Species::GPPleaf(float, float, float) (troll.cpp:851 @ 40e272)
+ [272] AllocMem() (troll.cpp:2491 @ 409a8f) [186] Tree::Growth() (troll.cpp:1347 @ 403594) [37] Species::GPPleaf(float, float, float) (troll.cpp:853 @ 40e2be)
+ [261] genrand2() (troll.cpp:3426 @ 40d3fe) [222] Tree::Growth() (troll.cpp:1348 @ 4035e9) [94] Species::GPPleaf(float, float, float) (troll.cpp:855 @ 40e343)
+ [273] genrand2() (troll.cpp:3438 @ 40d43c) [146] Tree::Growth() (troll.cpp:1349 @ 403621) [264] Species::FillSeed(int, int) (troll.cpp:596 @ 401f98)
+ [204] genrand2() (troll.cpp:3439 @ 40d46d) [160] Tree::Growth() (troll.cpp:1351 @ 40365e) [121] Species::FillSeed(int, int) (troll.cpp:606 @ 402017)
+ [230] genrand2() (troll.cpp:3443 @ 40d4e8) [209] Tree::Growth() (troll.cpp:1354 @ 4036c3) [311] Species::FillSeed(int, int) (troll.cpp:610 @ 402055)
+ [231] genrand2() (troll.cpp:3451 @ 40d584) [298] Tree::Growth() (troll.cpp:1385 @ 403830) [219] Species::DeathRate(float, float, int) (troll.cpp:776 @ 40de62)
+ [193] genrand2() (troll.cpp:3452 @ 40d5a1) [54] Tree::Update() (troll.cpp:1526 @ 4040ae) [116] Species::DeathRate(float, float, int) (troll.cpp:779 @ 40de89)
+ [194] genrand2() (troll.cpp:3453 @ 40d5ad) [14] Tree::Update() (troll.cpp:1530 @ 4040c6) [247] Species::DeathRate(float, float, int) (troll.cpp:781 @ 40deb5)
+ [232] genrand2() (troll.cpp:3454 @ 40d5be) [299] Tree::Update() (troll.cpp:1532 @ 4040e3) [138] Species::DeathRate(float, float, int) (troll.cpp:789 @ 40dfc6)
+ [195] genrand2() (troll.cpp:3455 @ 40d5cf) [312] Tree::Update() (troll.cpp:1533 @ 4040ee) [432] Species::Species() (troll.cpp:428 @ 40dc84)
+ [115] genrand2() (troll.cpp:3457 @ 40d5db) [111] Tree::Update() (troll.cpp:1535 @ 404168) [433] Species::~Species() (troll.cpp:436 @ 40dcbc)
+ [177] genrand2() (troll.cpp:3459 @ 40d615) [300] Tree::Update() (troll.cpp:1537 @ 4041bc) [419] std::_Iter_base<float*, false>::_S_base(float*) (stl_iterator_base_types.h:212 @ 40f315)
+ [443] BirthInit() (troll.cpp:2546 @ 409b8c) [259] Tree::Update() (troll.cpp:1551 @ 404463) [420] std::_Niter_base<float*>::iterator_type std::__niter_base<float*>(float*) (stl_algobase.h:277 @ 40f2ae)
+ [426] Evolution() (troll.cpp:2564 @ 409bbe) [109] Tree::Update() (troll.cpp:1564 @ 404767) [130] std::cos(float) (cmath:204 @ 40da2a)
+  [40] genrand2i() (troll.cpp:3475 @ 40d695) [70] Tree::Update() (troll.cpp:1567 @ 404773) [45] std::exp(float) (cmath:242 @ 40da5e)
+  [57] genrand2i() (troll.cpp:3480 @ 40d6a2) [86] Tree::Average() (troll.cpp:1670 @ 4050e0) [431] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) (cmath:434 @ 40f193)
+ [274] genrand2i() (troll.cpp:3484 @ 40d6c0) [16] Tree::Average() (troll.cpp:1671 @ 4050f1) [313] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:434 @ 40f1dc)
+  [99] genrand2i() (troll.cpp:3486 @ 40d6ca) [256] Tree::Average() (troll.cpp:1672 @ 405106) [326] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) (cmath:437 @ 40f1f3)
+  [42] genrand2i() (troll.cpp:3487 @ 40d6d3) [210] Tree::Average() (troll.cpp:1676 @ 4051aa) [435] __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) (cmath:434 @ 40f153)
+  [34] genrand2i() (troll.cpp:3488 @ 40d704) [122] Tree::Average() (troll.cpp:1677 @ 4051f6) [127] std::sin(float) (cmath:445 @ 40dafa)
+  [79] genrand2i() (troll.cpp:3486 @ 40d73f) [243] Tree::Average() (troll.cpp:1678 @ 40524e) [427] void std::fill<float*, double>(float*, float*, double const&) (stl_algobase.h:721 @ 40f221)
+  [73] genrand2i() (troll.cpp:3490 @ 40d74c) [211] Tree::Average() (troll.cpp:1679 @ 4052a1) [46] std::sqrt(float) (cmath:483 @ 40db2e)
+  [36] genrand2i() (troll.cpp:3491 @ 40d74e) [163] Tree::Average() (troll.cpp:1680 @ 4052f4) [327] std::atan2(float, float) (cmath:164 @ 40d9e6)
+  [24] genrand2i() (troll.cpp:3492 @ 40d77f) [212] Tree::Average() (troll.cpp:1681 @ 4053ba) [429] std::log10(float) (cmath:377 @ 40dac6)
+  [63] genrand2i() (troll.cpp:3490 @ 40d7ba) [301] Tree::Average() (troll.cpp:1682 @ 40540d) [428] __gnu_cxx::__enable_if<std::__is_scalar<double>::__value, void>::__type std::__fill_a<float*, double>(float*, float*, double const&) (stl_algobase.h:688 @ 40f2cd)
