@@ -1,1503 +1,3 @@
-*** File /usr/include/c++/4.8.2/bits/stl_iterator_base_types.h:
-                // Types used in iterator implementation -*- C++ -*-
-                
-                // Copyright (C) 2001-2013 Free Software Foundation, Inc.
-                //
-                // This file is part of the GNU ISO C++ Library.  This library is free
-                // software; you can redistribute it and/or modify it under the
-                // terms of the GNU General Public License as published by the
-                // Free Software Foundation; either version 3, or (at your option)
-                // any later version.
-                
-                // This library is distributed in the hope that it will be useful,
-                // but WITHOUT ANY WARRANTY; without even the implied warranty of
-                // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                // GNU General Public License for more details.
-                
-                // Under Section 7 of GPL version 3, you are granted additional
-                // permissions described in the GCC Runtime Library Exception, version
-                // 3.1, as published by the Free Software Foundation.
-                
-                // You should have received a copy of the GNU General Public License and
-                // a copy of the GCC Runtime Library Exception along with this program;
-                // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-                // <http://www.gnu.org/licenses/>.
-                
-                /*
-                 *
-                 * Copyright (c) 1994
-                 * Hewlett-Packard Company
-                 *
-                 * Permission to use, copy, modify, distribute and sell this software
-                 * and its documentation for any purpose is hereby granted without fee,
-                 * provided that the above copyright notice appear in all copies and
-                 * that both that copyright notice and this permission notice appear
-                 * in supporting documentation.  Hewlett-Packard Company makes no
-                 * representations about the suitability of this software for any
-                 * purpose.  It is provided "as is" without express or implied warranty.
-                 *
-                 *
-                 * Copyright (c) 1996-1998
-                 * Silicon Graphics Computer Systems, Inc.
-                 *
-                 * Permission to use, copy, modify, distribute and sell this software
-                 * and its documentation for any purpose is hereby granted without fee,
-                 * provided that the above copyright notice appear in all copies and
-                 * that both that copyright notice and this permission notice appear
-                 * in supporting documentation.  Silicon Graphics makes no
-                 * representations about the suitability of this software for any
-                 * purpose.  It is provided "as is" without express or implied warranty.
-                 */
-                
-                /** @file bits/stl_iterator_base_types.h
-                 *  This is an internal header file, included by other library headers.
-                 *  Do not attempt to use it directly. @headername{iterator}
-                 *
-                 *  This file contains all of the general iterator-related utility types,
-                 *  such as iterator_traits and struct iterator.
-                 */
-                
-                #ifndef _STL_ITERATOR_BASE_TYPES_H
-                #define _STL_ITERATOR_BASE_TYPES_H 1
-                
-                #pragma GCC system_header
-                
-                #include <bits/c++config.h>
-                
-                #if __cplusplus >= 201103L
-                # include <type_traits>  // For _GLIBCXX_HAS_NESTED_TYPE, is_convertible
-                #endif
-                
-                namespace std _GLIBCXX_VISIBILITY(default)
-                {
-                _GLIBCXX_BEGIN_NAMESPACE_VERSION
-                
-                  /**
-                   *  @defgroup iterators Iterators
-                   *  Abstractions for uniform iterating through various underlying types.
-                  */
-                  //@{ 
-                
-                  /**
-                   *  @defgroup iterator_tags Iterator Tags
-                   *  These are empty types, used to distinguish different iterators.  The
-                   *  distinction is not made by what they contain, but simply by what they
-                   *  are.  Different underlying algorithms can then be used based on the
-                   *  different operations supported by different iterator types.
-                  */
-                  //@{ 
-                  ///  Marking input iterators.
-                  struct input_iterator_tag { };
-                
-                  ///  Marking output iterators.
-                  struct output_iterator_tag { };
-                
-                  /// Forward iterators support a superset of input iterator operations.
-                  struct forward_iterator_tag : public input_iterator_tag { };
-                
-                  /// Bidirectional iterators support a superset of forward iterator
-                  /// operations.
-                  struct bidirectional_iterator_tag : public forward_iterator_tag { };
-                
-                  /// Random-access iterators support a superset of bidirectional
-                  /// iterator operations.
-                  struct random_access_iterator_tag : public bidirectional_iterator_tag { };
-                  //@}
-                
-                  /**
-                   *  @brief  Common %iterator class.
-                   *
-                   *  This class does nothing but define nested typedefs.  %Iterator classes
-                   *  can inherit from this class to save some work.  The typedefs are then
-                   *  used in specializations and overloading.
-                   *
-                   *  In particular, there are no default implementations of requirements
-                   *  such as @c operator++ and the like.  (How could there be?)
-                  */
-                  template<typename _Category, typename _Tp, typename _Distance = ptrdiff_t,
-                           typename _Pointer = _Tp*, typename _Reference = _Tp&>
-                    struct iterator
-                    {
-                      /// One of the @link iterator_tags tag types@endlink.
-                      typedef _Category  iterator_category;
-                      /// The type "pointed to" by the iterator.
-                      typedef _Tp        value_type;
-                      /// Distance between iterators is represented as this type.
-                      typedef _Distance  difference_type;
-                      /// This type represents a pointer-to-value_type.
-                      typedef _Pointer   pointer;
-                      /// This type represents a reference-to-value_type.
-                      typedef _Reference reference;
-                    };
-                
-                  /**
-                   *  @brief  Traits class for iterators.
-                   *
-                   *  This class does nothing but define nested typedefs.  The general
-                   *  version simply @a forwards the nested typedefs from the Iterator
-                   *  argument.  Specialized versions for pointers and pointers-to-const
-                   *  provide tighter, more correct semantics.
-                  */
-                #if __cplusplus >= 201103L
-                
-                _GLIBCXX_HAS_NESTED_TYPE(iterator_category)
-                
-                  template<typename _Iterator,
-                	   bool = __has_iterator_category<_Iterator>::value>
-                    struct __iterator_traits { };
-                
-                  template<typename _Iterator>
-                    struct __iterator_traits<_Iterator, true>
-                    {
-                      typedef typename _Iterator::iterator_category iterator_category;
-                      typedef typename _Iterator::value_type        value_type;
-                      typedef typename _Iterator::difference_type   difference_type;
-                      typedef typename _Iterator::pointer           pointer;
-                      typedef typename _Iterator::reference         reference;
-                    };
-                
-                  template<typename _Iterator>
-                    struct iterator_traits
-                    : public __iterator_traits<_Iterator> { };
-                #else
-                  template<typename _Iterator>
-                    struct iterator_traits
-                    {
-                      typedef typename _Iterator::iterator_category iterator_category;
-                      typedef typename _Iterator::value_type        value_type;
-                      typedef typename _Iterator::difference_type   difference_type;
-                      typedef typename _Iterator::pointer           pointer;
-                      typedef typename _Iterator::reference         reference;
-                    };
-                #endif
-                
-                  /// Partial specialization for pointer types.
-                  template<typename _Tp>
-                    struct iterator_traits<_Tp*>
-                    {
-                      typedef random_access_iterator_tag iterator_category;
-                      typedef _Tp                         value_type;
-                      typedef ptrdiff_t                   difference_type;
-                      typedef _Tp*                        pointer;
-                      typedef _Tp&                        reference;
-                    };
-                
-                  /// Partial specialization for const pointer types.
-                  template<typename _Tp>
-                    struct iterator_traits<const _Tp*>
-                    {
-                      typedef random_access_iterator_tag iterator_category;
-                      typedef _Tp                         value_type;
-                      typedef ptrdiff_t                   difference_type;
-                      typedef const _Tp*                  pointer;
-                      typedef const _Tp&                  reference;
-                    };
-                
-                  /**
-                   *  This function is not a part of the C++ standard but is syntactic
-                   *  sugar for internal library use only.
-                  */
-                  template<typename _Iter>
-                    inline typename iterator_traits<_Iter>::iterator_category
-                    __iterator_category(const _Iter&)
-                    { return typename iterator_traits<_Iter>::iterator_category(); }
-                
-                  //@}
-                
-                  // If _Iterator has a base returns it otherwise _Iterator is returned
-                  // untouched
-                  template<typename _Iterator, bool _HasBase>
-                    struct _Iter_base
-                    {
-                      typedef _Iterator iterator_type;
-       12000 ->       static iterator_type _S_base(_Iterator __it)
-       12000 ->       { return __it; }
-                    };
-                
-                  template<typename _Iterator>
-                    struct _Iter_base<_Iterator, true>
-                    {
-                      typedef typename _Iterator::iterator_type iterator_type;
-                      static iterator_type _S_base(_Iterator __it)
-                      { return __it.base(); }
-                    };
-                
-                #if __cplusplus >= 201103L
-                  template<typename _InIter>
-                    using _RequireInputIter = typename
-                      enable_if<is_convertible<typename
-                		iterator_traits<_InIter>::iterator_category,
-                			       input_iterator_tag>::value>::type;
-                #endif
-                
-                _GLIBCXX_END_NAMESPACE_VERSION
-                } // namespace
-                
-                #endif /* _STL_ITERATOR_BASE_TYPES_H */
-                
-
-
-Top 10 Lines:
-
-     Line      Count
-
-      212      12000
-
-Execution Summary:
-
-        2   Executable lines in this file
-        2   Lines executed
-   100.00   Percent of the file executed
-
-    12000   Total number of line executions
-  6000.00   Average executions per line
-
-
-*** File /usr/include/c++/4.8.2/bits/stl_algobase.h:
-                // Core algorithmic facilities -*- C++ -*-
-                
-                // Copyright (C) 2001-2013 Free Software Foundation, Inc.
-                //
-                // This file is part of the GNU ISO C++ Library.  This library is free
-                // software; you can redistribute it and/or modify it under the
-                // terms of the GNU General Public License as published by the
-                // Free Software Foundation; either version 3, or (at your option)
-                // any later version.
-                
-                // This library is distributed in the hope that it will be useful,
-                // but WITHOUT ANY WARRANTY; without even the implied warranty of
-                // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                // GNU General Public License for more details.
-                
-                // Under Section 7 of GPL version 3, you are granted additional
-                // permissions described in the GCC Runtime Library Exception, version
-                // 3.1, as published by the Free Software Foundation.
-                
-                // You should have received a copy of the GNU General Public License and
-                // a copy of the GCC Runtime Library Exception along with this program;
-                // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-                // <http://www.gnu.org/licenses/>.
-                
-                /*
-                 *
-                 * Copyright (c) 1994
-                 * Hewlett-Packard Company
-                 *
-                 * Permission to use, copy, modify, distribute and sell this software
-                 * and its documentation for any purpose is hereby granted without fee,
-                 * provided that the above copyright notice appear in all copies and
-                 * that both that copyright notice and this permission notice appear
-                 * in supporting documentation.  Hewlett-Packard Company makes no
-                 * representations about the suitability of this software for any
-                 * purpose.  It is provided "as is" without express or implied warranty.
-                 *
-                 *
-                 * Copyright (c) 1996-1998
-                 * Silicon Graphics Computer Systems, Inc.
-                 *
-                 * Permission to use, copy, modify, distribute and sell this software
-                 * and its documentation for any purpose is hereby granted without fee,
-                 * provided that the above copyright notice appear in all copies and
-                 * that both that copyright notice and this permission notice appear
-                 * in supporting documentation.  Silicon Graphics makes no
-                 * representations about the suitability of this software for any
-                 * purpose.  It is provided "as is" without express or implied warranty.
-                 */
-                
-                /** @file bits/stl_algobase.h
-                 *  This is an internal header file, included by other library headers.
-                 *  Do not attempt to use it directly. @headername{algorithm}
-                 */
-                
-                #ifndef _STL_ALGOBASE_H
-                #define _STL_ALGOBASE_H 1
-                
-                #include <bits/c++config.h>
-                #include <bits/functexcept.h>
-                #include <bits/cpp_type_traits.h>
-                #include <ext/type_traits.h>
-                #include <ext/numeric_traits.h>
-                #include <bits/stl_pair.h>
-                #include <bits/stl_iterator_base_types.h>
-                #include <bits/stl_iterator_base_funcs.h>
-                #include <bits/stl_iterator.h>
-                #include <bits/concept_check.h>
-                #include <debug/debug.h>
-                #include <bits/move.h> // For std::swap and _GLIBCXX_MOVE
-                
-                namespace std _GLIBCXX_VISIBILITY(default)
-                {
-                _GLIBCXX_BEGIN_NAMESPACE_VERSION
-                
-                #if __cplusplus < 201103L
-                  // See http://gcc.gnu.org/ml/libstdc++/2004-08/msg00167.html: in a
-                  // nutshell, we are partially implementing the resolution of DR 187,
-                  // when it's safe, i.e., the value_types are equal.
-                  template<bool _BoolType>
-                    struct __iter_swap
-                    {
-                      template<typename _ForwardIterator1, typename _ForwardIterator2>
-                        static void
-                        iter_swap(_ForwardIterator1 __a, _ForwardIterator2 __b)
-                        {
-                          typedef typename iterator_traits<_ForwardIterator1>::value_type
-                            _ValueType1;
-                          _ValueType1 __tmp = _GLIBCXX_MOVE(*__a);
-                          *__a = _GLIBCXX_MOVE(*__b);
-                          *__b = _GLIBCXX_MOVE(__tmp);
-                	}
-                    };
-                
-                  template<>
-                    struct __iter_swap<true>
-                    {
-                      template<typename _ForwardIterator1, typename _ForwardIterator2>
-                        static void 
-                        iter_swap(_ForwardIterator1 __a, _ForwardIterator2 __b)
-                        {
-                          swap(*__a, *__b);
-                        }
-                    };
-                #endif
-                
-                  /**
-                   *  @brief Swaps the contents of two iterators.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __a  An iterator.
-                   *  @param  __b  Another iterator.
-                   *  @return   Nothing.
-                   *
-                   *  This function swaps the values pointed to by two iterators, not the
-                   *  iterators themselves.
-                  */
-                  template<typename _ForwardIterator1, typename _ForwardIterator2>
-                    inline void
-                    iter_swap(_ForwardIterator1 __a, _ForwardIterator2 __b)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
-                				  _ForwardIterator1>)
-                      __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
-                				  _ForwardIterator2>)
-                
-                #if __cplusplus < 201103L
-                      typedef typename iterator_traits<_ForwardIterator1>::value_type
-                	_ValueType1;
-                      typedef typename iterator_traits<_ForwardIterator2>::value_type
-                	_ValueType2;
-                
-                      __glibcxx_function_requires(_ConvertibleConcept<_ValueType1,
-                				  _ValueType2>)
-                      __glibcxx_function_requires(_ConvertibleConcept<_ValueType2,
-                				  _ValueType1>)
-                
-                      typedef typename iterator_traits<_ForwardIterator1>::reference
-                	_ReferenceType1;
-                      typedef typename iterator_traits<_ForwardIterator2>::reference
-                	_ReferenceType2;
-                      std::__iter_swap<__are_same<_ValueType1, _ValueType2>::__value
-                	&& __are_same<_ValueType1&, _ReferenceType1>::__value
-                	&& __are_same<_ValueType2&, _ReferenceType2>::__value>::
-                	iter_swap(__a, __b);
-                #else
-                      swap(*__a, *__b);
-                #endif
-                    }
-                
-                  /**
-                   *  @brief Swap the elements of two sequences.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first1  A forward iterator.
-                   *  @param  __last1   A forward iterator.
-                   *  @param  __first2  A forward iterator.
-                   *  @return   An iterator equal to @p first2+(last1-first1).
-                   *
-                   *  Swaps each element in the range @p [first1,last1) with the
-                   *  corresponding element in the range @p [first2,(last1-first1)).
-                   *  The ranges must not overlap.
-                  */
-                  template<typename _ForwardIterator1, typename _ForwardIterator2>
-                    _ForwardIterator2
-                    swap_ranges(_ForwardIterator1 __first1, _ForwardIterator1 __last1,
-                		_ForwardIterator2 __first2)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
-                				  _ForwardIterator1>)
-                      __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
-                				  _ForwardIterator2>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                
-                      for (; __first1 != __last1; ++__first1, ++__first2)
-                	std::iter_swap(__first1, __first2);
-                      return __first2;
-                    }
-                
-                  /**
-                   *  @brief This does what you think it does.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __a  A thing of arbitrary type.
-                   *  @param  __b  Another thing of arbitrary type.
-                   *  @return   The lesser of the parameters.
-                   *
-                   *  This is the simple classic generic implementation.  It will work on
-                   *  temporary expressions, since they are only evaluated once, unlike a
-                   *  preprocessor macro.
-                  */
-                  template<typename _Tp>
-                    inline const _Tp&
-                    min(const _Tp& __a, const _Tp& __b)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
-                      //return __b < __a ? __b : __a;
-                      if (__b < __a)
-                	return __b;
-                      return __a;
-                    }
-                
-                  /**
-                   *  @brief This does what you think it does.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __a  A thing of arbitrary type.
-                   *  @param  __b  Another thing of arbitrary type.
-                   *  @return   The greater of the parameters.
-                   *
-                   *  This is the simple classic generic implementation.  It will work on
-                   *  temporary expressions, since they are only evaluated once, unlike a
-                   *  preprocessor macro.
-                  */
-                  template<typename _Tp>
-                    inline const _Tp&
-                    max(const _Tp& __a, const _Tp& __b)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
-                      //return  __a < __b ? __b : __a;
-                      if (__a < __b)
-                	return __b;
-                      return __a;
-                    }
-                
-                  /**
-                   *  @brief This does what you think it does.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __a  A thing of arbitrary type.
-                   *  @param  __b  Another thing of arbitrary type.
-                   *  @param  __comp  A @link comparison_functors comparison functor@endlink.
-                   *  @return   The lesser of the parameters.
-                   *
-                   *  This will work on temporary expressions, since they are only evaluated
-                   *  once, unlike a preprocessor macro.
-                  */
-                  template<typename _Tp, typename _Compare>
-                    inline const _Tp&
-                    min(const _Tp& __a, const _Tp& __b, _Compare __comp)
-                    {
-                      //return __comp(__b, __a) ? __b : __a;
-                      if (__comp(__b, __a))
-                	return __b;
-                      return __a;
-                    }
-                
-                  /**
-                   *  @brief This does what you think it does.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __a  A thing of arbitrary type.
-                   *  @param  __b  Another thing of arbitrary type.
-                   *  @param  __comp  A @link comparison_functors comparison functor@endlink.
-                   *  @return   The greater of the parameters.
-                   *
-                   *  This will work on temporary expressions, since they are only evaluated
-                   *  once, unlike a preprocessor macro.
-                  */
-                  template<typename _Tp, typename _Compare>
-                    inline const _Tp&
-                    max(const _Tp& __a, const _Tp& __b, _Compare __comp)
-                    {
-                      //return __comp(__a, __b) ? __b : __a;
-                      if (__comp(__a, __b))
-                	return __b;
-                      return __a;
-                    }
-                
-                  // If _Iterator is a __normal_iterator return its base (a plain pointer,
-                  // normally) otherwise return it untouched.  See copy, fill, ... 
-                  template<typename _Iterator>
-                    struct _Niter_base
-                    : _Iter_base<_Iterator, __is_normal_iterator<_Iterator>::__value>
-                    { };
-                
-                  template<typename _Iterator>
-                    inline typename _Niter_base<_Iterator>::iterator_type
-       12000 ->     __niter_base(_Iterator __it)
-       12000 ->     { return std::_Niter_base<_Iterator>::_S_base(__it); }
-                
-                  // Likewise, for move_iterator.
-                  template<typename _Iterator>
-                    struct _Miter_base
-                    : _Iter_base<_Iterator, __is_move_iterator<_Iterator>::__value>
-                    { };
-                
-                  template<typename _Iterator>
-                    inline typename _Miter_base<_Iterator>::iterator_type
-                    __miter_base(_Iterator __it)
-                    { return std::_Miter_base<_Iterator>::_S_base(__it); }
-                
-                  // All of these auxiliary structs serve two purposes.  (1) Replace
-                  // calls to copy with memmove whenever possible.  (Memmove, not memcpy,
-                  // because the input and output ranges are permitted to overlap.)
-                  // (2) If we're using random access iterators, then write the loop as
-                  // a for loop with an explicit count.
-                
-                  template<bool, bool, typename>
-                    struct __copy_move
-                    {
-                      template<typename _II, typename _OI>
-                        static _OI
-                        __copy_m(_II __first, _II __last, _OI __result)
-                        {
-                	  for (; __first != __last; ++__result, ++__first)
-                	    *__result = *__first;
-                	  return __result;
-                	}
-                    };
-                
-                #if __cplusplus >= 201103L
-                  template<typename _Category>
-                    struct __copy_move<true, false, _Category>
-                    {
-                      template<typename _II, typename _OI>
-                        static _OI
-                        __copy_m(_II __first, _II __last, _OI __result)
-                        {
-                	  for (; __first != __last; ++__result, ++__first)
-                	    *__result = std::move(*__first);
-                	  return __result;
-                	}
-                    };
-                #endif
-                
-                  template<>
-                    struct __copy_move<false, false, random_access_iterator_tag>
-                    {
-                      template<typename _II, typename _OI>
-                        static _OI
-                        __copy_m(_II __first, _II __last, _OI __result)
-                        { 
-                	  typedef typename iterator_traits<_II>::difference_type _Distance;
-                	  for(_Distance __n = __last - __first; __n > 0; --__n)
-                	    {
-                	      *__result = *__first;
-                	      ++__first;
-                	      ++__result;
-                	    }
-                	  return __result;
-                	}
-                    };
-                
-                #if __cplusplus >= 201103L
-                  template<>
-                    struct __copy_move<true, false, random_access_iterator_tag>
-                    {
-                      template<typename _II, typename _OI>
-                        static _OI
-                        __copy_m(_II __first, _II __last, _OI __result)
-                        { 
-                	  typedef typename iterator_traits<_II>::difference_type _Distance;
-                	  for(_Distance __n = __last - __first; __n > 0; --__n)
-                	    {
-                	      *__result = std::move(*__first);
-                	      ++__first;
-                	      ++__result;
-                	    }
-                	  return __result;
-                	}
-                    };
-                #endif
-                
-                  template<bool _IsMove>
-                    struct __copy_move<_IsMove, true, random_access_iterator_tag>
-                    {
-                      template<typename _Tp>
-                        static _Tp*
-                        __copy_m(const _Tp* __first, const _Tp* __last, _Tp* __result)
-                        {
-                	  const ptrdiff_t _Num = __last - __first;
-                	  if (_Num)
-                	    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
-                	  return __result + _Num;
-                	}
-                    };
-                
-                  template<bool _IsMove, typename _II, typename _OI>
-                    inline _OI
-                    __copy_move_a(_II __first, _II __last, _OI __result)
-                    {
-                      typedef typename iterator_traits<_II>::value_type _ValueTypeI;
-                      typedef typename iterator_traits<_OI>::value_type _ValueTypeO;
-                      typedef typename iterator_traits<_II>::iterator_category _Category;
-                      const bool __simple = (__is_trivial(_ValueTypeI)
-                	                     && __is_pointer<_II>::__value
-                	                     && __is_pointer<_OI>::__value
-                			     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
-                
-                      return std::__copy_move<_IsMove, __simple,
-                	                      _Category>::__copy_m(__first, __last, __result);
-                    }
-                
-                  // Helpers for streambuf iterators (either istream or ostream).
-                  // NB: avoid including <iosfwd>, relatively large.
-                  template<typename _CharT>
-                    struct char_traits;
-                
-                  template<typename _CharT, typename _Traits>
-                    class istreambuf_iterator;
-                
-                  template<typename _CharT, typename _Traits>
-                    class ostreambuf_iterator;
-                
-                  template<bool _IsMove, typename _CharT>
-                    typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value, 
-                	     ostreambuf_iterator<_CharT, char_traits<_CharT> > >::__type
-                    __copy_move_a2(_CharT*, _CharT*,
-                		   ostreambuf_iterator<_CharT, char_traits<_CharT> >);
-                
-                  template<bool _IsMove, typename _CharT>
-                    typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value, 
-                	     ostreambuf_iterator<_CharT, char_traits<_CharT> > >::__type
-                    __copy_move_a2(const _CharT*, const _CharT*,
-                		   ostreambuf_iterator<_CharT, char_traits<_CharT> >);
-                
-                  template<bool _IsMove, typename _CharT>
-                    typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value,
-                				    _CharT*>::__type
-                    __copy_move_a2(istreambuf_iterator<_CharT, char_traits<_CharT> >,
-                		   istreambuf_iterator<_CharT, char_traits<_CharT> >, _CharT*);
-                
-                  template<bool _IsMove, typename _II, typename _OI>
-                    inline _OI
-                    __copy_move_a2(_II __first, _II __last, _OI __result)
-                    {
-                      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
-                					     std::__niter_base(__last),
-                					     std::__niter_base(__result)));
-                    }
-                
-                  /**
-                   *  @brief Copies the range [first,last) into result.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  An input iterator.
-                   *  @param  __last   An input iterator.
-                   *  @param  __result An output iterator.
-                   *  @return   result + (first - last)
-                   *
-                   *  This inline function will boil down to a call to @c memmove whenever
-                   *  possible.  Failing that, if random access iterators are passed, then the
-                   *  loop count will be known (and therefore a candidate for compiler
-                   *  optimizations such as unrolling).  Result may not be contained within
-                   *  [first,last); the copy_backward function should be used instead.
-                   *
-                   *  Note that the end of the output range is permitted to be contained
-                   *  within [first,last).
-                  */
-                  template<typename _II, typename _OI>
-                    inline _OI
-                    copy(_II __first, _II __last, _OI __result)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_II>)
-                      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
-                	    typename iterator_traits<_II>::value_type>)
-                      __glibcxx_requires_valid_range(__first, __last);
-                
-                      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
-                	      (std::__miter_base(__first), std::__miter_base(__last),
-                	       __result));
-                    }
-                
-                #if __cplusplus >= 201103L
-                  /**
-                   *  @brief Moves the range [first,last) into result.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  An input iterator.
-                   *  @param  __last   An input iterator.
-                   *  @param  __result An output iterator.
-                   *  @return   result + (first - last)
-                   *
-                   *  This inline function will boil down to a call to @c memmove whenever
-                   *  possible.  Failing that, if random access iterators are passed, then the
-                   *  loop count will be known (and therefore a candidate for compiler
-                   *  optimizations such as unrolling).  Result may not be contained within
-                   *  [first,last); the move_backward function should be used instead.
-                   *
-                   *  Note that the end of the output range is permitted to be contained
-                   *  within [first,last).
-                  */
-                  template<typename _II, typename _OI>
-                    inline _OI
-                    move(_II __first, _II __last, _OI __result)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_II>)
-                      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
-                	    typename iterator_traits<_II>::value_type>)
-                      __glibcxx_requires_valid_range(__first, __last);
-                
-                      return std::__copy_move_a2<true>(std::__miter_base(__first),
-                				       std::__miter_base(__last), __result);
-                    }
-                
-                #define _GLIBCXX_MOVE3(_Tp, _Up, _Vp) std::move(_Tp, _Up, _Vp)
-                #else
-                #define _GLIBCXX_MOVE3(_Tp, _Up, _Vp) std::copy(_Tp, _Up, _Vp)
-                #endif
-                
-                  template<bool, bool, typename>
-                    struct __copy_move_backward
-                    {
-                      template<typename _BI1, typename _BI2>
-                        static _BI2
-                        __copy_move_b(_BI1 __first, _BI1 __last, _BI2 __result)
-                        {
-                	  while (__first != __last)
-                	    *--__result = *--__last;
-                	  return __result;
-                	}
-                    };
-                
-                #if __cplusplus >= 201103L
-                  template<typename _Category>
-                    struct __copy_move_backward<true, false, _Category>
-                    {
-                      template<typename _BI1, typename _BI2>
-                        static _BI2
-                        __copy_move_b(_BI1 __first, _BI1 __last, _BI2 __result)
-                        {
-                	  while (__first != __last)
-                	    *--__result = std::move(*--__last);
-                	  return __result;
-                	}
-                    };
-                #endif
-                
-                  template<>
-                    struct __copy_move_backward<false, false, random_access_iterator_tag>
-                    {
-                      template<typename _BI1, typename _BI2>
-                        static _BI2
-                        __copy_move_b(_BI1 __first, _BI1 __last, _BI2 __result)
-                        {
-                	  typename iterator_traits<_BI1>::difference_type __n;
-                	  for (__n = __last - __first; __n > 0; --__n)
-                	    *--__result = *--__last;
-                	  return __result;
-                	}
-                    };
-                
-                #if __cplusplus >= 201103L
-                  template<>
-                    struct __copy_move_backward<true, false, random_access_iterator_tag>
-                    {
-                      template<typename _BI1, typename _BI2>
-                        static _BI2
-                        __copy_move_b(_BI1 __first, _BI1 __last, _BI2 __result)
-                        {
-                	  typename iterator_traits<_BI1>::difference_type __n;
-                	  for (__n = __last - __first; __n > 0; --__n)
-                	    *--__result = std::move(*--__last);
-                	  return __result;
-                	}
-                    };
-                #endif
-                
-                  template<bool _IsMove>
-                    struct __copy_move_backward<_IsMove, true, random_access_iterator_tag>
-                    {
-                      template<typename _Tp>
-                        static _Tp*
-                        __copy_move_b(const _Tp* __first, const _Tp* __last, _Tp* __result)
-                        {
-                	  const ptrdiff_t _Num = __last - __first;
-                	  if (_Num)
-                	    __builtin_memmove(__result - _Num, __first, sizeof(_Tp) * _Num);
-                	  return __result - _Num;
-                	}
-                    };
-                
-                  template<bool _IsMove, typename _BI1, typename _BI2>
-                    inline _BI2
-                    __copy_move_backward_a(_BI1 __first, _BI1 __last, _BI2 __result)
-                    {
-                      typedef typename iterator_traits<_BI1>::value_type _ValueType1;
-                      typedef typename iterator_traits<_BI2>::value_type _ValueType2;
-                      typedef typename iterator_traits<_BI1>::iterator_category _Category;
-                      const bool __simple = (__is_trivial(_ValueType1)
-                	                     && __is_pointer<_BI1>::__value
-                	                     && __is_pointer<_BI2>::__value
-                			     && __are_same<_ValueType1, _ValueType2>::__value);
-                
-                      return std::__copy_move_backward<_IsMove, __simple,
-                	                               _Category>::__copy_move_b(__first,
-                								 __last,
-                								 __result);
-                    }
-                
-                  template<bool _IsMove, typename _BI1, typename _BI2>
-                    inline _BI2
-                    __copy_move_backward_a2(_BI1 __first, _BI1 __last, _BI2 __result)
-                    {
-                      return _BI2(std::__copy_move_backward_a<_IsMove>
-                		  (std::__niter_base(__first), std::__niter_base(__last),
-                		   std::__niter_base(__result)));
-                    }
-                
-                  /**
-                   *  @brief Copies the range [first,last) into result.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  A bidirectional iterator.
-                   *  @param  __last   A bidirectional iterator.
-                   *  @param  __result A bidirectional iterator.
-                   *  @return   result - (first - last)
-                   *
-                   *  The function has the same effect as copy, but starts at the end of the
-                   *  range and works its way to the start, returning the start of the result.
-                   *  This inline function will boil down to a call to @c memmove whenever
-                   *  possible.  Failing that, if random access iterators are passed, then the
-                   *  loop count will be known (and therefore a candidate for compiler
-                   *  optimizations such as unrolling).
-                   *
-                   *  Result may not be in the range (first,last].  Use copy instead.  Note
-                   *  that the start of the output range may overlap [first,last).
-                  */
-                  template<typename _BI1, typename _BI2>
-                    inline _BI2
-                    copy_backward(_BI1 __first, _BI1 __last, _BI2 __result)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_BidirectionalIteratorConcept<_BI1>)
-                      __glibcxx_function_requires(_Mutable_BidirectionalIteratorConcept<_BI2>)
-                      __glibcxx_function_requires(_ConvertibleConcept<
-                	    typename iterator_traits<_BI1>::value_type,
-                	    typename iterator_traits<_BI2>::value_type>)
-                      __glibcxx_requires_valid_range(__first, __last);
-                
-                      return (std::__copy_move_backward_a2<__is_move_iterator<_BI1>::__value>
-                	      (std::__miter_base(__first), std::__miter_base(__last),
-                	       __result));
-                    }
-                
-                #if __cplusplus >= 201103L
-                  /**
-                   *  @brief Moves the range [first,last) into result.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  A bidirectional iterator.
-                   *  @param  __last   A bidirectional iterator.
-                   *  @param  __result A bidirectional iterator.
-                   *  @return   result - (first - last)
-                   *
-                   *  The function has the same effect as move, but starts at the end of the
-                   *  range and works its way to the start, returning the start of the result.
-                   *  This inline function will boil down to a call to @c memmove whenever
-                   *  possible.  Failing that, if random access iterators are passed, then the
-                   *  loop count will be known (and therefore a candidate for compiler
-                   *  optimizations such as unrolling).
-                   *
-                   *  Result may not be in the range (first,last].  Use move instead.  Note
-                   *  that the start of the output range may overlap [first,last).
-                  */
-                  template<typename _BI1, typename _BI2>
-                    inline _BI2
-                    move_backward(_BI1 __first, _BI1 __last, _BI2 __result)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_BidirectionalIteratorConcept<_BI1>)
-                      __glibcxx_function_requires(_Mutable_BidirectionalIteratorConcept<_BI2>)
-                      __glibcxx_function_requires(_ConvertibleConcept<
-                	    typename iterator_traits<_BI1>::value_type,
-                	    typename iterator_traits<_BI2>::value_type>)
-                      __glibcxx_requires_valid_range(__first, __last);
-                
-                      return std::__copy_move_backward_a2<true>(std::__miter_base(__first),
-                						std::__miter_base(__last),
-                						__result);
-                    }
-                
-                #define _GLIBCXX_MOVE_BACKWARD3(_Tp, _Up, _Vp) std::move_backward(_Tp, _Up, _Vp)
-                #else
-                #define _GLIBCXX_MOVE_BACKWARD3(_Tp, _Up, _Vp) std::copy_backward(_Tp, _Up, _Vp)
-                #endif
-                
-                  template<typename _ForwardIterator, typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<!__is_scalar<_Tp>::__value, void>::__type
-                    __fill_a(_ForwardIterator __first, _ForwardIterator __last,
-                 	     const _Tp& __value)
-                    {
-                      for (; __first != __last; ++__first)
-                	*__first = __value;
-                    }
-                    
-                  template<typename _ForwardIterator, typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, void>::__type
-        6000 ->     __fill_a(_ForwardIterator __first, _ForwardIterator __last,
-                	     const _Tp& __value)
-                    {
-        6000 ->       const _Tp __tmp = __value;
-        6000 ->       for (; __first != __last; ++__first)
-        6000 -> 	*__first = __tmp;
-        6000 ->     }
-                
-                  // Specialization: for char types we can use memset.
-                  template<typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<__is_byte<_Tp>::__value, void>::__type
-                    __fill_a(_Tp* __first, _Tp* __last, const _Tp& __c)
-                    {
-                      const _Tp __tmp = __c;
-                      __builtin_memset(__first, static_cast<unsigned char>(__tmp),
-                		       __last - __first);
-                    }
-                
-                  /**
-                   *  @brief Fills the range [first,last) with copies of value.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  A forward iterator.
-                   *  @param  __last   A forward iterator.
-                   *  @param  __value  A reference-to-const of arbitrary type.
-                   *  @return   Nothing.
-                   *
-                   *  This function fills a range with copies of the same value.  For char
-                   *  types filling contiguous areas of memory, this becomes an inline call
-                   *  to @c memset or @c wmemset.
-                  */
-                  template<typename _ForwardIterator, typename _Tp>
-                    inline void
-        6000 ->     fill(_ForwardIterator __first, _ForwardIterator __last, const _Tp& __value)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
-                				  _ForwardIterator>)
-                      __glibcxx_requires_valid_range(__first, __last);
-                
-        6000 ->       std::__fill_a(std::__niter_base(__first), std::__niter_base(__last),
-        6000 -> 		    __value);
-        6000 ->     }
-                
-                  template<typename _OutputIterator, typename _Size, typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<!__is_scalar<_Tp>::__value, _OutputIterator>::__type
-                    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
-                    {
-                      for (__decltype(__n + 0) __niter = __n;
-                	   __niter > 0; --__niter, ++__first)
-                	*__first = __value;
-                      return __first;
-                    }
-                
-                  template<typename _OutputIterator, typename _Size, typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, _OutputIterator>::__type
-                    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
-                    {
-                      const _Tp __tmp = __value;
-                      for (__decltype(__n + 0) __niter = __n;
-                	   __niter > 0; --__niter, ++__first)
-                	*__first = __tmp;
-                      return __first;
-                    }
-                
-                  template<typename _Size, typename _Tp>
-                    inline typename
-                    __gnu_cxx::__enable_if<__is_byte<_Tp>::__value, _Tp*>::__type
-                    __fill_n_a(_Tp* __first, _Size __n, const _Tp& __c)
-                    {
-                      std::__fill_a(__first, __first + __n, __c);
-                      return __first + __n;
-                    }
-                
-                  /**
-                   *  @brief Fills the range [first,first+n) with copies of value.
-                   *  @ingroup mutating_algorithms
-                   *  @param  __first  An output iterator.
-                   *  @param  __n      The count of copies to perform.
-                   *  @param  __value  A reference-to-const of arbitrary type.
-                   *  @return   The iterator at first+n.
-                   *
-                   *  This function fills a range with copies of the same value.  For char
-                   *  types filling contiguous areas of memory, this becomes an inline call
-                   *  to @c memset or @ wmemset.
-                   *
-                   *  _GLIBCXX_RESOLVE_LIB_DEFECTS
-                   *  DR 865. More algorithms that throw away information
-                  */
-                  template<typename _OI, typename _Size, typename _Tp>
-                    inline _OI
-                    fill_n(_OI __first, _Size __n, const _Tp& __value)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_OutputIteratorConcept<_OI, _Tp>)
-                
-                      return _OI(std::__fill_n_a(std::__niter_base(__first), __n, __value));
-                    }
-                
-                  template<bool _BoolType>
-                    struct __equal
-                    {
-                      template<typename _II1, typename _II2>
-                        static bool
-                        equal(_II1 __first1, _II1 __last1, _II2 __first2)
-                        {
-                	  for (; __first1 != __last1; ++__first1, ++__first2)
-                	    if (!(*__first1 == *__first2))
-                	      return false;
-                	  return true;
-                	}
-                    };
-                
-                  template<>
-                    struct __equal<true>
-                    {
-                      template<typename _Tp>
-                        static bool
-                        equal(const _Tp* __first1, const _Tp* __last1, const _Tp* __first2)
-                        {
-                	  return !__builtin_memcmp(__first1, __first2, sizeof(_Tp)
-                				   * (__last1 - __first1));
-                	}
-                    };
-                
-                  template<typename _II1, typename _II2>
-                    inline bool
-                    __equal_aux(_II1 __first1, _II1 __last1, _II2 __first2)
-                    {
-                      typedef typename iterator_traits<_II1>::value_type _ValueType1;
-                      typedef typename iterator_traits<_II2>::value_type _ValueType2;
-                      const bool __simple = ((__is_integer<_ValueType1>::__value
-                			      || __is_pointer<_ValueType1>::__value)
-                	                     && __is_pointer<_II1>::__value
-                	                     && __is_pointer<_II2>::__value
-                			     && __are_same<_ValueType1, _ValueType2>::__value);
-                
-                      return std::__equal<__simple>::equal(__first1, __last1, __first2);
-                    }
-                
-                
-                  template<typename, typename>
-                    struct __lc_rai
-                    {
-                      template<typename _II1, typename _II2>
-                        static _II1
-                        __newlast1(_II1, _II1 __last1, _II2, _II2)
-                        { return __last1; }
-                
-                      template<typename _II>
-                        static bool
-                        __cnd2(_II __first, _II __last)
-                        { return __first != __last; }
-                    };
-                
-                  template<>
-                    struct __lc_rai<random_access_iterator_tag, random_access_iterator_tag>
-                    {
-                      template<typename _RAI1, typename _RAI2>
-                        static _RAI1
-                        __newlast1(_RAI1 __first1, _RAI1 __last1,
-                		   _RAI2 __first2, _RAI2 __last2)
-                        {
-                	  const typename iterator_traits<_RAI1>::difference_type
-                	    __diff1 = __last1 - __first1;
-                	  const typename iterator_traits<_RAI2>::difference_type
-                	    __diff2 = __last2 - __first2;
-                	  return __diff2 < __diff1 ? __first1 + __diff2 : __last1;
-                	}
-                
-                      template<typename _RAI>
-                        static bool
-                        __cnd2(_RAI, _RAI)
-                        { return true; }
-                    };
-                
-                  template<bool _BoolType>
-                    struct __lexicographical_compare
-                    {
-                      template<typename _II1, typename _II2>
-                        static bool __lc(_II1, _II1, _II2, _II2);
-                    };
-                
-                  template<bool _BoolType>
-                    template<typename _II1, typename _II2>
-                      bool
-                      __lexicographical_compare<_BoolType>::
-                      __lc(_II1 __first1, _II1 __last1, _II2 __first2, _II2 __last2)
-                      {
-                	typedef typename iterator_traits<_II1>::iterator_category _Category1;
-                	typedef typename iterator_traits<_II2>::iterator_category _Category2;
-                	typedef std::__lc_rai<_Category1, _Category2> 	__rai_type;
-                	
-                	__last1 = __rai_type::__newlast1(__first1, __last1,
-                					 __first2, __last2);
-                	for (; __first1 != __last1 && __rai_type::__cnd2(__first2, __last2);
-                	     ++__first1, ++__first2)
-                	  {
-                	    if (*__first1 < *__first2)
-                	      return true;
-                	    if (*__first2 < *__first1)
-                	      return false;
-                	  }
-                	return __first1 == __last1 && __first2 != __last2;
-                      }
-                
-                  template<>
-                    struct __lexicographical_compare<true>
-                    {
-                      template<typename _Tp, typename _Up>
-                        static bool
-                        __lc(const _Tp* __first1, const _Tp* __last1,
-                	     const _Up* __first2, const _Up* __last2)
-                	{
-                	  const size_t __len1 = __last1 - __first1;
-                	  const size_t __len2 = __last2 - __first2;
-                	  const int __result = __builtin_memcmp(__first1, __first2,
-                						std::min(__len1, __len2));
-                	  return __result != 0 ? __result < 0 : __len1 < __len2;
-                	}
-                    };
-                
-                  template<typename _II1, typename _II2>
-                    inline bool
-                    __lexicographical_compare_aux(_II1 __first1, _II1 __last1,
-                				  _II2 __first2, _II2 __last2)
-                    {
-                      typedef typename iterator_traits<_II1>::value_type _ValueType1;
-                      typedef typename iterator_traits<_II2>::value_type _ValueType2;
-                      const bool __simple =
-                	(__is_byte<_ValueType1>::__value && __is_byte<_ValueType2>::__value
-                	 && !__gnu_cxx::__numeric_traits<_ValueType1>::__is_signed
-                	 && !__gnu_cxx::__numeric_traits<_ValueType2>::__is_signed
-                	 && __is_pointer<_II1>::__value
-                	 && __is_pointer<_II2>::__value);
-                
-                      return std::__lexicographical_compare<__simple>::__lc(__first1, __last1,
-                							    __first2, __last2);
-                    }
-                
-                  /**
-                   *  @brief Finds the first position in which @a val could be inserted
-                   *         without changing the ordering.
-                   *  @param  __first   An iterator.
-                   *  @param  __last    Another iterator.
-                   *  @param  __val     The search term.
-                   *  @return         An iterator pointing to the first element <em>not less
-                   *                  than</em> @a val, or end() if every element is less than 
-                   *                  @a val.
-                   *  @ingroup binary_search_algorithms
-                  */
-                  template<typename _ForwardIterator, typename _Tp>
-                    _ForwardIterator
-                    lower_bound(_ForwardIterator __first, _ForwardIterator __last,
-                		const _Tp& __val)
-                    {
-                #ifdef _GLIBCXX_CONCEPT_CHECKS
-                      typedef typename iterator_traits<_ForwardIterator>::value_type
-                	_ValueType;
-                #endif
-                      typedef typename iterator_traits<_ForwardIterator>::difference_type
-                	_DistanceType;
-                
-                      // concept requirements
-                      __glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
-                      __glibcxx_function_requires(_LessThanOpConcept<_ValueType, _Tp>)
-                      __glibcxx_requires_partitioned_lower(__first, __last, __val);
-                
-                      _DistanceType __len = std::distance(__first, __last);
-                
-                      while (__len > 0)
-                	{
-                	  _DistanceType __half = __len >> 1;
-                	  _ForwardIterator __middle = __first;
-                	  std::advance(__middle, __half);
-                	  if (*__middle < __val)
-                	    {
-                	      __first = __middle;
-                	      ++__first;
-                	      __len = __len - __half - 1;
-                	    }
-                	  else
-                	    __len = __half;
-                	}
-                      return __first;
-                    }
-                
-                  /// This is a helper function for the sort routines and for random.tcc.
-                  //  Precondition: __n > 0.
-                  inline _GLIBCXX_CONSTEXPR int
-                  __lg(int __n)
-                  { return sizeof(int) * __CHAR_BIT__  - 1 - __builtin_clz(__n); }
-                
-                  inline _GLIBCXX_CONSTEXPR unsigned
-                  __lg(unsigned __n)
-                  { return sizeof(int) * __CHAR_BIT__  - 1 - __builtin_clz(__n); }
-                
-                  inline _GLIBCXX_CONSTEXPR long
-                  __lg(long __n)
-                  { return sizeof(long) * __CHAR_BIT__ - 1 - __builtin_clzl(__n); }
-                
-                  inline _GLIBCXX_CONSTEXPR unsigned long
-                  __lg(unsigned long __n)
-                  { return sizeof(long) * __CHAR_BIT__ - 1 - __builtin_clzl(__n); }
-                
-                  inline _GLIBCXX_CONSTEXPR long long
-                  __lg(long long __n)
-                  { return sizeof(long long) * __CHAR_BIT__ - 1 - __builtin_clzll(__n); }
-                
-                  inline _GLIBCXX_CONSTEXPR unsigned long long
-                  __lg(unsigned long long __n)
-                  { return sizeof(long long) * __CHAR_BIT__ - 1 - __builtin_clzll(__n); }
-                
-                _GLIBCXX_END_NAMESPACE_VERSION
-                
-                _GLIBCXX_BEGIN_NAMESPACE_ALGO
-                
-                  /**
-                   *  @brief Tests a range for element-wise equality.
-                   *  @ingroup non_mutating_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @return   A boolean true or false.
-                   *
-                   *  This compares the elements of two ranges using @c == and returns true or
-                   *  false depending on whether all of the corresponding elements of the
-                   *  ranges are equal.
-                  */
-                  template<typename _II1, typename _II2>
-                    inline bool
-                    equal(_II1 __first1, _II1 __last1, _II2 __first2)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_II1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_II2>)
-                      __glibcxx_function_requires(_EqualOpConcept<
-                	    typename iterator_traits<_II1>::value_type,
-                	    typename iterator_traits<_II2>::value_type>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                
-                      return std::__equal_aux(std::__niter_base(__first1),
-                			      std::__niter_base(__last1),
-                			      std::__niter_base(__first2));
-                    }
-                
-                  /**
-                   *  @brief Tests a range for element-wise equality.
-                   *  @ingroup non_mutating_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @param __binary_pred A binary predicate @link functors
-                   *                  functor@endlink.
-                   *  @return         A boolean true or false.
-                   *
-                   *  This compares the elements of two ranges using the binary_pred
-                   *  parameter, and returns true or
-                   *  false depending on whether all of the corresponding elements of the
-                   *  ranges are equal.
-                  */
-                  template<typename _IIter1, typename _IIter2, typename _BinaryPredicate>
-                    inline bool
-                    equal(_IIter1 __first1, _IIter1 __last1,
-                	  _IIter2 __first2, _BinaryPredicate __binary_pred)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_IIter1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_IIter2>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                
-                      for (; __first1 != __last1; ++__first1, ++__first2)
-                	if (!bool(__binary_pred(*__first1, *__first2)))
-                	  return false;
-                      return true;
-                    }
-                
-                  /**
-                   *  @brief Performs @b dictionary comparison on ranges.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @param  __last2   An input iterator.
-                   *  @return   A boolean true or false.
-                   *
-                   *  <em>Returns true if the sequence of elements defined by the range
-                   *  [first1,last1) is lexicographically less than the sequence of elements
-                   *  defined by the range [first2,last2).  Returns false otherwise.</em>
-                   *  (Quoted from [25.3.8]/1.)  If the iterators are all character pointers,
-                   *  then this is an inline call to @c memcmp.
-                  */
-                  template<typename _II1, typename _II2>
-                    inline bool
-                    lexicographical_compare(_II1 __first1, _II1 __last1,
-                			    _II2 __first2, _II2 __last2)
-                    {
-                #ifdef _GLIBCXX_CONCEPT_CHECKS
-                      // concept requirements
-                      typedef typename iterator_traits<_II1>::value_type _ValueType1;
-                      typedef typename iterator_traits<_II2>::value_type _ValueType2;
-                #endif
-                      __glibcxx_function_requires(_InputIteratorConcept<_II1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_II2>)
-                      __glibcxx_function_requires(_LessThanOpConcept<_ValueType1, _ValueType2>)
-                      __glibcxx_function_requires(_LessThanOpConcept<_ValueType2, _ValueType1>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                      __glibcxx_requires_valid_range(__first2, __last2);
-                
-                      return std::__lexicographical_compare_aux(std::__niter_base(__first1),
-                						std::__niter_base(__last1),
-                						std::__niter_base(__first2),
-                						std::__niter_base(__last2));
-                    }
-                
-                  /**
-                   *  @brief Performs @b dictionary comparison on ranges.
-                   *  @ingroup sorting_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @param  __last2   An input iterator.
-                   *  @param  __comp  A @link comparison_functors comparison functor@endlink.
-                   *  @return   A boolean true or false.
-                   *
-                   *  The same as the four-parameter @c lexicographical_compare, but uses the
-                   *  comp parameter instead of @c <.
-                  */
-                  template<typename _II1, typename _II2, typename _Compare>
-                    bool
-                    lexicographical_compare(_II1 __first1, _II1 __last1,
-                			    _II2 __first2, _II2 __last2, _Compare __comp)
-                    {
-                      typedef typename iterator_traits<_II1>::iterator_category _Category1;
-                      typedef typename iterator_traits<_II2>::iterator_category _Category2;
-                      typedef std::__lc_rai<_Category1, _Category2> 	__rai_type;
-                
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_II1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_II2>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                      __glibcxx_requires_valid_range(__first2, __last2);
-                
-                      __last1 = __rai_type::__newlast1(__first1, __last1, __first2, __last2);
-                      for (; __first1 != __last1 && __rai_type::__cnd2(__first2, __last2);
-                	   ++__first1, ++__first2)
-                	{
-                	  if (__comp(*__first1, *__first2))
-                	    return true;
-                	  if (__comp(*__first2, *__first1))
-                	    return false;
-                	}
-                      return __first1 == __last1 && __first2 != __last2;
-                    }
-                
-                  /**
-                   *  @brief Finds the places in ranges which don't match.
-                   *  @ingroup non_mutating_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @return   A pair of iterators pointing to the first mismatch.
-                   *
-                   *  This compares the elements of two ranges using @c == and returns a pair
-                   *  of iterators.  The first iterator points into the first range, the
-                   *  second iterator points into the second range, and the elements pointed
-                   *  to by the iterators are not equal.
-                  */
-                  template<typename _InputIterator1, typename _InputIterator2>
-                    pair<_InputIterator1, _InputIterator2>
-                    mismatch(_InputIterator1 __first1, _InputIterator1 __last1,
-                	     _InputIterator2 __first2)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_InputIterator1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_InputIterator2>)
-                      __glibcxx_function_requires(_EqualOpConcept<
-                	    typename iterator_traits<_InputIterator1>::value_type,
-                	    typename iterator_traits<_InputIterator2>::value_type>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                
-                      while (__first1 != __last1 && *__first1 == *__first2)
-                        {
-                	  ++__first1;
-                	  ++__first2;
-                        }
-                      return pair<_InputIterator1, _InputIterator2>(__first1, __first2);
-                    }
-                
-                  /**
-                   *  @brief Finds the places in ranges which don't match.
-                   *  @ingroup non_mutating_algorithms
-                   *  @param  __first1  An input iterator.
-                   *  @param  __last1   An input iterator.
-                   *  @param  __first2  An input iterator.
-                   *  @param __binary_pred A binary predicate @link functors
-                   *         functor@endlink.
-                   *  @return   A pair of iterators pointing to the first mismatch.
-                   *
-                   *  This compares the elements of two ranges using the binary_pred
-                   *  parameter, and returns a pair
-                   *  of iterators.  The first iterator points into the first range, the
-                   *  second iterator points into the second range, and the elements pointed
-                   *  to by the iterators are not equal.
-                  */
-                  template<typename _InputIterator1, typename _InputIterator2,
-                	   typename _BinaryPredicate>
-                    pair<_InputIterator1, _InputIterator2>
-                    mismatch(_InputIterator1 __first1, _InputIterator1 __last1,
-                	     _InputIterator2 __first2, _BinaryPredicate __binary_pred)
-                    {
-                      // concept requirements
-                      __glibcxx_function_requires(_InputIteratorConcept<_InputIterator1>)
-                      __glibcxx_function_requires(_InputIteratorConcept<_InputIterator2>)
-                      __glibcxx_requires_valid_range(__first1, __last1);
-                
-                      while (__first1 != __last1 && bool(__binary_pred(*__first1, *__first2)))
-                        {
-                	  ++__first1;
-                	  ++__first2;
-                        }
-                      return pair<_InputIterator1, _InputIterator2>(__first1, __first2);
-                    }
-                
-                _GLIBCXX_END_NAMESPACE_ALGO
-                } // namespace std
-                
-                // NB: This file is included within many other C++ includes, as a way
-                // of getting the base algorithms. So, make sure that parallel bits
-                // come in too if requested. 
-                #ifdef _GLIBCXX_PARALLEL
-                # include <parallel/algobase.h>
-                #endif
-                
-                #endif
-
-
-Top 10 Lines:
-
-     Line      Count
-
-      277      12000
-      688       6000
-      721       6000
-
-Execution Summary:
-
-       11   Executable lines in this file
-       11   Lines executed
-   100.00   Percent of the file executed
-
-    24000   Total number of line executions
-  2181.82   Average executions per line
-
-
 *** File /usr/include/c++/4.8.2/cmath:
                 // -*- C++ -*- C forwarding header.
                 
@@ -1702,7 +202,7 @@ Execution Summary:
                 #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
                   inline _GLIBCXX_CONSTEXPR float
                   cos(float __x)
-     2606346 ->   { return __builtin_cosf(__x); }
+   148072432 ->   { return __builtin_cosf(__x); }
                 
                   inline _GLIBCXX_CONSTEXPR long double
                   cos(long double __x)
@@ -1740,7 +240,7 @@ Execution Summary:
                 #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
                   inline _GLIBCXX_CONSTEXPR float
                   exp(float __x)
-   951897823 ->   { return __builtin_expf(__x); }
+   305228345 ->   { return __builtin_expf(__x); }
                 
                   inline _GLIBCXX_CONSTEXPR long double
                   exp(long double __x)
@@ -1932,18 +432,18 @@ Execution Summary:
                   template<typename _Tp, typename _Up>
                     inline _GLIBCXX_CONSTEXPR
                     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-     8100761 ->     pow(_Tp __x, _Up __y)
+   654716151 ->     pow(_Tp __x, _Up __y)
                     {
                       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-     8100761 ->       return pow(__type(__x), __type(__y));
-     8100761 ->     }
+   654716151 ->       return pow(__type(__x), __type(__y));
+   654716151 ->     }
                 
                   using ::sin;
                 
                 #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
                   inline _GLIBCXX_CONSTEXPR float
                   sin(float __x)
-     2605184 ->   { return __builtin_sinf(__x); }
+   148070697 ->   { return __builtin_sinf(__x); }
                 
                   inline _GLIBCXX_CONSTEXPR long double
                   sin(long double __x)
@@ -1981,7 +481,7 @@ Execution Summary:
                 #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
                   inline _GLIBCXX_CONSTEXPR float
                   sqrt(float __x)
-   551557108 ->   { return __builtin_sqrtf(__x); }
+  3171299314 ->   { return __builtin_sqrtf(__x); }
                 
                   inline _GLIBCXX_CONSTEXPR long double
                   sqrt(long double __x)
@@ -3190,11 +1690,11 @@ Top 10 Lines:
 
      Line      Count
 
-      242  951897823
-      483  551557108
-      434    8100761
-      204    2606346
-      445    2605184
+      483 3171299314
+      434  654716151
+      242  305228345
+      204  148072432
+      445  148070697
       377        815
 
 Execution Summary:
@@ -3203,8 +1703,8 @@ Execution Summary:
        12   Lines executed
    100.00   Percent of the file executed
 
-1516768037   Total number of line executions
-126397336.42   Average executions per line
+4427387754   Total number of line executions
+368948979.50   Average executions per line
 
 
 *** File /root/improved/troll.cpp:
@@ -3539,10 +2039,10 @@ Execution Summary:
                 /****************************/
                 
                 
-   962079058 -> inline float flor(float f) {
-   962079058 ->     if(f>0.) return f;
-   962079058 ->     else return 0.;
-   962079058 -> }
+   871283193 -> inline float flor(float f) {
+   871283193 ->     if(f>0.) return f;
+   871283193 ->     else return 0.;
+   871283193 -> }
                 inline float florif(int i) {
                     if(i>0) return float(i);
                     else return 0.;
@@ -3551,18 +2051,18 @@ Execution Summary:
          726 ->     if(f1>f2) return f1;
          726 ->     else return f2;
          726 -> }
-   464020018 -> inline float minf(float f1, float f2) {
-   464020018 ->     if(f1<f2) return f1;
-   464020018 ->     else return f2;
-   464020018 -> }
-   522176960 -> inline int min(int i1, int i2) {
-   522176960 ->     if(i1<i2) return i1;
-   522176960 ->     else return i2;
-   522176960 -> }
-    87402234 -> inline int max(int i1, int i2) {
-    87402234 ->     if(i1>i2) return i1;
-    87402234 ->     else return i2;
-    87402234 -> }
+  5903707762 -> inline float minf(float f1, float f2) {
+  5903707762 ->     if(f1<f2) return f1;
+  5903707762 ->     else return f2;
+  5903707762 -> }
+ 11756360784 -> inline int min(int i1, int i2) {
+ 11756360784 ->     if(i1<i2) return i1;
+ 11756360784 ->     else return i2;
+ 11756360784 -> }
+  4724795726 -> inline int max(int i1, int i2) {
+  4724795726 ->     if(i1>i2) return i1;
+  4724795726 ->     else return i2;
+  4724795726 -> }
        ##### -> inline int sgn(float f) {
        ##### ->     if(f>0.0) return 1;
        ##### ->     else return -1;
@@ -3803,21 +2303,21 @@ Execution Summary:
                 
                 #else
                 
-     2504880 -> void Species::FillSeed(int col, int row) {
+   147906270 -> void Species::FillSeed(int col, int row) {
                     int site;
-     2504880 ->     if(col < cols) {
-     2504880 ->         if((row >= 0) && (row < rows)) {
-     2504880 ->             site=col+cols*row;
-     2504880 ->             if(_SEEDTRADEOFF){
+   147906270 ->     if(col < cols) {
+   147906270 ->         if((row >= 0) && (row < rows)) {
+   147906270 ->             site=col+cols*row;
+   147906270 ->             if(_SEEDTRADEOFF){
                                 //if (s_Seed[site] == 0) site_has_S[site].push_back(s_id);
-     2504880 ->                 s_Seed[site]++;                         /* ifdef SEEDTRADEOFF, s_Seed[site] is the number of seeds of this species at that site */
+   147906270 ->                 s_Seed[site]++;                         /* ifdef SEEDTRADEOFF, s_Seed[site] is the number of seeds of this species at that site */
                             }
                             else{
-     2504880 ->                 if (s_Seed[site] == 0){
+   147906270 ->                 if (s_Seed[site] == 0){
                                     //site_has_S[site].push_back(s_id);
-     2504880 ->                     s_Seed[site] = 1;
+   147906270 ->                     s_Seed[site] = 1;
                                 }
-     2504880 ->                 else if(s_Seed[site]!=1) s_Seed[site]=1;     /* If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed  */
+   147906270 ->                 else if(s_Seed[site]!=1) s_Seed[site]=1;     /* If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed  */
                             }
                         }
                         
@@ -3833,7 +2333,7 @@ Execution Summary:
                         }
                 #endif
                     }
-     2504880 -> }
+   147906270 -> }
                 #endif
                 
                 
@@ -3983,20 +2483,20 @@ Execution Summary:
                 
                 
                 
-     8318077 -> inline float Species::DeathRate(float PPFD, float dbh, int nppneg) {
+   681728812 -> inline float Species::DeathRate(float PPFD, float dbh, int nppneg) {
                     
-     8318077 ->     float dr=0;
-     8318077 ->     float basal=m-m1*s_wsg;
+   681728812 ->     float dr=0;
+   681728812 ->     float basal=m-m1*s_wsg;
                     
-     8318077 ->     dr=basal;
+   681728812 ->     dr=basal;
                     
-     8318077 ->     if (nppneg > s_leaflifespan) dr+=1.0/timestep;
+   681728812 ->     if (nppneg > s_leaflifespan) dr+=1.0/timestep;
                     
-     8318077 ->     if (iter == int(nbiter-1))
-     8318077 ->         output[26]<< s_wsg << "\t" << basal << "\t"  << dbh << "\t"  << dr   <<  "\n";
+   681728812 ->     if (iter == int(nbiter-1))
+   681728812 ->         output[26]<< s_wsg << "\t" << basal << "\t"  << dbh << "\t"  << dr   <<  "\n";
                     
-     8318077 ->     return dr*timestep;
-     8318077 -> }
+   681728812 ->     return dr*timestep;
+   681728812 -> }
                 
                 /*#############################################
                  ###   Farquhar von Caemmerer Berry model  ###
@@ -4014,7 +2514,7 @@ Execution Summary:
                  from d13C (see cernusak et al 2013) without explicit model of stomatal conductance; min added in order to prevent ci:ca bigger than 1 (even though Ehleringer et al 1986 reported some values above 1 (Fig3) */
                 
                 
-   275778354 -> inline float Species::GPPleaf(float PPFD, float VPD, float T) {
+ 35945387825 -> inline float Species::GPPleaf(float PPFD, float VPD, float T) {
                     
                     /* v.2.3.0: theta defined as a global variable */
                     //theta=0.7;   // this is the fixed value of theta used by von Caemmerer 2000
@@ -4022,10 +2522,10 @@ Execution Summary:
                     //float theta=0.76+0.018*T-0.00037*T*T;         // theta, but temperature dependent cf. Bernacchi et al 2003 PCE
                     
                     /* Parameters for Farquhar model, with temperature dependencies */
-   275778354 ->     int convT= int(iTaccuracy*T); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
+ 35945387825 ->     int convT= int(iTaccuracy*T); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
                 
-   275778354 ->     float KmT = LookUp_KmT[convT];
-   275778354 ->     float GammaT = LookUp_GammaT[convT];
+ 35945387825 ->     float KmT = LookUp_KmT[convT];
+ 35945387825 ->     float GammaT = LookUp_GammaT[convT];
                     float VcmaxT;
                     float JmaxT;
                 
@@ -4033,94 +2533,94 @@ Execution Summary:
                     /* NEW CHANGE: the new look-up tables are defined within species class */
                     /* (FOR FUTURE): KmT, VcmaxT are not required to be defined, insert into eqn directly */
                 
-   275778354 ->     if (s_calculated[convT]){
+ 35945387825 ->     if (s_calculated[convT]){
                 
-   275778354 ->         tempRday += s_LookUp_tempRday[convT];
-   275778354 ->         VcmaxT = s_LookUp_VcmaxT[convT];
-   275778354 ->         JmaxT = s_LookUp_JmaxT[convT];
+ 35945387825 ->         tempRday += s_LookUp_tempRday[convT];
+ 35945387825 ->         VcmaxT = s_LookUp_VcmaxT[convT];
+ 35945387825 ->         JmaxT = s_LookUp_JmaxT[convT];
                 
                     }
                     else {
                 
-   275778354 ->         s_calculated[convT] = true;
+ 35945387825 ->         s_calculated[convT] = true;
                 
-   275778354 ->         s_LookUp_tempRday[convT] = s_Rdark * LookUp_tempRday[convT];
-   275778354 ->         tempRday += s_LookUp_tempRday[convT];
-   275778354 ->         VcmaxT = s_LookUp_VcmaxT[convT] = s_Vcmax * LookUp_VcmaxT[convT];
-   275778354 ->         JmaxT = s_LookUp_JmaxT[convT] = s_Jmax * LookUp_JmaxT[convT];
-   275778354 ->         s_LookUp_thetaJmaxT[convT] = 4.0 * theta * JmaxT;
+ 35945387825 ->         s_LookUp_tempRday[convT] = s_Rdark * LookUp_tempRday[convT];
+ 35945387825 ->         tempRday += s_LookUp_tempRday[convT];
+ 35945387825 ->         VcmaxT = s_LookUp_VcmaxT[convT] = s_Vcmax * LookUp_VcmaxT[convT];
+ 35945387825 ->         JmaxT = s_LookUp_JmaxT[convT] = s_Jmax * LookUp_JmaxT[convT];
+ 35945387825 ->         s_LookUp_thetaJmaxT[convT] = 4.0 * theta * JmaxT;
                 
                     }
                 
-   275778354 ->     s_fci = g1 / (g1 + sqrt(VPD));       /*!!!*/
+ 35945387825 ->     s_fci = g1 / (g1 + sqrt(VPD));       /*!!!*/
                 
                     /* FvCB model */
                 
-   275778354 ->     float I = alpha * PPFD;
-   275778354 ->     float Ji = JmaxT + I;
-   275778354 ->     float J = (Ji - sqrt(Ji * Ji - s_LookUp_thetaJmaxT[convT] * I)) * halfDividedByTheta;
+ 35945387825 ->     float I = alpha * PPFD;
+ 35945387825 ->     float Ji = JmaxT + I;
+ 35945387825 ->     float J = (Ji - sqrt(Ji * Ji - s_LookUp_thetaJmaxT[convT] * I)) * halfDividedByTheta;
                 
-   275778354 ->     return minf(VcmaxT / (s_fci + KmT), 0.25 * J / (s_fci + 2.0 * GammaT)) * (s_fci - GammaT);
+ 35945387825 ->     return minf(VcmaxT / (s_fci + KmT), 0.25 * J / (s_fci + 2.0 * GammaT)) * (s_fci - GammaT);
                 
-   275778354 -> }
+ 35945387825 -> }
                 
                 /* dailyGPPleaf returns the assimilation rate (computed from Species::GPPleaf) averaged across the daily fluctuations in climatic conditions (light, VPD and T), in micromoles C/m^2/s */
                 
                 /* used only by _DAILYLIGHT */
                 
                 
-    17584390 -> inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, float CD) {
-    17584390 ->     float ppfde, dailyA=0.0;
+  1501104988 -> inline float Species::dailyGPPleaf(float PPFD, float VPD, float T, float dens, float CD) {
+  1501104988 ->     float ppfde, dailyA=0.0;
                 
                     /* NEW CHANGE: loop unrolling; calculate ppfde directly because daily_light[] are all non-zero */
-    17584390 ->     ppfde = PPFD * daily_light[0];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[0], T*daily_T[0]);
-    17584390 ->     ppfde = PPFD * daily_light[1];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[1], T*daily_T[1]);
-    17584390 ->     ppfde = PPFD * daily_light[2];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[2], T*daily_T[2]);
-    17584390 ->     ppfde = PPFD * daily_light[3];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[3], T*daily_T[3]);
-    17584390 ->     ppfde = PPFD * daily_light[4];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[4], T*daily_T[4]);
-    17584390 ->     ppfde = PPFD * daily_light[5];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[5], T*daily_T[5]);
-    17584390 ->     ppfde = PPFD * daily_light[6];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[6], T*daily_T[6]);
-    17584390 ->     ppfde = PPFD * daily_light[7];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[7], T*daily_T[7]);
-    17584390 ->     ppfde = PPFD * daily_light[8];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[8], T*daily_T[8]);
-    17584390 ->     ppfde = PPFD * daily_light[9];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[9], T*daily_T[9]);
-    17584390 ->     ppfde = PPFD * daily_light[10];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[10], T*daily_T[10]);
-    17584390 ->     ppfde = PPFD * daily_light[11];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[11], T*daily_T[11]);
-    17584390 ->     ppfde = PPFD * daily_light[12];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[12], T*daily_T[12]);
-    17584390 ->     ppfde = PPFD * daily_light[13];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[13], T*daily_T[13]);
-    17584390 ->     ppfde = PPFD * daily_light[14];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[14], T*daily_T[14]);
-    17584390 ->     ppfde = PPFD * daily_light[15];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[15], T*daily_T[15]);
-    17584390 ->     ppfde = PPFD * daily_light[16];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[16], T*daily_T[16]);
-    17584390 ->     ppfde = PPFD * daily_light[17];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[17], T*daily_T[17]);
-    17584390 ->     ppfde = PPFD * daily_light[18];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[18], T*daily_T[18]);
-    17584390 ->     ppfde = PPFD * daily_light[19];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[19], T*daily_T[19]);
-    17584390 ->     ppfde = PPFD * daily_light[20];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[20], T*daily_T[20]);
-    17584390 ->     ppfde = PPFD * daily_light[21];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[21], T*daily_T[21]);
-    17584390 ->     ppfde = PPFD * daily_light[22];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[22], T*daily_T[22]);
-    17584390 ->     ppfde = PPFD * daily_light[23];
-    17584390 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[23], T*daily_T[23]);
+  1501104988 ->     ppfde = PPFD * daily_light[0];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[0], T*daily_T[0]);
+  1501104988 ->     ppfde = PPFD * daily_light[1];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[1], T*daily_T[1]);
+  1501104988 ->     ppfde = PPFD * daily_light[2];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[2], T*daily_T[2]);
+  1501104988 ->     ppfde = PPFD * daily_light[3];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[3], T*daily_T[3]);
+  1501104988 ->     ppfde = PPFD * daily_light[4];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[4], T*daily_T[4]);
+  1501104988 ->     ppfde = PPFD * daily_light[5];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[5], T*daily_T[5]);
+  1501104988 ->     ppfde = PPFD * daily_light[6];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[6], T*daily_T[6]);
+  1501104988 ->     ppfde = PPFD * daily_light[7];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[7], T*daily_T[7]);
+  1501104988 ->     ppfde = PPFD * daily_light[8];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[8], T*daily_T[8]);
+  1501104988 ->     ppfde = PPFD * daily_light[9];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[9], T*daily_T[9]);
+  1501104988 ->     ppfde = PPFD * daily_light[10];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[10], T*daily_T[10]);
+  1501104988 ->     ppfde = PPFD * daily_light[11];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[11], T*daily_T[11]);
+  1501104988 ->     ppfde = PPFD * daily_light[12];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[12], T*daily_T[12]);
+  1501104988 ->     ppfde = PPFD * daily_light[13];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[13], T*daily_T[13]);
+  1501104988 ->     ppfde = PPFD * daily_light[14];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[14], T*daily_T[14]);
+  1501104988 ->     ppfde = PPFD * daily_light[15];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[15], T*daily_T[15]);
+  1501104988 ->     ppfde = PPFD * daily_light[16];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[16], T*daily_T[16]);
+  1501104988 ->     ppfde = PPFD * daily_light[17];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[17], T*daily_T[17]);
+  1501104988 ->     ppfde = PPFD * daily_light[18];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[18], T*daily_T[18]);
+  1501104988 ->     ppfde = PPFD * daily_light[19];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[19], T*daily_T[19]);
+  1501104988 ->     ppfde = PPFD * daily_light[20];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[20], T*daily_T[20]);
+  1501104988 ->     ppfde = PPFD * daily_light[21];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[21], T*daily_T[21]);
+  1501104988 ->     ppfde = PPFD * daily_light[22];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[22], T*daily_T[22]);
+  1501104988 ->     ppfde = PPFD * daily_light[23];
+  1501104988 ->     if (ppfde > 0.1) dailyA += GPPleaf(ppfde, VPD*daily_vpd[23], T*daily_T[23]);
                 
                     /* Original Code:
                     for(int i = 0; i < 24; i++) {
@@ -4139,20 +2639,20 @@ Execution Summary:
                     }*/
                     //daily_light is the averaged (across one year, meteo station Nouragues DZ) and normalized (from 0 to 1) daily fluctuation of light, with half-hour time step, during the day time (from 7am to 7pm, ie 12 hours in total), same for daily_vpd and daily_T. Taking into account these daily variation is necessary considering the non-linearity of FvCB model
                     
-    17584390 ->     if(_FASTGPP){
-    17584390 ->         float alpha=phi*PPFD/GPPleaf(PPFD, VPD, T);             //alpha is a non-dimensional figure used to compute the multiplier below
-    17584390 ->         float D=klight*dens*CD;                                 //D is a non-dimensional figure used to compute the multiplier below
-    17584390 ->         float m=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));
-    17584390 ->         if (m>=1.0 || CD > 7.0) {
-    17584390 ->             cout << "m pb FASTGPP !!!" << endl;
+  1501104988 ->     if(_FASTGPP){
+  1501104988 ->         float alpha=phi*PPFD/GPPleaf(PPFD, VPD, T);             //alpha is a non-dimensional figure used to compute the multiplier below
+  1501104988 ->         float D=klight*dens*CD;                                 //D is a non-dimensional figure used to compute the multiplier below
+  1501104988 ->         float m=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));
+  1501104988 ->         if (m>=1.0 || CD > 7.0) {
+  1501104988 ->             cout << "m pb FASTGPP !!!" << endl;
                             
                         }
-    17584390 ->         dailyA*=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));  // the FvCB assimilation rate computed at the top of the tree crown is multiplied by a multiplier<1, to account for the lower rate at lower light level within the crown depth. This multiplier is computed assuming that change in photosynthetic assimilation rate within a tree crown is mainly due to light decrease due to self-shading following a Michealis-menten relationship (ie. we assume that 1/ the change is not due to changes in VPD or temperature, which are supposed homogeneous at the intra-crown scale, and 2/ that other tree contributions to light decrease is neglected).
+  1501104988 ->         dailyA*=alpha/(D*(alpha-1))*log(alpha/(1+(alpha-1)*exp(-D)));  // the FvCB assimilation rate computed at the top of the tree crown is multiplied by a multiplier<1, to account for the lower rate at lower light level within the crown depth. This multiplier is computed assuming that change in photosynthetic assimilation rate within a tree crown is mainly due to light decrease due to self-shading following a Michealis-menten relationship (ie. we assume that 1/ the change is not due to changes in VPD or temperature, which are supposed homogeneous at the intra-crown scale, and 2/ that other tree contributions to light decrease is neglected).
                     }
-    17584390 ->     dailyA *= 0.0417;                                 // 0.0417=1/24 (24=12*2 = number of half hours in the 12 hours of daily light)
-    17584390 ->     tempRday *= 0.0417;
-    17584390 ->     return dailyA;
-    17584390 -> }
+  1501104988 ->     dailyA *= 0.0417;                                 // 0.0417=1/24 (24=12*2 = number of half hours in the 12 hours of daily light)
+  1501104988 ->     tempRday *= 0.0417;
+  1501104988 ->     return dailyA;
+  1501104988 -> }
                 
                 
                 /*############################################
@@ -4255,46 +2755,46 @@ Execution Summary:
                  ##############################################*/
                 
                 
-      217992 -> void Tree::Birth(Species *S, int nume, int site0) {
+    27122996 -> void Tree::Birth(Species *S, int nume, int site0) {
                     
-      217992 ->     t_site = site0;
-      217992 ->     t_sp_lab = nume;            /* t_sp_lab is the species label of a site. Can be defined even if the site is empty (cf. persistence function defined in Chave, Am Nat. 2001) */
-      217992 ->     t_NPPneg=0.0;
-      217992 ->     t_s = S+t_sp_lab;
+    27122996 ->     t_site = site0;
+    27122996 ->     t_sp_lab = nume;            /* t_sp_lab is the species label of a site. Can be defined even if the site is empty (cf. persistence function defined in Chave, Am Nat. 2001) */
+    27122996 ->     t_NPPneg=0.0;
+    27122996 ->     t_s = S+t_sp_lab;
                 
-      217992 ->     t_age = 1;
+    27122996 ->     t_age = 1;
                     // put this site index into T_alive
                     //T_alive.push_back(site0);
                 
-      217992 ->     t_hurt = 0;
-      217992 ->     t_dbh=(t_s->s_dbh0);
-      217992 ->     t_ddbh=0.0;
-      217992 ->     t_dbh_thresh = ((t_s->s_dmax)-t_dbh)*flor(1.0+log(genrand2())*0.01)+t_dbh;
-      217992 ->     t_hmax = (t_s->s_hmax);
-      217992 ->     t_Tree_Height = H0;
-      217992 ->     t_Crown_Radius  = ra0;
-      217992 ->     t_Crown_Depth = de0;
-      217992 ->     t_dens=dens;
+    27122996 ->     t_hurt = 0;
+    27122996 ->     t_dbh=(t_s->s_dbh0);
+    27122996 ->     t_ddbh=0.0;
+    27122996 ->     t_dbh_thresh = ((t_s->s_dmax)-t_dbh)*flor(1.0+log(genrand2())*0.01)+t_dbh;
+    27122996 ->     t_hmax = (t_s->s_hmax);
+    27122996 ->     t_Tree_Height = H0;
+    27122996 ->     t_Crown_Radius  = ra0;
+    27122996 ->     t_Crown_Depth = de0;
+    27122996 ->     t_dens=dens;
                     
-      217992 ->     t_youngLA=t_dens*PI*t_Crown_Radius*LH*t_Crown_Radius*LH*t_Crown_Depth*LV;
+    27122996 ->     t_youngLA=t_dens*PI*t_Crown_Radius*LH*t_Crown_Radius*LH*t_Crown_Depth*LV;
                     /* initially, all stems have only young leaves -- LA stands for leaf area */
-      217992 ->     t_matureLA=0;           /* this is the amount of leaf area at maturity */
-      217992 ->     t_oldLA=0;              /* leaf area of senescing leaves */
-      217992 ->     t_leafarea=t_youngLA;   /* should be sum of LA young+mature+old, but the equation is correct initially */
-      217992 ->     tempRday=0.0;
+    27122996 ->     t_matureLA=0;           /* this is the amount of leaf area at maturity */
+    27122996 ->     t_oldLA=0;              /* leaf area of senescing leaves */
+    27122996 ->     t_leafarea=t_youngLA;   /* should be sum of LA young+mature+old, but the equation is correct initially */
+    27122996 ->     tempRday=0.0;
                     
-      217992 ->     float hrealmax=3*t_hmax * t_dbh_thresh/(3*t_dbh_thresh + 2*t_s->s_ah);
+    27122996 ->     float hrealmax=3*t_hmax * t_dbh_thresh/(3*t_dbh_thresh + 2*t_s->s_ah);
                     
-      217992 ->     t_dbhmature=t_s->s_dmax*0.5; // this correponds to the mean thresholds of tree size to maturity, according to Visser et al. 2016 Functional Ecology (suited to both understory short-statured species, and top canopy large-statured species). NOTE that if we decide to keep it as a fixed species-specific value, this could be defined as a Species calss variable, and computed once in Species::Init. -- v230
+    27122996 ->     t_dbhmature=t_s->s_dmax*0.5; // this correponds to the mean thresholds of tree size to maturity, according to Visser et al. 2016 Functional Ecology (suited to both understory short-statured species, and top canopy large-statured species). NOTE that if we decide to keep it as a fixed species-specific value, this could be defined as a Species calss variable, and computed once in Species::Init. -- v230
                     //float u=genrand2();
                     //t_dbhmature=maxf(0, -(t_s->s_dmax)*0.25*log((1-u)/u)+t_s->s_dmax*0.5);    // IM test 02-2017, try to introduce intra-species inter-individual variability in dbhmature, following a sigmoidal repartition function, as in Visser et al. 2016 and Wright et al. 2005
                     
-      217992 ->     if(_BASICTREEFALL) t_Ct = hrealmax*flor(1.0-vC*sqrt(-log(genrand2())));
-      217992 ->     (t_s->s_nbind)++;
-      217992 ->     nblivetrees++;
+    27122996 ->     if(_BASICTREEFALL) t_Ct = hrealmax*flor(1.0-vC*sqrt(-log(genrand2())));
+    27122996 ->     (t_s->s_nbind)++;
+    27122996 ->     nblivetrees++;
                     
                     /* setting diagnostic variables */
-      217992 -> }
+    27122996 -> }
                 
                 
                 /*##############################################
@@ -4431,59 +2931,59 @@ Execution Summary:
                 
                 /* v.2.3.: Tree::Fluxh() computes the average light flux received by a tree crown layer at height h , and also the average VPD and T it is thriving in (modified 1/02/2016)*/
                 
-    17584390 -> void Tree::Fluxh(int h) {
-    17584390 ->     int count = 0,
+  1501104988 -> void Tree::Fluxh(int h) {
+  1501104988 ->     int count = 0,
                     xx, yy, radius_int;
-    17584390 ->     float absorb = 0.0;
-    17584390 ->     t_PPFD = 0.0;
-    17584390 ->     t_VPD  = 0.0;
-    17584390 ->     t_T    = 0.0;
-    17584390 ->     radius_int = int(t_Crown_Radius);
+  1501104988 ->     float absorb = 0.0;
+  1501104988 ->     t_PPFD = 0.0;
+  1501104988 ->     t_VPD  = 0.0;
+  1501104988 ->     t_T    = 0.0;
+  1501104988 ->     radius_int = int(t_Crown_Radius);
                 
-    17584390 ->     if(radius_int == 0) {
-    17584390 ->         count = 1;
-    17584390 ->         if (h < HEIGHT) absorb = minf(LAI3D[h][t_site+SBORD], 19.5);
+  1501104988 ->     if(radius_int == 0) {
+  1501104988 ->         count = 1;
+  1501104988 ->         if (h < HEIGHT) absorb = minf(LAI3D[h][t_site+SBORD], 19.5);
                         // absorb = 0.0 by default
-    17584390 ->         int intabsorb = int(absorb * 20.0);
-    17584390 ->         t_PPFD = LookUp_flux[intabsorb];
-    17584390 ->         t_VPD  = LookUp_VPD[intabsorb];
-    17584390 ->         t_T    = tmax - LookUp_T[intabsorb];
+  1501104988 ->         int intabsorb = int(absorb * 20.0);
+  1501104988 ->         t_PPFD = LookUp_flux[intabsorb];
+  1501104988 ->         t_VPD  = LookUp_VPD[intabsorb];
+  1501104988 ->         t_T    = tmax - LookUp_T[intabsorb];
                     }
                     else {
                         int row0, col0, row, index;
-    17584390 ->         row0 = t_site / cols;
-    17584390 ->         col0 = t_site % cols;
+  1501104988 ->         row0 = t_site / cols;
+  1501104988 ->         col0 = t_site % cols;
                 
                         /* NEW CHANGE: use index to avoid repeated calculation of "col+cols*row+SBORD" inside the loop */
-    17584390 ->         for(int col = max(0, col0-radius_int); col < min(cols, col0+radius_int+1); col ++) {
-    17584390 ->             row = max(0, row0-radius_int);
-    17584390 ->             index = col + cols * row + SBORD;
-    17584390 ->             for(row; row < min(rows, row0+radius_int+1); row ++) {
+  1501104988 ->         for(int col = max(0, col0-radius_int); col < min(cols, col0+radius_int+1); col ++) {
+  1501104988 ->             row = max(0, row0-radius_int);
+  1501104988 ->             index = col + cols * row + SBORD;
+  1501104988 ->             for(row; row < min(rows, row0+radius_int+1); row ++) {
                                 //loop over the tree crown
-    17584390 ->                 xx = col0 - col;
-    17584390 ->                 yy = row0 - row;
-    17584390 ->                 if(xx*xx + yy*yy <= radius_int*radius_int) {
+  1501104988 ->                 xx = col0 - col;
+  1501104988 ->                 yy = row0 - row;
+  1501104988 ->                 if(xx*xx + yy*yy <= radius_int*radius_int) {
                                     //is the voxel within crown?
-    17584390 ->                     count ++;
-    17584390 ->                     if (h < HEIGHT) absorb = minf(LAI3D[h][index], 19.5);         /* FOR FUTURE: replace index with index+col*row */
-    17584390 ->                     int intabsorb = int(absorb*20.0);
-    17584390 ->                     t_PPFD += LookUp_flux[intabsorb];
-    17584390 ->                     t_VPD  += LookUp_VPD[intabsorb];
-    17584390 ->                     t_T    += tmax - LookUp_T[intabsorb];
+  1501104988 ->                     count ++;
+  1501104988 ->                     if (h < HEIGHT) absorb = minf(LAI3D[h][index], 19.5);         /* FOR FUTURE: replace index with index+col*row */
+  1501104988 ->                     int intabsorb = int(absorb*20.0);
+  1501104988 ->                     t_PPFD += LookUp_flux[intabsorb];
+  1501104988 ->                     t_VPD  += LookUp_VPD[intabsorb];
+  1501104988 ->                     t_T    += tmax - LookUp_T[intabsorb];
                                 }
-    17584390 ->                 index += col;
+  1501104988 ->                 index += cols;
                             }
                         }
                     }
                 
                     /* NEW CHANGE: take Wmax and VPDmax out to avoid repeated multiplication within the loop */
                     /* NEW CHANGE: deleted "* 1.0" ? */
-    17584390 ->     t_PPFD *= Wmax / float(count);
-    17584390 ->     t_VPD  *= VPDmax / float(count);
-    17584390 ->     t_T    /= float(count);
+  1501104988 ->     t_PPFD *= Wmax / float(count);
+  1501104988 ->     t_VPD  *= VPDmax / float(count);
+  1501104988 ->     t_T    /= float(count);
                 
                     /* (FOR FUTURE): Wmax, VPDmax changes per iteration, can cache Wmax/float(count) */
-    17584390 -> }
+  1501104988 -> }
                 
                 
                 /*############################################
@@ -4491,20 +2991,20 @@ Execution Summary:
                  ####         called by UpdateTree        ####
                  #############################################*/
                 
-     8103360 -> void Tree::Growth() {
+   654722406 -> void Tree::Growth() {
                     
                     /* Flux Tree variables */
-     8103360 ->     t_GPP=0.0;
-     8103360 ->     t_NPP=0.0;
-     8103360 ->     t_Rday=0.0;
-     8103360 ->     t_Rnight=0.0;
-     8103360 ->     t_Rstem=0.0;
-     8103360 ->     tempRday=0.0;
+   654722406 ->     t_GPP=0.0;
+   654722406 ->     t_NPP=0.0;
+   654722406 ->     t_Rday=0.0;
+   654722406 ->     t_Rnight=0.0;
+   654722406 ->     t_Rstem=0.0;
+   654722406 ->     tempRday=0.0;
                     
                     /* Local environmental Tree variables */
-     8103360 ->     t_PPFD=0.0;
-     8103360 ->     t_VPD=0.0;
-     8103360 ->     t_T=0.0;
+   654722406 ->     t_PPFD=0.0;
+   654722406 ->     t_VPD=0.0;
+   654722406 ->     t_T=0.0;
                     
                     /* Leaf dynamics module */
                     //t_litter=0.0;
@@ -4512,69 +3012,69 @@ Execution Summary:
                     
                     /* variables for flux computations */
                     
-     8103360 ->     t_age+= timestep;                               /* new v.2.2: increments are not 1 yr, but the duration of the timestep (usually 1 or <1, i.e. 1/12 if monthly, 1/365 if daily */
+   654722406 ->     t_age+= timestep;                               /* new v.2.2: increments are not 1 yr, but the duration of the timestep (usually 1 or <1, i.e. 1/12 if monthly, 1/365 if daily */
                     
                     // computation of average t_GPP (per area) from the sum of GPP of each tree crown layer:
                     
                     // Farquhar is applied once per tree crown (at the top of the crown) (48 times per timestepifdef DAILIGHT, once per timestep if not), a pultiplier is net used to account for the decrease in photosynthetic rate with light decreae within the tree crown.
                     /* v.2.3.1 -- fast GPP calculation option. In addition, the daily computation of the Farquhar model is now the default option (_DAILYLIGHT is deprecated) */
-     8103360 ->     if(_FASTGPP){
-     8103360 ->         Fluxh(int(t_Tree_Height)+1);
-     8103360 ->         t_GPP = (t_s->dailyGPPleaf(t_PPFD, t_VPD, t_T, t_dens, t_Crown_Depth));
-     8103360 ->         t_Rday += tempRday;
-     8103360 ->         tempRday=0.0;
+   654722406 ->     if(_FASTGPP){
+   654722406 ->         Fluxh(int(t_Tree_Height)+1);
+   654722406 ->         t_GPP = (t_s->dailyGPPleaf(t_PPFD, t_VPD, t_T, t_dens, t_Crown_Depth));
+   654722406 ->         t_Rday += tempRday;
+   654722406 ->         tempRday=0.0;
                     }
                     else{
-     8103360 ->         int crown_base=int(t_Tree_Height-t_Crown_Depth)+1; // for flux above crown base
-     8103360 ->         int crown_top=int(t_Tree_Height)+1;                // for flux above crown top
+   654722406 ->         int crown_base=int(t_Tree_Height-t_Crown_Depth)+1; // for flux above crown base
+   654722406 ->         int crown_top=int(t_Tree_Height)+1;                // for flux above crown top
                         
-     8103360 ->         for(int h=crown_base; h<=crown_top; h++) {
-     8103360 ->             Fluxh(h);
-     8103360 ->             t_GPP+=t_s->dailyGPPleaf(t_PPFD, t_VPD, t_T, t_dens, t_Crown_Depth);
-     8103360 ->             t_Rday+=tempRday;
-     8103360 ->             tempRday=0.0;
+   654722406 ->         for(int h=crown_base; h<=crown_top; h++) {
+   654722406 ->             Fluxh(h);
+   654722406 ->             t_GPP+=t_s->dailyGPPleaf(t_PPFD, t_VPD, t_T, t_dens, t_Crown_Depth);
+   654722406 ->             t_Rday+=tempRday;
+   654722406 ->             tempRday=0.0;
                         }
-     8103360 ->         float inb_layer=1.0/float(crown_top-crown_base+1);  // for averaging procedure
-     8103360 ->         t_GPP   *=inb_layer;
-     8103360 ->         t_Rday  *=inb_layer;
+   654722406 ->         float inb_layer=1.0/float(crown_top-crown_base+1);  // for averaging procedure
+   654722406 ->         t_GPP   *=inb_layer;
+   654722406 ->         t_Rday  *=inb_layer;
                     }
                     
                     /* Computation of GPP. New v.2.2: assumes an efficiency of 0.5 for young and old leaves vs. 1 for mature leaves */
                     //t_GPP*=(0.5*t_youngLA+t_matureLA+0.5*t_oldLA)*189.3*timestep;
                     
                     /* effLA is the scaling factor used for all fluxes new in v.2.3.0 */
-     8103360 ->     float effLA=0.5*(t_leafarea+t_matureLA)*189.3*timestep;
+   654722406 ->     float effLA=0.5*(t_leafarea+t_matureLA)*189.3*timestep;
                     
-     8103360 ->     t_GPP*=effLA;
+   654722406 ->     t_GPP*=effLA;
                     
                     /* new v.2.2. sapwood thickness (useful to compute stem respiration) */
-     8103360 ->     float sapthick=0.04;
-     8103360 ->     if (t_dbh < 0.08) sapthick=0.5*t_dbh;
+   654722406 ->     float sapthick=0.04;
+   654722406 ->     if (t_dbh < 0.08) sapthick=0.5*t_dbh;
                     
                     /* new v.2.2 stem respiration -- update lookup v230 */
-     8103360 ->     int convT= int(iTaccuracy*temp); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
-     8103360 ->     int convTnight= int(iTaccuracy*tnight); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
-     8103360 ->     t_Rstem=sapthick*(t_dbh-sapthick)*(t_Tree_Height-t_Crown_Depth)*LookUp_Rstem[convT];
-     8103360 ->     t_Rday *= effLA*0.40;
-     8103360 ->     t_Rnight=(t_s->s_Rdark)*effLA*LookUp_Rnight[convTnight];
+   654722406 ->     int convT= int(iTaccuracy*temp); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
+   654722406 ->     int convTnight= int(iTaccuracy*tnight); // temperature data at a resolution of Taccuracy=0.1°C -- stored in lookup tables ranging from 0°C to 50°C ---
+   654722406 ->     t_Rstem=sapthick*(t_dbh-sapthick)*(t_Tree_Height-t_Crown_Depth)*LookUp_Rstem[convT];
+   654722406 ->     t_Rday *= effLA*0.40;
+   654722406 ->     t_Rnight=(t_s->s_Rdark)*effLA*LookUp_Rnight[convTnight];
                     
-     8103360 ->     t_NPP = 0.75*(t_GPP - 1.5*(t_Rday+t_Rnight+t_Rstem));
+   654722406 ->     t_NPP = 0.75*(t_GPP - 1.5*(t_Rday+t_Rnight+t_Rstem));
                     /* Rleaf=Rday+Rnight is multiplied by 1.5 to also account for fine root respiration (cf as in Fyllas et al 2014 and Malhi 2012); Rstem is multiplied by 1.5 to account for coarse root respiration (according to the shoot root biomass ratio of 0.2 - Jérôme's paper in prep- and also to branch respiration (Meir & Grace 2002, Cavaleri 2006, Asao 2005). */
                     
-     8103360 ->     if(t_NPP<0.0){
-     8103360 ->         t_NPPneg++;
-     8103360 ->         t_NPP=0.0;
+   654722406 ->     if(t_NPP<0.0){
+   654722406 ->         t_NPPneg++;
+   654722406 ->         t_NPP=0.0;
                         /* v.2.3.0 -- Line of code below was odd. If NPP <0.0, then to ensure C balance it should be simply reset to NPP=0 at this stage */
                         //t_NPP=t_GPP - 1.5*(t_Rday+t_Rnight+t_Rstem); REMOVED AS OF v.2.3.0.a4
                     }
                     else {
-     8103360 ->         t_NPPneg=0;
+   654722406 ->         t_NPPneg=0;
                         /**** NPP allocation to wood and tree size increment *****/
-     8103360 ->         UpdateTreeBiometry();
+   654722406 ->         UpdateTreeBiometry();
                     }
                     
                     /**** NPP allocation to leaves *****/
-     8103360 ->     UpdateLeafDynamics();
+   654722406 ->     UpdateLeafDynamics();
                     
                     /* Output for control purposes */
                     
@@ -4582,92 +3082,92 @@ Execution Summary:
                     // option below (FF v 2.3.1 may not work for some choices of timesteps
                 #endif
                     
-     8103360 ->     if(!_OUTPUT_reduced){
-     8103360 ->         if (iter == 2) OutputTreeStandard(output[28]);
-     8103360 ->         if (iter == int(nbiter/2)) OutputTreeStandard(output[29]);
-     8103360 ->         if (iter == int(nbiter-1)) OutputTreeStandard(output[30]);
+   654722406 ->     if(!_OUTPUT_reduced){
+   654722406 ->         if (iter == 2) OutputTreeStandard(output[28]);
+   654722406 ->         if (iter == int(nbiter/2)) OutputTreeStandard(output[29]);
+   654722406 ->         if (iter == int(nbiter-1)) OutputTreeStandard(output[30]);
                         
-     8103360 ->         if (t_site==2500) OutputTreeStandard(output[11]);
-     8103360 ->         if (t_site==10380) OutputTreeStandard(output[12]);
-     8103360 ->         if (t_site==100950) OutputTreeStandard(output[13]);
-     8103360 ->         if (t_site==12090) OutputTreeStandard(output[14]);
-     8103360 ->         if (t_site==120090) OutputTreeStandard(output[15]);
-     8103360 ->         if (t_site==150667) OutputTreeStandard(output[16]);
+   654722406 ->         if (t_site==2500) OutputTreeStandard(output[11]);
+   654722406 ->         if (t_site==10380) OutputTreeStandard(output[12]);
+   654722406 ->         if (t_site==100950) OutputTreeStandard(output[13]);
+   654722406 ->         if (t_site==12090) OutputTreeStandard(output[14]);
+   654722406 ->         if (t_site==120090) OutputTreeStandard(output[15]);
+   654722406 ->         if (t_site==150667) OutputTreeStandard(output[16]);
                     }
-     8103360 -> }
+   654722406 -> }
                 
                 /*####################################################
                  ####       Leaf dynamics and C allocation        ####
                  ####         called by Tree::Growth              ####
                  #####################################################*/
                 
-     8103360 -> void Tree::UpdateLeafDynamics() {
+   654722406 -> void Tree::UpdateLeafDynamics() {
                     
                     // make a standalone function for leaf dynamics & litter?
                     
                     /**** NPP allocation to leaves *****/                                       /* rk: in this current scheme of leaf demography and phenology in three leaf age classes: only the old leaves generate treefall, and the dynamic of leaves cycle is generated by the dynamic of NPP, with a total leaf biomass varying - as opposed to De Weirdt et al 2012 in ORCHIDEE, but as in Wu et al 2016 but importantly without prescribing litterfall- */
                     
-     8103360 ->     float flush=2.0*t_NPP*falloccanopy*0.68/(t_s->s_LMA);                           /* this is to convert the NPP allocated to leaves (falloccanopy is the fraction of biomass assumed to be alloacted to canopy (leaves+reproductive organs+twigs) at each timestep - Malhi et al 2011-, 68% of which is allocated to leaves - chave et al 2008, Chave et al 2010-), in new leaf area (2 is to convert carbon mass in biomass and LMA to convert leaf biomass into leaf area).*/
+   654722406 ->     float flush=2.0*t_NPP*falloccanopy*0.68/(t_s->s_LMA);                           /* this is to convert the NPP allocated to leaves (falloccanopy is the fraction of biomass assumed to be alloacted to canopy (leaves+reproductive organs+twigs) at each timestep - Malhi et al 2011-, 68% of which is allocated to leaves - chave et al 2008, Chave et al 2010-), in new leaf area (2 is to convert carbon mass in biomass and LMA to convert leaf biomass into leaf area).*/
                     
                     /* litter module */
                     
                     
-     8103360 ->     t_litter=t_oldLA/(t_s->s_time_old);
+   654722406 ->     t_litter=t_oldLA/(t_s->s_time_old);
                     
                     /* leaf cycle */
                     
-     8103360 ->     float new_mature = t_youngLA/(t_s->s_time_young);
-     8103360 ->     float new_old    = t_matureLA/(t_s->s_time_mature);
-     8103360 ->     t_youngLA  += flush - new_mature;
-     8103360 ->     t_matureLA += new_mature - new_old;
-     8103360 ->     t_oldLA    += new_old - t_litter;
-     8103360 ->     t_leafarea  = t_youngLA + t_matureLA + t_oldLA;
+   654722406 ->     float new_mature = t_youngLA/(t_s->s_time_young);
+   654722406 ->     float new_old    = t_matureLA/(t_s->s_time_mature);
+   654722406 ->     t_youngLA  += flush - new_mature;
+   654722406 ->     t_matureLA += new_mature - new_old;
+   654722406 ->     t_oldLA    += new_old - t_litter;
+   654722406 ->     t_leafarea  = t_youngLA + t_matureLA + t_oldLA;
                     
                     /* update t_dens */
                     
-     8103360 ->     t_litter*=t_s->s_LMA;
+   654722406 ->     t_litter*=t_s->s_LMA;
                     
-     8103360 ->     float crownvolume=PI*t_Crown_Radius*LH*t_Crown_Radius*LH*t_Crown_Depth*LV;
-     8103360 ->     t_dens=t_leafarea/crownvolume;
+   654722406 ->     float crownvolume=PI*t_Crown_Radius*LH*t_Crown_Radius*LH*t_Crown_Depth*LV;
+   654722406 ->     t_dens=t_leafarea/crownvolume;
                     
-     8103360 -> }
+   654722406 -> }
                 
-     4546182 -> void Tree::UpdateTreeBiometry(){
+   213719514 -> void Tree::UpdateTreeBiometry(){
                     /* New standalone function in v.2.3.0 */
                     
                     /* Tree dbh increment */
-     4546182 ->     t_ddbh=0.0;
-     4546182 ->     float volume=2.0*t_NPP/(t_s->s_wsg) * fallocwood * 1.0e-6;
-     4546182 ->     if (t_dbh>t_dbh_thresh) volume*=flor(3.0-2.0*t_dbh/t_dbh_thresh);
+   213719514 ->     t_ddbh=0.0;
+   213719514 ->     float volume=2.0*t_NPP/(t_s->s_wsg) * fallocwood * 1.0e-6;
+   213719514 ->     if (t_dbh>t_dbh_thresh) volume*=flor(3.0-2.0*t_dbh/t_dbh_thresh);
                     
                     /* volume in m^3: the first factor of 2 is to convert C into biomass. the 1/s_wsg to convert biomass into volume. the 1e-6 term converts cm^3 into m^3 (the sole metric unit in the model). fallocwood is the fraction of biomass allocated to aboveground wood (stem + branches) growth. For the time being, we shall assume that a fixed proportion of NPP is allocated into AGB production. Currently, 0.20=%biomasse allocated to stem increment could be a global variable, even though this % allocation could in fact vary with resouce variation/co-limitation*/
                     
                     /* taking into account wood elements recycling (ex. fallen branches etc...) */
                     //t_ddbh = flor( volume* 4.0/( 3.0*PI*t_dbh*LH*t_Tree_Height*LV ) )* NH;
-     4546182 ->     t_ddbh = flor( volume/(0.559*t_dbh*LH*t_Tree_Height*LV*(3.0-t_dbh/(t_dbh+t_s->s_ah))) )* NH;
+   213719514 ->     t_ddbh = flor( volume/(0.559*t_dbh*LH*t_Tree_Height*LV*(3.0-t_dbh/(t_dbh+t_s->s_ah))) )* NH;
                     
                     /* With V=pi*r^2*h, increment of volume = dV = 2*pi*r*h*dr + pi*r^2*dh */
                     /* With isometric growth assumption (ddbh/dbh=dh/h)and dbh=2*r: dV=3/4*pi*dbh*h*ddbh, ddbh in m, it follows: ddbh = 4/3 * V = 4/3 * 1/(pi*dbh*h)   */
                     
-     4546182 ->     t_dbh += t_ddbh;
+   213719514 ->     t_dbh += t_ddbh;
                     
                     /* update of tree height */
                     /* alternative calculation in concordance with isometric growth assumption: dh = h*ddbh/dbh */
                     /* t_Tree_Height += t_Tree_Height*t_ddbh/t_dbh; */
                     
-     4546182 ->     t_Tree_Height = t_hmax * t_dbh/(t_dbh + (t_s->s_ah));
+   213719514 ->     t_Tree_Height = t_hmax * t_dbh/(t_dbh + (t_s->s_ah));
                     
                     /* update of tree crown depth -- allometry deduced from Piste Saint-Elie dataset */
-     4546182 ->     if (t_Tree_Height<5.0) t_Crown_Depth = 0.17 + 0.13*t_Tree_Height;
-     4546182 ->     else t_Crown_Depth = -0.48+0.26*t_Tree_Height;
+   213719514 ->     if (t_Tree_Height<5.0) t_Crown_Depth = 0.17 + 0.13*t_Tree_Height;
+   213719514 ->     else t_Crown_Depth = -0.48+0.26*t_Tree_Height;
                     /*t_Crown_Depth=exp(-1.169+1.098*log(t_Tree_Height));
                      29/04/15: try with allometry used in Fyllas et al 2014 (see SI, from Poorter et al 2006)*/
                     
-     4546182 ->     t_Crown_Radius  = 0.80+10.47*t_dbh-3.33*t_dbh*t_dbh;
+   213719514 ->     t_Crown_Radius  = 0.80+10.47*t_dbh-3.33*t_dbh*t_dbh;
                     // allometry deduced from Piste Saint-Elie dataset
                     //t_Crown_Radius=sqrt(iPi*exp(-1.853+1.888*log(t_Tree_Height)));
                     // 29/04/15: try with allometry used in Fyllas et al 2014 (see SI, from Poorter et al 2006)
-     4546182 -> }
+   213719514 -> }
                 
                 
                 /*####################################################
@@ -4675,23 +3175,23 @@ Execution Summary:
                  ####         called by Tree::Update             ####
                  ####################################################*/
                 
-      217805 -> void Tree::Death() {
+    27013150 -> void Tree::Death() {
                     
-      217805 ->     t_age=0;
+    27013150 ->     t_age=0;
                     // remove this tree index from T_alive
                     //T_alive.remove(t_site);
                 
-      217805 ->     t_dbh = t_Tree_Height = t_Crown_Radius = t_Crown_Depth= 0.0;
-      217805 ->     t_hurt = 0;
-      217805 ->     if(_TREEFALL){
-      217805 ->         t_angle = 0.;
-      217805 ->         t_C = t_Ct = 0;
+    27013150 ->     t_dbh = t_Tree_Height = t_Crown_Radius = t_Crown_Depth= 0.0;
+    27013150 ->     t_hurt = 0;
+    27013150 ->     if(_TREEFALL){
+    27013150 ->         t_angle = 0.;
+    27013150 ->         t_C = t_Ct = 0;
                     }
-      217805 ->     if ((t_s->s_nbind)>0) (t_s->s_nbind)--;
-      217805 ->     nblivetrees--;
-      217805 ->     t_s = NULL;
+    27013150 ->     if ((t_s->s_nbind)>0) (t_s->s_nbind)--;
+    27013150 ->     nblivetrees--;
+    27013150 ->     t_s = NULL;
                     
-      217805 -> }
+    27013150 -> }
                 
                 
                 /*#################################
@@ -4699,32 +3199,32 @@ Execution Summary:
                  ####  called by UpdateField   ####
                  #################################*/
                 
-     8100085 -> void Tree::DisperseSeed(){
+   654605816 -> void Tree::DisperseSeed(){
                     /* New v.2.0 reproduction can only occur for trees that receive enough
                      light (twice the LCP) */
                     /* New v.2.1 threshold of maturity is defined as a size threshold
                      (and not age as before), following Wright et al 2005 JTE */
-     8100085 ->     if((t_dbh>=t_dbhmature)&&(t_PPFD>2.0*(t_s->s_LCP))) {
+   654605816 ->     if((t_dbh>=t_dbhmature)&&(t_PPFD>2.0*(t_s->s_LCP))) {
                         float rho,theta_angle;
-     8100085 ->         int nbs=0;
-     8100085 ->         if(_SEEDTRADEOFF){
-     8100085 ->             nbs=int(t_NPP*2.0*falloccanopy*0.08*0.5*(t_s->s_iseedmass)*0.05);    /* nbs is the number of seeds produced at this time step; it is computed from the NPP (in g) allocated to reproductive organs -fruits and seeds-, *2 is to convert in biomass,  * 0.40 is to obtain the NPP allocated to canopy (often measured as litterfall), drawn from Malhi et al 2011 Phil. trans roy. Soc. and 0.08 is the part of litterfall corresponding the fruits+seeds, drawn from Chave et al 2008 JTE; assumed to be twice the biomass dedicated to seeds only (ie without fruits), and then divided by the mass of a seed to obtain the number of seeds */
+   654605816 ->         int nbs=0;
+   654605816 ->         if(_SEEDTRADEOFF){
+   654605816 ->             nbs=int(t_NPP*2.0*falloccanopy*0.08*0.5*(t_s->s_iseedmass)*0.05);    /* nbs is the number of seeds produced at this time step; it is computed from the NPP (in g) allocated to reproductive organs -fruits and seeds-, *2 is to convert in biomass,  * 0.40 is to obtain the NPP allocated to canopy (often measured as litterfall), drawn from Malhi et al 2011 Phil. trans roy. Soc. and 0.08 is the part of litterfall corresponding the fruits+seeds, drawn from Chave et al 2008 JTE; assumed to be twice the biomass dedicated to seeds only (ie without fruits), and then divided by the mass of a seed to obtain the number of seeds */
                             //nbs=(int)nbs;
                         }
-     8100085 ->         else nbs=nbs0;
+   654605816 ->         else nbs=nbs0;
                         //else nbs=int(t_NPP*2*falloccanopy*0.08*0.5); /* test 17/01/2017: use a factor to translate NPP into seeds produced, but not species specific, not linked to mass of grains */
                         
-     8100085 ->         for(int ii=0;ii<nbs;ii++){                                                 /* Loop over number of produced seeds */
+   654605816 ->         for(int ii=0;ii<nbs;ii++){                                                 /* Loop over number of produced seeds */
                             
-     8100085 ->             rho = 2.0*((t_s->s_ds)+t_Crown_Radius)*float(sqrt(fabs(log(genrand2()*iPi))));    /* Dispersal distance rho: P(rho) = rho*exp(-rho^2) */
-     8100085 ->             theta_angle = float(twoPi*genrand2());                                                /* Dispersal angle theta */
-     8100085 ->             t_s->FillSeed(flor(int(rho*cos(theta_angle))+t_site%cols), /* column */               /* Update of field s_Seed */
-     8100085 ->                           flor(int(rho*sin(theta_angle))+t_site/cols));      /* line */
+   654605816 ->             rho = 2.0*((t_s->s_ds)+t_Crown_Radius)*float(sqrt(fabs(log(genrand2()*iPi))));    /* Dispersal distance rho: P(rho) = rho*exp(-rho^2) */
+   654605816 ->             theta_angle = float(twoPi*genrand2());                                                /* Dispersal angle theta */
+   654605816 ->             t_s->FillSeed(flor(int(rho*cos(theta_angle))+t_site%cols), /* column */               /* Update of field s_Seed */
+   654605816 ->                           flor(int(rho*sin(theta_angle))+t_site/cols));      /* line */
                             
                         }
                     }
                     
-     8100085 -> }
+   654605816 -> }
                 //#endif
                 
                 
@@ -4783,52 +3283,52 @@ Execution Summary:
                  ####################################*/
                 
                 
-     8103360 -> void Tree::FallTree() {
+   654722406 -> void Tree::FallTree() {
                     int xx,yy;
                     //if(_TREEFALL)
                     //if(Couple()>t_Ct) { /* above a given stress threshold the tree falls */
                     
-     8103360 ->     if(genrand2()*t_Tree_Height > t_Ct){
+   654722406 ->     if(genrand2()*t_Tree_Height > t_Ct){
                         // given: probability of treefall = 1-t_Ct/t_Tree_Height
-     8103360 ->         float t_angle = float(twoPi*genrand2());
+   654722406 ->         float t_angle = float(twoPi*genrand2());
                         // random angle
                         int row0,col0,h_int, r_int;
-     8103360 ->         float h_true = t_Tree_Height*LV;
-     8103360 ->         nbTreefall1++;
-     8103360 ->         if(t_dbh*LH>0.1) nbTreefall10++;
-     8103360 ->         Thurt[0][t_site+sites] = int(t_Tree_Height);
+   654722406 ->         float h_true = t_Tree_Height*LV;
+   654722406 ->         nbTreefall1++;
+   654722406 ->         if(t_dbh*LH>0.1) nbTreefall10++;
+   654722406 ->         Thurt[0][t_site+sites] = int(t_Tree_Height);
                         // Thurt[0] saves the integer tree height, here exactly at the place where the tree fell...
-     8103360 ->         row0=t_site/cols;       /* fallen stem destructs other trees */
-     8103360 ->         col0=t_site%cols;
-     8103360 ->         h_int = int(h_true*NH);
-     8103360 ->         for(int h=1;h<h_int;h++) {
+   654722406 ->         row0=t_site/cols;       /* fallen stem destructs other trees */
+   654722406 ->         col0=t_site%cols;
+   654722406 ->         h_int = int(h_true*NH);
+   654722406 ->         for(int h=1;h<h_int;h++) {
                             // loop on the fallen stem (horizontally)
-     8103360 ->             xx=int(flor(col0+h*cos(t_angle)));
+   654722406 ->             xx=int(flor(col0+h*cos(t_angle)));
                             // get projection in col (= xx) direction, where xx is absolute location
-     8103360 ->             if(xx<cols){
-     8103360 ->                 yy=   int(row0+h*sin(t_angle));
+   654722406 ->             if(xx<cols){
+   654722406 ->                 yy=   int(row0+h*sin(t_angle));
                                 // get projection in row (= yy) direction, where yy is absolute location
-     8103360 ->                 Thurt[0][xx+(yy+rows)*cols] = int(t_Tree_Height);                           // Thurt[0] where the stem fell, calculation: xx+(yy+rows)*cols= xx + yy*cols + rows*cols = xx + yy*cols + sites
+   654722406 ->                 Thurt[0][xx+(yy+rows)*cols] = int(t_Tree_Height);                           // Thurt[0] where the stem fell, calculation: xx+(yy+rows)*cols= xx + yy*cols + rows*cols = xx + yy*cols + sites
                             }
                         }
-     8103360 ->         xx=col0+int((h_true*NH-t_Crown_Radius)*cos(t_angle));
+   654722406 ->         xx=col0+int((h_true*NH-t_Crown_Radius)*cos(t_angle));
                         // where crown ends/starts
                         /* fallen crown destructs other trees */
-     8103360 ->         yy=row0+int((h_true*NH-t_Crown_Radius)*sin(t_angle));
-     8103360 ->         r_int = int(t_Crown_Radius);
-     8103360 ->         for(int col=max(0,xx-r_int);col<min(cols,xx+r_int+1);col++) {
+   654722406 ->         yy=row0+int((h_true*NH-t_Crown_Radius)*sin(t_angle));
+   654722406 ->         r_int = int(t_Crown_Radius);
+   654722406 ->         for(int col=max(0,xx-r_int);col<min(cols,xx+r_int+1);col++) {
                             /* loop on the fallen crown (horizontally) */
-     8103360 ->             for(int row=yy-r_int;row<yy+r_int+1;row++) {
-     8103360 ->                 if((col-xx)*(col-xx)+(row-yy)*(row-yy)<r_int*r_int) Thurt[0][col+(row+rows)*cols] = int((t_Tree_Height-t_Crown_Radius*NV*LH)*0.5);
+   654722406 ->             for(int row=yy-r_int;row<yy+r_int+1;row++) {
+   654722406 ->                 if((col-xx)*(col-xx)+(row-yy)*(row-yy)<r_int*r_int) Thurt[0][col+(row+rows)*cols] = int((t_Tree_Height-t_Crown_Radius*NV*LH)*0.5);
                             }
                         }
-     8103360 ->         if(iter == 2) output[23] << "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
-     8103360 ->         if(iter == int(nbiter/2)) output[24]<< "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
-     8103360 ->         if(iter == int(nbiter-1)) output[25]<< "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
-     8103360 ->         Death();
+   654722406 ->         if(iter == 2) output[23] << "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
+   654722406 ->         if(iter == int(nbiter/2)) output[24]<< "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
+   654722406 ->         if(iter == int(nbiter-1)) output[25]<< "T\t" << t_sp_lab << "\t" << t_dbh << "\t" << t_age << "\t" << t_Tree_Height <<  "\n";
+   654722406 ->         Death();
                     }
                     //}
-     8103360 -> }
+   654722406 -> }
                 
        ##### -> int Tree::Couple() {
                     int site2,quadist,haut0,xx,yy, radius_int,h_int;
@@ -5797,7 +4297,7 @@ Execution Summary:
                      * a full climatic input needs to be input (ie number of columns=iter and not iterperyear) and change iterperyear by nbiter here. */
                     //CURRENTLY NOT USED: precip, WS, Wmean, e_s, e_a,VPDbasic,VPDday
                 
-                    /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
+                    /* NEW CHANGE:  */
         6000 ->     int index = iter % iterperyear;
                 
         6000 ->     temp = Temperature[index];
@@ -5828,11 +4328,15 @@ Execution Summary:
                     int sbsite;
                 
                     /* NEW CHANGE: not sure? */
-                    /*for(haut = 0; haut < (HEIGHT+1); haut++)
-                        for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       !!!
-                            LAI3D[haut][sbsite] = 0.0;      !!!
-                    */
-        6000 ->     fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
+        6000 ->     for(haut = 0; haut < (HEIGHT+1); haut++)
+        6000 ->         for(sbsite = 0; sbsite < sites + 2 * SBORD; sbsite++)       //!!!
+        6000 ->             LAI3D[haut][sbsite] = 0.0;      //!!!
+                
+                    //fill(&LAI3D[0][0], &LAI3D[0][0] + sizeof(LAI3D), 0.0);
+                    /*
+                    for (haut = 0; haut < (HEIGHT + 1); ++ haut){
+                        fill(&LAI3D[haut][0], &LAI3D[haut][0] + sizeof(LAI3D[haut]), 0.0);
+                    }*/
                     
         6000 ->     for(site = 0; site < sites; site++)                                    /* Each tree contributes to LAI3D */
         6000 ->         T[site].CalcLAI();
@@ -6633,40 +5137,40 @@ Execution Summary:
                 /* generating reals */
                 /* unsigned long */ /* for integer generation */
                 double genrand2()
-    29989208 -> {
+  2341447151 -> {
                     unsigned long y;
                     static unsigned long mag01[2]={0x0, MATRIX_A};
                     /* mag01[x] = x * MATRIX_A  for x=0,1 */
                     
-    29989208 ->     if (mti >= N) { /* generate N words at one time */
+  2341447151 ->     if (mti >= N) { /* generate N words at one time */
                         int kk;
                         
-    29989208 ->         if (mti == N+1)   /* if sgenrand() has not been called, */
-    29989208 ->             sgenrand2(4357); /* a default initial seed is used   */
+  2341447151 ->         if (mti == N+1)   /* if sgenrand() has not been called, */
+  2341447151 ->             sgenrand2(4357); /* a default initial seed is used   */
                         
-    29989208 ->         for (kk=0;kk<N-M;kk++) {
-    29989208 ->             y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
-    29989208 ->             mt[kk] = mt[kk+M] ^ (y >> 1) ^ mag01[y & 0x1];
+  2341447151 ->         for (kk=0;kk<N-M;kk++) {
+  2341447151 ->             y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
+  2341447151 ->             mt[kk] = mt[kk+M] ^ (y >> 1) ^ mag01[y & 0x1];
                         }
-    29989208 ->         for (;kk<N-1;kk++) {
-    29989208 ->             y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
-    29989208 ->             mt[kk] = mt[kk+(M-N)] ^ (y >> 1) ^ mag01[y & 0x1];
+  2341447151 ->         for (;kk<N-1;kk++) {
+  2341447151 ->             y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
+  2341447151 ->             mt[kk] = mt[kk+(M-N)] ^ (y >> 1) ^ mag01[y & 0x1];
                         }
-    29989208 ->         y = (mt[N-1]&UPPER_MASK)|(mt[0]&LOWER_MASK);
-    29989208 ->         mt[N-1] = mt[M-1] ^ (y >> 1) ^ mag01[y & 0x1];
+  2341447151 ->         y = (mt[N-1]&UPPER_MASK)|(mt[0]&LOWER_MASK);
+  2341447151 ->         mt[N-1] = mt[M-1] ^ (y >> 1) ^ mag01[y & 0x1];
                         
-    29989208 ->         mti = 0;
+  2341447151 ->         mti = 0;
                     }
                     
-    29989208 ->     y = mt[mti++];
-    29989208 ->     y ^= TEMPERING_SHIFT_U(y);
-    29989208 ->     y ^= TEMPERING_SHIFT_S(y) & TEMPERING_MASK_B;
-    29989208 ->     y ^= TEMPERING_SHIFT_T(y) & TEMPERING_MASK_C;
-    29989208 ->     y ^= TEMPERING_SHIFT_L(y);
+  2341447151 ->     y = mt[mti++];
+  2341447151 ->     y ^= TEMPERING_SHIFT_U(y);
+  2341447151 ->     y ^= TEMPERING_SHIFT_S(y) & TEMPERING_MASK_B;
+  2341447151 ->     y ^= TEMPERING_SHIFT_T(y) & TEMPERING_MASK_C;
+  2341447151 ->     y ^= TEMPERING_SHIFT_L(y);
                     
-    29989208 ->     return ( (double)y / (unsigned long)0xffffffff ); /* reals */
+  2341447151 ->     return ( (double)y / (unsigned long)0xffffffff ); /* reals */
                     /* return y; */ /* for integer generation */
-    29989208 -> }
+  2341447151 -> }
                 
                 
                 /* initializing the array with a NONZERO seed */
@@ -6842,22 +5346,22 @@ Top 10 Lines:
 
      Line      Count
 
-      332  962079058
+      807 35945387825
+      348 11756360784
+      344 5903707762
+      352 4724795726
+     3430 2341447151
+      862 1501104988
+     1224 1501104988
      1158  960000000
      1526  960000000
      1670  960000000
-      348  522176960
-     3475  504078704
-      344  464020018
-      807  275778354
-      352   87402234
-     3426   29989208
 
 Execution Summary:
 
-     1258   Executable lines in this file
-     1258   Lines executed
+     1260   Executable lines in this file
+     1260   Lines executed
    100.00   Percent of the file executed
 
-5810883643   Total number of line executions
-4619144.39   Average executions per line
+71647510123   Total number of line executions
+56863103.27   Average executions per line
