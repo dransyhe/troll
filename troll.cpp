@@ -128,6 +128,12 @@ freqout;            /* frequency HDF outputs */
 typedef list<int> L;
 L *site_has_S(0);*/
 
+/* initialise an array storing seed counts from species */
+int **seed_count(0);
+/* initialise an array storing counts of non-zero species */
+int **species_count(0);
+int seed_height, max_size;
+
 #ifdef DCELL
 gsl_rng *gslrand;
 int length_dcell,   /* v2.3.1 linear size of a dcell */
@@ -372,7 +378,7 @@ public:
     s_dormDuration,         /* seed dormancy duration -- not used in v.2.2 */
     s_nbext;                /* total number of incoming seeds in the simulated plot at each timestep (seed rain) -- v.2.2 */
 
-    int s_id; /* species id */
+    int s_id, s_index; /* species id */
 
     char	s_name[256];	/* species name */
     float  s_LCP,			/* light compensation point  (in micromol photon/m^2/s) */
@@ -470,6 +476,9 @@ void Species::Init(int nesp,fstream& is) {
     float SLA;              // specific leaf area = 1/LMA
 
     for (int i = 0; i < 500; i++) s_calculated[i] = false;
+
+    s_id = nesp;
+    s_index = pow(2, seed_height) - 1 + s_id;
     
     /*** Read parameters ***/
     
@@ -550,16 +559,40 @@ void Species::Init(int nesp,fstream& is) {
     for(int dcell=0;dcell<nbdcells;dcell++) s_DCELL[dcell]=0;
     /***  field initialization ***/
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
+    /*
     for(site=0;site<sites;site++) {
         s_Seed[site]=0;
         //site_has_S[site].remove(s_id);
+    }*/
+
+    int i;
+    for (site = 0; site < sites; ++ site){
+        if (seed_count[site][s_id] == 0) continue;
+        seed_count[site][s_id] = 0;
+        i = s_index;
+        while (i > 0){
+            species_count[site][i] --;
+            i = i >> 1;
+        }
     }
 #else
     /***  field initialization ***/
-    if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
+    //if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
+    /*
     for(site=0;site<sites;site++) {
         s_Seed[site]=0;
         //site_has_S[site].remove(s_id);
+    }*/
+
+    int i;
+    for (site = 0; site < sites; ++ site){
+        if (seed_count[site][s_id] == 0) continue;
+        seed_count[site][s_id] = 0;
+        i = s_index;
+        while (i > 0){
+            species_count[site][i] --;
+            i = i >> 1;
+        }
     }
 #endif
     
@@ -603,11 +636,29 @@ void Species::FillSeed(int col, int row) {
                 s_Seed[site]++;                         /* ifdef SEEDTRADEOFF, s_Seed[site] is the number of seeds of this species at that site */
             }
             else{
+                /*
                 if (s_Seed[site] == 0){
                     //site_has_S[site].push_back(s_id);
                     s_Seed[site] = 1;
                 }
-                else if(s_Seed[site]!=1) s_Seed[site]=1;     /* If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed  */
+                else if(s_Seed[site]!=1) s_Seed[site]=1;     //If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed
+                */
+
+                if (seed_count[site][s_id] == 0){
+                    seed_count[site][s_id] = 1;
+                    cout << "s_id = " << s_id << endl;
+                    int i = s_index;
+                    cout << "s_index = " << s_index << endl;
+                    while (i > 0){
+                        species_count[site][i] ++;
+                        cout << i << " ";
+                        i = i >> 1;
+                    }
+                    cout << endl;
+                    getchar();
+                }
+                else if (seed_count[site][s_id] != 1) seed_count[site][s_id] = 1;
+
             }
         }
         
@@ -640,9 +691,20 @@ Nearest neighboring stripes are shared. Rque, this version is not valid ifdef SE
 
 void Species::UpdateSeed() {
     int site;
+    /*
     for(site=0;site<sites;site++) {
         s_Seed[site]=0;
         //site_has_S[site].remove(s_id);
+    }*/
+
+    int i;
+    for (site = 0; site < sites; ++ site){
+        seed_count[site][s_id] = 0;
+        i = index;
+        while (i > 0){
+            species_count[site][i] --;
+            i = i >> 1;
+        }
     }
 
     for(int dcell=0;dcell<nbdcells;dcell++){ // loop over dcells
@@ -697,13 +759,28 @@ void Species::UpdateSeed() {
             s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
             /* seed bank ages or disappears */
+            /*
             if(s_Seed[site]==s_dormDuration) {
-                s_Seed[site]=0;   /*!!!!*/
+                s_Seed[site]=0;   //!!!!
                 //site_has_S[site].remove(s_id);
             }
 
-            else if(s_Seed[site]!=0) s_Seed[site]++;      /*!!!!*/
+            else if(s_Seed[site]!=0) s_Seed[site]++;      //!!!!
             // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
+            */
+
+
+            if (seed_count[site][s_id] == s_dormDuration){
+                seed_count[site][s_id] = 0;
+                int i = s_index;
+                if (species_count[site][i] > 0){
+                    while (i > 0){
+                        species_count[site][i] --;
+                        i = i >> 1;
+                    }
+                }
+            }
+            else if (seed_count[site][s_id] != 0) seed_count[site][s_id] ++;
         }
     }
 }
@@ -1181,6 +1258,7 @@ void Tree::CalcLAI() {
                     yy = row_trunc - row;
                     if(xx*xx + yy*yy <= crown_r*crown_r){      // check whether voxel is within crown
                         site = col + cols * row + SBORD;
+                        //cout << crown_top << " " << site<<endl;
                         LAI3D[crown_top][site] += t_dens * t_Crown_Depth;
                     }
                 }
@@ -2012,8 +2090,32 @@ void Initialise() {
             for(int ii=0;ii<(numesp+1);ii++) T[site].t_NDDfield[ii]=0;
         }
     }
-    
-    
+
+
+    // height of the segment tree
+    seed_height = ceil(log2(numesp));
+    // maximum size of the segment tree
+    max_size = pow(2, seed_height + 1);
+    // allocate memory for seed_count and species_count
+    seed_count = new int*[sites];
+    species_count = new int*[sites];
+    for (int i = 0; i < sites; ++ i ){
+        seed_count[i] = new int[numesp];
+        species_count[i] = new int[max_size];
+    }
+    // fill up the two arrays with 0
+    for (int i = 0; i < sites; ++ i) {
+        for (int j = 1; j <= numesp; ++j){
+            seed_count[i][j] = 0;
+            species_count[i][j] = 0;
+        }
+        for (int j = numesp+1; j < max_size; ++j) {
+            species_count[i][j] = 0;
+        }
+    }
+
+
+
     /*** Initialization of species ***/
     /*********************************/
     
@@ -2154,9 +2256,6 @@ void Initialise() {
     }
     for (int i=0; i<iterperyear; i++) In >> DailyMaxVapourPressureDeficit[i];
     In.getline(buffer,128,'\n');
-    
-    //for (int i=0; i<iterperyear; i++) cout<< "DailyMaxVapourPressureDeficit" << i << "\t"  << DailyMaxVapourPressureDeficit[i] << "\t";
-    //cout<<endl;
 
     /* NEW CHANGE: take (liter % iterperyear) out to reduce repeated calculation of index */
     int index = iter % iterperyear;
@@ -2397,6 +2496,7 @@ void InitialiseFromData(){
             int index = col_int + row_int * cols;
             if(T[index].t_age == 0){
                 T[index].BirthFromData(S, sp_lab_data, index, dbh_measured);
+                cout << "yes" << endl;
             }
             
             if(height_max < T[index].t_Tree_Height) height_max = T[index].t_Tree_Height;
@@ -2713,14 +2813,31 @@ void UpdateField() {
         }
     }
     else {
+        //cout << "nblivetrees " << nblivetrees << endl;
         if(!mpi_rank || S[spp].s_nbind * sites > 50000){
             for(spp = 1; spp <= numesp; spp++) {                              /* External seed rain: constant flux from the metacommunity */
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
-                    if(S[spp].s_Seed[site] != 1) {             /*!!!!*/
+                    /*
+                    if(S[spp].s_Seed[site] != 1) {             //!!!!
                         //if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
-                        S[spp].s_Seed[site] = 1; /* check for optimization */
+                        S[spp].s_Seed[site] = 1;  //check for optimization
+                    }*/
+
+
+                    if (seed_count[site][spp] == 0){
+                        seed_count[site][spp] = 1;
+                        int i = S[spp].s_index;
+                        //cout << "site = " << site << "spp = "<<spp<<endl;
+                        //cout << "index = " << i<<endl;
+                        while (i > 0){
+                            //cout << i << " ";
+                            species_count[site][i] ++;
+                            i = i >> 1;
+                        }
+                        //cout << endl;
                     }
+                    else if (seed_count[site][spp] != 1) seed_count[site][spp] = 1;
                 }
             }
         }
@@ -2879,12 +2996,12 @@ void UpdateTree() {
             }
         }*/
 
-
+        /*
         for(site=0;site<sites;site++) {                                     // Local germination
             if(T[site].t_age == 0) {         //!!!!
                 iii=0;
                 
-                for(spp=1;spp<=numesp;spp++){    //!!!!                         // lists all the species with a seed present at given site...
+                for(spp=1;spp<=numesp;spp++){    //!!!!      random generation of the count, then find the 4th non-zero of that row                   // lists all the species with a seed present at given site...
                     if(S[spp].s_Seed[site]) {          //!!!!
                         SPECIES_GERM[iii]=spp;        //!!!!
                         iii++;
@@ -2905,10 +3022,51 @@ void UpdateTree() {
                 }
             }
             else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!!
+                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!! bzero
+            }
+        }*/
+
+
+        for (site = 0; site < sites; ++ site){
+
+            //for (int i = 1; i <= numesp; i ++) cout << seed_count[site][i]<< " "; cout<<endl;getchar();
+            //for (int i = 1; i <= max_size; i ++) cout << species_count[site][i] << " "; cout << endl; getchar();
+            if (T[site].t_age == 0){
+                int size = species_count[site][1];
+                //cout << "size = " << size << endl;
+                if (size) {
+                    //cout << "yes" << endl;
+                    int r = rand() % species_count[site][1] + 1,
+                            i = 1,
+                            limit = pow(2, seed_height) - 1;
+                    while (i <= limit) {
+                        if (r > species_count[site][i])
+                            i = (i << 1) + 1;
+                        else
+                            i = i << 1;
+                    }
+                    i = i - limit;
+                    flux = Wmax * exp(-flor(LAI3D[0][site + SBORD]) * klight);
+                    if (flux > (S[i].s_LCP)) T[site].Birth(S, i, site);
+                }
+            }
+            else{
+                int limit = pow(2, seed_height) - 1;
+                for (int i = 1; i <= numesp; ++ i){
+                    seed_count[site][i] = 0;
+                    if (species_count[site][limit+i] != 0){
+                        int j = limit + i;
+                        while (j > 0){
+                            species_count[site][j] = 0;
+                            j = j >> 1;
+                        }
+                    }
+                }
             }
         }
+
     }
+
 #endif
     
     nbdead_n1=nbdead_n10=0;
