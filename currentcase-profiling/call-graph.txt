@@ -1,0 +1,479 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 32.84   2325.10  2325.10     6000     0.39     0.96  UpdateTree()
+ 17.02   3530.13  1205.03 35945387825     0.00     0.00  Species::GPPleaf(float, float, float)
+ 13.11   4458.29   928.16     6000     0.15     0.21  UpdateField()
+ 13.04   5381.91   923.62   978000     0.00     0.00  Species::UpdateSeed()
+  7.65   5923.39   541.48 1501104988     0.00     0.00  Tree::Fluxh(int)
+  3.70   6185.27   261.88 3171299314     0.00     0.00  std::sqrt(float)
+  2.53   6364.63   179.36 960000000     0.00     0.00  Tree::CalcLAI()
+  2.17   6518.58   153.95 1501104988     0.00     0.00  Species::dailyGPPleaf(float, float, float, float, float)
+  1.46   6621.72   103.14 5903707762     0.00     0.00  minf(float, float)
+  1.02   6693.77    72.05 960000000     0.00     0.00  Tree::Update()
+  0.85   6753.70    59.93 504078704     0.00     0.00  genrand2i()
+  0.66   6800.26    46.56 2341447151     0.00     0.00  genrand2()
+  0.64   6845.78    45.52 654722406     0.00     0.00  Tree::Growth()
+  0.58   6886.75    40.97 11756360784     0.00     0.00  min(int, int)
+  0.49   6921.17    34.41     6000     0.01     0.01  UpdateTreefall()
+  0.39   6948.72    27.55 960000000     0.00     0.00  Tree::Average()
+  0.37   6975.13    26.41 681728812     0.00     0.00  Species::DeathRate(float, float, int)
+  0.25   6992.64    17.51 654722406     0.00     0.00  Tree::UpdateLeafDynamics()
+  0.19   7005.85    13.21 148070697     0.00     0.00  std::sin(float)
+  0.18   7018.89    13.04 147906270     0.00     0.00  Species::FillSeed(int, int)
+  0.17   7030.64    11.75 4724795726     0.00     0.00  max(int, int)
+  0.15   7041.13    10.49 213719514     0.00     0.00  Tree::UpdateTreeBiometry()
+  0.14   7051.21    10.08 654605816     0.00     0.00  Tree::DisperseSeed()
+  0.10   7058.59     7.38      726     0.01     0.01  maxf(float, float)
+  0.07   7063.48     4.89 654722406     0.00     0.00  Tree::FallTree()
+  0.06   7067.98     4.50 27122996     0.00     0.00  Tree::Birth(Species*, int, int)
+  0.05   7071.29     3.31     6000     0.00     0.01  Average()
+  0.03   7073.66     2.37 27013150     0.00     0.00  Tree::Death()
+  0.03   7075.43     1.77 871283193     0.00     0.00  flor(float)
+  0.02   7077.13     1.71 654715662     0.00     0.00  __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
+  0.02   7078.26     1.13        1     1.13     1.13  sgenrand2i(unsigned long)
+  0.01   7079.28     1.02 305228345     0.00     0.00  std::exp(float)
+  0.01   7080.26     0.98        1     0.98     0.98  sgenrand2(unsigned long)
+  0.01   7080.91     0.66 148072432     0.00     0.00  std::cos(float)
+  0.00   7081.24     0.33                             Tree::BirthFromData(Species*, int, int, float)
+  0.00   7081.40     0.16                             Species::DeathRateNDD(float, float, int, float)
+  0.00   7081.53     0.13      326     0.00     0.00  __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
+  0.00   7081.65     0.12                             Tree::Couple()
+  0.00   7081.76     0.12      163     0.00     0.00  Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&)
+  0.00   7081.87     0.11     6000     0.00     0.00  OutputField()
+  0.00   7081.91     0.04        1     0.04     3.35  AllocMem()
+  0.00   7081.94     0.03                             std::atan2(float, float)
+  0.00   7081.96     0.02     6000     0.00     1.18  Evolution()
+  0.00   7081.97     0.01   640000     0.00     0.00  Tree::histdbh()
+  0.00   7081.98     0.01        1     0.01     0.01  OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&)
+  0.00   7081.98     0.00   160000     0.00     0.00  Tree::Tree()
+  0.00   7081.98     0.00   160000     0.00     0.00  Tree::~Tree()
+  0.00   7081.98     0.00      815     0.00     0.00  std::log10(float)
+  0.00   7081.98     0.00      164     0.00     0.00  Species::Species()
+  0.00   7081.98     0.00      164     0.00     0.00  Species::~Species()
+  0.00   7081.98     0.00      163     0.00     0.00  __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
+  0.00   7081.98     0.00        1     0.00     0.00  _GLOBAL__sub_I_buffer
+  0.00   7081.98     0.00        1     0.00     4.30  Initialise()
+  0.00   7081.98     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00   7081.98     0.00        1     0.00     0.00  FreeMem()
+  0.00   7081.98     0.00        1     0.00     0.00  BirthInit()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 7081.98 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00 7081.34                 main [1]
+                0.02 7071.55    6000/6000        Evolution() [2]
+                0.00    4.30       1/1           Initialise() [30]
+                0.04    3.31       1/1           AllocMem() [31]
+                1.13    0.00       1/1           sgenrand2i(unsigned long) [35]
+                0.98    0.00       1/1           sgenrand2(unsigned long) [37]
+                0.01    0.00       1/1           OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [47]
+                0.00    0.00    6000/871283193     flor(float) [33]
+                0.00    0.00       3/2341447151     genrand2() [16]
+                0.00    0.00       1/1           BirthInit() [63]
+                0.00    0.00       1/1           FreeMem() [62]
+-----------------------------------------------
+                0.02 7071.55    6000/6000        main [1]
+[2]     99.9    0.02 7071.55    6000         Evolution() [2]
+             2325.10 3425.09    6000/6000        UpdateTree() [3]
+              928.16  308.18    6000/6000        UpdateField() [8]
+               34.41   17.92    6000/6000        UpdateTreefall() [15]
+                3.31   29.26    6000/6000        Average() [19]
+                0.11    0.01    6000/6000        OutputField() [44]
+-----------------------------------------------
+             2325.10 3425.09    6000/6000        Evolution() [2]
+[3]     81.2 2325.10 3425.09    6000         UpdateTree() [3]
+               72.05 2422.10 960000000/960000000     Tree::Update() [4]
+              923.62    0.00  978000/978000      Species::UpdateSeed() [9]
+                4.50    1.19 27122996/27122996     Tree::Birth(Species*, int, int) [29]
+                1.02    0.00 305227945/305228345     std::exp(float) [36]
+                0.62    0.00 305227945/871283193     flor(float) [33]
+-----------------------------------------------
+               72.05 2422.10 960000000/960000000     UpdateTree() [3]
+[4]     35.2   72.05 2422.10 960000000         Tree::Update() [4]
+               45.52 2321.22 654722406/654722406     Tree::Growth() [5]
+               26.58    0.00 1336659466/2341447151     genrand2() [16]
+               26.41    0.00 681728812/681728812     Species::DeathRate(float, float, int) [21]
+                2.37    0.00 27006406/27013150     Tree::Death() [32]
+-----------------------------------------------
+               45.52 2321.22 654722406/654722406     Tree::Update() [4]
+[5]     33.4   45.52 2321.22 654722406         Tree::Growth() [5]
+              153.95 1494.62 1501104988/1501104988     Species::dailyGPPleaf(float, float, float, float, float) [6]
+              541.48  102.72 1501104988/1501104988     Tree::Fluxh(int) [10]
+               17.51    0.00 654722406/654722406     Tree::UpdateLeafDynamics() [23]
+               10.49    0.44 213719514/213719514     Tree::UpdateTreeBiometry() [27]
+-----------------------------------------------
+              153.95 1494.62 1501104988/1501104988     Tree::Growth() [5]
+[6]     23.3  153.95 1494.62 1501104988         Species::dailyGPPleaf(float, float, float, float, float) [6]
+             1205.03  289.59 35945387825/35945387825     Species::GPPleaf(float, float, float) [7]
+-----------------------------------------------
+             1205.03  289.59 35945387825/35945387825     Species::dailyGPPleaf(float, float, float, float, float) [6]
+[7]     21.1 1205.03  289.59 35945387825         Species::GPPleaf(float, float, float) [7]
+              261.88    0.00 3171298914/3171299314     std::sqrt(float) [11]
+               27.70    0.00 1585649457/5903707762     minf(float, float) [13]
+-----------------------------------------------
+              928.16  308.18    6000/6000        Evolution() [2]
+[8]     17.5  928.16  308.18    6000         UpdateField() [8]
+              179.36   25.44 960000000/960000000     Tree::CalcLAI() [12]
+               59.93    0.00 504078704/504078704     genrand2i() [14]
+               10.08   33.37 654605816/654605816     Tree::DisperseSeed() [17]
+-----------------------------------------------
+              923.62    0.00  978000/978000      UpdateTree() [3]
+[9]     13.0  923.62    0.00  978000         Species::UpdateSeed() [9]
+-----------------------------------------------
+              541.48  102.72 1501104988/1501104988     Tree::Growth() [5]
+[10]     9.1  541.48  102.72 1501104988         Tree::Fluxh(int) [10]
+               75.44    0.00 4318057579/5903707762     minf(float, float) [13]
+               19.90    0.00 5709460251/11756360784     min(int, int) [18]
+                7.39    0.00 2969221109/4724795726     max(int, int) [26]
+-----------------------------------------------
+                0.00    0.00     400/3171299314     Initialise() [30]
+              261.88    0.00 3171298914/3171299314     Species::GPPleaf(float, float, float) [7]
+[11]     3.7  261.88    0.00 3171299314         std::sqrt(float) [11]
+-----------------------------------------------
+              179.36   25.44 960000000/960000000     UpdateField() [8]
+[12]     2.9  179.36   25.44 960000000         Tree::CalcLAI() [12]
+               21.07    0.00 6046839708/11756360784     min(int, int) [18]
+                4.37    0.00 1755567710/4724795726     max(int, int) [26]
+-----------------------------------------------
+                0.00    0.00     326/5903707762     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+                0.00    0.00     400/5903707762     Initialise() [30]
+               27.70    0.00 1585649457/5903707762     Species::GPPleaf(float, float, float) [7]
+               75.44    0.00 4318057579/5903707762     Tree::Fluxh(int) [10]
+[13]     1.5  103.14    0.00 5903707762         minf(float, float) [13]
+-----------------------------------------------
+               59.93    0.00 504078704/504078704     UpdateField() [8]
+[14]     0.8   59.93    0.00 504078704         genrand2i() [14]
+-----------------------------------------------
+               34.41   17.92    6000/6000        Evolution() [2]
+[15]     0.7   34.41   17.92    6000         UpdateTreefall() [15]
+                4.89   13.04 654722406/654722406     Tree::FallTree() [22]
+-----------------------------------------------
+                0.00    0.00       3/2341447151     main [1]
+                1.08    0.00 54245992/2341447151     Tree::Birth(Species*, int, int) [29]
+                5.88    0.00 295812540/2341447151     Tree::DisperseSeed() [17]
+               13.02    0.00 654729150/2341447151     Tree::FallTree() [22]
+               26.58    0.00 1336659466/2341447151     Tree::Update() [4]
+[16]     0.7   46.56    0.00 2341447151         genrand2() [16]
+-----------------------------------------------
+               10.08   33.37 654605816/654605816     UpdateField() [8]
+[17]     0.6   10.08   33.37 654605816         Tree::DisperseSeed() [17]
+               13.19    0.00 147906270/148070697     std::sin(float) [24]
+               13.04    0.00 147906270/147906270     Species::FillSeed(int, int) [25]
+                5.88    0.00 295812540/2341447151     genrand2() [16]
+                0.65    0.00 147906270/148072432     std::cos(float) [38]
+                0.60    0.00 295812540/871283193     flor(float) [33]
+-----------------------------------------------
+                0.00    0.00   60825/11756360784     Tree::FallTree() [22]
+               19.90    0.00 5709460251/11756360784     Tree::Fluxh(int) [10]
+               21.07    0.00 6046839708/11756360784     Tree::CalcLAI() [12]
+[18]     0.6   40.97    0.00 11756360784         min(int, int) [18]
+-----------------------------------------------
+                3.31   29.26    6000/6000        Evolution() [2]
+[19]     0.5    3.31   29.26    6000         Average() [19]
+               27.55    1.71 960000000/960000000     Tree::Average() [20]
+-----------------------------------------------
+               27.55    1.71 960000000/960000000     Average() [19]
+[20]     0.4   27.55    1.71 960000000         Tree::Average() [20]
+                1.71    0.00 654715662/654715662     __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [34]
+-----------------------------------------------
+               26.41    0.00 681728812/681728812     Tree::Update() [4]
+[21]     0.4   26.41    0.00 681728812         Species::DeathRate(float, float, int) [21]
+-----------------------------------------------
+                4.89   13.04 654722406/654722406     UpdateTreefall() [15]
+[22]     0.3    4.89   13.04 654722406         Tree::FallTree() [22]
+               13.02    0.00 654729150/2341447151     genrand2() [16]
+                0.01    0.00  164427/148070697     std::sin(float) [24]
+                0.00    0.00  166162/148072432     std::cos(float) [38]
+                0.00    0.00    6744/27013150     Tree::Death() [32]
+                0.00    0.00  159418/871283193     flor(float) [33]
+                0.00    0.00   60825/11756360784     min(int, int) [18]
+                0.00    0.00    6744/4724795726     max(int, int) [26]
+-----------------------------------------------
+               17.51    0.00 654722406/654722406     Tree::Growth() [5]
+[23]     0.2   17.51    0.00 654722406         Tree::UpdateLeafDynamics() [23]
+-----------------------------------------------
+                0.01    0.00  164427/148070697     Tree::FallTree() [22]
+               13.19    0.00 147906270/148070697     Tree::DisperseSeed() [17]
+[24]     0.2   13.21    0.00 148070697         std::sin(float) [24]
+-----------------------------------------------
+               13.04    0.00 147906270/147906270     Tree::DisperseSeed() [17]
+[25]     0.2   13.04    0.00 147906270         Species::FillSeed(int, int) [25]
+-----------------------------------------------
+                0.00    0.00     163/4724795726     AllocMem() [31]
+                0.00    0.00    6744/4724795726     Tree::FallTree() [22]
+                4.37    0.00 1755567710/4724795726     Tree::CalcLAI() [12]
+                7.39    0.00 2969221109/4724795726     Tree::Fluxh(int) [10]
+[26]     0.2   11.75    0.00 4724795726         max(int, int) [26]
+-----------------------------------------------
+               10.49    0.44 213719514/213719514     Tree::Growth() [5]
+[27]     0.2   10.49    0.44 213719514         Tree::UpdateTreeBiometry() [27]
+                0.44    0.00 215831298/871283193     flor(float) [33]
+-----------------------------------------------
+                3.31    0.00     326/726         AllocMem() [31]
+                4.06    0.00     400/726         Initialise() [30]
+[28]     0.1    7.38    0.00     726         maxf(float, float) [28]
+-----------------------------------------------
+                4.50    1.19 27122996/27122996     UpdateTree() [3]
+[29]     0.1    4.50    1.19 27122996         Tree::Birth(Species*, int, int) [29]
+                1.08    0.00 54245992/2341447151     genrand2() [16]
+                0.11    0.00 54245992/871283193     flor(float) [33]
+-----------------------------------------------
+                0.00    4.30       1/1           main [1]
+[30]     0.1    0.00    4.30       1         Initialise() [30]
+                4.06    0.00     400/726         maxf(float, float) [28]
+                0.12    0.13     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+                0.00    0.00     400/3171299314     std::sqrt(float) [11]
+                0.00    0.00     400/5903707762     minf(float, float) [13]
+                0.00    0.00     400/305228345     std::exp(float) [36]
+                0.00    0.00  160000/160000      Tree::Tree() [54]
+                0.00    0.00     164/164         Species::Species() [57]
+-----------------------------------------------
+                0.04    3.31       1/1           main [1]
+[31]     0.0    0.04    3.31       1         AllocMem() [31]
+                3.31    0.00     326/726         maxf(float, float) [28]
+                0.00    0.00     163/4724795726     max(int, int) [26]
+-----------------------------------------------
+                0.00    0.00    6744/27013150     Tree::FallTree() [22]
+                2.37    0.00 27006406/27013150     Tree::Update() [4]
+[32]     0.0    2.37    0.00 27013150         Tree::Death() [32]
+-----------------------------------------------
+                0.00    0.00    6000/871283193     main [1]
+                0.00    0.00  159418/871283193     Tree::FallTree() [22]
+                0.11    0.00 54245992/871283193     Tree::Birth(Species*, int, int) [29]
+                0.44    0.00 215831298/871283193     Tree::UpdateTreeBiometry() [27]
+                0.60    0.00 295812540/871283193     Tree::DisperseSeed() [17]
+                0.62    0.00 305227945/871283193     UpdateTree() [3]
+[33]     0.0    1.77    0.00 871283193         flor(float) [33]
+-----------------------------------------------
+                1.71    0.00 654715662/654715662     Tree::Average() [20]
+[34]     0.0    1.71    0.00 654715662         __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [34]
+-----------------------------------------------
+                1.13    0.00       1/1           main [1]
+[35]     0.0    1.13    0.00       1         sgenrand2i(unsigned long) [35]
+-----------------------------------------------
+                0.00    0.00     400/305228345     Initialise() [30]
+                1.02    0.00 305227945/305228345     UpdateTree() [3]
+[36]     0.0    1.02    0.00 305228345         std::exp(float) [36]
+-----------------------------------------------
+                0.98    0.00       1/1           main [1]
+[37]     0.0    0.98    0.00       1         sgenrand2(unsigned long) [37]
+-----------------------------------------------
+                0.00    0.00  166162/148072432     Tree::FallTree() [22]
+                0.65    0.00 147906270/148072432     Tree::DisperseSeed() [17]
+[38]     0.0    0.66    0.00 148072432         std::cos(float) [38]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.0    0.33    0.00                 Tree::BirthFromData(Species*, int, int, float) [39]
+-----------------------------------------------
+                0.12    0.13     163/163         Initialise() [30]
+[40]     0.0    0.12    0.13     163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+                0.13    0.00     326/326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [42]
+                0.00    0.00     326/5903707762     minf(float, float) [13]
+                0.00    0.00     815/815         std::log10(float) [56]
+                0.00    0.00     163/163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [59]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.0    0.16    0.00                 Species::DeathRateNDD(float, float, int, float) [41]
+-----------------------------------------------
+                0.13    0.00     326/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+[42]     0.0    0.13    0.00     326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[43]     0.0    0.12    0.00                 Tree::Couple() [43]
+-----------------------------------------------
+                0.11    0.01    6000/6000        Evolution() [2]
+[44]     0.0    0.11    0.01    6000         OutputField() [44]
+                0.01    0.00  640000/640000      Tree::histdbh() [46]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.0    0.03    0.00                 std::atan2(float, float) [45]
+-----------------------------------------------
+                0.01    0.00  640000/640000      OutputField() [44]
+[46]     0.0    0.01    0.00  640000         Tree::histdbh() [46]
+-----------------------------------------------
+                0.01    0.00       1/1           main [1]
+[47]     0.0    0.01    0.00       1         OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [47]
+-----------------------------------------------
+                0.00    0.00  160000/160000      Initialise() [30]
+[54]     0.0    0.00    0.00  160000         Tree::Tree() [54]
+-----------------------------------------------
+                0.00    0.00  160000/160000      FreeMem() [62]
+[55]     0.0    0.00    0.00  160000         Tree::~Tree() [55]
+-----------------------------------------------
+                0.00    0.00     815/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+[56]     0.0    0.00    0.00     815         std::log10(float) [56]
+-----------------------------------------------
+                0.00    0.00     164/164         Initialise() [30]
+[57]     0.0    0.00    0.00     164         Species::Species() [57]
+-----------------------------------------------
+                0.00    0.00     164/164         FreeMem() [62]
+[58]     0.0    0.00    0.00     164         Species::~Species() [58]
+-----------------------------------------------
+                0.00    0.00     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
+[59]     0.0    0.00    0.00     163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [59]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [80]
+[60]     0.0    0.00    0.00       1         _GLOBAL__sub_I_buffer [60]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [61]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_buffer [60]
+[61]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [61]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[62]     0.0    0.00    0.00       1         FreeMem() [62]
+                0.00    0.00  160000/160000      Tree::~Tree() [55]
+                0.00    0.00     164/164         Species::~Species() [58]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[63]     0.0    0.00    0.00       1         BirthInit() [63]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [60] _GLOBAL__sub_I_buffer (troll.cpp) [2] Evolution()   [9] Species::UpdateSeed()
+  [30] Initialise()           [14] genrand2i()            [41] Species::DeathRateNDD(float, float, int, float)
+   [3] UpdateTree()           [37] sgenrand2(unsigned long) [6] Species::dailyGPPleaf(float, float, float, float, float)
+  [35] sgenrand2i(unsigned long) [17] Tree::DisperseSeed() [40] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&)
+  [44] OutputField()          [39] Tree::BirthFromData(Species*, int, int, float) [7] Species::GPPleaf(float, float, float)
+   [8] UpdateField()          [23] Tree::UpdateLeafDynamics() [25] Species::FillSeed(int, int)
+  [47] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [27] Tree::UpdateTreeBiometry() [21] Species::DeathRate(float, float, int)
+  [15] UpdateTreefall()       [29] Tree::Birth(Species*, int, int) [57] Species::Species()
+  [26] max(int, int)          [32] Tree::Death()          [58] Species::~Species()
+  [18] min(int, int)          [10] Tree::Fluxh(int)       [38] std::cos(float)
+  [61] __static_initialization_and_destruction_0(int, int) (troll.cpp) [43] Tree::Couple() [36] std::exp(float)
+  [33] flor(float)             [5] Tree::Growth()         [42] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
+  [28] maxf(float, float)      [4] Tree::Update()         [34] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
+  [13] minf(float, float)     [20] Tree::Average()        [59] __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
+  [19] Average()              [12] Tree::CalcLAI()        [24] std::sin(float)
+  [62] FreeMem()              [46] Tree::histdbh()        [11] std::sqrt(float)
+  [31] AllocMem()             [22] Tree::FallTree()       [45] std::atan2(float, float)
+  [16] genrand2()             [54] Tree::Tree()           [56] std::log10(float)
+  [63] BirthInit()            [55] Tree::~Tree()
