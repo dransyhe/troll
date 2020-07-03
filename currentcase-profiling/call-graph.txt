@@ -3,62 +3,123 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls   s/call   s/call  name    
- 32.84   2325.10  2325.10     6000     0.39     0.96  UpdateTree()
- 17.02   3530.13  1205.03 35945387825     0.00     0.00  Species::GPPleaf(float, float, float)
- 13.11   4458.29   928.16     6000     0.15     0.21  UpdateField()
- 13.04   5381.91   923.62   978000     0.00     0.00  Species::UpdateSeed()
-  7.65   5923.39   541.48 1501104988     0.00     0.00  Tree::Fluxh(int)
-  3.70   6185.27   261.88 3171299314     0.00     0.00  std::sqrt(float)
-  2.53   6364.63   179.36 960000000     0.00     0.00  Tree::CalcLAI()
-  2.17   6518.58   153.95 1501104988     0.00     0.00  Species::dailyGPPleaf(float, float, float, float, float)
-  1.46   6621.72   103.14 5903707762     0.00     0.00  minf(float, float)
-  1.02   6693.77    72.05 960000000     0.00     0.00  Tree::Update()
-  0.85   6753.70    59.93 504078704     0.00     0.00  genrand2i()
-  0.66   6800.26    46.56 2341447151     0.00     0.00  genrand2()
-  0.64   6845.78    45.52 654722406     0.00     0.00  Tree::Growth()
-  0.58   6886.75    40.97 11756360784     0.00     0.00  min(int, int)
-  0.49   6921.17    34.41     6000     0.01     0.01  UpdateTreefall()
-  0.39   6948.72    27.55 960000000     0.00     0.00  Tree::Average()
-  0.37   6975.13    26.41 681728812     0.00     0.00  Species::DeathRate(float, float, int)
-  0.25   6992.64    17.51 654722406     0.00     0.00  Tree::UpdateLeafDynamics()
-  0.19   7005.85    13.21 148070697     0.00     0.00  std::sin(float)
-  0.18   7018.89    13.04 147906270     0.00     0.00  Species::FillSeed(int, int)
-  0.17   7030.64    11.75 4724795726     0.00     0.00  max(int, int)
-  0.15   7041.13    10.49 213719514     0.00     0.00  Tree::UpdateTreeBiometry()
-  0.14   7051.21    10.08 654605816     0.00     0.00  Tree::DisperseSeed()
-  0.10   7058.59     7.38      726     0.01     0.01  maxf(float, float)
-  0.07   7063.48     4.89 654722406     0.00     0.00  Tree::FallTree()
-  0.06   7067.98     4.50 27122996     0.00     0.00  Tree::Birth(Species*, int, int)
-  0.05   7071.29     3.31     6000     0.00     0.01  Average()
-  0.03   7073.66     2.37 27013150     0.00     0.00  Tree::Death()
-  0.03   7075.43     1.77 871283193     0.00     0.00  flor(float)
-  0.02   7077.13     1.71 654715662     0.00     0.00  __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
-  0.02   7078.26     1.13        1     1.13     1.13  sgenrand2i(unsigned long)
-  0.01   7079.28     1.02 305228345     0.00     0.00  std::exp(float)
-  0.01   7080.26     0.98        1     0.98     0.98  sgenrand2(unsigned long)
-  0.01   7080.91     0.66 148072432     0.00     0.00  std::cos(float)
-  0.00   7081.24     0.33                             Tree::BirthFromData(Species*, int, int, float)
-  0.00   7081.40     0.16                             Species::DeathRateNDD(float, float, int, float)
-  0.00   7081.53     0.13      326     0.00     0.00  __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
-  0.00   7081.65     0.12                             Tree::Couple()
-  0.00   7081.76     0.12      163     0.00     0.00  Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&)
-  0.00   7081.87     0.11     6000     0.00     0.00  OutputField()
-  0.00   7081.91     0.04        1     0.04     3.35  AllocMem()
-  0.00   7081.94     0.03                             std::atan2(float, float)
-  0.00   7081.96     0.02     6000     0.00     1.18  Evolution()
-  0.00   7081.97     0.01   640000     0.00     0.00  Tree::histdbh()
-  0.00   7081.98     0.01        1     0.01     0.01  OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&)
-  0.00   7081.98     0.00   160000     0.00     0.00  Tree::Tree()
-  0.00   7081.98     0.00   160000     0.00     0.00  Tree::~Tree()
-  0.00   7081.98     0.00      815     0.00     0.00  std::log10(float)
-  0.00   7081.98     0.00      164     0.00     0.00  Species::Species()
-  0.00   7081.98     0.00      164     0.00     0.00  Species::~Species()
-  0.00   7081.98     0.00      163     0.00     0.00  __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
-  0.00   7081.98     0.00        1     0.00     0.00  _GLOBAL__sub_I_buffer
-  0.00   7081.98     0.00        1     0.00     4.30  Initialise()
-  0.00   7081.98     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
-  0.00   7081.98     0.00        1     0.00     0.00  FreeMem()
-  0.00   7081.98     0.00        1     0.00     0.00  BirthInit()
+ 24.52   1225.78  1225.78 35938166619     0.00     0.00  Species::GPPleaf(float, float, float)
+ 18.59   2155.30   929.52     6000     0.15     0.31  UpdateField()
+ 11.31   2720.63   565.33     6000     0.09     0.50  UpdateTree()
+  9.65   3202.95   482.32 1500806301     0.00     0.00  Tree::Fluxh(int)
+  5.27   3466.66   263.71 3783529118     0.00     0.00  std::vector<int, std::allocator<int> >::push_back(int const&)
+  4.95   3713.90   247.24 3783529118     0.00     0.00  __gnu_cxx::new_allocator<int>::construct(int*, int const&)
+  4.77   3952.59   238.69 3156856902     0.00     0.00  std::sqrt(float)
+  3.39   4122.13   169.54 960000000     0.00     0.00  Tree::CalcLAI()
+  3.07   4275.84   153.71 1500806301     0.00     0.00  Species::dailyGPPleaf(float, float, float, float, float)
+  2.67   4409.46   133.61 504078704     0.00     0.00  genrand2i()
+  1.99   4508.79    99.33 5899500952     0.00     0.00  minf(float, float)
+  1.46   4581.61    72.82 960000000     0.00     0.00  Tree::Update()
+  1.07   4634.90    53.30 11780403896     0.00     0.00  min(int, int)
+  1.02   4685.91    51.01 2339055096     0.00     0.00  genrand2()
+  0.96   4733.83    47.92 654301400     0.00     0.00  Tree::Growth()
+  0.71   4769.31    35.47     6000     0.01     0.01  UpdateTreefall()
+  0.58   4798.53    29.22 147361510     0.00     0.00  Species::FillSeed(int, int)
+  0.56   4826.69    28.16 960000000     0.00     0.00  Tree::Average()
+  0.53   4853.21    26.52 681296615     0.00     0.00  Species::DeathRate(float, float, int)
+  0.50   4878.23    25.02 147524424     0.00     0.00  std::sin(float)
+  0.36   4896.12    17.89 654301400     0.00     0.00  Tree::UpdateLeafDynamics()
+  0.31   4911.46    15.34 654185552     0.00     0.00  Tree::DisperseSeed()
+  0.22   4922.53    11.06 213506447     0.00     0.00  Tree::UpdateTreeBiometry()
+  0.16   4930.63     8.10 4730107229     0.00     0.00  max(int, int)
+  0.16   4938.41     7.78      726     0.01     0.01  maxf(float, float)
+  0.14   4945.47     7.06 3783529118     0.00     0.00  void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&)
+  0.11   4950.94     5.47 654301400     0.00     0.00  Tree::FallTree()
+  0.09   4955.60     4.66 654185552     0.00     0.00  std::vector<int, std::allocator<int> >::_M_erase_at_end(int*)
+  0.09   4960.26     4.66 3783529118     0.00     0.00  operator new(unsigned long, void*)
+  0.09   4964.64     4.38 27111063     0.00     0.00  Tree::Birth(Species*, int, int)
+  0.07   4968.15     3.51 654185552     0.00     0.00  std::vector<int, std::allocator<int> >::clear()
+  0.07   4971.59     3.44     6000     0.00     0.01  Average()
+  0.06   4974.63     3.04 27001915     0.00     0.00  Tree::Death()
+  0.06   4977.41     2.78 870355305     0.00     0.00  flor(float)
+  0.05   4979.94     2.53 311574376     0.00     0.00  std::vector<int, std::allocator<int> >::size() const
+  0.04   4981.88     1.94        1     1.94     1.94  sgenrand2i(unsigned long)
+  0.04   4983.68     1.80 655625534     0.00     0.00  void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&)
+  0.03   4985.17     1.49 654294700     0.00     0.00  __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
+  0.03   4986.46     1.29 305647461     0.00     0.00  std::vector<int, std::allocator<int> >::operator[](unsigned long)
+  0.02   4987.68     1.22 214399928     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const
+  0.02   4988.85     1.17 655625534     0.00     0.00  void std::_Destroy<int*>(int*, int*)
+  0.02   4989.84     0.99 305647861     0.00     0.00  std::exp(float)
+  0.02   4990.82     0.98 658505498     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator()
+  0.02   4991.73     0.91 147525962     0.00     0.00  std::cos(float)
+  0.02   4992.57     0.84 26080000     0.00     0.00  std::vector<int, std::allocator<int> >::erase(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  0.01   4993.29     0.72 655625534     0.00     0.00  void std::_Destroy_aux<true>::__destroy<int*>(int*, int*)
+  0.01   4994.00     0.71        1     0.71     0.71  _GLOBAL__sub_I_buffer
+  0.01   4994.68     0.68        1     0.68     0.68  sgenrand2(unsigned long)
+  0.01   4995.35     0.67      163     0.00     0.03  Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&)
+  0.01   4995.95     0.61                             __tcf_0
+  0.01   4996.47     0.52 81119964     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator(int* const&)
+  0.01   4996.78     0.31                             Species::DeathRateNDD(float, float, int, float)
+  0.01   4997.07     0.29                             Tree::BirthFromData(Species*, int, int, float)
+  0.00   4997.30     0.23 26080000     0.00     0.00  bool __gnu_cxx::operator==<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&)
+  0.00   4997.51     0.21 53599982     0.00     0.00  std::vector<int, std::allocator<int> >::end()
+  0.00   4997.72     0.21                             std::_Vector_base<int, std::allocator<int> >::~_Vector_base()
+  0.00   4997.89     0.17 53599982     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&)
+  0.00   4998.05     0.17                             int* std::copy_backward<int*, int*>(int*, int*, int*)
+  0.00   4998.21     0.16                             __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::copy<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  0.00   4998.35     0.14                             __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  0.00   4998.48     0.13                             __gnu_cxx::new_allocator<int>::~new_allocator()
+  0.00   4998.60     0.12 26080000     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00   4998.72     0.12   978000     0.00     0.00  Species::UpdateSeed()
+  0.00   4998.84     0.12     6000     0.00     0.00  OutputField()
+  0.00   4998.96     0.12                             std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, false>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  0.00   4999.07     0.11 26080000     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&, std::random_access_iterator_tag)
+  0.00   4999.18     0.11 26080000     0.00     0.00  bool __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&)
+  0.00   4999.29     0.11                             __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int)
+  0.00   4999.39     0.10 26080000     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00   4999.47     0.08                             std::allocator<int>::~allocator()
+  0.00   4999.55     0.08                             std::atan2(float, float)
+  0.00   4999.62     0.08 27519982     0.00     0.00  std::vector<int, std::allocator<int> >::begin()
+  0.00   4999.70     0.08                             Tree::Couple()
+  0.00   4999.77     0.07        1     0.07     8.73  Initialise()
+  0.00   4999.82     0.05  1439982     0.00     0.00  std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00   4999.86     0.05  2879964     0.00     0.00  int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int>(int const*, int const*, int*)
+  0.00   4999.90     0.04 26080000     0.00     0.00  std::iterator_traits<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&)
+  0.00   4999.94     0.04  2879964     0.00     0.00  int* std::__uninitialized_copy<true>::__uninit_copy<int*, int*>(int*, int*, int*)
+  0.00   4999.98     0.04        1     0.04     3.53  AllocMem()
+  0.00   5000.02     0.03  8639892     0.00     0.00  std::_Niter_base<int*>::iterator_type std::__niter_base<int*>(int*)
+  0.00   5000.05     0.03  2879964     0.00     0.00  int* std::__uninitialized_copy_a<int*, int*, int>(int*, int*, int*, std::allocator<int>&)
+  0.00   5000.08     0.03  2879964     0.00     0.00  int* std::copy<int*, int*>(int*, int*, int*)
+  0.00   5000.10     0.03      326     0.00     0.00  __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
+  0.00   5000.12     0.02  2879964     0.00     0.00  int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*)
+  0.00   5000.14     0.02  1439982     0.00     0.00  std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const
+  0.00   5000.16     0.02        1     0.02     0.02  OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&)
+  0.00   5000.17     0.01 14399820     0.00     0.00  std::_Iter_base<int*, false>::_S_base(int*)
+  0.00   5000.18     0.01  2879964     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() const
+  0.00   5000.19     0.01  1439982     0.00     0.00  unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00   5000.20     0.01   160000     0.00     0.00  Tree::~Tree()
+  0.00   5000.21     0.01  5759928     0.00     0.00  std::_Miter_base<int*>::iterator_type std::__miter_base<int*>(int*)
+  0.00   5000.21     0.01  2879964     0.00     0.00  int* std::__copy_move_a<false, int*, int*>(int*, int*, int*)
+  0.00   5000.22     0.01                             std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, true>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  0.00   5000.22     0.00  4319946     0.00     0.00  __gnu_cxx::new_allocator<int>::max_size() const
+  0.00   5000.22     0.00  2879964     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<int> >::max_size(std::allocator<int> const&)
+  0.00   5000.22     0.00  2879964     0.00     0.00  std::vector<int, std::allocator<int> >::max_size() const
+  0.00   5000.22     0.00  2879964     0.00     0.00  int* std::uninitialized_copy<int*, int*>(int*, int*, int*)
+  0.00   5000.22     0.00  2879964     0.00     0.00  int* std::__uninitialized_move_if_noexcept_a<int*, int*, std::allocator<int> >(int*, int*, int*, std::allocator<int>&)
+  0.00   5000.22     0.00  1439982     0.00     0.00  __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*)
+  0.00   5000.22     0.00  1439982     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long)
+  0.00   5000.22     0.00  1439982     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_M_deallocate(int*, unsigned long)
+  0.00   5000.22     0.00  1279982     0.00     0.00  __gnu_cxx::new_allocator<int>::deallocate(int*, unsigned long)
+  0.00   5000.22     0.00   640000     0.00     0.00  Tree::histdbh()
+  0.00   5000.22     0.00   160000     0.00     0.00  Tree::Tree()
+  0.00   5000.22     0.00   160000     0.00     0.00  __gnu_cxx::new_allocator<int>::new_allocator()
+  0.00   5000.22     0.00   160000     0.00     0.00  std::allocator<int>::allocator()
+  0.00   5000.22     0.00   160000     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_Vector_impl::_Vector_impl()
+  0.00   5000.22     0.00   160000     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::_Vector_base()
+  0.00   5000.22     0.00   160000     0.00     0.00  std::vector<int, std::allocator<int> >::vector()
+  0.00   5000.22     0.00     6000     0.00     0.83  Evolution()
+  0.00   5000.22     0.00      815     0.00     0.00  std::log10(float)
+  0.00   5000.22     0.00      164     0.00     0.00  Species::Species()
+  0.00   5000.22     0.00      164     0.00     0.00  Species::~Species()
+  0.00   5000.22     0.00      163     0.00     0.00  __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
+  0.00   5000.22     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00   5000.22     0.00        1     0.00     0.01  FreeMem()
+  0.00   5000.22     0.00        1     0.00     0.00  BirthInit()
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -96,276 +157,542 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 0.00% of 7081.98 seconds
+granularity: each sample hit covers 2 byte(s) for 0.00% of 5000.22 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.00 7081.34                 main [1]
-                0.02 7071.55    6000/6000        Evolution() [2]
-                0.00    4.30       1/1           Initialise() [30]
-                0.04    3.31       1/1           AllocMem() [31]
-                1.13    0.00       1/1           sgenrand2i(unsigned long) [35]
-                0.98    0.00       1/1           sgenrand2(unsigned long) [37]
-                0.01    0.00       1/1           OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [47]
-                0.00    0.00    6000/871283193     flor(float) [33]
-                0.00    0.00       3/2341447151     genrand2() [16]
-                0.00    0.00       1/1           BirthInit() [63]
-                0.00    0.00       1/1           FreeMem() [62]
+[1]     99.9    0.00 4997.03                 main [1]
+                0.00 4982.12    6000/6000        Evolution() [2]
+                0.07    8.66       1/1           Initialise() [31]
+                0.04    3.49       1/1           AllocMem() [38]
+                1.94    0.00       1/1           sgenrand2i(unsigned long) [42]
+                0.68    0.00       1/1           sgenrand2(unsigned long) [58]
+                0.02    0.00       1/1           OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [92]
+                0.00    0.01       1/1           FreeMem() [98]
+                0.00    0.00    6000/870355305     flor(float) [40]
+                0.00    0.00       3/2339055096     genrand2() [20]
+                0.00    0.00       1/1           BirthInit() [125]
 -----------------------------------------------
-                0.02 7071.55    6000/6000        main [1]
-[2]     99.9    0.02 7071.55    6000         Evolution() [2]
-             2325.10 3425.09    6000/6000        UpdateTree() [3]
-              928.16  308.18    6000/6000        UpdateField() [8]
-               34.41   17.92    6000/6000        UpdateTreefall() [15]
-                3.31   29.26    6000/6000        Average() [19]
-                0.11    0.01    6000/6000        OutputField() [44]
+                0.00 4982.12    6000/6000        main [1]
+[2]     99.6    0.00 4982.12    6000         Evolution() [2]
+              565.33 2464.33    6000/6000        UpdateTree() [3]
+              929.52  934.48    6000/6000        UpdateField() [6]
+               35.47   19.77    6000/6000        UpdateTreefall() [18]
+                3.44   29.65    6000/6000        Average() [22]
+                0.12    0.00    6000/6000        OutputField() [79]
 -----------------------------------------------
-             2325.10 3425.09    6000/6000        Evolution() [2]
-[3]     81.2 2325.10 3425.09    6000         UpdateTree() [3]
-               72.05 2422.10 960000000/960000000     Tree::Update() [4]
-              923.62    0.00  978000/978000      Species::UpdateSeed() [9]
-                4.50    1.19 27122996/27122996     Tree::Birth(Species*, int, int) [29]
-                1.02    0.00 305227945/305228345     std::exp(float) [36]
-                0.62    0.00 305227945/871283193     flor(float) [33]
+              565.33 2464.33    6000/6000        Evolution() [2]
+[3]     60.6  565.33 2464.33    6000         UpdateTree() [3]
+               72.82 2367.10 960000000/960000000     Tree::Update() [4]
+                3.51    9.32 654185552/654185552     std::vector<int, std::allocator<int> >::clear() [28]
+                4.38    1.36 27111063/27111063     Tree::Birth(Species*, int, int) [34]
+                2.48    0.00 305814448/311574376     std::vector<int, std::allocator<int> >::size() const [41]
+                1.29    0.00 305647461/305647461     std::vector<int, std::allocator<int> >::operator[](unsigned long) [46]
+                0.99    0.00 305647461/305647861     std::exp(float) [50]
+                0.98    0.00 305647461/870355305     flor(float) [40]
+                0.12    0.00  978000/978000      Species::UpdateSeed() [78]
 -----------------------------------------------
-               72.05 2422.10 960000000/960000000     UpdateTree() [3]
-[4]     35.2   72.05 2422.10 960000000         Tree::Update() [4]
-               45.52 2321.22 654722406/654722406     Tree::Growth() [5]
-               26.58    0.00 1336659466/2341447151     genrand2() [16]
-               26.41    0.00 681728812/681728812     Species::DeathRate(float, float, int) [21]
-                2.37    0.00 27006406/27013150     Tree::Death() [32]
+               72.82 2367.10 960000000/960000000     UpdateTree() [3]
+[4]     48.8   72.82 2367.10 960000000         Tree::Update() [4]
+               47.92 2260.49 654301400/654301400     Tree::Growth() [5]
+               29.13    0.00 1335801847/2339055096     genrand2() [20]
+               26.52    0.00 681296615/681296615     Species::DeathRate(float, float, int) [24]
+                3.04    0.00 26995215/27001915     Tree::Death() [39]
 -----------------------------------------------
-               45.52 2321.22 654722406/654722406     Tree::Update() [4]
-[5]     33.4   45.52 2321.22 654722406         Tree::Growth() [5]
-              153.95 1494.62 1501104988/1501104988     Species::dailyGPPleaf(float, float, float, float, float) [6]
-              541.48  102.72 1501104988/1501104988     Tree::Fluxh(int) [10]
-               17.51    0.00 654722406/654722406     Tree::UpdateLeafDynamics() [23]
-               10.49    0.44 213719514/213719514     Tree::UpdateTreeBiometry() [27]
+               47.92 2260.49 654301400/654301400     Tree::Update() [4]
+[5]     46.2   47.92 2260.49 654301400         Tree::Growth() [5]
+              153.71 1491.05 1500806301/1500806301     Species::dailyGPPleaf(float, float, float, float, float) [7]
+              482.32  103.77 1500806301/1500806301     Tree::Fluxh(int) [9]
+               17.89    0.00 654301400/654301400     Tree::UpdateLeafDynamics() [27]
+               11.06    0.69 213506447/213506447     Tree::UpdateTreeBiometry() [29]
 -----------------------------------------------
-              153.95 1494.62 1501104988/1501104988     Tree::Growth() [5]
-[6]     23.3  153.95 1494.62 1501104988         Species::dailyGPPleaf(float, float, float, float, float) [6]
-             1205.03  289.59 35945387825/35945387825     Species::GPPleaf(float, float, float) [7]
+              929.52  934.48    6000/6000        Evolution() [2]
+[6]     37.3  929.52  934.48    6000         UpdateField() [6]
+              257.41  253.19 3693037275/3783529118     std::vector<int, std::allocator<int> >::push_back(int const&) [10]
+              169.54   30.38 960000000/960000000     Tree::CalcLAI() [14]
+              133.61    0.00 504078704/504078704     genrand2i() [15]
+               15.34   75.01 654185552/654185552     Tree::DisperseSeed() [17]
 -----------------------------------------------
-             1205.03  289.59 35945387825/35945387825     Species::dailyGPPleaf(float, float, float, float, float) [6]
-[7]     21.1 1205.03  289.59 35945387825         Species::GPPleaf(float, float, float) [7]
-              261.88    0.00 3171298914/3171299314     std::sqrt(float) [11]
-               27.70    0.00 1585649457/5903707762     minf(float, float) [13]
+              153.71 1491.05 1500806301/1500806301     Tree::Growth() [5]
+[7]     32.9  153.71 1491.05 1500806301         Species::dailyGPPleaf(float, float, float, float, float) [7]
+             1225.78  265.27 35938166619/35938166619     Species::GPPleaf(float, float, float) [8]
 -----------------------------------------------
-              928.16  308.18    6000/6000        Evolution() [2]
-[8]     17.5  928.16  308.18    6000         UpdateField() [8]
-              179.36   25.44 960000000/960000000     Tree::CalcLAI() [12]
-               59.93    0.00 504078704/504078704     genrand2i() [14]
-               10.08   33.37 654605816/654605816     Tree::DisperseSeed() [17]
+             1225.78  265.27 35938166619/35938166619     Species::dailyGPPleaf(float, float, float, float, float) [7]
+[8]     29.8 1225.78  265.27 35938166619         Species::GPPleaf(float, float, float) [8]
+              238.69    0.00 3156856502/3156856902     std::sqrt(float) [13]
+               26.58    0.00 1578428251/5899500952     minf(float, float) [16]
 -----------------------------------------------
-              923.62    0.00  978000/978000      UpdateTree() [3]
-[9]     13.0  923.62    0.00  978000         Species::UpdateSeed() [9]
+              482.32  103.77 1500806301/1500806301     Tree::Growth() [5]
+[9]     11.7  482.32  103.77 1500806301         Tree::Fluxh(int) [9]
+               72.76    0.00 4321071975/5899500952     minf(float, float) [16]
+               25.92    0.00 5729785226/11780403896     min(int, int) [19]
+                5.09    0.00 2974517630/4730107229     max(int, int) [32]
 -----------------------------------------------
-              541.48  102.72 1501104988/1501104988     Tree::Growth() [5]
-[10]     9.1  541.48  102.72 1501104988         Tree::Fluxh(int) [10]
-               75.44    0.00 4318057579/5903707762     minf(float, float) [13]
-               19.90    0.00 5709460251/11756360784     min(int, int) [18]
-                7.39    0.00 2969221109/4724795726     max(int, int) [26]
+                6.31    6.20 90491843/3783529118     Species::FillSeed(int, int) [21]
+              257.41  253.19 3693037275/3783529118     UpdateField() [6]
+[10]    10.5  263.71  259.39 3783529118         std::vector<int, std::allocator<int> >::push_back(int const&) [10]
+                7.06  251.81 3782089136/3783529118     void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&) [11]
+                0.05    0.47 1439982/1439982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.01    0.01 1439982/53599982     std::vector<int, std::allocator<int> >::end() [60]
 -----------------------------------------------
-                0.00    0.00     400/3171299314     Initialise() [30]
-              261.88    0.00 3171298914/3171299314     Species::GPPleaf(float, float, float) [7]
-[11]     3.7  261.88    0.00 3171299314         std::sqrt(float) [11]
+                0.00    0.10 1439982/3783529118     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                7.06  251.81 3782089136/3783529118     std::vector<int, std::allocator<int> >::push_back(int const&) [10]
+[11]     5.2    7.06  251.90 3783529118         void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&) [11]
+              247.24    4.66 3783529118/3783529118     __gnu_cxx::new_allocator<int>::construct(int*, int const&) [12]
 -----------------------------------------------
-              179.36   25.44 960000000/960000000     UpdateField() [8]
-[12]     2.9  179.36   25.44 960000000         Tree::CalcLAI() [12]
-               21.07    0.00 6046839708/11756360784     min(int, int) [18]
-                4.37    0.00 1755567710/4724795726     max(int, int) [26]
+              247.24    4.66 3783529118/3783529118     void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&) [11]
+[12]     5.0  247.24    4.66 3783529118         __gnu_cxx::new_allocator<int>::construct(int*, int const&) [12]
+                4.66    0.00 3783529118/3783529118     operator new(unsigned long, void*) [35]
 -----------------------------------------------
-                0.00    0.00     326/5903707762     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-                0.00    0.00     400/5903707762     Initialise() [30]
-               27.70    0.00 1585649457/5903707762     Species::GPPleaf(float, float, float) [7]
-               75.44    0.00 4318057579/5903707762     Tree::Fluxh(int) [10]
-[13]     1.5  103.14    0.00 5903707762         minf(float, float) [13]
+                0.00    0.00     400/3156856902     Initialise() [31]
+              238.69    0.00 3156856502/3156856902     Species::GPPleaf(float, float, float) [8]
+[13]     4.8  238.69    0.00 3156856902         std::sqrt(float) [13]
 -----------------------------------------------
-               59.93    0.00 504078704/504078704     UpdateField() [8]
-[14]     0.8   59.93    0.00 504078704         genrand2i() [14]
+              169.54   30.38 960000000/960000000     UpdateField() [6]
+[14]     4.0  169.54   30.38 960000000         Tree::CalcLAI() [14]
+               27.37    0.00 6050558284/11780403896     min(int, int) [19]
+                3.01    0.00 1755582736/4730107229     max(int, int) [32]
 -----------------------------------------------
-               34.41   17.92    6000/6000        Evolution() [2]
-[15]     0.7   34.41   17.92    6000         UpdateTreefall() [15]
-                4.89   13.04 654722406/654722406     Tree::FallTree() [22]
+              133.61    0.00 504078704/504078704     UpdateField() [6]
+[15]     2.7  133.61    0.00 504078704         genrand2i() [15]
 -----------------------------------------------
-                0.00    0.00       3/2341447151     main [1]
-                1.08    0.00 54245992/2341447151     Tree::Birth(Species*, int, int) [29]
-                5.88    0.00 295812540/2341447151     Tree::DisperseSeed() [17]
-               13.02    0.00 654729150/2341447151     Tree::FallTree() [22]
-               26.58    0.00 1336659466/2341447151     Tree::Update() [4]
-[16]     0.7   46.56    0.00 2341447151         genrand2() [16]
+                0.00    0.00     326/5899500952     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+                0.00    0.00     400/5899500952     Initialise() [31]
+               26.58    0.00 1578428251/5899500952     Species::GPPleaf(float, float, float) [8]
+               72.76    0.00 4321071975/5899500952     Tree::Fluxh(int) [9]
+[16]     2.0   99.33    0.00 5899500952         minf(float, float) [16]
 -----------------------------------------------
-               10.08   33.37 654605816/654605816     UpdateField() [8]
-[17]     0.6   10.08   33.37 654605816         Tree::DisperseSeed() [17]
-               13.19    0.00 147906270/148070697     std::sin(float) [24]
-               13.04    0.00 147906270/147906270     Species::FillSeed(int, int) [25]
-                5.88    0.00 295812540/2341447151     genrand2() [16]
-                0.65    0.00 147906270/148072432     std::cos(float) [38]
-                0.60    0.00 295812540/871283193     flor(float) [33]
+               15.34   75.01 654185552/654185552     UpdateField() [6]
+[17]     1.8   15.34   75.01 654185552         Tree::DisperseSeed() [17]
+               29.22   12.51 147361510/147361510     Species::FillSeed(int, int) [21]
+               25.00    0.00 147361510/147524424     std::sin(float) [25]
+                6.43    0.00 294723020/2339055096     genrand2() [20]
+                0.94    0.00 294723020/870355305     flor(float) [40]
+                0.91    0.00 147361510/147525962     std::cos(float) [52]
 -----------------------------------------------
-                0.00    0.00   60825/11756360784     Tree::FallTree() [22]
-               19.90    0.00 5709460251/11756360784     Tree::Fluxh(int) [10]
-               21.07    0.00 6046839708/11756360784     Tree::CalcLAI() [12]
-[18]     0.6   40.97    0.00 11756360784         min(int, int) [18]
+               35.47   19.77    6000/6000        Evolution() [2]
+[18]     1.1   35.47   19.77    6000         UpdateTreefall() [18]
+                5.47   14.30 654301400/654301400     Tree::FallTree() [26]
 -----------------------------------------------
-                3.31   29.26    6000/6000        Evolution() [2]
-[19]     0.5    3.31   29.26    6000         Average() [19]
-               27.55    1.71 960000000/960000000     Tree::Average() [20]
+                0.00    0.00   60386/11780403896     Tree::FallTree() [26]
+               25.92    0.00 5729785226/11780403896     Tree::Fluxh(int) [9]
+               27.37    0.00 6050558284/11780403896     Tree::CalcLAI() [14]
+[19]     1.1   53.30    0.00 11780403896         min(int, int) [19]
 -----------------------------------------------
-               27.55    1.71 960000000/960000000     Average() [19]
-[20]     0.4   27.55    1.71 960000000         Tree::Average() [20]
-                1.71    0.00 654715662/654715662     __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [34]
+                0.00    0.00       3/2339055096     main [1]
+                1.18    0.00 54222126/2339055096     Tree::Birth(Species*, int, int) [34]
+                6.43    0.00 294723020/2339055096     Tree::DisperseSeed() [17]
+               14.27    0.00 654308100/2339055096     Tree::FallTree() [26]
+               29.13    0.00 1335801847/2339055096     Tree::Update() [4]
+[20]     1.0   51.01    0.00 2339055096         genrand2() [20]
 -----------------------------------------------
-               26.41    0.00 681728812/681728812     Tree::Update() [4]
-[21]     0.4   26.41    0.00 681728812         Species::DeathRate(float, float, int) [21]
+               29.22   12.51 147361510/147361510     Tree::DisperseSeed() [17]
+[21]     0.8   29.22   12.51 147361510         Species::FillSeed(int, int) [21]
+                6.31    6.20 90491843/3783529118     std::vector<int, std::allocator<int> >::push_back(int const&) [10]
 -----------------------------------------------
-                4.89   13.04 654722406/654722406     UpdateTreefall() [15]
-[22]     0.3    4.89   13.04 654722406         Tree::FallTree() [22]
-               13.02    0.00 654729150/2341447151     genrand2() [16]
-                0.01    0.00  164427/148070697     std::sin(float) [24]
-                0.00    0.00  166162/148072432     std::cos(float) [38]
-                0.00    0.00    6744/27013150     Tree::Death() [32]
-                0.00    0.00  159418/871283193     flor(float) [33]
-                0.00    0.00   60825/11756360784     min(int, int) [18]
-                0.00    0.00    6744/4724795726     max(int, int) [26]
+                3.44   29.65    6000/6000        Evolution() [2]
+[22]     0.7    3.44   29.65    6000         Average() [22]
+               28.16    1.49 960000000/960000000     Tree::Average() [23]
 -----------------------------------------------
-               17.51    0.00 654722406/654722406     Tree::Growth() [5]
-[23]     0.2   17.51    0.00 654722406         Tree::UpdateLeafDynamics() [23]
+               28.16    1.49 960000000/960000000     Average() [22]
+[23]     0.6   28.16    1.49 960000000         Tree::Average() [23]
+                1.49    0.00 654294700/654294700     __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [45]
 -----------------------------------------------
-                0.01    0.00  164427/148070697     Tree::FallTree() [22]
-               13.19    0.00 147906270/148070697     Tree::DisperseSeed() [17]
-[24]     0.2   13.21    0.00 148070697         std::sin(float) [24]
+               26.52    0.00 681296615/681296615     Tree::Update() [4]
+[24]     0.5   26.52    0.00 681296615         Species::DeathRate(float, float, int) [24]
 -----------------------------------------------
-               13.04    0.00 147906270/147906270     Tree::DisperseSeed() [17]
-[25]     0.2   13.04    0.00 147906270         Species::FillSeed(int, int) [25]
+                0.03    0.00  162914/147524424     Tree::FallTree() [26]
+               25.00    0.00 147361510/147524424     Tree::DisperseSeed() [17]
+[25]     0.5   25.02    0.00 147524424         std::sin(float) [25]
 -----------------------------------------------
-                0.00    0.00     163/4724795726     AllocMem() [31]
-                0.00    0.00    6744/4724795726     Tree::FallTree() [22]
-                4.37    0.00 1755567710/4724795726     Tree::CalcLAI() [12]
-                7.39    0.00 2969221109/4724795726     Tree::Fluxh(int) [10]
-[26]     0.2   11.75    0.00 4724795726         max(int, int) [26]
+                5.47   14.30 654301400/654301400     UpdateTreefall() [18]
+[26]     0.4    5.47   14.30 654301400         Tree::FallTree() [26]
+               14.27    0.00 654308100/2339055096     genrand2() [20]
+                0.03    0.00  162914/147524424     std::sin(float) [25]
+                0.00    0.00  164452/147525962     std::cos(float) [52]
+                0.00    0.00    6700/27001915     Tree::Death() [39]
+                0.00    0.00  157752/870355305     flor(float) [40]
+                0.00    0.00   60386/11780403896     min(int, int) [19]
+                0.00    0.00    6700/4730107229     max(int, int) [32]
 -----------------------------------------------
-               10.49    0.44 213719514/213719514     Tree::Growth() [5]
-[27]     0.2   10.49    0.44 213719514         Tree::UpdateTreeBiometry() [27]
-                0.44    0.00 215831298/871283193     flor(float) [33]
+               17.89    0.00 654301400/654301400     Tree::Growth() [5]
+[27]     0.4   17.89    0.00 654301400         Tree::UpdateLeafDynamics() [27]
 -----------------------------------------------
-                3.31    0.00     326/726         AllocMem() [31]
-                4.06    0.00     400/726         Initialise() [30]
-[28]     0.1    7.38    0.00     726         maxf(float, float) [28]
+                3.51    9.32 654185552/654185552     UpdateTree() [3]
+[28]     0.3    3.51    9.32 654185552         std::vector<int, std::allocator<int> >::clear() [28]
+                4.66    4.66 654185552/654185552     std::vector<int, std::allocator<int> >::_M_erase_at_end(int*) [30]
 -----------------------------------------------
-                4.50    1.19 27122996/27122996     UpdateTree() [3]
-[29]     0.1    4.50    1.19 27122996         Tree::Birth(Species*, int, int) [29]
-                1.08    0.00 54245992/2341447151     genrand2() [16]
-                0.11    0.00 54245992/871283193     flor(float) [33]
+               11.06    0.69 213506447/213506447     Tree::Growth() [5]
+[29]     0.2   11.06    0.69 213506447         Tree::UpdateTreeBiometry() [29]
+                0.69    0.00 215598946/870355305     flor(float) [40]
 -----------------------------------------------
-                0.00    4.30       1/1           main [1]
-[30]     0.1    0.00    4.30       1         Initialise() [30]
-                4.06    0.00     400/726         maxf(float, float) [28]
-                0.12    0.13     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-                0.00    0.00     400/3171299314     std::sqrt(float) [11]
-                0.00    0.00     400/5903707762     minf(float, float) [13]
-                0.00    0.00     400/305228345     std::exp(float) [36]
-                0.00    0.00  160000/160000      Tree::Tree() [54]
-                0.00    0.00     164/164         Species::Species() [57]
+                4.66    4.66 654185552/654185552     std::vector<int, std::allocator<int> >::clear() [28]
+[30]     0.2    4.66    4.66 654185552         std::vector<int, std::allocator<int> >::_M_erase_at_end(int*) [30]
+                1.80    1.89 654185552/655625534     void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&) [37]
+                0.97    0.00 654185552/658505498     std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() [51]
 -----------------------------------------------
-                0.04    3.31       1/1           main [1]
-[31]     0.0    0.04    3.31       1         AllocMem() [31]
-                3.31    0.00     326/726         maxf(float, float) [28]
-                0.00    0.00     163/4724795726     max(int, int) [26]
+                0.07    8.66       1/1           main [1]
+[31]     0.2    0.07    8.66       1         Initialise() [31]
+                0.67    3.70     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+                4.29    0.00     400/726         maxf(float, float) [33]
+                0.00    0.00     400/3156856902     std::sqrt(float) [13]
+                0.00    0.00     400/5899500952     minf(float, float) [16]
+                0.00    0.00     400/305647861     std::exp(float) [50]
+                0.00    0.00  160000/160000      Tree::Tree() [114]
+                0.00    0.00  160000/160000      std::vector<int, std::allocator<int> >::vector() [119]
+                0.00    0.00     164/164         Species::Species() [121]
 -----------------------------------------------
-                0.00    0.00    6744/27013150     Tree::FallTree() [22]
-                2.37    0.00 27006406/27013150     Tree::Update() [4]
-[32]     0.0    2.37    0.00 27013150         Tree::Death() [32]
+                0.00    0.00     163/4730107229     AllocMem() [38]
+                0.00    0.00    6700/4730107229     Tree::FallTree() [26]
+                3.01    0.00 1755582736/4730107229     Tree::CalcLAI() [14]
+                5.09    0.00 2974517630/4730107229     Tree::Fluxh(int) [9]
+[32]     0.2    8.10    0.00 4730107229         max(int, int) [32]
 -----------------------------------------------
-                0.00    0.00    6000/871283193     main [1]
-                0.00    0.00  159418/871283193     Tree::FallTree() [22]
-                0.11    0.00 54245992/871283193     Tree::Birth(Species*, int, int) [29]
-                0.44    0.00 215831298/871283193     Tree::UpdateTreeBiometry() [27]
-                0.60    0.00 295812540/871283193     Tree::DisperseSeed() [17]
-                0.62    0.00 305227945/871283193     UpdateTree() [3]
-[33]     0.0    1.77    0.00 871283193         flor(float) [33]
+                3.49    0.00     326/726         AllocMem() [38]
+                4.29    0.00     400/726         Initialise() [31]
+[33]     0.2    7.78    0.00     726         maxf(float, float) [33]
 -----------------------------------------------
-                1.71    0.00 654715662/654715662     Tree::Average() [20]
-[34]     0.0    1.71    0.00 654715662         __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [34]
+                4.38    1.36 27111063/27111063     UpdateTree() [3]
+[34]     0.1    4.38    1.36 27111063         Tree::Birth(Species*, int, int) [34]
+                1.18    0.00 54222126/2339055096     genrand2() [20]
+                0.17    0.00 54222126/870355305     flor(float) [40]
 -----------------------------------------------
-                1.13    0.00       1/1           main [1]
-[35]     0.0    1.13    0.00       1         sgenrand2i(unsigned long) [35]
+                4.66    0.00 3783529118/3783529118     __gnu_cxx::new_allocator<int>::construct(int*, int const&) [12]
+[35]     0.1    4.66    0.00 3783529118         operator new(unsigned long, void*) [35]
 -----------------------------------------------
-                0.00    0.00     400/305228345     Initialise() [30]
-                1.02    0.00 305227945/305228345     UpdateTree() [3]
-[36]     0.0    1.02    0.00 305228345         std::exp(float) [36]
+                0.67    3.70     163/163         Initialise() [31]
+[36]     0.1    0.67    3.70     163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+                0.10    1.56 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [44]
+                0.84    0.41 26080000/26080000     std::vector<int, std::allocator<int> >::erase(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [47]
+                0.20    0.33 52160000/53599982     std::vector<int, std::allocator<int> >::end() [60]
+                0.07    0.17 26080000/27519982     std::vector<int, std::allocator<int> >::begin() [67]
+                0.03    0.00     326/326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [91]
+                0.00    0.00     326/5899500952     minf(float, float) [16]
+                0.00    0.00     815/815         std::log10(float) [120]
+                0.00    0.00     163/163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [123]
 -----------------------------------------------
-                0.98    0.00       1/1           main [1]
-[37]     0.0    0.98    0.00       1         sgenrand2(unsigned long) [37]
+                0.00    0.00 1439982/655625534     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                1.80    1.89 654185552/655625534     std::vector<int, std::allocator<int> >::_M_erase_at_end(int*) [30]
+[37]     0.1    1.80    1.89 655625534         void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&) [37]
+                1.17    0.72 655625534/655625534     void std::_Destroy<int*>(int*, int*) [43]
 -----------------------------------------------
-                0.00    0.00  166162/148072432     Tree::FallTree() [22]
-                0.65    0.00 147906270/148072432     Tree::DisperseSeed() [17]
-[38]     0.0    0.66    0.00 148072432         std::cos(float) [38]
+                0.04    3.49       1/1           main [1]
+[38]     0.1    0.04    3.49       1         AllocMem() [38]
+                3.49    0.00     326/726         maxf(float, float) [33]
+                0.00    0.00     163/4730107229     max(int, int) [32]
+-----------------------------------------------
+                0.00    0.00    6700/27001915     Tree::FallTree() [26]
+                3.04    0.00 26995215/27001915     Tree::Update() [4]
+[39]     0.1    3.04    0.00 27001915         Tree::Death() [39]
+-----------------------------------------------
+                0.00    0.00    6000/870355305     main [1]
+                0.00    0.00  157752/870355305     Tree::FallTree() [26]
+                0.17    0.00 54222126/870355305     Tree::Birth(Species*, int, int) [34]
+                0.69    0.00 215598946/870355305     Tree::UpdateTreeBiometry() [29]
+                0.94    0.00 294723020/870355305     Tree::DisperseSeed() [17]
+                0.98    0.00 305647461/870355305     UpdateTree() [3]
+[40]     0.1    2.78    0.00 870355305         flor(float) [40]
+-----------------------------------------------
+                0.05    0.00 5759928/311574376     std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [83]
+                2.48    0.00 305814448/311574376     UpdateTree() [3]
+[41]     0.1    2.53    0.00 311574376         std::vector<int, std::allocator<int> >::size() const [41]
+-----------------------------------------------
+                1.94    0.00       1/1           main [1]
+[42]     0.0    1.94    0.00       1         sgenrand2i(unsigned long) [42]
+-----------------------------------------------
+                1.17    0.72 655625534/655625534     void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&) [37]
+[43]     0.0    1.17    0.72 655625534         void std::_Destroy<int*>(int*, int*) [43]
+                0.72    0.00 655625534/655625534     void std::_Destroy_aux<true>::__destroy<int*>(int*, int*) [55]
+-----------------------------------------------
+                0.10    1.56 26080000/26080000     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[44]     0.0    0.10    1.56 26080000         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [44]
+                0.12    0.91 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [49]
+                0.23    0.30 26080000/26080000     bool __gnu_cxx::operator==<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [61]
+-----------------------------------------------
+                1.49    0.00 654294700/654294700     Tree::Average() [23]
+[45]     0.0    1.49    0.00 654294700         __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double) [45]
+-----------------------------------------------
+                1.29    0.00 305647461/305647461     UpdateTree() [3]
+[46]     0.0    1.29    0.00 305647461         std::vector<int, std::allocator<int> >::operator[](unsigned long) [46]
+-----------------------------------------------
+                0.84    0.41 26080000/26080000     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[47]     0.0    0.84    0.41 26080000         std::vector<int, std::allocator<int> >::erase(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [47]
+                0.11    0.30 26080000/26080000     bool __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [64]
+-----------------------------------------------
+                0.02    0.00 2879964/214399928     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.30    0.00 52160000/214399928     bool __gnu_cxx::operator==<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [61]
+                0.30    0.00 52160000/214399928     bool __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [64]
+                0.61    0.00 107199964/214399928     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [54]
+[48]     0.0    1.22    0.00 214399928         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [48]
+-----------------------------------------------
+                0.12    0.91 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [44]
+[49]     0.0    0.12    0.91 26080000         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [49]
+                0.11    0.76 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&, std::random_access_iterator_tag) [53]
+                0.04    0.00 26080000/26080000     std::iterator_traits<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [89]
+-----------------------------------------------
+                0.00    0.00     400/305647861     Initialise() [31]
+                0.99    0.00 305647461/305647861     UpdateTree() [3]
+[50]     0.0    0.99    0.00 305647861         std::exp(float) [50]
+-----------------------------------------------
+                0.01    0.00 4319946/658505498     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.97    0.00 654185552/658505498     std::vector<int, std::allocator<int> >::_M_erase_at_end(int*) [30]
+[51]     0.0    0.98    0.00 658505498         std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() [51]
+-----------------------------------------------
+                0.00    0.00  164452/147525962     Tree::FallTree() [26]
+                0.91    0.00 147361510/147525962     Tree::DisperseSeed() [17]
+[52]     0.0    0.91    0.00 147525962         std::cos(float) [52]
+-----------------------------------------------
+                0.11    0.76 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [49]
+[53]     0.0    0.11    0.76 26080000         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&, std::random_access_iterator_tag) [53]
+                0.17    0.59 52160000/53599982     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [54]
+-----------------------------------------------
+                0.00    0.02 1439982/53599982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.17    0.59 52160000/53599982     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&, std::random_access_iterator_tag) [53]
+[54]     0.0    0.17    0.61 53599982         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [54]
+                0.61    0.00 107199964/214399928     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [48]
+-----------------------------------------------
+                0.72    0.00 655625534/655625534     void std::_Destroy<int*>(int*, int*) [43]
+[55]     0.0    0.72    0.00 655625534         void std::_Destroy_aux<true>::__destroy<int*>(int*, int*) [55]
+-----------------------------------------------
+                0.71    0.00       1/1           __libc_csu_init [57]
+[56]     0.0    0.71    0.00       1         _GLOBAL__sub_I_buffer [56]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [124]
 -----------------------------------------------
                                                  <spontaneous>
-[39]     0.0    0.33    0.00                 Tree::BirthFromData(Species*, int, int, float) [39]
+[57]     0.0    0.00    0.71                 __libc_csu_init [57]
+                0.71    0.00       1/1           _GLOBAL__sub_I_buffer [56]
 -----------------------------------------------
-                0.12    0.13     163/163         Initialise() [30]
-[40]     0.0    0.12    0.13     163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-                0.13    0.00     326/326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [42]
-                0.00    0.00     326/5903707762     minf(float, float) [13]
-                0.00    0.00     815/815         std::log10(float) [56]
-                0.00    0.00     163/163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [59]
+                0.68    0.00       1/1           main [1]
+[58]     0.0    0.68    0.00       1         sgenrand2(unsigned long) [58]
 -----------------------------------------------
                                                  <spontaneous>
-[41]     0.0    0.16    0.00                 Species::DeathRateNDD(float, float, int, float) [41]
+[59]     0.0    0.61    0.00                 __tcf_0 [59]
 -----------------------------------------------
-                0.13    0.00     326/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-[42]     0.0    0.13    0.00     326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [42]
+                0.01    0.01 1439982/53599982     std::vector<int, std::allocator<int> >::push_back(int const&) [10]
+                0.20    0.33 52160000/53599982     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[60]     0.0    0.21    0.34 53599982         std::vector<int, std::allocator<int> >::end() [60]
+                0.34    0.00 53599982/81119964     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator(int* const&) [63]
+-----------------------------------------------
+                0.23    0.30 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [44]
+[61]     0.0    0.23    0.30 26080000         bool __gnu_cxx::operator==<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [61]
+                0.30    0.00 52160000/214399928     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [48]
+-----------------------------------------------
+                0.05    0.47 1439982/1439982     std::vector<int, std::allocator<int> >::push_back(int const&) [10]
+[62]     0.0    0.05    0.47 1439982         std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.00    0.22 2879964/2879964     int* std::__uninitialized_move_if_noexcept_a<int*, int*, std::allocator<int> >(int*, int*, int*, std::allocator<int>&) [69]
+                0.00    0.10 1439982/3783529118     void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&) [11]
+                0.02    0.07 1439982/1439982     std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [83]
+                0.00    0.02 1439982/53599982     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [54]
+                0.02    0.00 2879964/214399928     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [48]
+                0.00    0.01 1439982/27519982     std::vector<int, std::allocator<int> >::begin() [67]
+                0.00    0.00 1439982/655625534     void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&) [37]
+                0.01    0.00 4319946/658505498     std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() [51]
+                0.00    0.00 1439982/1439982     std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) [110]
+                0.00    0.00 1439982/1439982     std::_Vector_base<int, std::allocator<int> >::_M_deallocate(int*, unsigned long) [111]
+-----------------------------------------------
+                0.17    0.00 27519982/81119964     std::vector<int, std::allocator<int> >::begin() [67]
+                0.34    0.00 53599982/81119964     std::vector<int, std::allocator<int> >::end() [60]
+[63]     0.0    0.52    0.00 81119964         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator(int* const&) [63]
+-----------------------------------------------
+                0.11    0.30 26080000/26080000     std::vector<int, std::allocator<int> >::erase(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [47]
+[64]     0.0    0.11    0.30 26080000         bool __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [64]
+                0.30    0.00 52160000/214399928     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [48]
 -----------------------------------------------
                                                  <spontaneous>
-[43]     0.0    0.12    0.00                 Tree::Couple() [43]
------------------------------------------------
-                0.11    0.01    6000/6000        Evolution() [2]
-[44]     0.0    0.11    0.01    6000         OutputField() [44]
-                0.01    0.00  640000/640000      Tree::histdbh() [46]
+[65]     0.0    0.31    0.00                 Species::DeathRateNDD(float, float, int, float) [65]
 -----------------------------------------------
                                                  <spontaneous>
-[45]     0.0    0.03    0.00                 std::atan2(float, float) [45]
+[66]     0.0    0.29    0.00                 Tree::BirthFromData(Species*, int, int, float) [66]
 -----------------------------------------------
-                0.01    0.00  640000/640000      OutputField() [44]
-[46]     0.0    0.01    0.00  640000         Tree::histdbh() [46]
+                0.00    0.01 1439982/27519982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+                0.07    0.17 26080000/27519982     Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[67]     0.0    0.08    0.17 27519982         std::vector<int, std::allocator<int> >::begin() [67]
+                0.17    0.00 27519982/81119964     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator(int* const&) [63]
 -----------------------------------------------
-                0.01    0.00       1/1           main [1]
-[47]     0.0    0.01    0.00       1         OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [47]
+                0.03    0.19 2879964/2879964     int* std::__uninitialized_move_if_noexcept_a<int*, int*, std::allocator<int> >(int*, int*, int*, std::allocator<int>&) [69]
+[68]     0.0    0.03    0.19 2879964         int* std::__uninitialized_copy_a<int*, int*, int>(int*, int*, int*, std::allocator<int>&) [68]
+                0.00    0.19 2879964/2879964     int* std::uninitialized_copy<int*, int*>(int*, int*, int*) [72]
 -----------------------------------------------
-                0.00    0.00  160000/160000      Initialise() [30]
-[54]     0.0    0.00    0.00  160000         Tree::Tree() [54]
+                0.00    0.22 2879964/2879964     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+[69]     0.0    0.00    0.22 2879964         int* std::__uninitialized_move_if_noexcept_a<int*, int*, std::allocator<int> >(int*, int*, int*, std::allocator<int>&) [69]
+                0.03    0.19 2879964/2879964     int* std::__uninitialized_copy_a<int*, int*, int>(int*, int*, int*, std::allocator<int>&) [68]
 -----------------------------------------------
-                0.00    0.00  160000/160000      FreeMem() [62]
-[55]     0.0    0.00    0.00  160000         Tree::~Tree() [55]
+                                                 <spontaneous>
+[70]     0.0    0.21    0.00                 std::_Vector_base<int, std::allocator<int> >::~_Vector_base() [70]
 -----------------------------------------------
-                0.00    0.00     815/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-[56]     0.0    0.00    0.00     815         std::log10(float) [56]
+                0.04    0.15 2879964/2879964     int* std::uninitialized_copy<int*, int*>(int*, int*, int*) [72]
+[71]     0.0    0.04    0.15 2879964         int* std::__uninitialized_copy<true>::__uninit_copy<int*, int*>(int*, int*, int*) [71]
+                0.03    0.12 2879964/2879964     int* std::copy<int*, int*>(int*, int*, int*) [75]
 -----------------------------------------------
-                0.00    0.00     164/164         Initialise() [30]
-[57]     0.0    0.00    0.00     164         Species::Species() [57]
+                0.00    0.19 2879964/2879964     int* std::__uninitialized_copy_a<int*, int*, int>(int*, int*, int*, std::allocator<int>&) [68]
+[72]     0.0    0.00    0.19 2879964         int* std::uninitialized_copy<int*, int*>(int*, int*, int*) [72]
+                0.04    0.15 2879964/2879964     int* std::__uninitialized_copy<true>::__uninit_copy<int*, int*>(int*, int*, int*) [71]
 -----------------------------------------------
-                0.00    0.00     164/164         FreeMem() [62]
-[58]     0.0    0.00    0.00     164         Species::~Species() [58]
+                                                 <spontaneous>
+[73]     0.0    0.17    0.00                 int* std::copy_backward<int*, int*>(int*, int*, int*) [73]
 -----------------------------------------------
-                0.00    0.00     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [40]
-[59]     0.0    0.00    0.00     163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [59]
+                                                 <spontaneous>
+[74]     0.0    0.16    0.00                 __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::copy<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [74]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [80]
-[60]     0.0    0.00    0.00       1         _GLOBAL__sub_I_buffer [60]
-                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [61]
+                0.03    0.12 2879964/2879964     int* std::__uninitialized_copy<true>::__uninit_copy<int*, int*>(int*, int*, int*) [71]
+[75]     0.0    0.03    0.12 2879964         int* std::copy<int*, int*>(int*, int*, int*) [75]
+                0.02    0.09 2879964/2879964     int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*) [82]
+                0.01    0.00 5759928/5759928     std::_Miter_base<int*>::iterator_type std::__miter_base<int*>(int*) [99]
 -----------------------------------------------
-                0.00    0.00       1/1           _GLOBAL__sub_I_buffer [60]
-[61]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [61]
+                                                 <spontaneous>
+[76]     0.0    0.14    0.00                 __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [76]
+-----------------------------------------------
+                                                 <spontaneous>
+[77]     0.0    0.13    0.00                 __gnu_cxx::new_allocator<int>::~new_allocator() [77]
+-----------------------------------------------
+                0.12    0.00  978000/978000      UpdateTree() [3]
+[78]     0.0    0.12    0.00  978000         Species::UpdateSeed() [78]
+-----------------------------------------------
+                0.12    0.00    6000/6000        Evolution() [2]
+[79]     0.0    0.12    0.00    6000         OutputField() [79]
+                0.00    0.00  640000/640000      Tree::histdbh() [113]
+-----------------------------------------------
+                                                 <spontaneous>
+[80]     0.0    0.12    0.00                 std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, false>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[81]     0.0    0.11    0.00                 __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int) [81]
+-----------------------------------------------
+                0.02    0.09 2879964/2879964     int* std::copy<int*, int*>(int*, int*, int*) [75]
+[82]     0.0    0.02    0.09 2879964         int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*) [82]
+                0.01    0.05 2879964/2879964     int* std::__copy_move_a<false, int*, int*>(int*, int*, int*) [87]
+                0.03    0.01 8639892/8639892     std::_Niter_base<int*>::iterator_type std::__niter_base<int*>(int*) [90]
+-----------------------------------------------
+                0.02    0.07 1439982/1439982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+[83]     0.0    0.02    0.07 1439982         std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [83]
+                0.05    0.00 5759928/311574376     std::vector<int, std::allocator<int> >::size() const [41]
+                0.00    0.01 2879964/2879964     std::vector<int, std::allocator<int> >::max_size() const [95]
+                0.01    0.00 1439982/1439982     unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [96]
+-----------------------------------------------
+                                                 <spontaneous>
+[84]     0.0    0.08    0.00                 std::allocator<int>::~allocator() [84]
+-----------------------------------------------
+                                                 <spontaneous>
+[85]     0.0    0.08    0.00                 std::atan2(float, float) [85]
+-----------------------------------------------
+                                                 <spontaneous>
+[86]     0.0    0.08    0.00                 Tree::Couple() [86]
+-----------------------------------------------
+                0.01    0.05 2879964/2879964     int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*) [82]
+[87]     0.0    0.01    0.05 2879964         int* std::__copy_move_a<false, int*, int*>(int*, int*, int*) [87]
+                0.05    0.00 2879964/2879964     int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int>(int const*, int const*, int*) [88]
+-----------------------------------------------
+                0.05    0.00 2879964/2879964     int* std::__copy_move_a<false, int*, int*>(int*, int*, int*) [87]
+[88]     0.0    0.05    0.00 2879964         int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int>(int const*, int const*, int*) [88]
+-----------------------------------------------
+                0.04    0.00 26080000/26080000     __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [49]
+[89]     0.0    0.04    0.00 26080000         std::iterator_traits<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [89]
+-----------------------------------------------
+                0.03    0.01 8639892/8639892     int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*) [82]
+[90]     0.0    0.03    0.01 8639892         std::_Niter_base<int*>::iterator_type std::__niter_base<int*>(int*) [90]
+                0.01    0.00 8639892/14399820     std::_Iter_base<int*, false>::_S_base(int*) [93]
+-----------------------------------------------
+                0.03    0.00     326/326         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[91]     0.0    0.03    0.00     326         __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float) [91]
+-----------------------------------------------
+                0.02    0.00       1/1           main [1]
+[92]     0.0    0.02    0.00       1         OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [92]
+-----------------------------------------------
+                0.00    0.00 5759928/14399820     std::_Miter_base<int*>::iterator_type std::__miter_base<int*>(int*) [99]
+                0.01    0.00 8639892/14399820     std::_Niter_base<int*>::iterator_type std::__niter_base<int*>(int*) [90]
+[93]     0.0    0.01    0.00 14399820         std::_Iter_base<int*, false>::_S_base(int*) [93]
+-----------------------------------------------
+                0.01    0.00 2879964/2879964     std::vector<int, std::allocator<int> >::max_size() const [95]
+[94]     0.0    0.01    0.00 2879964         std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() const [94]
+-----------------------------------------------
+                0.00    0.01 2879964/2879964     std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [83]
+[95]     0.0    0.00    0.01 2879964         std::vector<int, std::allocator<int> >::max_size() const [95]
+                0.01    0.00 2879964/2879964     std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() const [94]
+                0.00    0.00 2879964/2879964     __gnu_cxx::__alloc_traits<std::allocator<int> >::max_size(std::allocator<int> const&) [108]
+-----------------------------------------------
+                0.01    0.00 1439982/1439982     std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [83]
+[96]     0.0    0.01    0.00 1439982         unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [96]
+-----------------------------------------------
+                0.01    0.00  160000/160000      FreeMem() [98]
+[97]     0.0    0.01    0.00  160000         Tree::~Tree() [97]
+-----------------------------------------------
+                0.00    0.01       1/1           main [1]
+[98]     0.0    0.00    0.01       1         FreeMem() [98]
+                0.01    0.00  160000/160000      Tree::~Tree() [97]
+                0.00    0.00     164/164         Species::~Species() [122]
+-----------------------------------------------
+                0.01    0.00 5759928/5759928     int* std::copy<int*, int*>(int*, int*, int*) [75]
+[99]     0.0    0.01    0.00 5759928         std::_Miter_base<int*>::iterator_type std::__miter_base<int*>(int*) [99]
+                0.00    0.00 5759928/14399820     std::_Iter_base<int*, false>::_S_base(int*) [93]
+-----------------------------------------------
+                                                 <spontaneous>
+[100]    0.0    0.01    0.00                 std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, true>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [100]
+-----------------------------------------------
+                0.00    0.00 1439982/4319946     __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) [109]
+                0.00    0.00 2879964/4319946     __gnu_cxx::__alloc_traits<std::allocator<int> >::max_size(std::allocator<int> const&) [108]
+[107]    0.0    0.00    0.00 4319946         __gnu_cxx::new_allocator<int>::max_size() const [107]
+-----------------------------------------------
+                0.00    0.00 2879964/2879964     std::vector<int, std::allocator<int> >::max_size() const [95]
+[108]    0.0    0.00    0.00 2879964         __gnu_cxx::__alloc_traits<std::allocator<int> >::max_size(std::allocator<int> const&) [108]
+                0.00    0.00 2879964/4319946     __gnu_cxx::new_allocator<int>::max_size() const [107]
+-----------------------------------------------
+                0.00    0.00 1439982/1439982     std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) [110]
+[109]    0.0    0.00    0.00 1439982         __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) [109]
+                0.00    0.00 1439982/4319946     __gnu_cxx::new_allocator<int>::max_size() const [107]
+-----------------------------------------------
+                0.00    0.00 1439982/1439982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+[110]    0.0    0.00    0.00 1439982         std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) [110]
+                0.00    0.00 1439982/1439982     __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) [109]
+-----------------------------------------------
+                0.00    0.00 1439982/1439982     std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [62]
+[111]    0.0    0.00    0.00 1439982         std::_Vector_base<int, std::allocator<int> >::_M_deallocate(int*, unsigned long) [111]
+                0.00    0.00 1279982/1279982     __gnu_cxx::new_allocator<int>::deallocate(int*, unsigned long) [112]
+-----------------------------------------------
+                0.00    0.00 1279982/1279982     std::_Vector_base<int, std::allocator<int> >::_M_deallocate(int*, unsigned long) [111]
+[112]    0.0    0.00    0.00 1279982         __gnu_cxx::new_allocator<int>::deallocate(int*, unsigned long) [112]
+-----------------------------------------------
+                0.00    0.00  640000/640000      OutputField() [79]
+[113]    0.0    0.00    0.00  640000         Tree::histdbh() [113]
+-----------------------------------------------
+                0.00    0.00  160000/160000      Initialise() [31]
+[114]    0.0    0.00    0.00  160000         Tree::Tree() [114]
+-----------------------------------------------
+                0.00    0.00  160000/160000      std::allocator<int>::allocator() [116]
+[115]    0.0    0.00    0.00  160000         __gnu_cxx::new_allocator<int>::new_allocator() [115]
+-----------------------------------------------
+                0.00    0.00  160000/160000      std::_Vector_base<int, std::allocator<int> >::_Vector_impl::_Vector_impl() [117]
+[116]    0.0    0.00    0.00  160000         std::allocator<int>::allocator() [116]
+                0.00    0.00  160000/160000      __gnu_cxx::new_allocator<int>::new_allocator() [115]
+-----------------------------------------------
+                0.00    0.00  160000/160000      std::_Vector_base<int, std::allocator<int> >::_Vector_base() [118]
+[117]    0.0    0.00    0.00  160000         std::_Vector_base<int, std::allocator<int> >::_Vector_impl::_Vector_impl() [117]
+                0.00    0.00  160000/160000      std::allocator<int>::allocator() [116]
+-----------------------------------------------
+                0.00    0.00  160000/160000      std::vector<int, std::allocator<int> >::vector() [119]
+[118]    0.0    0.00    0.00  160000         std::_Vector_base<int, std::allocator<int> >::_Vector_base() [118]
+                0.00    0.00  160000/160000      std::_Vector_base<int, std::allocator<int> >::_Vector_impl::_Vector_impl() [117]
+-----------------------------------------------
+                0.00    0.00  160000/160000      Initialise() [31]
+[119]    0.0    0.00    0.00  160000         std::vector<int, std::allocator<int> >::vector() [119]
+                0.00    0.00  160000/160000      std::_Vector_base<int, std::allocator<int> >::_Vector_base() [118]
+-----------------------------------------------
+                0.00    0.00     815/815         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[120]    0.0    0.00    0.00     815         std::log10(float) [120]
+-----------------------------------------------
+                0.00    0.00     164/164         Initialise() [31]
+[121]    0.0    0.00    0.00     164         Species::Species() [121]
+-----------------------------------------------
+                0.00    0.00     164/164         FreeMem() [98]
+[122]    0.0    0.00    0.00     164         Species::~Species() [122]
+-----------------------------------------------
+                0.00    0.00     163/163         Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [36]
+[123]    0.0    0.00    0.00     163         __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double) [123]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_buffer [56]
+[124]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [124]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[62]     0.0    0.00    0.00       1         FreeMem() [62]
-                0.00    0.00  160000/160000      Tree::~Tree() [55]
-                0.00    0.00     164/164         Species::~Species() [58]
------------------------------------------------
-                0.00    0.00       1/1           main [1]
-[63]     0.0    0.00    0.00       1         BirthInit() [63]
+[125]    0.0    0.00    0.00       1         BirthInit() [125]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -458,22 +785,42 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [60] _GLOBAL__sub_I_buffer (troll.cpp) [2] Evolution()   [9] Species::UpdateSeed()
-  [30] Initialise()           [14] genrand2i()            [41] Species::DeathRateNDD(float, float, int, float)
-   [3] UpdateTree()           [37] sgenrand2(unsigned long) [6] Species::dailyGPPleaf(float, float, float, float, float)
-  [35] sgenrand2i(unsigned long) [17] Tree::DisperseSeed() [40] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&)
-  [44] OutputField()          [39] Tree::BirthFromData(Species*, int, int, float) [7] Species::GPPleaf(float, float, float)
-   [8] UpdateField()          [23] Tree::UpdateLeafDynamics() [25] Species::FillSeed(int, int)
-  [47] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [27] Tree::UpdateTreeBiometry() [21] Species::DeathRate(float, float, int)
-  [15] UpdateTreefall()       [29] Tree::Birth(Species*, int, int) [57] Species::Species()
-  [26] max(int, int)          [32] Tree::Death()          [58] Species::~Species()
-  [18] min(int, int)          [10] Tree::Fluxh(int)       [38] std::cos(float)
-  [61] __static_initialization_and_destruction_0(int, int) (troll.cpp) [43] Tree::Couple() [36] std::exp(float)
-  [33] flor(float)             [5] Tree::Growth()         [42] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
-  [28] maxf(float, float)      [4] Tree::Update()         [34] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
-  [13] minf(float, float)     [20] Tree::Average()        [59] __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
-  [19] Average()              [12] Tree::CalcLAI()        [24] std::sin(float)
-  [62] FreeMem()              [46] Tree::histdbh()        [11] std::sqrt(float)
-  [31] AllocMem()             [22] Tree::FallTree()       [45] std::atan2(float, float)
-  [16] genrand2()             [54] Tree::Tree()           [56] std::log10(float)
-  [63] BirthInit()            [55] Tree::~Tree()
+  [56] _GLOBAL__sub_I_buffer (troll.cpp) [65] Species::DeathRateNDD(float, float, int, float) [62] std::vector<int, std::allocator<int> >::_M_insert_aux(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  [31] Initialise()            [7] Species::dailyGPPleaf(float, float, float, float, float) [30] std::vector<int, std::allocator<int> >::_M_erase_at_end(int*)
+   [3] UpdateTree()           [36] Species::Init(int, std::basic_fstream<char, std::char_traits<char> >&) [60] std::vector<int, std::allocator<int> >::end()
+  [42] sgenrand2i(unsigned long) [8] Species::GPPleaf(float, float, float) [67] std::vector<int, std::allocator<int> >::begin()
+  [79] OutputField()          [21] Species::FillSeed(int, int) [28] std::vector<int, std::allocator<int> >::clear()
+   [6] UpdateField()          [24] Species::DeathRate(float, float, int) [47] std::vector<int, std::allocator<int> >::erase(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  [92] OutputSnapshot(std::basic_fstream<char, std::char_traits<char> >&) [121] Species::Species() [10] std::vector<int, std::allocator<int> >::push_back(int const&)
+  [18] UpdateTreefall()      [122] Species::~Species()   [119] std::vector<int, std::allocator<int> >::vector()
+  [32] max(int, int)         [112] __gnu_cxx::new_allocator<int>::deallocate(int*, unsigned long) [46] std::vector<int, std::allocator<int> >::operator[](unsigned long)
+  [19] min(int, int)         [109] __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) [99] std::_Miter_base<int*>::iterator_type std::__miter_base<int*>(int*)
+ [124] __static_initialization_and_destruction_0(int, int) (troll.cpp) [12] __gnu_cxx::new_allocator<int>::construct(int*, int const&) [90] std::_Niter_base<int*>::iterator_type std::__niter_base<int*>(int*)
+  [40] flor(float)           [115] __gnu_cxx::new_allocator<int>::new_allocator() [87] int* std::__copy_move_a<false, int*, int*>(int*, int*, int*)
+  [33] maxf(float, float)     [77] __gnu_cxx::new_allocator<int>::~new_allocator() [73] int* std::copy_backward<int*, int*>(int*, int*, int*)
+  [16] minf(float, float)    [108] __gnu_cxx::__alloc_traits<std::allocator<int> >::max_size(std::allocator<int> const&) [76] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  [22] Average()              [11] void __gnu_cxx::__alloc_traits<std::allocator<int> >::construct<int>(std::allocator<int>&, int*, int const&) [82] int* std::__copy_move_a2<false, int*, int*>(int*, int*, int*)
+  [98] FreeMem()              [63] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator(int* const&) [72] int* std::uninitialized_copy<int*, int*>(int*, int*, int*)
+  [38] AllocMem()             [61] bool __gnu_cxx::operator==<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [89] std::iterator_traits<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&)
+  [20] genrand2()             [54] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::difference_type __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [68] int* std::__uninitialized_copy_a<int*, int*, int>(int*, int*, int*, std::allocator<int>&)
+ [125] BirthInit()            [64] bool __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > const&) [69] int* std::__uninitialized_move_if_noexcept_a<int*, int*, std::allocator<int> >(int*, int*, int*, std::allocator<int>&)
+   [2] Evolution()           [107] __gnu_cxx::new_allocator<int>::max_size() const [52] std::cos(float)
+  [15] genrand2i()            [48] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base() const [50] std::exp(float)
+  [58] sgenrand2(unsigned long) [94] std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() const [96] unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  [17] Tree::DisperseSeed()   [83] std::vector<int, std::allocator<int> >::_M_check_len(unsigned long, char const*) const [91] __gnu_cxx::__promote_2<double, float, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<double, float>(double, float)
+  [66] Tree::BirthFromData(Species*, int, int, float) [41] std::vector<int, std::allocator<int> >::size() const [45] __gnu_cxx::__promote_2<float, double, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<float, double>(float, double)
+  [27] Tree::UpdateLeafDynamics() [95] std::vector<int, std::allocator<int> >::max_size() const [123] __gnu_cxx::__promote_2<int, double, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<double, std::__is_integer<double>::__value>::__type>::__type std::pow<int, double>(int, double)
+  [29] Tree::UpdateTreeBiometry() [116] std::allocator<int>::allocator() [25] std::sin(float)
+  [34] Tree::Birth(Species*, int, int) [84] std::allocator<int>::~allocator() [74] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::copy<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >)
+  [39] Tree::Death()          [80] std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, false>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [75] int* std::copy<int*, int*>(int*, int*, int*)
+   [9] Tree::Fluxh(int)      [100] std::_Iter_base<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, true>::_S_base(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) [49] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  [86] Tree::Couple()         [93] std::_Iter_base<int*, false>::_S_base(int*) [81] __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int)
+   [5] Tree::Growth()         [88] int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int>(int const*, int const*, int*) [13] std::sqrt(float)
+   [4] Tree::Update()         [55] void std::_Destroy_aux<true>::__destroy<int*>(int*, int*) [85] std::atan2(float, float)
+  [23] Tree::Average()       [110] std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) [120] std::log10(float)
+  [14] Tree::CalcLAI()       [117] std::_Vector_base<int, std::allocator<int> >::_Vector_impl::_Vector_impl() [53] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__find<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&, std::random_access_iterator_tag)
+ [113] Tree::histdbh()       [111] std::_Vector_base<int, std::allocator<int> >::_M_deallocate(int*, unsigned long) [44] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::remove<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  [26] Tree::FallTree()       [51] std::_Vector_base<int, std::allocator<int> >::_M_get_Tp_allocator() [43] void std::_Destroy<int*>(int*, int*)
+ [114] Tree::Tree()          [118] std::_Vector_base<int, std::allocator<int> >::_Vector_base() [37] void std::_Destroy<int*, int>(int*, int*, std::allocator<int>&)
+  [97] Tree::~Tree()          [70] std::_Vector_base<int, std::allocator<int> >::~_Vector_base() [35] operator new(unsigned long, void*)
+  [78] Species::UpdateSeed()  [71] int* std::__uninitialized_copy<true>::__uninit_copy<int*, int*>(int*, int*, int*) [59] __tcf_0 (troll.cpp)
