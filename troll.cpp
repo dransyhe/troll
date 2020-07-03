@@ -126,15 +126,13 @@ iter,               /* current timestep */
 nbout,              /* nb of outputs */
 freqout;            /* frequency HDF outputs */
 
+/* NEW CHANGE: site_has_S[site_id] is a vector stores all the species_id of the available seeds on a site */
+/* NEW CHANGE: seed_count[site_id][species_id] replaces S[species_id].s_Seed[site_id] */
 // initialise an array storing the species_id that S[species_id].s_seed[site_id] > 0
 typedef vector<int> L;
 L *site_has_S(0);
-
-/* initialise an array storing seed counts from species */
 int **seed_count(0);
-/* initialise an array storing counts of non-zero species */
-//int **species_count(0);
-int seed_height, max_size;
+
 
 #ifdef DCELL
 gsl_rng *gslrand;
@@ -563,44 +561,23 @@ void Species::Init(int nesp,fstream& is) {
     /***  field initialization ***/
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
 
+    /* NEW CHANGE: site_has_S */
     for(site=0;site<sites;site++) {
-        s_Seed[site]=0;
+        seed_count[site][s_id] = 0;
         site_has_S[site].erase(s_id);
     }
 
-    /*
-    int i;
-    for (site = 0; site < sites; ++ site){
-        if (seed_count[site][s_id] == 0) continue;
-        seed_count[site][s_id] = 0;
-        i = s_index;
-        while (i > 0){
-            species_count[site][i] --;
-            i = i >> 1;
-        }
-    }*/
 #else
     /***  field initialization ***/
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
 
+    /* NEW CHANGE: site_has_S */
     for(site=0;site<sites;++site) {
-        //s_Seed[site]=0;
         seed_count[site][s_id] = 0;
-        //site_has_S[site].erase(s_id);
         site_has_S[site].erase(std::remove(site_has_S[site].begin(), site_has_S[site].end(), s_id), site_has_S[site].end());
     }
 
-    /*
-    int i;
-    for (site = 0; site < sites; ++ site){
-        if (seed_count[site][s_id] == 0) continue;
-        seed_count[site][s_id] = 0;
-        i = s_index;
-        while (i > 0){
-            species_count[site][i] --;
-            i = i >> 1;
-        }
-    }*/
+
 #endif
     
 #ifdef MPI
@@ -644,30 +621,14 @@ void Species::FillSeed(int col, int row) {
             }
             else{
 
-                //if (s_Seed[site] == 0){
+                /* NEW CHANGE: site_has_S */
                 if (seed_count[site][s_id] == 0){
                     site_has_S[site].push_back(s_id);
-                    //s_Seed[site] = 1;
                     seed_count[site][s_id] = 1;
                 }
-                 //if(s_Seed[site]!=1) s_Seed[site]=1;     //If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed
+                //If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed
                 else if (seed_count[site][s_id] != 1) seed_count[site][s_id] = 1;
 
-                /*
-                if (seed_count[site][s_id] == 0){
-                    seed_count[site][s_id] = 1;
-                    cout << "s_id = " << s_id << endl;
-                    int i = s_index;
-                    cout << "s_index = " << s_index << endl;
-                    while (i > 0){
-                        species_count[site][i] ++;
-                        cout << i << " ";
-                        i = i >> 1;
-                    }
-                    cout << endl;
-                    getchar();
-                }
-                else if (seed_count[site][s_id] != 1) seed_count[site][s_id] = 1;*/
 
             }
         }
@@ -702,23 +663,12 @@ Nearest neighboring stripes are shared. Rque, this version is not valid ifdef SE
 void Species::UpdateSeed() {
     int site;
 
+    /* NEW CHANGE: site_has_S */
     for(site=0;site<sites;site++) {
-        //s_Seed[site]=0;
         seed_count[site][s_id] = 0;
-        //site_has_S[site].erase(s_id);
         site_has_S[site].erase(std::remove(site_has_S[site].begin(), site_has_S[site].end(), s_id), site_has_S[site].end());
     }
 
-    /*
-    int i;
-    for (site = 0; site < sites; ++ site){
-        seed_count[site][s_id] = 0;
-        i = index;
-        while (i > 0){
-            species_count[site][i] --;
-            i = i >> 1;
-        }
-    }*/
 
     for(int dcell=0;dcell<nbdcells;dcell++){ // loop over dcells
         int localseeds=min(s_DCELL[dcell],sites_per_dcell);
@@ -2110,27 +2060,15 @@ void Initialise() {
 
 
 
-    // height of the segment tree
-    //seed_height = ceil(log2(numesp));
-    // maximum size of the segment tree
-    //max_size = pow(2, seed_height + 1);
-    // allocate memory for seed_count and species_count
+    /* NEW CHANGE: site_has_S */
     seed_count = new int*[sites];
-    //species_count = new int*[sites];
     for (int i = 0; i < sites; ++ i ){
         seed_count[i] = new int[numesp];
-        //species_count[i] = new int[max_size];
     }
-    // fill up the two arrays with 0
-    for (int i = 0; i < sites; ++ i) {
-        for (int j = 1; j <= numesp; ++j){
+    // fill up seed_count with 0
+    for (int i = 0; i < sites; ++ i)
+        for (int j = 1; j <= numesp; ++j)
             seed_count[i][j] = 0;
-            //species_count[i][j] = 0;
-        }
-        //for (int j = numesp+1; j < max_size; ++j) {
-            //species_count[i][j] = 0;
-        //}
-    }
     site_has_S = new L[sites];
 
 
@@ -2841,31 +2779,14 @@ void UpdateField() {
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
 
-                    /*if(S[spp].s_Seed[site] != 1) {             //!!!!
-                        if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
-                        S[spp].s_Seed[site] = 1;  //check for optimization
-                    }*/
-
-                    if (seed_count[site][spp] == 0){
+                    /* NEW CHANGE: site_has_S */
+                    if (seed_count[site][spp] == 0){        //!!!!
                         seed_count[site][spp] = 1;
                         site_has_S[site].push_back(spp);
                     }
                     else if (seed_count[site][spp] != 1) seed_count[site][spp] = 1;
 
-                    /*
-                    if (seed_count[site][spp] == 0){
-                        seed_count[site][spp] = 1;
-                        int i = S[spp].s_index;
-                        //cout << "site = " << site << "spp = "<<spp<<endl;
-                        //cout << "index = " << i<<endl;
-                        while (i > 0){
-                            //cout << i << " ";
-                            species_count[site][i] ++;
-                            i = i >> 1;
-                        }
-                        //cout << endl;
-                    }
-                    else if (seed_count[site][spp] != 1) seed_count[site][spp] = 1;*/
+
                 }
             }
         }
@@ -3011,19 +2932,12 @@ void UpdateTree() {
     
     else {
 
-        // NEW CHANGE: introduce site_has_S[site] to store all available seeds on this site
-        int size;//, ind;
+        /* NEW CHANGE: site_has_S */
+        int size;
         for (site = 0; site < sites; ++site){
             if (T[site].t_age == 0){
                 size = site_has_S[site].size();
                 if (size) {
-                    //ind = rand() % size;
-                    //auto it = site_has_S[site].begin();
-                    //advance(it, ind);
-                    //list<int>::iterator it = next(site_has_S[site].begin(), rand() % size);
-                    //list<int>::iterator it = site_has_S[site].begin();
-                    //advance(it, ind);
-                    //spp = *it;
                     spp = site_has_S[site][rand() % size];
                     flux = Wmax * exp(-flor(LAI3D[0][site + SBORD]) * klight);
                     if (flux > S[spp].s_LCP) T[site].Birth(S, spp, site);
@@ -3034,77 +2948,6 @@ void UpdateTree() {
                 site_has_S[site].clear();
             }
         }
-
-        /*
-        for(site=0;site<sites;site++) {                                     // Local germination
-            if(T[site].t_age == 0) {         //!!!!
-                iii=0;
-                
-                for(spp=1;spp<=numesp;spp++){    //!!!!      random generation of the count, then find the 4th non-zero of that row                   // lists all the species with a seed present at given site...
-                    if(S[spp].s_Seed[site]) {          //!!!!
-                        SPECIES_GERM[iii]=spp;        //!!!!
-                        iii++;
-                    }
-                }
-
-                if(iii) {                                                   // ... and then randomly select one of these species
-
-                    spp = SPECIES_GERM[rand()%iii];
-                    
-                    // otherwise all species with seeds present are equiprobable
-                    flux = Wmax*exp(-flor(LAI3D[0][site+SBORD])*klight);
-                    if(flux>(S[spp].s_LCP)){
-                        // If enough light, germination, initialization of NPP (LCP is the species light compensation point
-                        // here, light is the sole environmental resources tested as a limiting factor for germination, but we should think about adding nutrients (N,P) and water conditions...
-                        T[site].Birth(S,spp,site);
-                    }
-                }
-            }
-            else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;         //!!!! bzero
-            }
-        }*/
-
-
-        /*
-        for (site = 0; site < sites; ++ site){
-
-            //for (int i = 1; i <= numesp; i ++) cout << seed_count[site][i]<< " "; cout<<endl;getchar();
-            //for (int i = 1; i <= max_size; i ++) cout << species_count[site][i] << " "; cout << endl; getchar();
-            if (T[site].t_age == 0){
-                int size = species_count[site][1];
-                //cout << "size = " << size << endl;
-                if (size) {
-                    //cout << "yes" << endl;
-                    int r = rand() % species_count[site][1] + 1,
-                            i = 1,
-                            limit = pow(2, seed_height) - 1;
-                    while (i <= limit) {
-                        if (r > species_count[site][i])
-                            i = (i << 1) + 1;
-                        else
-                            i = i << 1;
-                    }
-                    i = i - limit;
-                    flux = Wmax * exp(-flor(LAI3D[0][site + SBORD]) * klight);
-                    if (flux > (S[i].s_LCP)) T[site].Birth(S, i, site);
-                }
-            }
-            else{
-                int limit = pow(2, seed_height) - 1;
-                for (int i = 1; i <= numesp; ++ i){
-                    seed_count[site][i] = 0;
-                    if (species_count[site][limit+i] != 0){
-                        int j = limit + i;
-                        while (j > 0){
-                            species_count[site][j] = 0;
-                            j = j >> 1;
-                        }
-                    }
-                }
-            }
-        }*/
-
     }
 
 #endif
