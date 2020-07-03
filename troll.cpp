@@ -60,6 +60,8 @@
 
 # include <list>
 # include <iterator>
+# include <algorithm>
+# include <vector>
 
 # ifdef MPI
 # include "mpi.h"
@@ -125,14 +127,14 @@ nbout,              /* nb of outputs */
 freqout;            /* frequency HDF outputs */
 
 // initialise an array storing the species_id that S[species_id].s_seed[site_id] > 0
-typedef list<int> L;
+typedef vector<int> L;
 L *site_has_S(0);
 
 /* initialise an array storing seed counts from species */
-//int **seed_count(0);
+int **seed_count(0);
 /* initialise an array storing counts of non-zero species */
 //int **species_count(0);
-//int seed_height, max_size;
+int seed_height, max_size;
 
 #ifdef DCELL
 gsl_rng *gslrand;
@@ -563,7 +565,7 @@ void Species::Init(int nesp,fstream& is) {
 
     for(site=0;site<sites;site++) {
         s_Seed[site]=0;
-        site_has_S[site].remove(s_id);
+        site_has_S[site].erase(s_id);
     }
 
     /*
@@ -582,8 +584,10 @@ void Species::Init(int nesp,fstream& is) {
     if (NULL==(s_Seed = new int[sites])) cerr<<"!!! Mem_Alloc\n";
 
     for(site=0;site<sites;++site) {
-        s_Seed[site]=0;
-        site_has_S[site].remove(s_id);
+        //s_Seed[site]=0;
+        seed_count[site][s_id] = 0;
+        //site_has_S[site].erase(s_id);
+        site_has_S[site].erase(std::remove(site_has_S[site].begin(), site_has_S[site].end(), s_id), site_has_S[site].end());
     }
 
     /*
@@ -640,12 +644,14 @@ void Species::FillSeed(int col, int row) {
             }
             else{
 
-                if (s_Seed[site] == 0){
+                //if (s_Seed[site] == 0){
+                if (seed_count[site][s_id] == 0){
                     site_has_S[site].push_back(s_id);
-                    s_Seed[site] = 1;
+                    //s_Seed[site] = 1;
+                    seed_count[site][s_id] = 1;
                 }
-                else if(s_Seed[site]!=1) s_Seed[site]=1;     //If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed
-
+                 //if(s_Seed[site]!=1) s_Seed[site]=1;     //If s_Seed[site] = 0, site is not occupied, if s_Seed[site] > 1, s_Seed[site] is the age of the youngest seed
+                else if (seed_count[site][s_id] != 1) seed_count[site][s_id] = 1;
 
                 /*
                 if (seed_count[site][s_id] == 0){
@@ -697,8 +703,10 @@ void Species::UpdateSeed() {
     int site;
 
     for(site=0;site<sites;site++) {
-        s_Seed[site]=0;
-        site_has_S[site].remove(s_id);
+        //s_Seed[site]=0;
+        seed_count[site][s_id] = 0;
+        //site_has_S[site].erase(s_id);
+        site_has_S[site].erase(std::remove(site_has_S[site].begin(), site_has_S[site].end(), s_id), site_has_S[site].end());
     }
 
     /*
@@ -749,8 +757,9 @@ void Species::UpdateSeed() {
 # ifdef MPI
             s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
-            s_Seed[site]=0;
-            site_has_S[site].remove(s_id);
+            //s_Seed[site]=0;
+            seed_count[site][s_id] = 0;
+            //site_has_S[site].erase(s_id);
         }
     }
     
@@ -758,10 +767,10 @@ void Species::UpdateSeed() {
         /* new in v.2.3: version 2.2 checked whether site was occupied by tree: T[site].t_age>0) s_Seed[site]=0;     */
         /* v.2.3 does not do this within UpdateSeed() anymore.
          * Instead, it sets all occupied sites to zero directly within UpdateTree() */
-        for(int site=0;site<sites;site++){
+        //for(int site=0;site<sites;site++){
             
 # ifdef MPI
-            s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
+            //s_Gc[0][site]=s_Gc[1][site]=s_Gc[2][site]=s_Gc[3][site]=0;
 #endif
             /* seed bank ages or disappears */
 
@@ -771,7 +780,8 @@ void Species::UpdateSeed() {
             }*/
 
             //else
-                if(s_Seed[site]!=0) s_Seed[site]++;      //!!!!
+                //if(s_Seed[site]!=0) s_Seed[site]++;      //!!!!
+                //if (seed_count[site][s_id] != 0) seed_count[site][s_id] ++;
             // v.2.3: bug fix: before, procedure was not restricted to existing seeds, therefore creation of seeds
 
 
@@ -788,7 +798,7 @@ void Species::UpdateSeed() {
                 }
             }
             else if (seed_count[site][s_id] != 0) seed_count[site][s_id] ++;*/
-        }
+        //}
     }
 }
 #endif
@@ -2099,28 +2109,29 @@ void Initialise() {
     }
 
 
-    /*
+
     // height of the segment tree
-    seed_height = ceil(log2(numesp));
+    //seed_height = ceil(log2(numesp));
     // maximum size of the segment tree
-    max_size = pow(2, seed_height + 1);
+    //max_size = pow(2, seed_height + 1);
     // allocate memory for seed_count and species_count
     seed_count = new int*[sites];
-    species_count = new int*[sites];
+    //species_count = new int*[sites];
     for (int i = 0; i < sites; ++ i ){
         seed_count[i] = new int[numesp];
-        species_count[i] = new int[max_size];
+        //species_count[i] = new int[max_size];
     }
     // fill up the two arrays with 0
     for (int i = 0; i < sites; ++ i) {
         for (int j = 1; j <= numesp; ++j){
             seed_count[i][j] = 0;
-            species_count[i][j] = 0;
+            //species_count[i][j] = 0;
         }
-        for (int j = numesp+1; j < max_size; ++j) {
-            species_count[i][j] = 0;
-        }
-    }*/
+        //for (int j = numesp+1; j < max_size; ++j) {
+            //species_count[i][j] = 0;
+        //}
+    }
+    site_has_S = new L[sites];
 
 
 
@@ -2134,7 +2145,7 @@ void Initialise() {
     }
 
 
-    site_has_S = new L[sites];
+
 
     for(ligne=0;ligne<3;ligne++) In.getline(buffer,128,'\n');                           /* Read species parameters (ifstream In) */
     for(sp=1;sp<=numesp;sp++) {
@@ -2830,13 +2841,18 @@ void UpdateField() {
                 for(int ii = 0; ii < S[spp].s_nbext; ii++){
                     site = genrand2i() % sites;
 
-                    if(S[spp].s_Seed[site] != 1) {             //!!!!
+                    /*if(S[spp].s_Seed[site] != 1) {             //!!!!
                         if (S[spp].s_Seed[site] == 0) site_has_S[site].push_back(spp);
                         S[spp].s_Seed[site] = 1;  //check for optimization
+                    }*/
+
+                    if (seed_count[site][spp] == 0){
+                        seed_count[site][spp] = 1;
+                        site_has_S[site].push_back(spp);
                     }
+                    else if (seed_count[site][spp] != 1) seed_count[site][spp] = 1;
 
                     /*
-
                     if (seed_count[site][spp] == 0){
                         seed_count[site][spp] = 1;
                         int i = S[spp].s_index;
@@ -2996,24 +3012,25 @@ void UpdateTree() {
     else {
 
         // NEW CHANGE: introduce site_has_S[site] to store all available seeds on this site
-        int size, ind;
+        int size;//, ind;
         for (site = 0; site < sites; ++site){
             if (T[site].t_age == 0){
                 size = site_has_S[site].size();
                 if (size) {
-                    ind = rand() % size;
+                    //ind = rand() % size;
                     //auto it = site_has_S[site].begin();
                     //advance(it, ind);
                     //list<int>::iterator it = next(site_has_S[site].begin(), rand() % size);
-                    list<int>::iterator it = site_has_S[site].begin();
-                    advance(it, ind);
-                    spp = *it;
+                    //list<int>::iterator it = site_has_S[site].begin();
+                    //advance(it, ind);
+                    //spp = *it;
+                    spp = site_has_S[site][rand() % size];
                     flux = Wmax * exp(-flor(LAI3D[0][site + SBORD]) * klight);
                     if (flux > S[spp].s_LCP) T[site].Birth(S, spp, site);
                 }
             }
             else{
-                for(spp=1;spp<=numesp;spp++) S[spp].s_Seed[site]=0;   // instead of doing here, change to detect with help from site_has[]
+                for(spp=1;spp<=numesp;++spp) seed_count[site][spp]=0;   // instead of doing here, change to detect with help from site_has[]
                 site_has_S[site].clear();
             }
         }
